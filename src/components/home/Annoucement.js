@@ -1,39 +1,68 @@
 import React from "react";
 import { Layout, Space } from "antd";
-import { StarFilled } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import shout from "../../resources/img/home/shout.png";
+import notice from "../../resources/img/home/notice-title.png";
 
 const { Content } = Layout;
 const Annoucement = () => {
   return (
     <Content className="site-layout">
       <div className="announcement">
-        <div className="announcement-title">
-          <h1>Annoucement</h1>
-        </div>
         <div className="announcement-content">
-          <ul className="announcement-list">
-            <Space direction="vertical" size="large">
-              <li>
-                <StarFilled />
-                <span style={{ marginLeft: 20 }}>Annoucement 1</span>
-              </li>
-              <li>
-                <StarFilled />
-                <span style={{ marginLeft: 20 }}>Annoucement 2</span>
-              </li>
-              <li>
-                <StarFilled />
-                <span style={{ marginLeft: 20 }}>Annoucement 3</span>
-              </li>
-              <li>
-                <StarFilled />
-                <span style={{ marginLeft: 20 }}>Annoucement 4</span>
-              </li>
-            </Space>
-          </ul>
-          <a style={{ padding: "0 0 30px 80px" }} href="#blank">
-            See more...
-          </a>
+          <img className="notice-img" src={notice} alt={notice} />
+          <Space direction="horizontal" size={150}>
+            <div className="outter-border">
+              <div className="inner-border">
+                <div className="notice-title">
+                  <img src={shout} alt={shout} />
+                  <h4>01/01/2021, 10:00AM</h4>
+                </div>
+                <div className="notice-content">
+                  <p>
+                    Pellentesque habitant morbi tristique senectus et netus et
+                    malesuada. Vestibulum tortor quam, feugiat vitae, ultricies
+                    eget, tempor sit amet, ante.
+                  </p>
+                </div>
+                <a href="#">See more...</a>
+              </div>
+            </div>
+            <div className="outter-border">
+              <div className="inner-border">
+                <div className="notice-title">
+                  <img src={shout} alt={shout} />
+                  <h4>01/01/2021, 10:00AM</h4>
+                </div>
+                <div className="notice-content">
+                  <p>
+                    Pellentesque habitant morbi tristique senectus et netus et
+                    malesuada fames ac turpis egestas. Tempor sit amet, ante.
+                  </p>
+                </div>
+                <a href="#">See more...</a>
+              </div>
+            </div>
+            <div className="outter-border">
+              <div className="inner-border">
+                <div className="notice-title">
+                  <img src={shout} alt={shout} />
+                  <h4>01/01/2021, 10:00AM</h4>
+                </div>
+                <div className="notice-content">
+                  <p>
+                    Pellentesque habitant morbi tristique senectus et netus et
+                    malesuada fames ac turpis egestas. Vestibulum tortor quam,
+                    feugiat vitae, ultricies eget, tempor sit amet, ante.
+                  </p>
+                </div>
+                <a href="#">See more...</a>
+              </div>
+            </div>
+          </Space>
+          <Link to="/notice">
+            <div className="see-all-btn" />
+          </Link>
         </div>
       </div>
     </Content>

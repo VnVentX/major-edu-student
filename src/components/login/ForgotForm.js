@@ -12,8 +12,10 @@ const ForgotForm = (props) => {
   return (
     <>
       {isChangePass ? (
+        //isChangePass = true thì chuyển sang change pass
         <ChangePassForm handelChange={props.handelChange} />
       ) : (
+        //isChangePass = false thì tiếp tục check
         <CheckForm
           handelChange={props.handelChange}
           handelIsChangePass={handelIsChangePass}

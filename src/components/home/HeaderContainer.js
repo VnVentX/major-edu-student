@@ -1,10 +1,10 @@
 import React from "react";
-import { Layout, Menu } from "antd";
-import logo_major from "../../resources/img/logo_major.svg";
-import ProfileMenu from "./ProfileMenu";
+import { Layout, Space } from "antd";
+import { Link } from "react-router-dom";
+import logo_major from "../../resources/img/logo_major.png";
 const { Header } = Layout;
 
-const HeaderContainer = () => {
+const HeaderContainer = (props) => {
   return (
     <Header
       style={{
@@ -18,12 +18,35 @@ const HeaderContainer = () => {
         <div className="logo">
           <img src={logo_major} alt={logo_major} />
         </div>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-          <Menu.Item key="1">nav 1</Menu.Item>
-          <Menu.Item key="2">nav 2</Menu.Item>
-          <Menu.Item key="3">nav 3</Menu.Item>
-        </Menu>
-        <ProfileMenu />
+        <div className="menu-content">
+          <Space size={45}>
+            <Link to="/home">
+              <div className="home-btn" />
+            </Link>
+            <Link to="/notice">
+              <div className="notice-btn" />
+            </Link>
+            <Link to="/subject">
+              <div className="subject-btn" />
+            </Link>
+            <Link to="/score">
+              <div className="score-btn" />
+            </Link>
+            <Link to="/profile">
+              <div className="profile-btn" />
+            </Link>
+          </Space>
+        </div>
+        <Link
+          to=""
+          onClick={() => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            window.location.href = "/login";
+          }}
+        >
+          <div className="logout-btn"></div>
+        </Link>
       </div>
     </Header>
   );

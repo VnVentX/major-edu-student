@@ -1,16 +1,21 @@
 import React from "react";
 import { Layout } from "antd";
-import SlideShow from "../components/home/SlideShow";
+import { Switch, Route } from "react-router-dom";
 import HeaderContainer from "../components/home/HeaderContainer";
-import Annoucement from "../components/home/Annoucement";
 import FooterContainer from "../components/home/FooterContainer";
+import index from "../components/home";
 
 const Home = () => {
   return (
     <Layout>
       <HeaderContainer />
-      <SlideShow />
-      <Annoucement />
+      <Switch>
+        <Route path="/" component={index} />
+        <Route path="/notice" component={index} />
+        <Route path="/subject" component={index} />
+        <Route path="/score" component={index} />
+        <Route path="/profile" component={index} />
+      </Switch>
       <FooterContainer />
     </Layout>
   );

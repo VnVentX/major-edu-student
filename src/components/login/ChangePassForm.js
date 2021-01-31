@@ -8,6 +8,8 @@ const ChangePassForm = (props) => {
   const handelSubmit = (e) => {
     e.preventDefault();
     if (password === newPassword) {
+      //logic api đổi pass ở đây
+      //đổi status thành isForgot = false, chuyển sang login
       props.handelChange();
     } else {
       alert("Password is not match!");

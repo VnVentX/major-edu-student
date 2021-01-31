@@ -3,7 +3,7 @@ import ForgotForm from "../components/login/ForgotForm";
 import LoginForm from "../components/login/LoginForm";
 import "../resources/css/login.css";
 
-const Login = (props) => {
+const Login = () => {
   const [isForgot, setisForgot] = useState(false);
 
   const handelChange = () => {

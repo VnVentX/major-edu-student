@@ -4,17 +4,21 @@ import logo from "../../resources/img/logo_major.png";
 import { Button } from "antd";
 
 const LoginForm = (props) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  
+  // !Nhớ check chuyển lại trang login sau khi đã đăng nhập
+
+  const [username, setUsername] = useState("test");
+  const [password, setPassword] = useState("12345678");
 
   const handelSubmit = (e) => {
     e.preventDefault();
     if (username !== "test" && password !== "12345678") {
       window.location.href = "/login";
+    } else if (username === "test" && password === "12345678") {
+      localStorage.setItem("token", "this is token");
+      localStorage.setItem("user", "user");
+      window.location.href = "/home";
     }
-    localStorage.setItem("token", "this is token");
-    localStorage.setItem("user", "user");
-    window.location.href = "/home";
   };
 
   return (
@@ -32,6 +36,7 @@ const LoginForm = (props) => {
             required="required"
             placeholder="Username"
             autoComplete="off"
+            value="test"
             onChange={(e) => {
               setUsername(e.target.value);
             }}
@@ -47,6 +52,7 @@ const LoginForm = (props) => {
             required="required"
             placeholder="password"
             autoComplete="off"
+            value="12345678"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
@@ -76,13 +82,13 @@ const LoginForm = (props) => {
             Forgot password &gt;
           </Button>
         </div>
-        <input
-          type="image"
-          src={login_button}
-          alt={login_button}
-          style={{ width: 183 }}
+        <button
+          type="submit"
+          style={{ border: 0, background: "transparent", cursor: "pointer" }}
           onClick={handelSubmit}
-        />
+        >
+          <img src={login_button} alt={login_button} />
+        </button>
       </form>
     </>
   );
