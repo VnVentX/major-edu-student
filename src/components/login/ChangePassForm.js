@@ -54,14 +54,13 @@ const ChangePassForm = (props) => {
           />
           <label htmlFor="confirm">Re-enter your password</label>
         </div>
-
-        <input
-          type="image"
-          src={submit_button}
-          alt={submit_button}
-          style={{ width: 183 }}
+        <button
+          type="submit"
+          style={{ border: 0, background: "transparent", cursor: "pointer" }}
           onClick={handelSubmit}
-        />
+        >
+          <img src={submit_button} alt={submit_button} />
+        </button>
       </form>
     </>
   );

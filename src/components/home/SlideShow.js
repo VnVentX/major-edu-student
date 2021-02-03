@@ -8,7 +8,7 @@ const { Content } = Layout;
 
 const SlideShow = () => {
   return (
-    <Content className="content-slide-show">
+    <Content className="container">
       <div className="slide-show">
         <AwesomeSlider
           className="slider"

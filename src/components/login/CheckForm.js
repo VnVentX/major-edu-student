@@ -59,13 +59,13 @@ const CheckForm = (props) => {
         >
           &lt; Back to login
         </Button>
-        <input
-          type="image"
-          src={submit_button}
-          alt={submit_button}
-          style={{ width: 183 }}
+        <button
+          type="submit"
+          style={{ border: 0, background: "transparent", cursor: "pointer" }}
           onClick={handelSubmit}
-        />
+        >
+          <img src={submit_button} alt={submit_button} />
+        </button>
       </form>
     </>
   );

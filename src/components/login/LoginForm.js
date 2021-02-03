@@ -4,14 +4,10 @@ import logo from "../../resources/img/logo_major.png";
 import { Button } from "antd";
 
 const LoginForm = (props) => {
-  
-  // !Nhớ check chuyển lại trang login sau khi đã đăng nhập
-
   const [username, setUsername] = useState("test");
   const [password, setPassword] = useState("12345678");
 
   const handelSubmit = (e) => {
-    e.preventDefault();
     if (username !== "test" && password !== "12345678") {
       window.location.href = "/login";
     } else if (username === "test" && password === "12345678") {
@@ -19,6 +15,7 @@ const LoginForm = (props) => {
       localStorage.setItem("user", "user");
       window.location.href = "/home";
     }
+    e.preventDefault();
   };
 
   return (

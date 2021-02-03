@@ -42,7 +42,7 @@ const HeaderContainer = (props) => {
           onClick={() => {
             localStorage.removeItem("token");
             localStorage.removeItem("user");
-            window.location.href = "/login";
+            props.history.push("/login");
           }}
         >
           <div className="logout-btn"></div>
