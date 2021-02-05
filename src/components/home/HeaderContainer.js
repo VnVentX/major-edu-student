@@ -6,14 +6,7 @@ const { Header } = Layout;
 
 const HeaderContainer = (props) => {
   return (
-    <Header
-      style={{
-        position: "fixed",
-        zIndex: 1,
-        width: "100%",
-        minHeight: "auto",
-      }}
-    >
+    <Header>
       <div className="header-menu">
         <div className="logo">
           <img src={logo_major} alt={logo_major} />
@@ -21,19 +14,19 @@ const HeaderContainer = (props) => {
         <div className="menu-content">
           <Space size={45}>
             <Link to="/home">
-              <div className="home-btn" />
+              <div className="menu-btn home-btn" />
             </Link>
             <Link to="/notice">
-              <div className="notice-btn" />
+              <div className="menu-btn notice-btn" />
             </Link>
             <Link to="/subject">
-              <div className="subject-btn" />
+              <div className="menu-btn subject-btn" />
             </Link>
             <Link to="/score">
-              <div className="score-btn" />
+              <div className="menu-btn score-btn" />
             </Link>
             <Link to="/profile">
-              <div className="profile-btn" />
+              <div className="menu-btn profile-btn" />
             </Link>
           </Space>
         </div>

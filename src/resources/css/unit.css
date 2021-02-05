@@ -1,0 +1,124 @@
+.unit-container {
+  min-height: 86vh;
+  height: auto;
+  display: grid;
+  place-items: center;
+}
+
+.unit-title {
+  background: url("../img/home/header-bg.png");
+  min-width: 281.58px;
+  min-height: 126.16px;
+  display: grid;
+  place-items: center;
+  margin: 50px 0;
+}
+
+.unit-title > h1 {
+  margin: 0px !important;
+  font-size: 3rem;
+  color: white;
+}
+
+.unit-wrap {
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  grid-template-areas:
+    "review-1 semester-1"
+    "review-2 semester-2"; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 65vw;
+}
+.unit-wrap > div {
+  flex: 1 1 528px;
+  /*demo*/
+  margin: 0 20px 20px 20px;
+}
+.review-1 {
+  /* grid-area: review-1; */
+  min-width: 528px;
+  min-height: 250px;
+}
+.semester-1 {
+  /* grid-area: semester-1; */
+  min-width: 528px;
+  min-height: 250px;
+}
+.review-2 {
+  /* grid-area: review-2; */
+  min-width: 528px;
+  min-height: 250px;
+}
+.semester-2 {
+  /* grid-area: semester-2; */
+  min-width: 528px;
+  min-height: 250px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.upper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.unit-btn {
+  display: block;
+  min-width: 119.21px;
+  min-height: 130.18px;
+}
+
+.review-btn {
+  margin-top: 25px;
+  display: block;
+  min-width: 160.5px;
+  min-height: 68px;
+  background: url("../img/unit/review.png");
+}
+
+.unit-1 {
+  background: url("../img/unit/1.png");
+}
+.unit-2 {
+  background: url("../img/unit/2.png");
+}
+.unit-3 {
+  background: url("../img/unit/3.png");
+}
+.unit-4 {
+  background: url("../img/unit/4.png");
+}
+.unit-5 {
+  background: url("../img/unit/5.png");
+}
+.unit-6 {
+  background: url("../img/unit/6.png");
+}
+.unit-7 {
+  background: url("../img/unit/7.png");
+}
+.unit-8 {
+  background: url("../img/unit/8.png");
+}
+.unit-9 {
+  background: url("../img/unit/9.png");
+}
+.unit-10 {
+  background: url("../img/unit/10.png");
+}
+.unit-11 {
+  background: url("../img/unit/10.png");
+}
+.unit-12 {
+  background: url("../img/unit/10.png");
+}

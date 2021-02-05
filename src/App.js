@@ -3,16 +3,16 @@ import "antd/dist/antd.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import AutheticatedComponent from "./components/auth/AutheticatedComponent";
+import AuthenticatedComponent from "./components/auth/AuthenticatedComponent";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/login" component={Login} />
-        <AutheticatedComponent>
+        <AuthenticatedComponent>
           <Route path="/" component={Home} />
-        </AutheticatedComponent>
+        </AuthenticatedComponent>
       </Switch>
     </BrowserRouter>
   );

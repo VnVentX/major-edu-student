@@ -9,16 +9,15 @@
 
 .ant-layout-header {
   display: block;
-  height: 15%;
-  padding: 0 50px;
+  position: fixed;
+  z-index: 999;
+  height: auto;
+  width: 100%;
+  min-height: 15%;
   background: url("../img/home/header-bg.png");
 }
 
 .logo img {
-  height: 10vh;
-}
-
-.logo {
   height: 10vh;
 }
 
@@ -36,34 +35,25 @@
   flex-wrap: wrap;
 }
 
-.home-btn {
+.menu-btn {
   display: block;
   width: 174.95px;
   height: 79.13px;
+}
+
+.home-btn {
   background: url("../img/home/home-btn.png");
 }
 .notice-btn {
-  display: block;
-  width: 174.95px;
-  height: 79.13px;
   background: url("../img/home/notice-btn.png");
 }
 .subject-btn {
-  display: block;
-  width: 174.95px;
-  height: 79.13px;
   background: url("../img/home/subject-btn.png");
 }
 .score-btn {
-  display: block;
-  width: 174.95px;
-  height: 79.13px;
   background: url("../img/home/score-btn.png");
 }
 .profile-btn {
-  display: block;
-  width: 174.95px;
-  height: 79.13px;
   background: url("../img/home/profile-btn.png");
 }
 .logout-btn {
@@ -182,6 +172,19 @@ button.ant-btn.ant-btn-link {
   margin-bottom: 65px;
 }
 
+.notice-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 80vw;
+}
+
+.notice-wrap > div {
+  flex: 0 1 400px;
+  margin: 0 20px 90px 20px;
+}
+
 .outter-border {
   display: block;
   border-radius: 30px 30px 30px 30px;
@@ -191,7 +194,7 @@ button.ant-btn.ant-btn-link {
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
-  width: 400px;
+  min-width: 400px;
   height: 345px;
   background-color: white;
   display: flex;
@@ -217,10 +220,14 @@ button.ant-btn.ant-btn-link {
 .inner-border .notice-title {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 }
 
-.notice-title h4 {
+.title-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   margin-left: 10px;
 }
 
@@ -233,7 +240,6 @@ button.ant-btn.ant-btn-link {
   width: 268.41px;
   height: 121.41px;
   background: url("../img/home/see-all-btn.png");
-  margin-top: 90px;
 }
 
 /* Subject Home */
