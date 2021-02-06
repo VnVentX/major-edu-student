@@ -1,17 +1,16 @@
 import React from "react";
-import { Layout, Space } from "antd";
-import { Link } from "react-router-dom";
 
-const { Content } = Layout;
 const SubjectHome = () => {
   return (
-    <Content>
-      <div className="subject-home">
-        <div className="subject-home-container">
-          <div className="subjects-home-content"></div>
-        </div>
+    // <div className="page">
+    //   <div className="page-contain">
+    <div className="subject-home">
+      <div className="subject-home-container">
+        <div className="subjects-home-content"></div>
       </div>
-    </Content>
+    </div>
+    //   </div>
+    // </div>
   );
 };
 

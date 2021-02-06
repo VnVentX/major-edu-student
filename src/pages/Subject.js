@@ -1,14 +1,8 @@
 import React from "react";
-import { Layout } from "antd";
-
-const { Content } = Layout;
+import SubjectComponent from "../components/subject/SubjectComponent";
 
 const Subject = () => {
-  return (
-    <Layout>
-      <Content className="container">Subject</Content>
-    </Layout>
-  );
+  return <SubjectComponent />;
 };
 
 export default Subject;

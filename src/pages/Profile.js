@@ -1,14 +1,8 @@
 import React from "react";
-import { Layout } from "antd";
-
-const { Content } = Layout;
+import ProfileComponent from "../components/profile/ProfileComponent";
 
 const Profile = () => {
-  return (
-    <Layout>
-      <Content className="container">Profile</Content>
-    </Layout>
-  );
+  return <ProfileComponent />;
 };
 
 export default Profile;

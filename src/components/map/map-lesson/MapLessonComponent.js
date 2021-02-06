@@ -1,6 +1,6 @@
 import React from "react";
 
-const LessonComponent = () => {
+const MapLessonComponent = () => {
   const path = window.location.pathname.split("/");
   const lesson = path[path.length - 1];
 
@@ -21,4 +21,4 @@ const LessonComponent = () => {
   );
 };
 
-export default LessonComponent;
+export default MapLessonComponent;

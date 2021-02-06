@@ -26,7 +26,7 @@ const Annoucement = () => {
                     eget, tempor sit amet, ante.
                   </p>
                 </div>
-                <a href="#">See more...</a>
+                <Link to="/notice/detail">See more...</Link>
               </div>
             </div>
             <div className="outter-border">
@@ -44,7 +44,7 @@ const Annoucement = () => {
                     malesuada fames ac turpis egestas. Tempor sit amet, ante.
                   </p>
                 </div>
-                <a href="#">See more...</a>
+                <Link to="/notice/detail">See more...</Link>
               </div>
             </div>
             <div className="outter-border">
@@ -63,7 +63,7 @@ const Annoucement = () => {
                     feugiat vitae, ultricies eget, tempor sit amet, ante.
                   </p>
                 </div>
-                <a href="#">See more...</a>
+                <Link to="/notice/detail">See more...</Link>
               </div>
             </div>
           </div>

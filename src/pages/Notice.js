@@ -1,14 +1,8 @@
 import React from "react";
-import { Layout } from "antd";
-
-const { Content } = Layout;
+import NoticeComponent from "../components/notice/NoticeComponent";
 
 const Notice = () => {
-  return (
-    <Layout>
-      <Content className="container">Notice</Content>
-    </Layout>
-  );
+  return <NoticeComponent />;
 };
 
 export default Notice;

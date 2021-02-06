@@ -10,10 +10,10 @@
 }
 
 .map {
-  position: absolute;
-  top: 35%;
+  position: absolute !important;
+  top: 80%;
   left: 50%;
-  transform: translate(-50%, -35%);
+  transform: translate(-50%, -80%);
   min-width: 80vw;
   min-height: 80vh;
   width: 80vw;

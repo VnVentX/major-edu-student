@@ -1,7 +1,6 @@
 import React from "react";
 import { Space } from "antd";
 import { Link } from "react-router-dom";
-import "../../resources/css/unit.css";
 
 const UnitComponent = () => {
   return (

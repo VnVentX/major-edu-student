@@ -1,14 +1,8 @@
 import React from "react";
-import { Layout } from "antd";
-
-const { Content } = Layout;
+import ScoreComponent from "../components/score/ScoreComponent";
 
 const Score = () => {
-  return (
-    <Layout>
-      <Content className="container">Score</Content>
-    </Layout>
-  );
+  return <ScoreComponent />;
 };
 
 export default Score;
