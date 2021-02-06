@@ -19,6 +19,31 @@ code {
     monospace;
 }
 
+/* Wrap All */
+.contents {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+}
+.scence {
+  position: relative;
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+  min-width: 1024px;
+}
+
+.page {
+  position: relative;
+  width: 100%;
+}
+
+.page-contain {
+  position: relative;
+  width: 1024px;
+  margin: 0 auto;
+}
+
 .container {
   margin-top: 14vh;
   min-height: 100%;

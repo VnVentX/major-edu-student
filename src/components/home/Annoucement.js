@@ -1,14 +1,12 @@
 import React from "react";
-import { Layout } from "antd";
 import { Link } from "react-router-dom";
 import shout from "../../resources/img/home/shout.png";
 import notice from "../../resources/img/home/notice-title.png";
 
-const { Content } = Layout;
 const Annoucement = () => {
   return (
-    <Content className="site-layout">
-      <div className="announcement">
+    <div className="page">
+      <div className="page-contain">
         <div className="announcement-content">
           <img className="notice-img" src={notice} alt={notice} />
           <div className="notice-wrap">
@@ -74,7 +72,7 @@ const Annoucement = () => {
           </Link>
         </div>
       </div>
-    </Content>
+    </div>
   );
 };
 

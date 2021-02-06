@@ -1,8 +1,10 @@
 .lesson-container {
   min-height: 86vh;
   height: auto;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .lesson-title {
@@ -33,13 +35,13 @@
   margin: 0 20px 10vh 20px;
   aspect-ratio: 16/9;
 }
-.review-1 {
+.lesson-left {
   /* grid-area: review-1; */
   min-width: 672px;
   min-height: 538px;
   background-color: lightblue;
 }
-.semester-1 {
+.lesson-right {
   /* grid-area: semester-1; */
   min-width: 672px;
   min-height: 538px;

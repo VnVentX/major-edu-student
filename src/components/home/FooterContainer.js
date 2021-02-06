@@ -5,7 +5,7 @@ const { Footer } = Layout;
 
 const FooterContainer = () => {
   return (
-    <Footer className="footer-bg">
+    <Footer className="scence footer-bg">
       <div className="footer-content">
         {/* <Space size="large">
           <div className="left-content">

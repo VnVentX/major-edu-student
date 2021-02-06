@@ -1,6 +1,5 @@
 import React from "react";
 import "../resources/css/home.css";
-import { Layout } from "antd";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import HeaderContainer from "../components/home/HeaderContainer";
 import FooterContainer from "../components/home/FooterContainer";
@@ -15,7 +14,7 @@ import Lesson from "./Lesson";
 
 const Home = (props) => {
   return (
-    <Layout>
+    <div className="contents">
       <BrowserRouter>
         <HeaderContainer history={props.history} />
         <Switch>
@@ -27,12 +26,20 @@ const Home = (props) => {
           <Route path="/grade/1/math/unit" exact component={Unit} />
           <Route path="/grade/1/science/unit" exact component={Unit} />
           <Route path="/grade/1/math/unit/1/map" exact component={Map} />
-          <Route path="/grade/1/math/unit/1/lesson/1" exact component={Lesson} />
-          <Route path="/grade/1/math/unit/1/lesson/2" exact component={Lesson} />
+          <Route
+            path="/grade/1/math/unit/1/lesson/1"
+            exact
+            component={Lesson}
+          />
+          <Route
+            path="/grade/1/math/unit/1/lesson/2"
+            exact
+            component={Lesson}
+          />
         </Switch>
         <FooterContainer />
       </BrowserRouter>
-    </Layout>
+    </div>
   );
 };
 

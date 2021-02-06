@@ -7,7 +7,7 @@ const { Content } = Layout;
 
 const Lesson = () => {
   return (
-    <Layout>
+    <Layout className="scence">
       <Content className="container">
         <LessonComponent />
       </Content>

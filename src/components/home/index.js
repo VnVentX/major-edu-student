@@ -4,12 +4,16 @@ import Annoucement from "./Annoucement";
 import SlideShow from "./SlideShow";
 import SubjectHome from "./SubjectHome";
 
+const { Content } = Layout;
+
 const index = () => {
   return (
-    <Layout>
-      <SlideShow />
-      <Annoucement />
-      <SubjectHome />
+    <Layout className="scence">
+      <Content className="container">
+        <SlideShow />
+        <Annoucement />
+        <SubjectHome />
+      </Content>
     </Layout>
   );
 };

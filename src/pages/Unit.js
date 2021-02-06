@@ -6,7 +6,7 @@ const { Content } = Layout;
 
 const Unit = () => {
   return (
-    <Layout>
+    <Layout className="scence">
       <Content className="container">
         <UnitComponent />
       </Content>

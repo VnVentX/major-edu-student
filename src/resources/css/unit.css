@@ -1,8 +1,10 @@
 .unit-container {
   min-height: 86vh;
   height: auto;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .unit-title {
@@ -59,7 +61,7 @@
   min-height: 250px;
 }
 
-.content {
+.unit-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
