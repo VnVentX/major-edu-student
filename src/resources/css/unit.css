@@ -36,7 +36,6 @@
 }
 .unit-wrap > div {
   flex: 1 1 528px;
-  /*demo*/
   margin: 0 20px 20px 20px;
 }
 .review-1 {
@@ -74,13 +73,15 @@
 
 .unit-btn {
   display: block;
+  cursor: pointer;
   min-width: 119.21px;
   min-height: 130.18px;
 }
 
 .review-btn {
-  margin-top: 25px;
   display: block;
+  cursor: pointer;
+  margin-top: 25px;
   min-width: 160.5px;
   min-height: 68px;
   background: url("../img/unit/review.png");

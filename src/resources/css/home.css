@@ -261,13 +261,14 @@ button.ant-btn.ant-btn-link {
 
 .footer-bg {
   background: url("../img/home/footer-bg.png");
+  width: 100%;
 }
 .footer-content {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0 25vh;
-  height: 328px;
+  height: 25vh;
+  width: auto;
 }
 
 .left-content h1,

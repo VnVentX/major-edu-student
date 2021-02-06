@@ -9,8 +9,9 @@ import Notice from "./Notice";
 import Subject from "./Subject";
 import Score from "./Score";
 import Profile from "./Profile";
-import Unit from "../components/unit/Unit";
-import Map from "../components/map/Map";
+import Unit from "./Unit";
+import Map from "./Map";
+import Lesson from "./Lesson";
 
 const Home = (props) => {
   return (
@@ -26,6 +27,8 @@ const Home = (props) => {
           <Route path="/grade/1/math/unit" exact component={Unit} />
           <Route path="/grade/1/science/unit" exact component={Unit} />
           <Route path="/grade/1/math/unit/1/map" exact component={Map} />
+          <Route path="/grade/1/math/unit/1/lesson/1" exact component={Lesson} />
+          <Route path="/grade/1/math/unit/1/lesson/2" exact component={Lesson} />
         </Switch>
         <FooterContainer />
       </BrowserRouter>

@@ -23,7 +23,7 @@ const FooterContainer = () => {
           </div>
           <div className="right-content">Map</div>
         </Space> */}
-        <img src={footer} alt={footer} height="350" />
+        {/* <img src={footer} alt={footer} height="100%" /> */}
       </div>
     </Footer>
   );

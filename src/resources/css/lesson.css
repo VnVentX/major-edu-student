@@ -1,0 +1,47 @@
+.lesson-container {
+  min-height: 86vh;
+  height: auto;
+  display: grid;
+  place-items: center;
+}
+
+.lesson-title {
+  background: url("../img/home/header-bg.png");
+  min-width: 281.58px;
+  min-height: 126.16px;
+  display: grid;
+  place-items: center;
+  margin: 50px 0;
+}
+
+.lesson-title > h1 {
+  margin: 0px !important;
+  font-size: 3rem;
+  color: white;
+}
+
+.lesson-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 80vw;
+}
+
+.lesson-wrap > div {
+  flex: 1 1 528px;
+  margin: 0 20px 10vh 20px;
+  aspect-ratio: 16/9;
+}
+.review-1 {
+  /* grid-area: review-1; */
+  min-width: 672px;
+  min-height: 538px;
+  background-color: lightblue;
+}
+.semester-1 {
+  /* grid-area: semester-1; */
+  min-width: 672px;
+  min-height: 538px;
+  background-color: lightblue;
+}
