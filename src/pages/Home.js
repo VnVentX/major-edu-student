@@ -13,6 +13,7 @@ import Unit from "./Unit";
 import Map from "./Map";
 import MapLesson from "./MapLesson";
 import NoticeDetail from "./NoticeDetail";
+import NotFound from "./NotFound";
 
 const { Content } = Layout;
 
@@ -30,19 +31,20 @@ const Home = (props) => {
               <Route path="/subject" exact component={Subject} />
               <Route path="/score" exact component={Score} />
               <Route path="/profile" exact component={Profile} />
-              <Route path="/grade/1/math/unit" exact component={Unit} />
-              <Route path="/grade/1/science/unit" exact component={Unit} />
-              <Route path="/grade/1/math/unit/1/map" exact component={Map} />
+              <Route path="/math/unit" exact component={Unit} />
+              <Route path="/science/unit" exact component={Unit} />
+              <Route path="/math/unit/:unitID/map" exact component={Map} />
               <Route
-                path="/grade/1/math/unit/1/lesson/1"
+                path="/math/unit/:unitID/map/lesson/:lessonID"
                 exact
                 component={MapLesson}
               />
               <Route
-                path="/grade/1/math/unit/1/lesson/2"
+                path="/math/unit/:unitID/map/lesson/:lessonID"
                 exact
                 component={MapLesson}
               />
+              <Route component={NotFound} />
             </Switch>
           </Content>
         </Layout>

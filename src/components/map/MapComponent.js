@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { Space } from "antd";
 
 const MapComponent = () => {
-  const [isHovering, setIsHovering] = useState(false);
+  const [isShowing, setIsShowing] = useState(false);
 
   const handleClick = () => {
-    setIsHovering(!isHovering);
+    setIsShowing(!isShowing);
   };
 
   return (
@@ -16,16 +16,16 @@ const MapComponent = () => {
           <div className="map-item lesson" onClick={handleClick}>
             <h1>Lesson</h1>
           </div>
-          {isHovering && (
+          {isShowing && (
             <div className="lesson-items">
               <Space direction="vertical" size={100}>
                 <div className="item lesson-1">
-                  <Link to="/grade/1/math/unit/1/lesson/1">
+                  <Link to="/math/unit/1/map/lesson/1">
                     <h1>Lesson 1</h1>
                   </Link>
                 </div>
                 <div className="item lesson-2">
-                  <Link to="/grade/1/math/unit/1/lesson/2">
+                  <Link to="/math/unit/1/map/lesson/2">
                     <h1>Lesson 2</h1>
                   </Link>
                 </div>
