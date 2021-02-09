@@ -33,7 +33,9 @@ const MapComponent = () => {
             </div>
           )}
           <div className="map-item excercise">
-            <h1>Excercise</h1>
+            <Link to="/math/unit/1/map/excercise">
+              <h1>Excercise</h1>
+            </Link>
           </div>
           <div className="map-item progress">
             <h1>Progress</h1>

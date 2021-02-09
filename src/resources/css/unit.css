@@ -20,16 +20,10 @@
   margin: 0px !important;
   font-size: 3rem;
   color: white;
+  width: auto;
 }
 
 .unit-wrap {
-  /* display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-
-  grid-template-areas:
-    "review-1 semester-1"
-    "review-2 semester-2"; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

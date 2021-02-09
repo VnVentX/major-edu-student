@@ -1,0 +1,66 @@
+.excercise-container {
+  min-height: 86vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.excercise-title {
+  background: url("../img/home/header-bg.png");
+  min-width: 281.58px;
+  min-height: 126.16px;
+  display: grid;
+  place-items: center;
+  margin: 50px 0;
+}
+
+.excercise-title > h1 {
+  margin: 0px !important;
+  font-size: 3rem;
+  color: white;
+}
+
+.excercise-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+  margin: 0 20px 10vh 20px;
+}
+
+.ant-table-wrapper {
+  width: 80vw;
+}
+
+.ant-table-thead > tr > th {
+  color: white;
+  background: #3071b9 !important;
+}
+
+.ant-table-tbody > tr > th {
+  color: white;
+  background: #3071b9 !important;
+}
+
+/* .excercise-table .ant-table .ant-table-tbody > tr:hover > td {
+  background: #a6aeb8;
+} */
+
+/* !Excercise Detail */
+.excercise-detail-container {
+  min-height: 86vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ant-modal-body > p {
+  display: grid;
+  place-items: center;
+  margin: 15px auto 0 auto;
+}
+.excercise-btn {
+  margin: 0 0 50px 0;
+}
