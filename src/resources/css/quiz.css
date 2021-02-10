@@ -96,6 +96,10 @@
   border-radius: 20px;
 }
 
+.selected {
+  background: lightpink;
+}
+
 .option-text > span {
   width: auto;
   height: auto;

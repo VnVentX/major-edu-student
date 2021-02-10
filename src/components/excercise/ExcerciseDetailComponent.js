@@ -1,8 +1,7 @@
-import React from "react";
-import { Table, Modal } from "antd";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
-import { useState, useEffect } from "react";
+import ExcerciseDetail from "./ExcerciseDetail";
+import QuizComponent from "./QuizComponent";
 
 const excercise = {
   id: 1,
@@ -48,101 +47,27 @@ const data = [
 ];
 
 const ExcerciseDetailComponent = () => {
-  const [detail, setDetail] = useState("");
-  const [visible, setVisible] = useState(false);
-  const [attempData, setAttempData] = useState([]);
-  const [pagination] = useState({
-    pageSize: 5,
-  });
+  const [isDoingQuiz, setIsDoingQuiz] = useState(false);
 
-  const history = useHistory();
-
-  useEffect(() => {
-    setDetail(excercise);
-    setAttempData(data);
-  }, []);
-
-  const showModal = () => {
-    setVisible(true);
+  //! Đi đến màn hình làm quiz (<QuizComponent />)
+  const handelChangeIsDoingQuiz = () => {
+    setIsDoingQuiz(!isDoingQuiz);
   };
-
-  const handleOk = () => {
-    let path = `/math/unit/1/map/excercise/${detail.id}/start`;
-    history.push(path);
-  };
-
-  const handelCancel = () => {
-    setVisible(false);
-  };
-  const columns = [
-    {
-      title: "No",
-      dataIndex: "id",
-      render: (index) => index + 1,
-      align: "center",
-      width: "10%",
-    },
-    {
-      title: "Submitted Date",
-      dataIndex: "startDate",
-      align: "center",
-      render: (record) => (
-        <>
-          <span>{record}</span>
-        </>
-      ),
-    },
-    {
-      title: "Grade",
-      dataIndex: "grade",
-      align: "center",
-      render: (grade) => <span>{grade}/10</span>,
-    },
-    {
-      key: "x",
-      title: "Action",
-      dataIndex: "",
-      align: "center",
-      render: (record) => <button className="ant-btn-link">Overview</button>,
-    },
-  ];
 
   return (
     <div className="page">
       <div className="page-contain">
-        <div className="excercise-detail-container">
-          <div className="excercise-title">
-            <h1>{detail.excerciseName}</h1>
+        {isDoingQuiz === false ? (
+          <ExcerciseDetail
+            excercise={excercise}
+            data={data}
+            handelChangeIsDoingQuiz={handelChangeIsDoingQuiz}
+          />
+        ) : isDoingQuiz === true ? (
+          <div>
+            <QuizComponent handelChangeIsDoingQuiz={handelChangeIsDoingQuiz} />
           </div>
-          {attempData ? (
-            <button className="excercise-btn" onClick={showModal}>
-              Re-attemp
-            </button>
-          ) : (
-            <button className="excercise-btn" onClick={showModal}>
-              Attemp
-            </button>
-          )}
-          <Modal
-            centered
-            visible={visible}
-            onOk={handleOk}
-            onCancel={handelCancel}
-          >
-            <p>Do you want to do Excercise now?</p>
-          </Modal>
-          <div className="excercise-wrap">
-            {attempData && (
-              <Table
-                className="excercise-table"
-                rowKey={(record) => record.id}
-                columns={columns}
-                dataSource={data}
-                pagination={pagination}
-              />
-            )}
-          </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );
