@@ -32,8 +32,8 @@ const MapComponent = () => {
               </Space>
             </div>
           )}
-          <div className="map-item excercise">
-            <Link to="/math/unit/1/map/excercise">
+          <div className="map-item exercise">
+            <Link to="/math/unit/1/map/exercise">
               <h1>Excercise</h1>
             </Link>
           </div>

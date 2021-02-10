@@ -1,25 +1,26 @@
 import React from "react";
 import "../../resources/css/quiz.css";
 import { useState, useEffect } from "react";
-import { Pagination } from "antd";
+import { Pagination, Modal } from "antd";
 import { data } from "./data";
 import SubmitResult from "./SubmitResult";
 
 const pageSize = 1;
 //Template for Submit Result
-const template = [];
+var template = [];
 
 const QuizComponent = (props) => {
   const [isSubmitResult, setIsSubmitResult] = useState(false);
-  const [question, setQuestion] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
   const [current, setCurrent] = useState(1);
   const [minIndex, setMinIndex] = useState(0);
   const [maxIndex, setMaxIndex] = useState(0);
   const [answered, setAnswered] = useState([]);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    setQuestion(data);
+    setQuestions(data);
     setTotalPage(data.length / pageSize);
     setMinIndex(0);
     setMaxIndex(pageSize);
@@ -27,14 +28,17 @@ const QuizComponent = (props) => {
 
   //Template for Submit Result
   useEffect(() => {
-    question.map((i) =>
-      template.push({
-        questionID: i.questionID,
-        isCorrect: undefined,
-      })
-    );
+    questions.map((i) => {
+      if (template.length < 6) {
+        template.push({
+          questionID: i.questionID,
+          isCorrect: undefined,
+        });
+      }
+      return template;
+    });
     setAnswered(template);
-  }, [question]);
+  }, [questions]);
 
   const handleChange = (page) => {
     setCurrent(page);
@@ -42,17 +46,28 @@ const QuizComponent = (props) => {
     setMaxIndex(page * pageSize);
   };
 
-  const handleSelected = (question, answer) => {
-    const data = {
-      questionID: question.questionID,
-      isCorrect: answer.isCorrect,
-    };
+  const handleSelected = (question, answer, answerIndex) => {
+    //Update isSelected for question list to change it's css
+    const questionEle = questions.findIndex(
+      (element) => element.questionID === question.questionID
+    );
+    //Map hết cái answer của question trả về và update isSelected thành false hết
+    question.answers.map((i) => {
+      return (i.isSelected = false);
+    });
+    //Sau đó update option đã chọn thành true
+    question.answers[answerIndex].isSelected = true;
+    //Tạo một mảng phụ copy questions (question list)
+    const newQuestionList = Array.from(questions);
+    //Update question của mảng phụ theo cái index đã match
+    newQuestionList[questionEle] = question;
+    //Set lại question list
+    setQuestions(newQuestionList);
+
+    //! Update template => Answered question
     const elementsIndex = answered.findIndex(
       (element) => element.questionID === question.questionID
     );
-    if (elementsIndex === -1) {
-      setAnswered([...answered, data]);
-    }
     if (elementsIndex > -1) {
       const result = Array.from(answered);
       result[elementsIndex].isCorrect = answer.isCorrect;
@@ -66,19 +81,48 @@ const QuizComponent = (props) => {
     handleChange(1);
   };
 
+  //! Modal finish
+  const showModal = () => {
+    setVisible(true);
+  };
+
+  const handleOk = () => {
+    handelChangeIsSubmitResult();
+  };
+
+  const handelCancel = () => {
+    setVisible(false);
+  };
+
+  //! Submit Result xong clear dữ liệu
+  const handelSubmitResult = () => {
+    //api here
+    console.log(answered);
+    //clearing logic for state
+    template = [];
+    questions.map((question) => {
+      return question.answers.map((i) => {
+        return (i.isSelected = false);
+      });
+    });
+    setAnswered([]);
+    setQuestions(questions);
+    props.handelChangeIsDoingQuiz();
+  };
+
   return (
     <>
       {isSubmitResult ? (
         <SubmitResult
           answered={answered}
           handelChangeIsSubmitResult={handelChangeIsSubmitResult}
-          handelChangeIsDoingQuiz={props.handelChangeIsDoingQuiz}
+          handelSubmitResult={handelSubmitResult}
         />
       ) : (
         <>
           <div className="quiz-container">
             <div className="quiz-wrap">
-              {question?.map(
+              {questions?.map(
                 (item, index) =>
                   index >= minIndex &&
                   index < maxIndex && (
@@ -101,7 +145,7 @@ const QuizComponent = (props) => {
                           </div>
                         </div>
                         <div className="answer">
-                          {item.answer.map((a, i) => (
+                          {item.answers.map((a, i) => (
                             <div key={i} className="answer-item">
                               <div className="option">
                                 <h2>
@@ -130,7 +174,7 @@ const QuizComponent = (props) => {
                               </div>
                               <button
                                 onClick={() => {
-                                  handleSelected(item, a);
+                                  handleSelected(item, a, i);
                                   var total = totalPage - 1;
                                   if (current <= total) {
                                     handleChange(current + 1);
@@ -140,7 +184,14 @@ const QuizComponent = (props) => {
                                   }
                                 }}
                               >
-                                <div id="answer" className="option-text">
+                                <div
+                                  id="answer"
+                                  className={
+                                    a.isSelected
+                                      ? "option-text selected"
+                                      : "option-text"
+                                  }
+                                >
                                   <span>{a.answerText}</span>
                                 </div>
                               </button>
@@ -148,7 +199,7 @@ const QuizComponent = (props) => {
                           ))}
                         </div>
                         <Pagination
-                          simple
+                          // simple
                           pageSize={pageSize}
                           current={current}
                           total={totalPage}
@@ -160,6 +211,15 @@ const QuizComponent = (props) => {
                   )
               )}
             </div>
+            <button onClick={showModal}>Finish</button>
+            <Modal
+              centered
+              visible={visible}
+              onOk={handleOk}
+              onCancel={handelCancel}
+            >
+              <p>Do you want to submit Exercise now?</p>
+            </Modal>
           </div>
         </>
       )}

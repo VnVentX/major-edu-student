@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Space, Table } from "antd";
+import { Space, Table, Modal } from "antd";
 
 const SubmitResult = (props) => {
   const [data, setData] = useState([]);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     setData(props.answered);
@@ -27,14 +28,28 @@ const SubmitResult = (props) => {
     },
   ];
 
+  //! Modal Submit
+  const showModal = () => {
+    setVisible(true);
+  };
+
+  const handleOk = () => {
+    props.handelSubmitResult();
+    setVisible(false);
+  };
+
+  const handelCancel = () => {
+    setVisible(false);
+  };
+
   return (
-    <div className="excercise-container">
-      <div className="excercise-title">
-        <h1>Excercises</h1>
+    <div className="exercise-container">
+      <div className="exercise-title">
+        <h1>Exercises</h1>
       </div>
-      <div className="excercise-wrap">
+      <div className="exercise-wrap">
         <Table
-          className="excercise-table"
+          className="exercise-table"
           rowKey={(record) => record.questionID}
           columns={columns}
           dataSource={data}
@@ -47,12 +62,17 @@ const SubmitResult = (props) => {
           >
             Continue Do Quiz
           </button>
-          <button
-            onClick={props.handelChangeIsDoingQuiz}
-            style={{ marginTop: 20 }}
-          >
+          <button onClick={showModal} style={{ marginTop: 20 }}>
             Submit
           </button>
+          <Modal
+            centered
+            visible={visible}
+            onOk={handleOk}
+            onCancel={handelCancel}
+          >
+            <p>Do you want to finish and submit Exercise?</p>
+          </Modal>
         </Space>
       </div>
     </div>

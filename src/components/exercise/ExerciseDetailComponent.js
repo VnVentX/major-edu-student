@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
-import ExcerciseDetail from "./ExcerciseDetail";
+import ExerciseDetail from "./ExerciseDetail";
 import QuizComponent from "./QuizComponent";
 
-const excercise = {
+const exercise = {
   id: 1,
-  excerciseName: "Excercise 1",
+  exerciseName: "Exercise 1",
 };
 
 const data = [
@@ -46,7 +46,7 @@ const data = [
   },
 ];
 
-const ExcerciseDetailComponent = () => {
+const ExerciseDetailComponent = () => {
   const [isDoingQuiz, setIsDoingQuiz] = useState(false);
 
   //! Đi đến màn hình làm quiz (<QuizComponent />)
@@ -58,8 +58,8 @@ const ExcerciseDetailComponent = () => {
     <div className="page">
       <div className="page-contain">
         {isDoingQuiz === false ? (
-          <ExcerciseDetail
-            excercise={excercise}
+          <ExerciseDetail
+            exercise={exercise}
             data={data}
             handelChangeIsDoingQuiz={handelChangeIsDoingQuiz}
           />
@@ -73,4 +73,4 @@ const ExcerciseDetailComponent = () => {
   );
 };
 
-export default ExcerciseDetailComponent;
+export default ExerciseDetailComponent;

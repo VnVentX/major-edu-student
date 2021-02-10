@@ -3,7 +3,7 @@ import { Table } from "antd";
 import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
 
-const ExcerciseComponent = () => {
+const ExerciseComponent = () => {
   const columns = [
     {
       title: "No",
@@ -13,43 +13,43 @@ const ExcerciseComponent = () => {
       align: "center",
     },
     {
-      title: "Excercises",
-      dataIndex: "excerciseName",
+      title: "Exercises",
+      dataIndex: "exerciseName",
       width: "90%",
       align: "center",
       render: (record) => (
-        <Link to="/math/unit/1/map/excercise/1">{record}</Link>
+        <Link to="/math/unit/1/map/exercise/1">{record}</Link>
       ),
     },
   ];
   const data = [
     {
       id: 0,
-      excerciseName: "Excercise 1",
+      exerciseName: "Exercise 1",
     },
     {
       id: 1,
-      excerciseName: "Excercise 2",
+      exerciseName: "Exercise 2",
     },
     {
       id: 2,
-      excerciseName: "Excercise 3",
+      exerciseName: "Exercise 3",
     },
     {
       id: 3,
-      excerciseName: "Excercise 4",
+      exerciseName: "Exercise 4",
     },
   ];
   return (
     <div className="page">
       <div className="page-contain">
-        <div className="excercise-container">
-          <div className="excercise-title">
-            <h1>Excercises</h1>
+        <div className="exercise-container">
+          <div className="exercise-title">
+            <h1>Exercises</h1>
           </div>
-          <div className="excercise-wrap">
+          <div className="exercise-wrap">
             <Table
-              className="excercise-table"
+              className="exercise-table"
               rowKey={(record) => record.id}
               columns={columns}
               dataSource={data}
@@ -62,4 +62,4 @@ const ExcerciseComponent = () => {
   );
 };
 
-export default ExcerciseComponent;
+export default ExerciseComponent;

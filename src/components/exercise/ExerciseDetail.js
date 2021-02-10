@@ -2,7 +2,7 @@ import React from "react";
 import { Table, Modal } from "antd";
 import { useState, useEffect } from "react";
 
-const ExcerciseDetail = (props) => {
+const ExerciseDetail = (props) => {
   const [detail, setDetail] = useState("");
   const [visible, setVisible] = useState(false);
   const [attempData, setAttempData] = useState([]);
@@ -13,12 +13,12 @@ const ExcerciseDetail = (props) => {
   //   const history = useHistory();
 
   useEffect(() => {
-    setDetail(props.excercise);
+    setDetail(props.exercise);
     setAttempData(props.data);
-  }, [props.data, props.excercise]);
+  }, [props.data, props.exercise]);
 
   const showModal = () => {
-    setVisible(true);
+    setVisible(!visible);
   };
 
   const handleOk = () => {
@@ -26,7 +26,7 @@ const ExcerciseDetail = (props) => {
   };
 
   const handelCancel = () => {
-    setVisible(false);
+    setVisible(!visible);
   };
   const columns = [
     {
@@ -62,26 +62,26 @@ const ExcerciseDetail = (props) => {
   ];
 
   return (
-    <div className="excercise-detail-container">
-      <div className="excercise-title">
-        <h1>{detail.excerciseName}</h1>
+    <div className="exercise-detail-container">
+      <div className="exercise-title">
+        <h1>{detail.exerciseName}</h1>
       </div>
       {attempData ? (
-        <button className="excercise-btn" onClick={showModal}>
+        <button className="exercise-btn" onClick={showModal}>
           Re-attemp
         </button>
       ) : (
-        <button className="excercise-btn" onClick={showModal}>
+        <button className="exercise-btn" onClick={showModal}>
           Attemp
         </button>
       )}
       <Modal centered visible={visible} onOk={handleOk} onCancel={handelCancel}>
-        <p>Do you want to do Excercise now?</p>
+        <p>Do you want to do Exercise now?</p>
       </Modal>
-      <div className="excercise-wrap">
+      <div className="exercise-wrap">
         {attempData && (
           <Table
-            className="excercise-table"
+            className="exercise-table"
             rowKey={(record) => record.id}
             columns={columns}
             dataSource={attempData}
@@ -93,4 +93,4 @@ const ExcerciseDetail = (props) => {
   );
 };
 
-export default ExcerciseDetail;
+export default ExerciseDetail;

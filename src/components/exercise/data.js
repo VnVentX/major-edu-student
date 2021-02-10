@@ -6,22 +6,26 @@ export const data = [
     questionUrl: "",
     questionImg:
       "https://image.shutterstock.com/z/stock-vector-illustration-of-a-kid-answering-test-questions-82843036.jpg",
-    answer: [
+    answers: [
       {
         answerText: "Option 1",
         isCorrect: true,
+        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
+        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
+        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
+        isSelected: false,
       },
     ],
   },
@@ -29,24 +33,28 @@ export const data = [
     questionID: 2,
     questionText:
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    // questionAudio: "",
-    // questionImg: "",
-    answer: [
+    questionAudio: "",
+    questionImg: "",
+    answers: [
       {
         answerText: "Option 1",
         isCorrect: true,
+        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
+        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
+        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
+        isSelected: false,
       },
     ],
   },
@@ -56,22 +64,26 @@ export const data = [
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
     questionUrl: "",
     questionImg: "",
-    answer: [
+    answers: [
       {
         answerText: "Option 1",
         isCorrect: true,
+        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
+        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
+        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
+        isSelected: false,
       },
     ],
   },
@@ -81,22 +93,26 @@ export const data = [
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
     questionUrl: "",
     questionImg: "",
-    answer: [
+    answers: [
       {
         answerText: "Option 1",
         isCorrect: true,
+        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
+        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
+        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
+        isSelected: false,
       },
     ],
   },
@@ -106,22 +122,26 @@ export const data = [
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
     questionUrl: "",
     questionImg: "",
-    answer: [
+    answers: [
       {
         answerText: "Option 1",
         isCorrect: true,
+        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
+        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
+        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
+        isSelected: false,
       },
     ],
   },
@@ -131,47 +151,26 @@ export const data = [
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
     questionUrl: "",
     questionImg: "",
-    answer: [
+    answers: [
       {
         answerText: "Option 1",
         isCorrect: true,
+        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
+        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
+        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
-      },
-    ],
-  },
-  {
-    questionID: 7,
-    questionText:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    questionUrl: "",
-    questionImg: "",
-    answer: [
-      {
-        answerText: "Option 1",
-        isCorrect: true,
-      },
-      {
-        answerText: "Option 2",
-        isCorrect: false,
-      },
-      {
-        answerText: "Option 3",
-        isCorrect: false,
-      },
-      {
-        answerText: "Option 4",
-        isCorrect: false,
+        isSelected: false,
       },
     ],
   },

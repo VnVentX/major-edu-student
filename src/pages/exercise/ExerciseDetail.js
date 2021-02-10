@@ -1,5 +1,5 @@
 import React from "react";
-import ExcerciseDetailComponent from "../../components/excercise/ExcerciseDetailComponent";
+import ExcerciseDetailComponent from "../../components/exercise/ExerciseDetailComponent";
 
 const ExcerciseDetail = () => {
   return <ExcerciseDetailComponent />;

@@ -14,8 +14,8 @@ import Map from "./Map";
 import MapLesson from "./MapLesson";
 import NoticeDetail from "./NoticeDetail";
 import NotFound from "./NotFound";
-import Excercise from "./excercise/Excercise";
-import ExcerciseDetail from "./excercise/ExcerciseDetail";
+import Exercise from "./exercise/Exercise";
+import ExerciseDetail from "./exercise/ExerciseDetail";
 
 const { Content } = Layout;
 
@@ -47,14 +47,14 @@ const Home = (props) => {
                 component={MapLesson}
               />
               <Route
-                path="/math/unit/:unitID/map/excercise"
+                path="/math/unit/:unitID/map/exercise"
                 exact
-                component={Excercise}
+                component={Exercise}
               />
               <Route
-                path="/math/unit/:unitID/map/excercise/:excerciseID"
+                path="/math/unit/:unitID/map/exercise/:exerciseID"
                 exact
-                component={ExcerciseDetail}
+                component={ExerciseDetail}
               />
 
               <Route component={NotFound} />
