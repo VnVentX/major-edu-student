@@ -87,6 +87,7 @@ const QuizComponent = (props) => {
   };
 
   const handleOk = () => {
+    setVisible(false);
     handelChangeIsSubmitResult();
   };
 
