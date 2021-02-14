@@ -1,28 +1,61 @@
+.quiz-title {
+  background: url("../img/home/header-bg.png");
+  min-width: 281.58px;
+  min-height: 126.16px;
+  width: 281.58px;
+  height: 126.16px;
+  display: grid;
+  place-items: center;
+  margin: 40px 0;
+}
+
+.quiz-title > h1 {
+  margin: 0px !important;
+  font-size: 3rem;
+  color: white;
+}
+
 .quiz-container {
   min-height: 86vh;
   height: auto;
   width: auto;
   display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   align-items: center;
-  padding-top: 120px;
+  -webkit-align-items: center;
+  margin-bottom: 50px;
 }
 
 .quiz-wrap {
   display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   width: 90vw;
 }
 .quiz-wrap > div {
   flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
   margin: 20px;
 }
 
 .quiz-left {
   width: 400px;
+  min-width: 400px;
   min-height: 546.85px;
-  height: auto;
+  height: 546.85px;
   background: violet;
+}
+
+.quiz-left img {
+  width: 100%;
+  height: 100%;
 }
 .quiz-right {
   display: flex;
@@ -31,31 +64,46 @@
   flex-direction: column;
   width: 1000px;
   min-height: 546.85px;
-  height: auto;
+  height: 546.85px;
 }
 
 .question {
   display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   justify-content: flex-start;
+  -webkit-justify-content: flex-start;
   margin: 0 50px;
 }
 
 .quiz-right > .answer {
   display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   width: 700px;
 }
 
 .answer > div {
   flex: 1 1 300px;
+  -webkit-flex: 1 1 300px;
   margin: 0 20px 20px 0;
 }
 
 .answer-item {
   display: flex;
-  justify-content: center;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: centert;
+  -webkit-justify-content: center;
   align-items: center;
+  align-items: center;
+  -webkit-align-items: center;
   width: 20%;
   min-height: 144.44px;
 }

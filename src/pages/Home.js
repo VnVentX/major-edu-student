@@ -16,6 +16,7 @@ import NoticeDetail from "./NoticeDetail";
 import NotFound from "./NotFound";
 import Exercise from "./exercise/Exercise";
 import ExerciseDetail from "./exercise/ExerciseDetail";
+import OverviewQuiz from "../components/exercise/OverviewQuiz";
 
 const { Content } = Layout;
 
@@ -55,6 +56,11 @@ const Home = (props) => {
                 path="/math/unit/:unitID/map/exercise/:exerciseID"
                 exact
                 component={ExerciseDetail}
+              />
+              <Route
+                path="/math/unit/:unitID/map/exercise/:exerciseID/overview/:overviewID"
+                exact
+                component={OverviewQuiz}
               />
 
               <Route component={NotFound} />

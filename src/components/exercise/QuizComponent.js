@@ -122,6 +122,9 @@ const QuizComponent = (props) => {
       ) : (
         <>
           <div className="quiz-container">
+            <div className="quiz-title">
+              <h1>Excercise</h1>
+            </div>
             <div className="quiz-wrap">
               {questions?.map(
                 (item, index) =>

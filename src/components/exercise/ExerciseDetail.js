@@ -1,5 +1,6 @@
 import React from "react";
 import { Table, Modal } from "antd";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const ExerciseDetail = (props) => {
@@ -55,9 +56,13 @@ const ExerciseDetail = (props) => {
     {
       key: "x",
       title: "Action",
-      dataIndex: "",
+      dataIndex: "id",
       align: "center",
-      render: (record) => <button className="ant-btn-link">Overview</button>,
+      render: (record) => (
+        <Link to={(location) => `${location.pathname}/overview/${record}`}>
+          <button className="ant-btn-link">Overview</button>
+        </Link>
+      ),
     },
   ];
 
