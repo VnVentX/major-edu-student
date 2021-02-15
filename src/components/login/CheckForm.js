@@ -49,7 +49,7 @@ const CheckForm = (props) => {
               setParentPhone(e.target.value);
             }}
           />
-          <label htmlFor="parentPhone">Parent's Phone Number</label>
+          <label htmlFor="parentPhone">Parent's Phone</label>
         </div>
         <Button
           type="link"

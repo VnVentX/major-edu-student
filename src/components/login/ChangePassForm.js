@@ -52,7 +52,7 @@ const ChangePassForm = (props) => {
               setNewPassword(e.target.value);
             }}
           />
-          <label htmlFor="confirm">Re-enter your password</label>
+          <label htmlFor="confirm">Re-enter password</label>
         </div>
         <button
           type="submit"

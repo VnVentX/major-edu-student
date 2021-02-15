@@ -56,26 +56,23 @@ const LoginForm = (props) => {
           />
           <label htmlFor="password">Password</label>
         </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              width: "100%",
-            }}
-          >
-            <input type="checkbox" id="remember" name="remember" value="" />
+        <div className="action-group">
+          <div>
+            <input
+              type="checkbox"
+              id="remember"
+              name="remember"
+              value=""
+              style={{ marginRight: 5 }}
+            />
             <label htmlFor="remember">Remember me</label>
           </div>
-          <Button type="link" block onClick={props.handelChange}>
+          <Button
+            className="action-btn"
+            type="link"
+            block
+            onClick={props.handelChange}
+          >
             Forgot password &gt;
           </Button>
         </div>
