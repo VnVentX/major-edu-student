@@ -38,7 +38,9 @@ const MapComponent = () => {
             </Link>
           </div>
           <div className="map-item progress">
-            <h1>Progress</h1>
+            <Link to="/math/unit/1/map/progress">
+              <h1>Progress</h1>
+            </Link>
           </div>
           <div className="map-item game">
             <h1>Game</h1>
