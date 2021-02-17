@@ -1,0 +1,127 @@
+.game-container {
+  min-height: 86vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
+  min-width: 1230px;
+  min-height: 76vh;
+  height: 76vh;
+  margin: 20px 20px 20px 20px;
+  background: lightgoldenrodyellow;
+  border-radius: 30px;
+}
+
+.play-btn {
+  display: grid;
+  place-items: center;
+  width: 174.95px;
+  height: 79.13px;
+  background: url("../img/layer-btn.png");
+  cursor: pointer;
+}
+
+.play-btn h2 {
+  color: white;
+  font-size: 25px;
+}
+
+/* ! Matching Game CSS */
+
+.wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+  grid-auto-rows: minmax(150px, auto);
+}
+
+.one,
+.two,
+.three,
+.four,
+.five,
+.six {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+  float: left;
+  width: 150px;
+  height: 80px;
+  background-color: #f0f8ff;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.matching-pair {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.matching-question-img {
+  background-color: lightblue;
+  width: 150px;
+  height: 150px;
+  min-width: 150px;
+  min-height: 150px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+}
+
+.matching-true {
+  background-color: aquamarine !important;
+}
+
+.matching-false {
+  background-color: lightcoral !important;
+}
+
+.true-bubble {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  min-height: 80px;
+  background-color: aquamarine;
+  border-radius: 100px;
+  z-index: 1;
+}
+.false-bubble {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  min-height: 80px;
+  background-color: lightcoral;
+  border-radius: 100px;
+  z-index: 1;
+}
+
+/* ! Swap Game Css */
+
+.swap-game-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.swap-question {
+  width: 200px;
+  height: 100px;
+  background: lightblue;
+  display: grid;
+  place-items: center;
+  margin: 0px 50px 0px 50px;
+}
