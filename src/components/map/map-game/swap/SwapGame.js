@@ -37,6 +37,8 @@ const getListStyle = () => ({
   display: "grid",
   placeItems: "center",
   gridTemplateColumns: "repeat(4, 1fr)",
+  minHeight: "60vh",
+  height: "60vh",
 });
 
 export default class SwapGame extends Component {
@@ -61,6 +63,12 @@ export default class SwapGame extends Component {
       return count;
     });
     console.log(count);
+    if (count === 4) {
+      setTimeout(() => {
+        count = 0;
+        this.props.nextGame();
+      }, 1000);
+    }
   };
 
   onDragEnd(result) {

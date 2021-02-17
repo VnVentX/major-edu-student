@@ -36,6 +36,18 @@
   font-size: 25px;
 }
 
+.game-inner {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ! Pagination CSS */
+.game-inner > .ant-pagination {
+  display: none;
+}
+
 /* ! Matching Game CSS */
 
 .wrapper {

@@ -9,7 +9,7 @@ const GameComponent = () => {
       title: "No",
       dataIndex: "id",
       width: "10%",
-      render: (index) => index + 1,
+      render: (index) => index,
       align: "center",
     },
     {

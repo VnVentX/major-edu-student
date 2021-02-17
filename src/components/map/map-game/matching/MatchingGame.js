@@ -45,11 +45,24 @@ class MatchingGame extends Component {
       return count;
     });
     console.log(count);
+    if (count === 6) {
+      setTimeout(() => {
+        count = 0;
+        this.props.nextGame();
+      }, 1000);
+    }
   };
 
   render() {
     return (
-      <div>
+      <div
+        style={{
+          minHeight: "60vh",
+          height: "60vh",
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
         <CardContainer swap={this.swap} info={this.state.info} />
       </div>
     );

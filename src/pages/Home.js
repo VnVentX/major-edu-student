@@ -26,6 +26,7 @@ import OverviewQuiz from "../components/exercise/OverviewQuiz";
 import MapProgress from "./MapProgress";
 import MapGame from "./game/MapGame";
 import PlayGame from "../components/map/map-game/PlayGame";
+import GameResult from "../components/map/map-game/GameResult";
 
 const { Content } = Layout;
 
@@ -96,6 +97,11 @@ const Home = (props) => {
                   path="/math/unit/:unitID/map/game/:gameID"
                   exact
                   component={PlayGame}
+                />
+                <Route
+                  path="/math/unit/:unitID/map/game/:gameID/result"
+                  exact
+                  component={GameResult}
                 />
                 <Route component={NotFound} />
               </Switch>
