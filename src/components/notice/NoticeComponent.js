@@ -19,7 +19,7 @@ const NoticeComponent = () => {
     <div className="page">
       <div className="page-contain">
         <div className="notice-container">
-          <div className="exercise-title">
+          <div className="notice-title">
             <h1>Notice</h1>
           </div>
           <List
