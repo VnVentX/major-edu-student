@@ -15,7 +15,8 @@ import Notice from "./Notice";
 import Subject from "./Subject";
 import Score from "./Score";
 import Profile from "./Profile";
-import Unit from "./Unit";
+import Unit from "./unit/Unit";
+import UnitDetail from "./unit/UnitDetail";
 import Map from "./Map";
 import MapLesson from "./MapLesson";
 import NoticeDetail from "./NoticeDetail";
@@ -27,6 +28,8 @@ import MapProgress from "./MapProgress";
 import MapGame from "./game/MapGame";
 import PlayGame from "../components/map/map-game/PlayGame";
 import GameResult from "../components/map/map-game/GameResult";
+import Lecture from "../components/map/map-lesson/Lecture";
+import QuizComponent from "../components/exercise/QuizComponent";
 
 const { Content } = Layout;
 
@@ -34,7 +37,11 @@ const Home = (props) => {
   function _ScrollToTop(props) {
     const { pathname } = useLocation();
     useEffect(() => {
-      window.scrollTo(0, 0);
+      if (pathname === "/home" || pathname === "/") {
+        window.scrollTo(0, 0);
+      } else {
+        window.scrollTo(0, 140);
+      }
     }, [pathname]);
     return props.children;
   }
@@ -57,6 +64,30 @@ const Home = (props) => {
                 <Route path="/profile" exact component={Profile} />
                 <Route path="/math/unit" exact component={Unit} />
                 <Route path="/science/unit" exact component={Unit} />
+                {/* Flow mới bắt đầu từ đây */}
+
+                <Route path="/math/unit/:unitID" exact component={UnitDetail} />
+                <Route
+                  path="/math/unit/:unitID/lesson/:lessonID"
+                  exact
+                  component={MapLesson}
+                />
+                <Route
+                  path="/math/unit/:unitID/lesson/:lessonID/lecture"
+                  exact
+                  component={Lecture}
+                />
+                <Route
+                  path="/math/unit/:unitID/lesson/:lessonID/exercise"
+                  exact
+                  component={Exercise}
+                />
+                <Route
+                  path="/math/unit/:unitID/lesson/:lessonID/exercise/:exerciseID"
+                  exact
+                  component={QuizComponent}
+                />
+                {/* Flow cũ */}
                 <Route path="/math/unit/:unitID/map" exact component={Map} />
                 <Route
                   path="/math/unit/:unitID/map/lesson/:lessonID"

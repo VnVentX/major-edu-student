@@ -4,16 +4,15 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 1%;
 }
 
 .ant-layout-header {
-  display: block;
-  position: fixed;
-  z-index: 999;
+  display: grid;
+  position: relative;
   height: auto;
   width: 100%;
   min-height: 14vh;
+  padding: 0px !important;
   background: url("../img/home/header-bg.png");
 }
 

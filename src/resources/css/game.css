@@ -1,5 +1,5 @@
 .game-container {
-  min-height: 86vh;
+  min-height: 100vh;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -81,7 +81,6 @@
 }
 
 .matching-question-img {
-  background-color: lightblue;
   width: 150px;
   height: 150px;
   min-width: 150px;
@@ -89,14 +88,16 @@
   display: grid;
   place-items: center;
   border-radius: 15px;
+  z-index: 2;
+  background-color: white;
 }
 
 .matching-true {
-  background-color: aquamarine !important;
+  border: 8px solid aquamarine;
 }
 
 .matching-false {
-  background-color: lightcoral !important;
+  border: 8px solid lightcoral;
 }
 
 .true-bubble {
@@ -131,9 +132,18 @@
 
 .swap-question {
   width: 200px;
-  height: 100px;
-  background: lightblue;
+  height: 180px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   display: grid;
   place-items: center;
   margin: 0px 50px 0px 50px;
+  background-color: white;
+}
+.swap-question-true {
+  border: 8px solid aquamarine;
+}
+
+.swap-question-false {
+  border: 8px solid lightcoral;
 }
