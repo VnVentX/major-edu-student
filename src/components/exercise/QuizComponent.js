@@ -1,9 +1,9 @@
 import React from "react";
 import "../../resources/css/quiz.css";
 import { useState, useEffect } from "react";
-import { Pagination, Modal } from "antd";
+import { Modal } from "antd";
 import { data } from "./data";
-import SubmitResult from "./SubmitResult";
+import QuizResult from "./QuizResult";
 
 const pageSize = 1;
 //Template for Submit Result
@@ -17,7 +17,7 @@ const QuizComponent = (props) => {
   const [minIndex, setMinIndex] = useState(0);
   const [maxIndex, setMaxIndex] = useState(0);
   const [answered, setAnswered] = useState([]);
-  const [visible, setVisible] = useState(false);
+  const [wrongCount, setWrongCount] = useState(0);
 
   useEffect(() => {
     setQuestions(data);
@@ -29,7 +29,7 @@ const QuizComponent = (props) => {
   //Template for Submit Result
   useEffect(() => {
     questions.map((i) => {
-      if (template.length < 6) {
+      if (template.length < data.length) {
         template.push({
           questionID: i.questionID,
           isCorrect: undefined,
@@ -75,24 +75,64 @@ const QuizComponent = (props) => {
     }
   };
 
+  //! Check answer đúng hay sai
+  const handelAnswerSubmit = (idx) => {
+    var counter = wrongCount;
+    var total = totalPage - 1;
+    if (answered[idx].isCorrect === true) {
+      const modal = Modal.success({
+        content: "Correct answer",
+        centered: true,
+      });
+      setWrongCount(0);
+      if (current <= total) {
+        setTimeout(() => {
+          modal.destroy();
+          handleChange(current + 1);
+        }, 1000);
+      } else if (current === total + 1) {
+        setTimeout(() => {
+          modal.destroy();
+          handelChangeIsSubmitResult();
+        }, 1000);
+      }
+    }
+    if (answered[idx].isCorrect === false) {
+      const modal = Modal.error({
+        content: "Incorrect answer",
+        centered: true,
+      });
+      counter++;
+      setWrongCount(counter);
+      setTimeout(() => {
+        modal.destroy();
+      }, 1000);
+    }
+    if (counter === 2) {
+      const modal = Modal.error({
+        content: "Incorrect answer",
+        centered: true,
+      });
+      counter = 0;
+      setWrongCount(0);
+      if (current <= total) {
+        setTimeout(() => {
+          modal.destroy();
+          handleChange(current + 1);
+        }, 1000);
+      } else if (current === total + 1) {
+        setTimeout(() => {
+          modal.destroy();
+          handelChangeIsSubmitResult();
+        }, 1000);
+      }
+    }
+  };
+
   //! Đi mến màn hình submit quiz ()
   const handelChangeIsSubmitResult = () => {
     setIsSubmitResult(!isSubmitResult);
     handleChange(1);
-  };
-
-  //! Modal finish
-  const showModal = () => {
-    setVisible(true);
-  };
-
-  const handleOk = () => {
-    setVisible(false);
-    handelChangeIsSubmitResult();
-  };
-
-  const handelCancel = () => {
-    setVisible(false);
   };
 
   //! Submit Result xong clear dữ liệu
@@ -112,122 +152,108 @@ const QuizComponent = (props) => {
   };
 
   return (
-    <>
-      {isSubmitResult ? (
-        <SubmitResult
-          answered={answered}
-          handelChangeIsSubmitResult={handelChangeIsSubmitResult}
-          handelSubmitResult={handelSubmitResult}
-        />
-      ) : (
-        <>
-          <div className="quiz-container">
-            <div className="quiz-title">
-              <h1>Excercise</h1>
-            </div>
-            <div className="quiz-wrap">
-              {questions?.map(
-                (item, index) =>
-                  index >= minIndex &&
-                  index < maxIndex && (
-                    <React.Fragment key={index}>
-                      <div className="quiz-left">
-                        <img
-                          src={item.questionImg}
-                          alt={item.questionImg}
-                          width="100%"
-                          height="100%"
-                        />
-                      </div>
-                      <div className="quiz-right">
-                        <div className="question">
-                          <div className="question-title">
-                            <h2>Question {index + 1}</h2>
-                          </div>
-                          <div className="question-text">
-                            <h3>{item.questionText}</h3>
-                          </div>
+    <div className="page">
+      <div className="page-contain">
+        {isSubmitResult ? (
+          <QuizResult
+            answered={answered}
+            question={questions}
+            handelChangeIsSubmitResult={handelChangeIsSubmitResult}
+            handelSubmitResult={handelSubmitResult}
+          />
+        ) : (
+          <>
+            <div className="quiz-container">
+              <div className="quiz-title">
+                <h1>Exercise</h1>
+              </div>
+              <div className="quiz-wrap">
+                {questions?.map(
+                  (item, index) =>
+                    index >= minIndex &&
+                    index < maxIndex && (
+                      <React.Fragment key={index}>
+                        <div className="quiz-left">
+                          <img
+                            src={item.questionImg}
+                            alt={item.questionImg}
+                            width="100%"
+                            height="100%"
+                          />
                         </div>
-                        <div className="answer">
-                          {item.answers.map((a, i) => (
-                            <div key={i} className="answer-item">
-                              <div className="option">
-                                <h2>
-                                  {(i + 1) / 1 === 1
-                                    ? "A"
-                                    : (i + 1) / 2 === 1
-                                    ? "B"
-                                    : (i + 1) / 3 === 1
-                                    ? "C"
-                                    : (i + 1) / 4 === 1
-                                    ? "D"
-                                    : (i + 1) / 5 === 1
-                                    ? "E"
-                                    : (i + 1) / 6 === 1
-                                    ? "F"
-                                    : (i + 1) / 7 === 1
-                                    ? "G"
-                                    : (i + 1) / 8 === 1
-                                    ? "H"
-                                    : (i + 1) / 9 === 1
-                                    ? "I"
-                                    : (i + 1) / 10 === 1
-                                    ? "J"
-                                    : null}
-                                </h2>
-                              </div>
-                              <button
-                                onClick={() => {
-                                  handleSelected(item, a, i);
-                                  var total = totalPage - 1;
-                                  if (current <= total) {
-                                    handleChange(current + 1);
-                                  }
-                                  if (current === total + 1) {
-                                    handelChangeIsSubmitResult();
-                                  }
-                                }}
-                              >
-                                <div
-                                  id="answer"
-                                  className={
-                                    a.isSelected
-                                      ? "option-text selected"
-                                      : "option-text"
-                                  }
-                                >
-                                  <span>{a.answerText}</span>
-                                </div>
-                              </button>
+                        <div className="quiz-right">
+                          <div className="question">
+                            <div className="question-title">
+                              <h1>Question {index + 1}</h1>
                             </div>
-                          ))}
+                            <div className="question-text">
+                              <h2>{item.questionText}</h2>
+                            </div>
+                          </div>
+                          <div className="answer">
+                            {item.answers.map((a, i) => (
+                              <div key={i} className="answer-item">
+                                <div className="option">
+                                  <h2>
+                                    {(i + 1) / 1 === 1
+                                      ? "A"
+                                      : (i + 1) / 2 === 1
+                                      ? "B"
+                                      : (i + 1) / 3 === 1
+                                      ? "C"
+                                      : (i + 1) / 4 === 1
+                                      ? "D"
+                                      : (i + 1) / 5 === 1
+                                      ? "E"
+                                      : (i + 1) / 6 === 1
+                                      ? "F"
+                                      : (i + 1) / 7 === 1
+                                      ? "G"
+                                      : (i + 1) / 8 === 1
+                                      ? "H"
+                                      : (i + 1) / 9 === 1
+                                      ? "I"
+                                      : (i + 1) / 10 === 1
+                                      ? "J"
+                                      : null}
+                                  </h2>
+                                </div>
+                                <button
+                                  onClick={() => {
+                                    handleSelected(item, a, i);
+                                  }}
+                                >
+                                  <div
+                                    id="answer"
+                                    className={
+                                      a.isSelected
+                                        ? "option-text selected"
+                                        : "option-text"
+                                    }
+                                  >
+                                    <span>{a.answerText}</span>
+                                  </div>
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                          <button
+                            onClick={() => {
+                              handelAnswerSubmit(index);
+                            }}
+                          >
+                            Submit Answer
+                          </button>
                         </div>
-                        <Pagination
-                          // simple
-                          pageSize={pageSize}
-                          current={current}
-                          total={totalPage}
-                          onChange={handleChange}
-                          style={{ marginTop: "100px" }}
-                        />
-                      </div>
-                    </React.Fragment>
-                  )
-              )}
+                      </React.Fragment>
+                    )
+                )}
+              </div>
             </div>
-            <button onClick={showModal}>Finish</button>
-            <Modal
-              centered
-              visible={visible}
-              onOk={handleOk}
-              onCancel={handelCancel}
-            >
-              <p>Do you want to submit Exercise now?</p>
-            </Modal>
-          </div>
-        </>
-      )}
-    </>
+          </>
+        )}
+      </div>
+    </div>
   );
 };
 

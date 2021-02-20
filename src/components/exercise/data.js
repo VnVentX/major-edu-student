@@ -3,7 +3,7 @@ export const data = [
     questionID: 1,
     questionText:
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    questionUrl: "",
+    questionAudio: "",
     questionImg:
       "https://image.shutterstock.com/z/stock-vector-illustration-of-a-kid-answering-test-questions-82843036.jpg",
     answers: [
@@ -62,7 +62,7 @@ export const data = [
     questionID: 3,
     questionText:
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    questionUrl: "",
+    questionAudio: "",
     questionImg: "",
     answers: [
       {
@@ -91,7 +91,7 @@ export const data = [
     questionID: 4,
     questionText:
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    questionUrl: "",
+    questionAudio: "",
     questionImg: "",
     answers: [
       {
@@ -120,7 +120,7 @@ export const data = [
     questionID: 5,
     questionText:
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    questionUrl: "",
+    questionAudio: "",
     questionImg: "",
     answers: [
       {
@@ -149,7 +149,7 @@ export const data = [
     questionID: 6,
     questionText:
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    questionUrl: "",
+    questionAudio: "",
     questionImg: "",
     answers: [
       {

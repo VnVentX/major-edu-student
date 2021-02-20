@@ -15,13 +15,13 @@ const UnitComponent = () => {
               <div className="unit-content">
                 <div className="upper">
                   <Space size="large">
-                    <Link to="/math/unit/1/map">
+                    <Link to="/math/unit/1">
                       <div className="unit-btn unit-1" />
                     </Link>
-                    <Link to="/math/unit/1/map">
+                    <Link to="/math/unit/1">
                       <div className="unit-btn unit-2" />
                     </Link>
-                    <Link to="/math/unit/1/map">
+                    <Link to="/math/unit/1">
                       <div className="unit-btn unit-3" />
                     </Link>
                   </Space>
@@ -35,13 +35,13 @@ const UnitComponent = () => {
               <div className="unit-content">
                 <div className="upper">
                   <Space size="large">
-                    <Link to="/math/unit/1/map">
+                    <Link to="/math/unit/1">
                       <div className="unit-btn unit-4" />
                     </Link>
-                    <Link to="/math/unit/1/map">
+                    <Link to="/math/unit/1">
                       <div className="unit-btn unit-5" />
                     </Link>
-                    <Link to="/math/unit/1/map">
+                    <Link to="/math/unit/1">
                       <div className="unit-btn unit-6" />
                     </Link>
                   </Space>
@@ -55,13 +55,13 @@ const UnitComponent = () => {
               <div className="unit-content">
                 <div className="upper">
                   <Space size="large">
-                    <Link to="/math/unit/1/map">
+                    <Link to="/math/unit/1">
                       <div className="unit-btn unit-7" />
                     </Link>
-                    <Link to="/math/unit/1/map">
+                    <Link to="/math/unit/1">
                       <div className="unit-btn unit-8" />
                     </Link>
-                    <Link to="/math/unit/1/map">
+                    <Link to="/math/unit/1">
                       <div className="unit-btn unit-9" />
                     </Link>
                   </Space>
@@ -75,13 +75,13 @@ const UnitComponent = () => {
               <div className="unit-content">
                 <div className="upper">
                   <Space size="large">
-                    <Link to="/math/unit/1/map">
+                    <Link to="/math/unit/1">
                       <div className="unit-btn unit-10" />
                     </Link>
-                    <Link to="/math/unit/1/map">
+                    <Link to="/math/unit/1">
                       <div className="unit-btn unit-11" />
                     </Link>
-                    <Link to="/math/unit/1/map">
+                    <Link to="/math/unit/1">
                       <div className="unit-btn unit-12" />
                     </Link>
                   </Space>

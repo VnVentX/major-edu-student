@@ -1,5 +1,5 @@
 .lesson-container {
-  min-height: 86vh;
+  min-height: 100vh;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -24,10 +24,9 @@
 
 .lesson-wrap {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-  width: 80vw;
+  width: auto;
   margin: 0 20px 10vh 20px;
   background: black;
 }
@@ -38,8 +37,7 @@
 
 /* Iframe */
 .non-fs {
-  width: 80vw;
-  height: calc(60vh - 24px);
+  height: calc(75vh - 25px);
   overflow: hidden;
   position: relative;
 }
@@ -50,7 +48,7 @@
 }
 
 #nonfs {
-  height: 60vh;
+  height: 75vh;
 }
 
 #fs {
@@ -65,4 +63,47 @@
   background-color: lightgrey;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+}
+
+.full-btn {
+  width: 20px;
+  height: 20px;
+  margin-right: 2px;
+  cursor: pointer;
+  background: url("../img/icon-full.png");
+  background-size: contain;
+}
+
+/* ! Lecture */
+.lecture-container {
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lecture-title {
+  background: url("../img/home/header-bg.png");
+  min-width: 281.58px;
+  min-height: 126.16px;
+  display: grid;
+  place-items: center;
+  margin: 50px 0 100px 0;
+}
+
+.lecture-title > h1 {
+  margin: 0px !important;
+  font-size: 3rem;
+  color: white;
+  width: auto;
+}
+
+.lecture-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 80vw;
 }

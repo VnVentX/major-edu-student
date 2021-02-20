@@ -1,57 +1,41 @@
 import React, { useState, useEffect } from "react";
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { Space } from "antd";
 
-const urlIframe =
-  '<iframe src="https://onedrive.live.com/embed?resid=1EB9A25728760E08%215189&amp;authkey=%21AFuemMImkjPq4Yk&amp;em=2&amp;wdAr=1.7786561264822134" width="350px" height="221px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>';
-
-const MapLessonComponent = () => {
+const MapLessonComponent = (props) => {
   const [link, setLink] = useState("");
 
-  useEffect(() => {
-    const data = urlIframe.split(" ")[1].split("src=")[1].split('"')[1];
-    setLink(data);
-  }, []);
-
-  const path = window.location.pathname.split("/");
-  const lesson = path[path.length - 1];
-
-  const handle = useFullScreenHandle();
-
-  const onClickFullScreen = () => {
-    handle.enter();
-  };
+  const history = useHistory();
+  const location = useLocation();
 
   return (
     <div className="page">
+      <div className="arrow-btn left-arrow" onClick={() => history.goBack()}>
+        <h1>Unit 1</h1>
+      </div>
       <div className="page-contain">
-        <div className="lesson-container">
-          <div className="lesson-title">
-            <h1>Lesson {lesson}</h1>
+        <div className="lecture-container">
+          <div className="lecture-title">
+            <h1>Lesson 1</h1>
           </div>
-          <div className="lesson-wrap">
-            <div className="non-fs">
-              <FullScreen handle={handle}>
-                <div
-                  className={
-                    document.fullscreenElement === null ? "non-fs" : "fs"
-                  }
-                  dangerouslySetInnerHTML={{
-                    __html: `
-          <iframe
-            id=${document.fullscreenElement === null ? "nonfs" : "fs"}
-            title="lesson 1"
-            src='${link}'
-            frameBorder="0"
-            width="100%"
-          />
-          `,
-                  }}
-                />
-              </FullScreen>
-            </div>
-            <div className="tool-bar">
-              <button onClick={onClickFullScreen}>Enter fullscreen</button>
-            </div>
+          <div className="lecture-wrap">
+            <Space direction="vertical" size={50}>
+              <Link to={location.pathname + "/lecture"}>
+                <div className="unit-detai-btn">
+                  <h1>Lecture</h1>
+                </div>
+              </Link>
+              <Link to={location.pathname + "/exercise"}>
+                <div className="unit-detai-btn">
+                  <h1>Exercise</h1>
+                </div>
+              </Link>
+              <Link to="/">
+                <div className="unit-detai-btn">
+                  <h1>Game</h1>
+                </div>
+              </Link>
+            </Space>
           </div>
         </div>
       </div>
