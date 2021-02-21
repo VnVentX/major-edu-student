@@ -34,7 +34,7 @@ const UnitDetailComponent = () => {
   const unitPath = pathStack[1];
 
   return (
-    <div className="page" style={{ background: "#F5F5F5" }}>
+    <div className="page">
       <div
         className="arrow-btn left-arrow"
         onClick={() => history.push(unitPath)}

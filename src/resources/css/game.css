@@ -7,6 +7,38 @@
   justify-content: center;
 }
 
+/* !Game Slider */
+
+.game-slider-wrap {
+  width: 60vw;
+  margin: 0 20px 10vh 20px;
+}
+
+.game-slider-btn {
+  display: grid;
+  place-items: center;
+  min-width: 204px;
+  min-height: 95px;
+  width: 204px;
+  height: 95px;
+  background: url("../img/big-layer-btn.png");
+  background-size: cover;
+}
+
+.game-slider-btn h1 {
+  margin: 0px !important;
+  font-size: 2.5rem;
+  color: white;
+  width: auto;
+}
+
+li.react-multi-carousel-item.react-multi-carousel-item--active {
+  display: grid;
+  place-items: center;
+}
+
+/* ! Play game */
+
 .game-wrap {
   display: flex;
   flex-wrap: wrap;

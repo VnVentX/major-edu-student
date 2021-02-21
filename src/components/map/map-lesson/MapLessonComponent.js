@@ -1,16 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { Space } from "antd";
 
-const MapLessonComponent = (props) => {
-  const [link, setLink] = useState("");
-
+const MapLessonComponent = () => {
   const history = useHistory();
   const location = useLocation();
 
+  //! Get Unit path
+  const pathSnippets = location.pathname.split("/").filter((i) => i);
+  const unitPath = pathSnippets.map((_, index) => {
+    const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
+    return url;
+  });
+
   return (
     <div className="page">
-      <div className="arrow-btn left-arrow" onClick={() => history.goBack()}>
+      <div
+        className="arrow-btn left-arrow"
+        onClick={() => history.push(unitPath[2])}
+      >
         <h1>Unit 1</h1>
       </div>
       <div className="page-contain">
@@ -30,7 +38,7 @@ const MapLessonComponent = (props) => {
                   <h1>Exercise</h1>
                 </div>
               </Link>
-              <Link to="/">
+              <Link to={location.pathname + "/game"}>
                 <div className="unit-detai-btn">
                   <h1>Game</h1>
                 </div>

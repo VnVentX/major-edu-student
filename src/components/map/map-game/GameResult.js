@@ -25,7 +25,7 @@ const GameResult = () => {
             <Button
               type="link"
               block
-              onClick={() => history.push(otherGamePath[4])}
+              onClick={() => history.push(otherGamePath[5])}
             >
               Play other Game
             </Button>
