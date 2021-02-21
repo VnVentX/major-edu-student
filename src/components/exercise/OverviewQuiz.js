@@ -189,7 +189,7 @@ const data = [
   },
 ];
 
-const OverviewQuiz = (props) => {
+const OverviewQuiz = () => {
   const [questions, setQuestions] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
   const [current, setCurrent] = useState(1);

@@ -1,29 +1,18 @@
 import React from "react";
-import { Table } from "antd";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import "antd/dist/antd.css";
 
 const ExerciseComponent = () => {
   const history = useHistory();
   const location = useLocation();
-  // const columns = [
-  //   {
-  //     title: "No",
-  //     dataIndex: "id",
-  //     width: "10%",
-  //     render: (index) => index + 1,
-  //     align: "center",
-  //   },
-  //   {
-  //     title: "Exercises",
-  //     dataIndex: "exerciseName",
-  //     width: "90%",
-  //     align: "center",
-  //     render: (record) => (
-  //       <Link to="/math/unit/1/map/exercise/1">{record}</Link>
-  //     ),
-  //   },
-  // ];
+
+  //! Get Lesson path
+  const pathSnippets = location.pathname.split("/").filter((i) => i);
+  const lessonPath = pathSnippets.map((_, index) => {
+    const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
+    return url;
+  });
+
   const data = [
     {
       id: 0,
@@ -52,19 +41,18 @@ const ExerciseComponent = () => {
   ];
   return (
     <div className="page">
+      <div
+        className="arrow-btn left-arrow"
+        onClick={() => history.push(lessonPath[4])}
+      >
+        <h1>Lesson 1</h1>
+      </div>
       <div className="page-contain">
         <div className="exercise-container">
           <div className="exercise-title">
             <h1>Exercises</h1>
           </div>
           <div className="exercise-wrap">
-            {/* <Table
-              className="exercise-table"
-              rowKey={(record) => record.id}
-              columns={columns}
-              dataSource={data}
-              pagination={false}
-            /> */}
             {data?.map((i) => (
               <Link key={i.id} to={`${location.pathname}/${i.id}`}>
                 <div className="exercise-btn">

@@ -98,32 +98,34 @@ const QuizComponent = (props) => {
       }
     }
     if (answered[idx].isCorrect === false) {
-      const modal = Modal.error({
-        content: "Incorrect answer",
-        centered: true,
-      });
-      counter++;
-      setWrongCount(counter);
-      setTimeout(() => {
-        modal.destroy();
-      }, 1000);
-    }
-    if (counter === 2) {
-      const modal = Modal.error({
-        content: "Incorrect answer",
-        centered: true,
-      });
-      counter = 0;
-      setWrongCount(0);
-      if (current <= total) {
+      if (counter === 1) {
+        console.log(counter);
+        const modal = Modal.error({
+          content: "Incorrect answer",
+          centered: true,
+        });
+        counter = 0;
+        setWrongCount(0);
+        if (current <= total) {
+          setTimeout(() => {
+            modal.destroy();
+            handleChange(current + 1);
+          }, 1000);
+        } else if (current === total + 1) {
+          setTimeout(() => {
+            modal.destroy();
+            handelChangeIsSubmitResult();
+          }, 1000);
+        }
+      } else {
+        const modal = Modal.error({
+          content: "Incorrect answer",
+          centered: true,
+        });
+        counter++;
+        setWrongCount(counter);
         setTimeout(() => {
           modal.destroy();
-          handleChange(current + 1);
-        }, 1000);
-      } else if (current === total + 1) {
-        setTimeout(() => {
-          modal.destroy();
-          handelChangeIsSubmitResult();
         }, 1000);
       }
     }

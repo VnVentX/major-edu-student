@@ -51,23 +51,9 @@
   width: auto;
 }
 
-/* .ant-table-wrapper {
-  width: 80vw;
-}
-
-.ant-table-thead > tr > th {
-  color: white;
-  background: #3071b9 !important;
-}
-
-.ant-table-tbody > tr > th {
-  color: white;
-  background: #3071b9 !important;
-} */
-
 /* .exercise-table .ant-table .ant-table-tbody > tr:hover > td {
   background: #a6aeb8;
-} */
+}
 
 /* !Excercise Detail */
 .exercise-detail-container {

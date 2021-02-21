@@ -8,10 +8,11 @@ const ScoreComponent = () => {
     const columns = [
       {
         title: "Exercises",
-        dataIndex: "exerciseName",
         align: "center",
         render: (record) => (
-          <Link to="/math/unit/1/map/exercise/1">{record}</Link>
+          <Link to={`${window.location.pathname}/${record.id}`}>
+            {record.exerciseName}
+          </Link>
         ),
       },
       {
@@ -122,25 +123,23 @@ const ScoreComponent = () => {
   return (
     <div className="page">
       <div className="page-contain">
-        <div className="exercise-container">
-          <div className="exercise-title">
+        <div className="score-container">
+          <div className="score-title">
             <h1>Math</h1>
           </div>
-          <div className="exercise-wrap">
+          <div className="score-wrap">
             <Table
-              className="exercise-table"
               rowKey={(record) => record.id}
               columns={unitCol}
               dataSource={unitData}
               expandable={{ expandedRowRender }}
             />
           </div>
-          <div className="exercise-title">
+          <div className="score-title">
             <h1>Science</h1>
           </div>
-          <div className="exercise-wrap">
+          <div className="score-wrap">
             <Table
-              className="exercise-table"
               rowKey={(record) => record.id}
               columns={unitCol}
               dataSource={unitData}

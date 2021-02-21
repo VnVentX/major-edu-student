@@ -30,6 +30,7 @@ import PlayGame from "../components/map/map-game/PlayGame";
 import GameResult from "../components/map/map-game/GameResult";
 import Lecture from "../components/map/map-lesson/Lecture";
 import QuizComponent from "../components/exercise/QuizComponent";
+import ScoreExerciseDetail from "../components/score/ScoreExerciseDetail";
 
 const { Content } = Layout;
 
@@ -61,6 +62,16 @@ const Home = (props) => {
                 <Route path="/notice/detail" exact component={NoticeDetail} />
                 <Route path="/subject" exact component={Subject} />
                 <Route path="/score" exact component={Score} />
+                <Route
+                  path="/score/:exerciseID"
+                  exact
+                  component={ScoreExerciseDetail}
+                />
+                <Route
+                  path="/score/:exerciseID/overview/:overviewID"
+                  exact
+                  component={OverviewQuiz}
+                />
                 <Route path="/profile" exact component={Profile} />
                 <Route path="/math/unit" exact component={Unit} />
                 <Route path="/science/unit" exact component={Unit} />
@@ -87,6 +98,39 @@ const Home = (props) => {
                   exact
                   component={QuizComponent}
                 />
+                <Route
+                  path="/math/unit/:unitID/lesson/:lessonID/game"
+                  exact
+                  component={MapGame}
+                />
+                <Route
+                  path="/math/unit/:unitID/lesson/:lessonID/game/:gameID"
+                  exact
+                  component={PlayGame}
+                />
+                <Route
+                  path="/math/unit/:unitID/lesson/:lessonID/game/:gameID/result"
+                  exact
+                  component={GameResult}
+                />
+
+                {/* 
+
+
+
+
+
+
+                  //! Cắt ở đây
+
+
+
+
+
+
+
+                 */}
+
                 {/* Flow cũ */}
                 <Route path="/math/unit/:unitID/map" exact component={Map} />
                 <Route
