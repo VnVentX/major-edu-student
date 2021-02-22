@@ -14,6 +14,8 @@
   min-height: 14vh;
   padding: 0px !important;
   background: url("../img/home/header-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .logo img {
@@ -42,47 +44,52 @@
 @media (max-width: 3000px) {
   .menu-btn {
     display: block;
-    width: 174px;
-    height: 79.13px;
+    width: 160px;
+    height: 110px;
   }
   .logout-btn {
     display: block;
-    width: 116.37px;
-    height: 58.95px;
+    width: 117px;
+    height: 54px;
     background: url("../img/home/logout-btn.png");
-  }
-}
-@media (max-width: 1630px) {
-  .menu-btn {
-    display: block;
-    width: 150px;
-    height: 68.5px;
-  }
-  .logout-btn {
-    display: block;
-    width: 116.37px;
-    height: 58.95px;
-    background: url("../img/home/logout-btn.png");
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 }
 
 @media (max-width: 1500px) {
   .menu-btn {
     display: block;
-    width: 120px;
-    height: 55px;
+    width: 130px;
+    height: 80px;
   }
   .logout-btn {
     display: block;
     width: 100px;
-    height: 51.51px;
+    height: 44px;
     background: url("../img/home/logout-btn.png");
     background-size: contain;
     background-repeat: no-repeat;
   }
 }
 
-@media (max-width: 1340px) {
+@media (max-width: 1240px) {
+  .menu-btn {
+    display: block;
+    width: 120px;
+    height: 70px;
+  }
+  .logout-btn {
+    display: block;
+    width: 100px;
+    height: 44px;
+    background: url("../img/home/logout-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 1190px) {
   .header-menu {
     display: flex;
     justify-content: space-between;
@@ -175,7 +182,6 @@
 .notice-img {
   position: relative;
   margin-bottom: 65px;
-  top: -50px;
 }
 
 .notice-wrap {
@@ -244,9 +250,11 @@
 
 .see-all-btn {
   display: block;
-  width: 268.41px;
-  height: 121.41px;
+  width: 172px;
+  height: 115px;
   background: url("../img/home/see-all-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
   margin-bottom: 100px;
 }
 
@@ -269,6 +277,8 @@
 
 .footer-bg {
   background: url("../img/home/footer-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
 }
 .footer-content {

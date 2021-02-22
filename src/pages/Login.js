@@ -10,7 +10,7 @@ const Login = (props) => {
     props.history.push("/home");
   }
 
-  const handelChange = () => {
+  const handleChange = () => {
     setisForgot(!isForgot);
   };
 
@@ -19,9 +19,9 @@ const Login = (props) => {
       <div className="login">
         <div className="login-container">
           {isForgot ? (
-            <ForgotForm handelChange={handelChange} />
+            <ForgotForm handleChange={handleChange} />
           ) : (
-            <LoginForm handelChange={handelChange} />
+            <LoginForm handleChange={handleChange} />
           )}
         </div>
       </div>

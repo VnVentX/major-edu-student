@@ -10,7 +10,7 @@ const StyledMenu = styled.nav`
   flex-direction: column;
   align-items: center;
   background: #effffa;
-  transform: ${({ open }) => (open ? "translateX(0)" : "translateY(-100%)")};
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateY(-120%)")};
   height: 100vh;
   width: 100vw;
   text-align: left;
@@ -23,12 +23,12 @@ const StyledMenu = styled.nav`
 
   @media (max-width: 1000px) {
     width: 100%;
-    height: 100vh;
+    height: 1000%;
   }
 
   @media (max-width: 576px) {
     width: 100%;
-    height: 100vh;
+    height: 1000%;
   }
 
   a {
@@ -52,7 +52,7 @@ const StyledMenu = styled.nav`
   }
 `;
 
-const Menu = ({ open, setOpen }) => {
+const Menu = ({ open, setOpen, history }) => {
   return (
     <StyledMenu open={open}>
       <Space direction="vertical" align="center" size={45}>
@@ -70,6 +70,16 @@ const Menu = ({ open, setOpen }) => {
         </Link>
         <Link to="/profile" onClick={() => setOpen(!open)}>
           Profile
+        </Link>
+        <Link
+          to=""
+          onClick={() => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            history.push("/login");
+          }}
+        >
+          Logout
         </Link>
       </Space>
     </StyledMenu>
@@ -175,7 +185,7 @@ const HeaderContainer = (props) => {
           <div className="menu-ham">
             <div ref={node}>
               <Burger open={open} setOpen={setOpen} />
-              <Menu open={open} setOpen={setOpen} />
+              <Menu open={open} setOpen={setOpen} history={props.history} />
             </div>
           </div>
         </div>

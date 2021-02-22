@@ -1,24 +1,32 @@
 import React, { useState } from "react";
-import submit_button from "../../resources/img/submit-button.png";
+import submit_button from "../../resources/img/login-page/submit-btn.png";
 
 const ChangePassForm = (props) => {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [isWrongInfo, setisWrongInfo] = useState(false);
 
-  const handelSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (password === newPassword) {
       //logic api đổi pass ở đây
       //đổi status thành isForgot = false, chuyển sang login
-      props.handelChange();
+      props.handleChange();
     } else {
-      alert("Password is not match!");
+      setisWrongInfo(true);
     }
     console.log(password, newPassword);
   };
 
   return (
     <>
+      {isWrongInfo && (
+        <div className="wrong-notice change">
+          <div className="login-ok-btn" onClick={() => setisWrongInfo(false)}>
+            <h2>OK</h2>
+          </div>
+        </div>
+      )}
       <h2 style={{ textAlign: "center", paddingBottom: 30 }}>
         Please enter your new password <br />
         Thank you!
@@ -56,10 +64,15 @@ const ChangePassForm = (props) => {
         </div>
         <button
           type="submit"
-          style={{ border: 0, background: "transparent", cursor: "pointer" }}
-          onClick={handelSubmit}
+          style={{
+            border: 0,
+            background: "transparent",
+            cursor: "pointer",
+            marginTop: 20,
+          }}
+          onClick={handleSubmit}
         >
-          <img src={submit_button} alt={submit_button} />
+          <img src={submit_button} alt={submit_button} width="80%" />
         </button>
       </form>
     </>

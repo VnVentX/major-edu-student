@@ -5,7 +5,7 @@ import CheckForm from "./CheckForm";
 const ForgotForm = (props) => {
   const [isChangePass, setIsChangePass] = useState(false);
 
-  const handelIsChangePass = () => {
+  const handleIsChangePass = () => {
     setIsChangePass(!isChangePass);
   };
 
@@ -13,12 +13,12 @@ const ForgotForm = (props) => {
     <>
       {isChangePass ? (
         //isChangePass = true thì chuyển sang change pass
-        <ChangePassForm handelChange={props.handelChange} />
+        <ChangePassForm handleChange={props.handleChange} />
       ) : (
         //isChangePass = false thì tiếp tục check
         <CheckForm
-          handelChange={props.handelChange}
-          handelIsChangePass={handelIsChangePass}
+          handleChange={props.handleChange}
+          handleIsChangePass={handleIsChangePass}
         />
       )}
     </>

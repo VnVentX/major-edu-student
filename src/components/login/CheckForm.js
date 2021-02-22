@@ -1,21 +1,31 @@
 import React, { useState } from "react";
-import submit_button from "../../resources/img/submit-button.png";
+import submit_button from "../../resources/img/login-page/submit-btn.png";
 import { Button } from "antd";
 
 const CheckForm = (props) => {
   const [username, setUsername] = useState("");
   const [parentPhone, setParentPhone] = useState("");
+  const [isWrongInfo, setisWrongInfo] = useState(false);
 
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    if (username === "test" && parentPhone === "123") {
-      props.handelIsChangePass();
+  const handleSubmit = (e) => {
+    if (username !== "test" || parentPhone !== "123") {
+      setisWrongInfo(true);
+    } else if (username === "test" && parentPhone === "123") {
+      props.handleIsChangePass();
     }
+    e.preventDefault();
     console.log(username, parentPhone);
   };
 
   return (
     <>
+      {isWrongInfo && (
+        <div className="wrong-notice check">
+          <div className="check-ok-btn" onClick={() => setisWrongInfo(false)}>
+            <h2>OK</h2>
+          </div>
+        </div>
+      )}
       <h2 style={{ textAlign: "center", paddingBottom: 30 }}>
         Please give us some information to reset your password <br />
         Thank you!
@@ -52,19 +62,25 @@ const CheckForm = (props) => {
           <label htmlFor="parentPhone">Parent's Phone</label>
         </div>
         <Button
+          className="check-action-btn"
           type="link"
           block
-          onClick={props.handelChange}
+          onClick={props.handleChange}
           style={{ display: "flex", justifyContent: "flex-start" }}
         >
           &lt; Back to login
         </Button>
         <button
           type="submit"
-          style={{ border: 0, background: "transparent", cursor: "pointer" }}
-          onClick={handelSubmit}
+          style={{
+            border: 0,
+            background: "transparent",
+            cursor: "pointer",
+            marginTop: 20,
+          }}
+          onClick={handleSubmit}
         >
-          <img src={submit_button} alt={submit_button} />
+          <img src={submit_button} alt={submit_button} width="80%" />
         </button>
       </form>
     </>
