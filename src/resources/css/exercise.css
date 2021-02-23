@@ -1,3 +1,12 @@
+.exercise-bg {
+  height: 100%;
+  width: 100%;
+  background: url("../img/exercise/exercise-bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .exercise-container {
   min-height: 100vh;
   height: auto;
@@ -6,48 +15,55 @@
   align-items: center;
 }
 
-.exercise-title {
-  background: url("../img/home/header-bg.png");
-  min-width: 281.58px;
-  min-height: 126.16px;
-  display: grid;
-  place-items: center;
-  margin: 50px 0 200px 0;
-}
-
-.exercise-title > h1 {
-  margin: 0px !important;
-  font-size: 3rem;
-  color: white;
-}
-
 .exercise-wrap {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: space-evenly;
-  width: 60vw;
-  margin: 0 20px 10vh 20px;
+  align-items: center;
+  width: 45vw;
+  min-width: 600px;
+  min-height: 75vh;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  margin: 15px 0;
 }
 
 .exercise-wrap > div {
-  flex: 0 1 320px;
-  margin: 0 20px 20px 20px;
+  flex: 0 50%;
 }
 
 .exercise-btn {
   display: grid;
   place-items: center;
-  width: 320px;
-  height: 150px;
-  background: url("../img/big-layer-btn.png");
+  width: 250px;
+  height: 165px;
+}
+
+.blue {
+  background: url("../img/exercise/blue.png");
   background-size: contain;
+  background-repeat: no-repeat;
+}
+.green {
+  background: url("../img/exercise/green.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.orange {
+  background: url("../img/exercise/orange.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.pink {
+  background: url("../img/exercise/pink.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .exercise-btn h1 {
   margin: 0px !important;
-  font-size: 3rem;
-  color: white;
+  font-size: 2rem;
+  color: black;
   width: auto;
 }
 
