@@ -1,94 +1,144 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Space } from "antd";
 import { Link } from "react-router-dom";
 
+const data = [
+  {
+    unitFirst: { id: 1, unitName: "Unit 1" },
+    unitSecond: { id: 2, unitName: "Unit 2" },
+    progressTest: {
+      id: 1,
+      progressTestName: "Review 1",
+    },
+  },
+  {
+    unitFirst: { id: 3, unitName: "Unit 3" },
+    unitSecond: { id: 4, unitName: "Unit 4" },
+    progressTest: {
+      id: 2,
+      progressTestName: "Review 2",
+    },
+  },
+  {
+    unitFirst: { id: 5, unitName: "Unit 5" },
+    progressTest: {
+      id: 4,
+      progressTestName: "Semester 1",
+    },
+  },
+  {
+    unitFirst: { id: 6, unitName: "Unit 6" },
+    unitSecond: { id: 7, unitName: "Unit 7" },
+    progressTest: {
+      id: 5,
+      progressTestName: "Review 3",
+    },
+  },
+  {
+    unitFirst: { id: 8, unitName: "Unit 8" },
+    unitSecond: { id: 9, unitName: "Unit 9" },
+    progressTest: {
+      id: 6,
+      progressTestName: "Review 4",
+    },
+  },
+  {
+    unitFirst: { id: 10, unitName: "Unit 10" },
+    progressTest: {
+      id: 7,
+      progressTestName: "Semester 2",
+    },
+  },
+];
+
+const color = [
+  "blue",
+  "green",
+  "orange",
+  "purple",
+  "red",
+  "yellow",
+  "red",
+  "green",
+  "purple",
+  "blue",
+  "orange",
+  "yellow",
+];
+
 const UnitComponent = () => {
+  function shuffle(array) {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
+  shuffle(color);
+
   return (
-    <div className="page">
-      <div className="page-contain">
-        <div className="unit-container">
-          <div className="unit-title">
+    <div className="unit-bg">
+      <div className="page">
+        <div className="page-contain">
+          <div className="unit-container">
+            {/* <div className="unit-title">
             <h1>Unit</h1>
-          </div>
-          <div className="unit-wrap">
-            <div className="review-1">
+          </div> */}
+            <div className="unit-wrap">
               <div className="unit-content">
-                <div className="upper">
-                  <Space size="large">
-                    <Link to="/math/unit/1">
-                      <div className="unit-btn unit-1" />
-                    </Link>
-                    <Link to="/math/unit/1">
-                      <div className="unit-btn unit-2" />
-                    </Link>
-                    <Link to="/math/unit/1">
-                      <div className="unit-btn unit-3" />
-                    </Link>
-                  </Space>
-                </div>
-                <div className="lower">
-                  <div className="review-btn"></div>
-                </div>
-              </div>
-            </div>
-            <div className="semester-1">
-              <div className="unit-content">
-                <div className="upper">
-                  <Space size="large">
-                    <Link to="/math/unit/1">
-                      <div className="unit-btn unit-4" />
-                    </Link>
-                    <Link to="/math/unit/1">
-                      <div className="unit-btn unit-5" />
-                    </Link>
-                    <Link to="/math/unit/1">
-                      <div className="unit-btn unit-6" />
-                    </Link>
-                  </Space>
-                </div>
-                <div className="lower">
-                  <div className="review-btn"></div>
-                </div>
-              </div>
-            </div>
-            <div className="review-2">
-              <div className="unit-content">
-                <div className="upper">
-                  <Space size="large">
-                    <Link to="/math/unit/1">
-                      <div className="unit-btn unit-7" />
-                    </Link>
-                    <Link to="/math/unit/1">
-                      <div className="unit-btn unit-8" />
-                    </Link>
-                    <Link to="/math/unit/1">
-                      <div className="unit-btn unit-9" />
-                    </Link>
-                  </Space>
-                </div>
-                <div className="lower">
-                  <div className="review-btn"></div>
-                </div>
-              </div>
-            </div>
-            <div className="semester-2">
-              <div className="unit-content">
-                <div className="upper">
-                  <Space size="large">
-                    <Link to="/math/unit/1">
-                      <div className="unit-btn unit-10" />
-                    </Link>
-                    <Link to="/math/unit/1">
-                      <div className="unit-btn unit-11" />
-                    </Link>
-                    <Link to="/math/unit/1">
-                      <div className="unit-btn unit-12" />
-                    </Link>
-                  </Space>
-                </div>
-                <div className="lower">
-                  <div className="review-btn" />
-                </div>
+                {data?.map((i, idx) => (
+                  <div key={idx} className="unit-btn-row">
+                    <Space size={120}>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          width: 450,
+                        }}
+                      >
+                        <Space size={110}>
+                          {i.unitFirst && (
+                            <Link
+                              to={`${window.location.pathname}/${i.unitFirst.id}`}
+                            >
+                              <div className={`unit-btn ${color[idx]}-1`}>
+                                <h2>{i.unitFirst.unitName}</h2>
+                              </div>
+                            </Link>
+                          )}
+                          {i.unitSecond && (
+                            <Link
+                              to={`${window.location.pathname}/${i.unitSecond.id}`}
+                            >
+                              <div className={`unit-btn ${color[idx]}-2`}>
+                                <h2>{i.unitSecond.unitName}</h2>
+                              </div>
+                            </Link>
+                          )}
+                        </Space>
+                      </div>
+                      {i.progressTest && (
+                        <Link to="/math/unit/1">
+                          <div className={`unit-btn ${color[idx]}-2`}>
+                            <h2>{i.progressTest.progressTestName}</h2>
+                          </div>
+                        </Link>
+                      )}
+                    </Space>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
