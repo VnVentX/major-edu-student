@@ -141,7 +141,7 @@ const PlayGame = () => {
   return (
     <div className="page">
       <div className="page-contain">
-        <div className="game-container">
+        <div className="play-game-container">
           <div className="game-wrap">
             {/* <div className="exercise-title">
               <h1>Play Game</h1>

@@ -1,3 +1,12 @@
+.notice-bg {
+  height: 100%;
+  width: 100%;
+  background: url("../img/notice/notice-bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .notice-container {
   min-height: 100vh;
   height: auto;
@@ -5,17 +14,70 @@
   flex-direction: column;
   align-items: center;
 }
+
 .notice-page-title {
-  background: url("../img/home/header-bg.png");
-  min-width: 281.58px;
-  min-height: 126.16px;
-  display: grid;
-  place-items: center;
-  margin: 50px 0;
+  background: url("../img/notice/notice-title.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 272px;
+  height: 100px;
+  margin: 70px 0 100px 0;
 }
 
-.notice-page-title > h1 {
-  margin: 0px !important;
-  font-size: 3rem;
+/* Notice Detail */
+.notice-detail-title {
+  background: url("../img/notice/notice-title.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 272px;
+  height: 100px;
+  margin: 50px 0;
+}
+.notice-outter-border {
+  border-radius: 30px 30px 30px 30px;
+  -moz-border-radius: 30px 30px 30px 30px;
+  -webkit-border-radius: 30px 30px 30px 30px;
+  border: 0px solid;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
+  width: 1200px;
+  min-height: 732.64px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notice-inner-border {
+  border-radius: 30px 30px 30px 30px;
+  -moz-border-radius: 30px 30px 30px 30px;
+  -webkit-border-radius: 30px 30px 30px 30px;
+  border: 0.83px dashed #838383;
+  width: 1130px;
+  min-height: 649.94px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: baseline;
+  margin: 25px;
+  padding: 25px;
+}
+
+.announce-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: url("../img/notice/announce-title.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 1000px;
+  height: 82px;
+}
+
+.announce-title > h1 {
+  position: relative;
   color: white;
+  left: 80px;
+  font-size: 2rem;
 }

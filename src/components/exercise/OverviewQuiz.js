@@ -279,7 +279,7 @@ const OverviewQuiz = () => {
                                   : null}
                               </h2>
                             </div>
-                            <button>
+                            <div>
                               <div
                                 id="answer"
                                 className={
@@ -290,7 +290,7 @@ const OverviewQuiz = () => {
                               >
                                 <span>{a.answerText}</span>
                               </div>
-                            </button>
+                            </div>
                           </div>
                         ))}
                       </div>

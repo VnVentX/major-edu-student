@@ -61,7 +61,7 @@ const Home = (props) => {
               <Switch>
                 <Route path={["/", "/home"]} exact component={index} />
                 <Route path="/notice" exact component={Notice} />
-                <Route path="/notice/detail" exact component={NoticeDetail} />
+                <Route path="/notice/:noticeID" exact component={NoticeDetail} />
                 <Route path="/subject" exact component={Subject} />
                 <Route path="/score" exact component={Score} />
                 <Route
@@ -75,8 +75,7 @@ const Home = (props) => {
                   component={OverviewQuiz}
                 />
                 <Route path="/profile" exact component={Profile} />
-                <Route path="/math/unit" exact component={Unit} />
-                <Route path="/science/unit" exact component={Unit} />
+                <Route path="/:unitName/unit" exact component={Unit} />
                 {/* Flow mới bắt đầu từ đây */}
 
                 <Route path="/math/unit/:unitID" exact component={UnitDetail} />

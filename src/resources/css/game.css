@@ -88,9 +88,26 @@ li.react-multi-carousel-item.react-multi-carousel-item--active {
   align-items: center;
 }
 
-/* ! Pagination CSS */
-.game-inner > .ant-pagination {
-  display: none;
+/* ! Play game */
+
+.play-game-container {
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ! Game Result  */
+
+.result-container {
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ! Matching Game CSS */

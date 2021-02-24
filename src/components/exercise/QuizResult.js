@@ -28,7 +28,7 @@ const QuizResult = (props) => {
   return (
     <div className="page">
       <div className="page-contain">
-        <div className="game-container">
+        <div className="result-container">
           <div className="game-wrap">
             <h1>
               Cleared with {count}/{props.answered.length} points
