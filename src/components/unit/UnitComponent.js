@@ -51,41 +51,14 @@ const data = [
   },
 ];
 
-const color = [
-  "blue",
-  "green",
-  "orange",
-  "purple",
-  "red",
-  "yellow",
-  "red",
-  "green",
-  "purple",
-  "blue",
-  "orange",
-  "yellow",
-];
+const color = ["blue", "green", "orange", "purple", "red", "yellow"];
+let itemColor = "";
 
 const UnitComponent = () => {
   function shuffle(array) {
-    var currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-    return array;
+    itemColor = array[Math.floor(Math.random() * array.length)];
+    return itemColor;
   }
-  shuffle(color);
 
   return (
     <div className="unit-bg">
@@ -93,12 +66,16 @@ const UnitComponent = () => {
         <div className="page-contain">
           <div className="unit-container">
             {/* <div className="unit-title">
-            <h1>Unit</h1>
-          </div> */}
+              <h1>Unit</h1>
+            </div> */}
             <div className="unit-wrap">
               <div className="unit-content">
                 {data?.map((i, idx) => (
-                  <div key={idx} className="unit-btn-row">
+                  <div
+                    key={idx}
+                    className="unit-btn-row"
+                    onLoad={shuffle(color)}
+                  >
                     <Space size={120}>
                       <div
                         style={{
@@ -113,7 +90,7 @@ const UnitComponent = () => {
                             <Link
                               to={`${window.location.pathname}/${i.unitFirst.id}`}
                             >
-                              <div className={`unit-btn ${color[idx]}-1`}>
+                              <div className={`unit-btn ${itemColor}-1`}>
                                 <h2>{i.unitFirst.unitName}</h2>
                               </div>
                             </Link>
@@ -122,7 +99,7 @@ const UnitComponent = () => {
                             <Link
                               to={`${window.location.pathname}/${i.unitSecond.id}`}
                             >
-                              <div className={`unit-btn ${color[idx]}-2`}>
+                              <div className={`unit-btn ${itemColor}-1`}>
                                 <h2>{i.unitSecond.unitName}</h2>
                               </div>
                             </Link>
@@ -131,7 +108,7 @@ const UnitComponent = () => {
                       </div>
                       {i.progressTest && (
                         <Link to="/math/unit/1">
-                          <div className={`unit-btn ${color[idx]}-2`}>
+                          <div className={`unit-btn ${itemColor}-2`}>
                             <h2>{i.progressTest.progressTestName}</h2>
                           </div>
                         </Link>

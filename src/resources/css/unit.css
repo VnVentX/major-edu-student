@@ -22,7 +22,7 @@
   min-height: 126.16px;
   display: grid;
   place-items: center;
-  margin: 50px 0 150px 0;
+  margin: 50px 0;
 }
 
 .unit-title > h1 {
@@ -38,7 +38,7 @@
   justify-content: space-evenly;
   align-items: center;
   width: 55vw;
-  min-width: 700px;
+  min-width: 770px;
   min-height: 75vh;
   background: rgba(255, 255, 255, 0.5);
   border-radius: 30px;

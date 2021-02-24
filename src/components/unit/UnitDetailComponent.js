@@ -34,30 +34,32 @@ const UnitDetailComponent = () => {
   const unitPath = pathStack[1];
 
   return (
-    <div className="page">
-      <div
-        className="arrow-btn left-arrow"
-        onClick={() => history.push(unitPath)}
-      >
-        <h1>Unit</h1>
-      </div>
-      <div className="page-contain">
-        <div className="unit-container">
-          <div className="unit-detail-title">
-            <h1>Unit {unit}</h1>
+    <div className="unit-bg">
+      <div className="page">
+        <div
+          className="arrow-btn left-arrow"
+          onClick={() => history.push(unitPath)}
+        >
+          <h1>Unit</h1>
+        </div>
+        <div className="page-contain">
+          <div className="unit-container">
+            <div className="unit-detail-title">
+              <h1>Unit {unit}</h1>
+            </div>
+            <Space size={50}>
+              {lesson?.map((i) => (
+                <Link
+                  key={i.lessonID}
+                  to={`${window.location.pathname}/lesson/${i.lessonID}`}
+                >
+                  <div className="unit-detai-btn">
+                    <h1>{i.lessonTitlle}</h1>
+                  </div>
+                </Link>
+              ))}
+            </Space>
           </div>
-          <Space size={50}>
-            {lesson?.map((i) => (
-              <Link
-                key={i.lessonID}
-                to={(location) => `${location.pathname}/lesson/${i.lessonID}`}
-              >
-                <div className="unit-detai-btn">
-                  <h1>{i.lessonTitlle}</h1>
-                </div>
-              </Link>
-            ))}
-          </Space>
         </div>
       </div>
     </div>
