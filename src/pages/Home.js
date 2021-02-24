@@ -52,7 +52,9 @@ const Home = (props) => {
   return (
     <div className="contents">
       <BrowserRouter>
+            {/* header */}
         <HeaderContainer history={props.history} />
+            {/* body */}
         <Layout className="scence">
           <Content className="container">
             <ScrollToTop>

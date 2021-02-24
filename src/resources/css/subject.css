@@ -1,12 +1,70 @@
-.subject-container {
-  min-height: 100vh;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.subject-page {
+  min-height: 1200px;
+  width: 100%;
+  background: url("../img/home/subject-home-bg.png");
 }
 
-.subject-container .sub-btn {
-  width: 200px;
-  height: 200px;
+.subject-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8%;
+}
+.subject-page-sub {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 5%;
+}
+.lets-started {
+  background-repeat: no-repeat;
+  background-image: url("../img/home/getstart-title.png");
+  width: 400px;
+  height: 150px;
+  color: white;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.subject-math {
+    background-color: white;
+    height: 340px;
+    padding: 15px;
+    border: #56BF9E 5px solid;
+    border-radius: 10px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.button-subject-math {
+    margin-top: 15px;
+    background-color: #56BF9E;
+    color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 50px;
+}
+
+.subject-science {
+  background-color: white;
+  height: 340px;
+  padding: 15px;
+  border: #FFBD76 5px solid;
+  border-radius: 10px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.button-subject-science {
+  margin-top: 15px;
+  background-color: #ED6B25;
+  color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 50px;
 }
