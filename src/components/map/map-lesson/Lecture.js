@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 const urlIframe =
@@ -7,8 +6,6 @@ const urlIframe =
 
 const Lecture = () => {
   const [link, setLink] = useState("");
-
-  const history = useHistory();
 
   useEffect(() => {
     const data = urlIframe.split(" ")[1].split("src=")[1].split('"')[1];
@@ -22,41 +19,27 @@ const Lecture = () => {
   };
 
   return (
-    <div className="page">
-      <div className="arrow-btn left-arrow" onClick={() => history.goBack()}>
-        <h1>Lesson 1</h1>
-      </div>
-      <div className="page-contain">
-        <div className="lesson-container">
-          <div className="lesson-title">
-            <h1>Lecture</h1>
-          </div>
-          <div className="lesson-wrap">
-            <div className="non-fs">
-              <FullScreen handle={handle}>
-                <div
-                  className={
-                    document.fullscreenElement === null ? "non-fs" : "fs"
-                  }
-                  dangerouslySetInnerHTML={{
-                    __html: `
-          <iframe
-            id=${document.fullscreenElement === null ? "nonfs" : "fs"}
-            title="lesson 1"
-            src='${link}'
-            frameBorder="0"
-            width="100%"
+    <div className="lesson-wrap">
+      <div className="non-fs">
+        <FullScreen handle={handle}>
+          <div
+            className={document.fullscreenElement === null ? "non-fs" : "fs"}
+            dangerouslySetInnerHTML={{
+              __html: `
+<iframe
+  id=${document.fullscreenElement === null ? "nonfs" : "fs"}
+  title="lesson 1"
+  src='${link}'
+  frameBorder="0"
+  width="100%"
+/>
+`,
+            }}
           />
-          `,
-                  }}
-                />
-              </FullScreen>
-            </div>
-            <div className="tool-bar">
-              <div className="full-btn" onClick={onClickFullScreen} />
-            </div>
-          </div>
-        </div>
+        </FullScreen>
+      </div>
+      <div className="tool-bar">
+        <div className="full-btn" onClick={onClickFullScreen} />
       </div>
     </div>
   );

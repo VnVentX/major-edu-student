@@ -198,4 +198,5 @@
   left: 100px;
   background: url("../img/left-btn.png");
   background-size: contain;
+  background-repeat: no-repeat;
 }

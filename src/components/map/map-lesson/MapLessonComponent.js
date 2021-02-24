@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { Space } from "antd";
+import Lecture from "./Lecture";
 
 const MapLessonComponent = () => {
   const history = useHistory();
@@ -14,36 +14,36 @@ const MapLessonComponent = () => {
   });
 
   return (
-    <div className="page">
-      <div
-        className="arrow-btn left-arrow"
-        onClick={() => history.push(unitPath[2])}
-      >
-        <h1>Unit 1</h1>
-      </div>
-      <div className="page-contain">
-        <div className="lecture-container">
-          <div className="lecture-title">
-            <h1>Lesson 1</h1>
-          </div>
-          <div className="lecture-wrap">
-            <Space direction="vertical" size={50}>
-              <Link to={location.pathname + "/lecture"}>
-                <div className="unit-detai-btn">
-                  <h1>Lecture</h1>
-                </div>
-              </Link>
+    <div className="quiz-bg">
+      <div className="page">
+        <div
+          className="arrow-btn left-arrow"
+          onClick={() => history.push(unitPath[2])}
+        >
+          <h1>Unit 1</h1>
+        </div>
+        <div className="page-contain">
+          <div className="lesson-container">
+            <div className="lesson-title">
+              <h1>Lesson 1</h1>
+            </div>
+            <Lecture />
+            <div className="side-btn">
               <Link to={location.pathname + "/exercise"}>
-                <div className="unit-detai-btn">
-                  <h1>Exercise</h1>
-                </div>
+                <div className="lesson-exercise-btn" />
               </Link>
               <Link to={location.pathname + "/game"}>
-                <div className="unit-detai-btn">
-                  <h1>Game</h1>
-                </div>
+                <div className="game-btn" />
               </Link>
-            </Space>
+            </div>
+            <div className="bottom-btn">
+              <Link to={location.pathname + "/exercise"}>
+                <div className="lesson-exercise-btn" />
+              </Link>
+              <Link to={location.pathname + "/game"}>
+                <div className="game-btn" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

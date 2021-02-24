@@ -54,8 +54,8 @@ const GameComponent = () => {
         <h1>Lesson 1</h1>
       </div>
       <div className="page-contain">
-        <div className="exercise-container">
-          <div className="exercise-title">
+        <div className="game-container">
+          <div className="game-title">
             <h1>Game</h1>
           </div>
           <div className="game-slider-wrap">

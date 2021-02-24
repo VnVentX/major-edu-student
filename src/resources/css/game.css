@@ -4,7 +4,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+}
+
+.game-title {
+  background: url("../img/title-layer.png");
+  min-width: 272px;
+  min-height: 100px;
+  display: grid;
+  place-items: center;
+  margin: 70px 0 100px 0;
+}
+
+.game-title > h1 {
+  font-size: 2.5rem;
+  color: white;
 }
 
 /* !Game Slider */

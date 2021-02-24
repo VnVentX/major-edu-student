@@ -55,7 +55,7 @@ const color = ["blue", "green", "orange", "purple", "red", "yellow"];
 let itemColor = "";
 
 const UnitComponent = () => {
-  function shuffle(array) {
+  function randomColor(array) {
     itemColor = array[Math.floor(Math.random() * array.length)];
     return itemColor;
   }
@@ -74,7 +74,7 @@ const UnitComponent = () => {
                   <div
                     key={idx}
                     className="unit-btn-row"
-                    onLoad={shuffle(color)}
+                    onLoad={randomColor(color)}
                   >
                     <Space size={120}>
                       <div

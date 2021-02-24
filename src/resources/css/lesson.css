@@ -3,22 +3,20 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
 .lesson-title {
-  background: url("../img/home/header-bg.png");
-  min-width: 281.58px;
-  min-height: 126.16px;
+  background: url("../img/title-layer.png");
+  min-width: 272px;
+  min-height: 100px;
   display: grid;
   place-items: center;
-  margin: 50px 0;
+  margin: 70px 0 100px 0;
 }
 
 .lesson-title > h1 {
-  margin: 0px !important;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: white;
 }
 
@@ -27,7 +25,7 @@
   flex-direction: column;
   align-items: center;
   width: auto;
-  margin: 0 20px 10vh 20px;
+  margin: 0 0 50px 0;
   background: black;
 }
 
@@ -37,7 +35,7 @@
 
 /* Iframe */
 .non-fs {
-  height: calc(75vh - 25px);
+  height: calc(55vh - 25px);
   overflow: hidden;
   position: relative;
 }
@@ -48,7 +46,7 @@
 }
 
 #nonfs {
-  height: 75vh;
+  height: 55vh;
 }
 
 #fs {
@@ -106,4 +104,58 @@
   justify-content: space-around;
   align-items: center;
   width: 80vw;
+}
+
+/* ! Exercise & Game btn */
+
+@media (max-width: 3000px) {
+  .bottom-btn {
+    display: none;
+  }
+  .side-btn {
+    position: absolute;
+    left: 110%;
+    bottom: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: fit-content;
+  }
+
+  .lesson-exercise-btn {
+    margin-bottom: 100px;
+  }
+}
+
+@media (max-width: 1650px) {
+  .side-btn {
+    display: none;
+  }
+  .bottom-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .lesson-exercise-btn {
+    margin-bottom: 0;
+    margin-right: 100px;
+  }
+}
+
+.lesson-exercise-btn {
+  width: 190px;
+  height: 125px;
+  background: url("../img/lesson/exercise-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.game-btn {
+  width: 200px;
+  height: 125px;
+  background: url("../img/lesson/game-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }

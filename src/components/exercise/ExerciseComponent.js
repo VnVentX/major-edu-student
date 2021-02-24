@@ -2,20 +2,8 @@ import React from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import "antd/dist/antd.css";
 
-const color = [
-  "blue",
-  "green",
-  "orange",
-  "pink",
-  "blue",
-  "green",
-  "orange",
-  "pink",
-  "blue",
-  "green",
-  "orange",
-  "pink",
-];
+const color = ["blue", "green", "orange", "pink"];
+let itemColor = "";
 
 const ExerciseComponent = () => {
   const history = useHistory();
@@ -63,26 +51,10 @@ const ExerciseComponent = () => {
     },
   ];
 
-  function shuffle(array) {
-    var currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-    return array;
+  function randomColor(array) {
+    itemColor = array[Math.floor(Math.random() * array.length)];
+    return itemColor;
   }
-
-  shuffle(color);
 
   return (
     <div className="exercise-bg">
@@ -104,9 +76,10 @@ const ExerciseComponent = () => {
                     placeItems: "center",
                     margin: "20px 0 0 0",
                   }}
+                  onLoad={randomColor(color)}
                 >
                   <Link to={`${location.pathname}/${i.id}`}>
-                    <div className={`exercise-btn ${color[idx]}`}>
+                    <div className={`exercise-btn ${itemColor}`}>
                       <h1>{i.exerciseName}</h1>
                     </div>
                   </Link>
