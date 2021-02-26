@@ -46,7 +46,7 @@ const ChoosingGame = (props) => {
             <div
               key={idx}
               className={
-                i.isWrong === true ? "option-item option-hidden" : "option-item"
+                i.isWrong === true ? "game-choosing-option-item game-choosing-option-hidden" : "game-choosing-option-item"
               }
               onClick={() => {
                 handleSelectedOption(i, idx);

@@ -39,48 +39,16 @@ const data = [
   },
   {
     id: 2,
-    type: "MATCH",
+    type: "MATCH_MATH",
     game: [
       { id: 1, question: "Hand", answer: "Hand", falseAnswer: "Leg" },
-      { id: 2, question: "Leg", answer: "Leg", falseAnswer: "Hand" },
-      { id: 3, question: "Shoulder", answer: "Shoulder", falseAnswer: "Nose" },
-      { id: 4, question: "Ear", answer: "Ear", falseAnswer: "Eye" },
-      { id: 5, question: "Nose", answer: "Nose", falseAnswer: "Ear" },
-      { id: 6, question: "Eye", answer: "Eye", falseAnswer: "Shoulder" },
+      { id: 2, question: "Leg", answer: "Leg", falseAnswer: "Shoulder" },
+      { id: 3, question: "Shoulder", answer: "Shoulder", falseAnswer: "Ear" },
+      { id: 4, question: "Ear", answer: "Ear", falseAnswer: "Hand" },
     ],
   },
   {
     id: 3,
-    type: "SWAP",
-    game: [
-      {
-        id: 1,
-        question: "Question 1",
-        answer: "Answer 1",
-        falseAnswer: "Answer 2",
-      },
-      {
-        id: 2,
-        question: "Question 2",
-        answer: "Answer 2",
-        falseAnswer: "Answer 3",
-      },
-      {
-        id: 3,
-        question: "Question 3",
-        answer: "Answer 3",
-        falseAnswer: "Answer 4",
-      },
-      {
-        id: 4,
-        question: "Question 4",
-        answer: "Answer 4",
-        falseAnswer: "Answer 1",
-      },
-    ],
-  },
-  {
-    id: 4,
     type: "MATCH",
     game: [
       { id: 1, question: "Hand", answer: "Hand", falseAnswer: "Leg" },
@@ -92,7 +60,7 @@ const data = [
     ],
   },
   {
-    id: 5,
+    id: 4,
     type: "CHOOSE",
     game: {
       questionID: 1,
@@ -139,6 +107,15 @@ const data = [
           optionImg: "Knee",
         },
       ],
+    },
+  },
+  {
+    id: 5,
+    type: "FILL",
+    game: {
+      questionID: 1,
+      questionImage: "4 + 3 = 7",
+      answers: ["four", "+", "three", "seven"],
     },
   },
 ];

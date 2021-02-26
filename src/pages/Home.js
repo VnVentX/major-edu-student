@@ -52,16 +52,20 @@ const Home = (props) => {
   return (
     <div className="contents">
       <BrowserRouter>
-            {/* header */}
+        {/* header */}
         <HeaderContainer history={props.history} />
-            {/* body */}
+        {/* body */}
         <Layout className="scence">
           <Content className="container">
             <ScrollToTop>
               <Switch>
                 <Route path={["/", "/home"]} exact component={index} />
                 <Route path="/notice" exact component={Notice} />
-                <Route path="/notice/:noticeID" exact component={NoticeDetail} />
+                <Route
+                  path="/notice/:noticeID"
+                  exact
+                  component={NoticeDetail}
+                />
                 <Route path="/subject" exact component={Subject} />
                 <Route path="/score" exact component={Score} />
                 <Route
@@ -78,39 +82,43 @@ const Home = (props) => {
                 <Route path="/:unitName/unit" exact component={Unit} />
                 {/* Flow mới bắt đầu từ đây */}
 
-                <Route path="/math/unit/:unitID" exact component={UnitDetail} />
                 <Route
-                  path="/math/unit/:unitID/lesson/:lessonID"
+                  path="/:unitName/unit/:unitID"
+                  exact
+                  component={UnitDetail}
+                />
+                <Route
+                  path="/:unitName/unit/:unitID/lesson/:lessonID"
                   exact
                   component={MapLesson}
                 />
                 <Route
-                  path="/math/unit/:unitID/lesson/:lessonID/lecture"
+                  path="/:unitName/unit/:unitID/lesson/:lessonID/lecture"
                   exact
                   component={Lecture}
                 />
                 <Route
-                  path="/math/unit/:unitID/lesson/:lessonID/exercise"
+                  path="/:unitName/unit/:unitID/lesson/:lessonID/exercise"
                   exact
                   component={Exercise}
                 />
                 <Route
-                  path="/math/unit/:unitID/lesson/:lessonID/exercise/:exerciseID"
+                  path="/:unitName/unit/:unitID/lesson/:lessonID/exercise/:exerciseID"
                   exact
                   component={QuizComponent}
                 />
                 <Route
-                  path="/math/unit/:unitID/lesson/:lessonID/game"
+                  path="/:unitName/unit/:unitID/lesson/:lessonID/game"
                   exact
                   component={MapGame}
                 />
                 <Route
-                  path="/math/unit/:unitID/lesson/:lessonID/game/:gameID"
+                  path="/:unitName/unit/:unitID/lesson/:lessonID/game/:gameID"
                   exact
                   component={PlayGame}
                 />
                 <Route
-                  path="/math/unit/:unitID/lesson/:lessonID/game/:gameID/result"
+                  path="/:unitName/unit/:unitID/lesson/:lessonID/game/:gameID/result"
                   exact
                   component={GameResult}
                 />

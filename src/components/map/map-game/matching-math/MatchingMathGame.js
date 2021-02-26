@@ -38,19 +38,16 @@ class MatchingMathGame extends Component {
     this.state.info.map((item) => {
       if (item.answer === item.falseAnswer) {
         count++;
-        if (count === 6) {
+        if (count === 4) {
           correctSound.play();
+          setTimeout(() => {
+            count = 0;
+            this.props.nextGame();
+          }, 1000);
         }
       }
       return count;
     });
-    console.log(count);
-    if (count === 4) {
-      setTimeout(() => {
-        count = 0;
-        this.props.nextGame();
-      }, 1000);
-    }
   };
 
   render() {
