@@ -8,7 +8,7 @@ const SubjectHome = () => {
       <div className="page">
         <div className="page-contain">
           <div className="subject-home-container">
-            <div className="subject-home-title" />
+            <div className="subject-home-title"/>
             <div className="subject-home-content">
               <div className="subject-home-wrap">
                 <div className="subject-outter-border">

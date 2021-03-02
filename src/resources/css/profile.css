@@ -1,0 +1,31 @@
+.account-detail{
+    text-align: center;
+    padding: 5%;
+}
+
+.account-logo{
+    background-position: center ;
+    background-image: url(https://www.colorblends.com/wp-content/uploads/2020/01/1502_BestYellow_CGC_DSC_5386QP.jpg);
+    border: 1px solid grey;
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
+    display:block;
+    margin:auto;
+    
+}
+
+.account-usename{
+    font-size: 30px;
+    padding: 10px
+    
+}
+.logout-btn-profile{
+    margin:auto;
+    display: block;
+    width: 117px;
+    height: 54px;
+    background: url("../img/home/logout-btn.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
