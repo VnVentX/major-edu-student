@@ -79,46 +79,46 @@ const Home = (props) => {
                   component={OverviewQuiz}
                 />
                 <Route path="/profile" exact component={Profile} />
-                <Route path="/:unitName/unit" exact component={Unit} />
+                <Route path="/subject/:subjectID/unit" exact component={Unit} />
                 {/* Flow mới bắt đầu từ đây */}
 
                 <Route
-                  path="/:unitName/unit/:unitID"
+                  path="/subject/:subjectID/unit/:unitID"
                   exact
                   component={UnitDetail}
                 />
                 <Route
-                  path="/:unitName/unit/:unitID/lesson/:lessonID"
+                  path="/subject/:subjectID/unit/:unitID/lesson/:lessonID"
                   exact
                   component={MapLesson}
                 />
                 <Route
-                  path="/:unitName/unit/:unitID/lesson/:lessonID/lecture"
+                  path="/subject/:subjectID/unit/:unitID/lesson/:lessonID/lecture"
                   exact
                   component={Lecture}
                 />
                 <Route
-                  path="/:unitName/unit/:unitID/lesson/:lessonID/exercise"
+                  path="/subject/:subjectID/unit/:unitID/lesson/:lessonID/exercise"
                   exact
                   component={Exercise}
                 />
                 <Route
-                  path="/:unitName/unit/:unitID/lesson/:lessonID/exercise/:exerciseID"
+                  path="/subject/:subjectID/unit/:unitID/lesson/:lessonID/exercise/:exerciseID"
                   exact
                   component={QuizComponent}
                 />
                 <Route
-                  path="/:unitName/unit/:unitID/lesson/:lessonID/game"
+                  path="/subject/:subjectID/unit/:unitID/lesson/:lessonID/game"
                   exact
                   component={MapGame}
                 />
                 <Route
-                  path="/:unitName/unit/:unitID/lesson/:lessonID/game/:gameID"
+                  path="/subject/:subjectID/unit/:unitID/lesson/:lessonID/game/:gameID"
                   exact
                   component={PlayGame}
                 />
                 <Route
-                  path="/:unitName/unit/:unitID/lesson/:lessonID/game/:gameID/result"
+                  path="/subject/:subjectID/unit/:unitID/lesson/:lessonID/game/:gameID/result"
                   exact
                   component={GameResult}
                 />

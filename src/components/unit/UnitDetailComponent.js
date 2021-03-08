@@ -31,7 +31,7 @@ const UnitDetailComponent = () => {
     const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
     return url;
   });
-  const unitPath = pathStack[1];
+  const unitPath = pathStack[2];
 
   return (
     <div className="unit-bg">

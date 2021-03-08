@@ -4,46 +4,54 @@ import { Link } from "react-router-dom";
 
 const data = [
   {
-    unitFirst: { id: 1, unitName: "Unit 1" },
-    unitSecond: { id: 2, unitName: "Unit 2" },
+    unit: [
+      { id: 1, unitName: "Unit 1" },
+      { id: 2, unitName: "Unit 2" },
+    ],
     progressTest: {
       id: 1,
       progressTestName: "Review 1",
     },
   },
   {
-    unitFirst: { id: 3, unitName: "Unit 3" },
-    unitSecond: { id: 4, unitName: "Unit 4" },
+    unit: [
+      { id: 3, unitName: "Unit 4" },
+      { id: 4, unitName: "Unit 3" },
+    ],
     progressTest: {
       id: 2,
       progressTestName: "Review 2",
     },
   },
   {
-    unitFirst: { id: 5, unitName: "Unit 5" },
+    unit: [{ id: 5, unitName: "Unit 5" }],
     progressTest: {
       id: 4,
       progressTestName: "Semester 1",
     },
   },
   {
-    unitFirst: { id: 6, unitName: "Unit 6" },
-    unitSecond: { id: 7, unitName: "Unit 7" },
+    unit: [
+      { id: 6, unitName: "Unit 6" },
+      { id: 7, unitName: "Unit 7" },
+    ],
     progressTest: {
       id: 5,
       progressTestName: "Review 3",
     },
   },
   {
-    unitFirst: { id: 8, unitName: "Unit 8" },
-    unitSecond: { id: 9, unitName: "Unit 9" },
+    unit: [
+      { id: 8, unitName: "Unit 8" },
+      { id: 9, unitName: "Unit 9" },
+    ],
     progressTest: {
       id: 6,
       progressTestName: "Review 4",
     },
   },
   {
-    unitFirst: { id: 10, unitName: "Unit 10" },
+    unit: [{ id: 10, unitName: "Unit 10" }],
     progressTest: {
       id: 7,
       progressTestName: "Semester 2",
@@ -86,24 +94,16 @@ const UnitComponent = () => {
                         }}
                       >
                         <Space size={110}>
-                          {i.unitFirst && (
+                          {i.unit?.map((unit, idx) => (
                             <Link
-                              to={`${window.location.pathname}/${i.unitFirst.id}`}
+                              key={idx}
+                              to={`${window.location.pathname}/${unit.id}`}
                             >
                               <div className={`unit-btn ${itemColor}-1`}>
-                                <h2>{i.unitFirst.unitName}</h2>
+                                <h2>{unit.unitName}</h2>
                               </div>
                             </Link>
-                          )}
-                          {i.unitSecond && (
-                            <Link
-                              to={`${window.location.pathname}/${i.unitSecond.id}`}
-                            >
-                              <div className={`unit-btn ${itemColor}-1`}>
-                                <h2>{i.unitSecond.unitName}</h2>
-                              </div>
-                            </Link>
-                          )}
+                          ))}
                         </Space>
                       </div>
                       {i.progressTest && (

@@ -61,7 +61,7 @@ const ExerciseComponent = () => {
       <div className="page">
         <div
           className="arrow-btn left-arrow"
-          onClick={() => history.push(lessonPath[4])}
+          onClick={() => history.push(lessonPath[5])}
         >
           <h1>Lesson 1</h1>
         </div>

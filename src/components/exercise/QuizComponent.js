@@ -225,6 +225,7 @@ const QuizComponent = (props) => {
                                   <div
                                     onClick={() => {
                                       handleSelected(item, a, i);
+                                      handelAnswerSubmit(index);
                                     }}
                                   >
                                     <div
@@ -241,12 +242,7 @@ const QuizComponent = (props) => {
                                 </div>
                               ))}
                             </div>
-                            <div
-                              className="quiz-submit-btn"
-                              onClick={() => {
-                                handelAnswerSubmit(index);
-                              }}
-                            />
+                            {/* <div className="quiz-submit-btn" /> */}
                           </div>
                         </React.Fragment>
                       )
