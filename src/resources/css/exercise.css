@@ -15,6 +15,20 @@
   align-items: center;
 }
 
+.exercise-title {
+  background: url("../img/title-layer.png");
+  min-width: 272px;
+  min-height: 100px;
+  display: grid;
+  place-items: center;
+  margin: 50px 0 50px 0;
+}
+
+.exercise-title > h1 {
+  font-size: 2.5rem;
+  color: white;
+}
+
 .exercise-wrap {
   display: flex;
   flex-wrap: wrap;

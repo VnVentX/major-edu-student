@@ -84,27 +84,18 @@ const UnitComponent = () => {
                     className="unit-btn-row"
                     onLoad={randomColor(color)}
                   >
-                    <Space size={120}>
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          width: 450,
-                        }}
-                      >
-                        <Space size={110}>
-                          {i.unit?.map((unit, idx) => (
-                            <Link
-                              key={idx}
-                              to={`${window.location.pathname}/${unit.id}`}
-                            >
-                              <div className={`unit-btn ${itemColor}-1`}>
-                                <h2>{unit.unitName}</h2>
-                              </div>
-                            </Link>
-                          ))}
-                        </Space>
+                    <Space size={20}>
+                      <div className="unit-inner">
+                        {i.unit?.map((unit, idx) => (
+                          <Link
+                            key={idx}
+                            to={`${window.location.pathname}/${unit.id}`}
+                          >
+                            <div className={`unit-btn ${itemColor}-1`}>
+                              <h2>{unit.unitName}</h2>
+                            </div>
+                          </Link>
+                        ))}
                       </div>
                       {i.progressTest && (
                         <Link to="/math/unit/1">
