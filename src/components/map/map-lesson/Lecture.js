@@ -25,6 +25,23 @@ const Lecture = () => {
     setIsFS(false);
   };
 
+  //! Handle exit fullscreen logic
+  document.addEventListener("fullscreenchange", exitHandler);
+  document.addEventListener("webkitfullscreenchange", exitHandler);
+  document.addEventListener("mozfullscreenchange", exitHandler);
+  document.addEventListener("MSFullscreenChange", exitHandler);
+
+  function exitHandler() {
+    if (
+      !document.fullscreenElement &&
+      !document.webkitIsFullScreen &&
+      !document.mozFullScreen &&
+      !document.msFullscreenElement
+    ) {
+      setIsFS(false);
+    }
+  }
+
   return (
     <div className="lesson-wrap">
       <div className="non-fs">
