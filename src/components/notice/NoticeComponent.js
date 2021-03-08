@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import shout from "../../resources/img/home/shout.png";
 
-// import data
-const listData = [];
-for (let i = 0; i < 10; i++) {
-  listData.push({
-    id: `${i + 1}`,
-    title: `Title ${i + 1}`,
-    date: "01/01/2021, 10:00AM",
-    content:
-      "Pellentesque habitant morbi tristique senectus et netus et  malesuada. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.",
-  });
-}
-
 const NoticeComponent = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function getAllNews() {
+      // You can await here
+      const response = await axios(
+        "http://mathscience.azurewebsites.net/announcement"
+      );
+      setData(response.data);
+    }
+    getAllNews();
+  }, []);
+
   return (
     <div className="notice-bg">
       <div className="page">
@@ -22,7 +24,7 @@ const NoticeComponent = () => {
           <div className="notice-container">
             <div className="notice-page-title" />
             <div className="notice-wrap">
-              {listData?.map((i, idx) => (
+              {data?.map((i, idx) => (
                 <div key={idx} className="outter-border">
                   <div className="inner-border">
                     <div className="notice-title">
@@ -31,11 +33,11 @@ const NoticeComponent = () => {
                         <Link to={`${window.location.pathname}/${i.id}`}>
                           <h3>{i.title}</h3>
                         </Link>
-                        <h4>{i.date}</h4>
+                        <h4>{i.createdDate}</h4>
                       </div>
                     </div>
                     <div className="notice-content">
-                      <p>{i.content}</p>
+                      <p>{i.shortDescription}</p>
                     </div>
                     <Link to={`${window.location.pathname}/${i.id}`}>
                       See more...

@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Space } from "antd";
 
 const NoticeDetailComponent = () => {
+  const [data, setData] = useState([]);
+  const newsID = window.location.pathname.split("/")[2];
+  useEffect(() => {
+    async function getNewsDetail() {
+      // You can await here
+      const response = await axios(
+        `http://mathscience.azurewebsites.net/announcement/${newsID}`
+      );
+      setData(response.data);
+    }
+    getNewsDetail();
+  }, [newsID]);
+
   return (
     <div className="notice-bg">
       <div className="page">
@@ -13,41 +27,13 @@ const NoticeDetailComponent = () => {
                 <div className="notice-inner-border">
                   <Space direction="vertical" size="middle">
                     <div className="announce-title">
-                      <h1>This is test announcement</h1>
+                      <h1>{data.title}</h1>
                     </div>
                     <div className="announce-date">
-                      <span>01/01/2021, 10:00AM</span>
+                      <span>{data.createdDate}</span>
                     </div>
                     <div className="annouce-content">
-                      <h2>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-                        dolore magna aliquam erat volutpat. Ut wisi enim ad
-                        minim veniam, quis nostrud exerci tation ullamcorper
-                        suscipit lobortis nisl ut aliquip ex ea commodo
-                        consequat. Lorem ipsum dolor sit amet, consectetuer
-                        adipiscing elit, sed diam nonummy nibh euismod tincidunt
-                        ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-                        enim ad minim veniam, quis nostrud exerci tation
-                        ullamcorper suscipit lobortis nisl ut aliquip ex ea
-                        commodo consequat. Lorem ipsum dolor sit amet,
-                        consectetuer adipiscing elit, sed diam nonummy nibh
-                        euismod tincidunt ut laoreet dolore magna aliquam erat
-                        volutpat. Ut wisi enim ad minim veniam, quis nostrud
-                        exerci tation ullamcorper suscipit lobortis nisl ut
-                        aliquip ex ea commodo consequat. Lorem ipsum dolor sit
-                        amet, consectetuer adipiscing elit, sed diam nonummy
-                        nummy nibh euismod tincidunt ut laoreet dolore magna
-                        aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                        quis nostrud exerci tation iam, quis nostrud exerci
-                        tation ullamcorper suscipit lobortis nisl ut aliquip ex
-                        ea commodo consequat. Lorem ipsum dolor sit amet,
-                        consectetuer adipiscing elit, sed diam nonummy nibh
-                        euismod tincidunt ut laoreet dolore magna aliquam erat
-                        volutpat. Ut wisi enim ad minim veniam, quis nostrud
-                        exerci tation ullamcorper suscipit lobortis nisl ut
-                        aliquip ex ea commodo consequat.
-                      </h2>
+                      <h2>{data.announcementContent}</h2>
                     </div>
                   </Space>
                 </div>
