@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import math from "../../resources/img/home/math.png";
 import { Link } from "react-router-dom";
 
+const gradeID = 1;
+
 const SubjectHome = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function getAllSubject() {
+      // You can await here
+      const response = await axios(
+        `http://mathscience.azurewebsites.net/grade/${gradeID}/subject`
+      );
+      setData(response.data);
+    }
+    getAllSubject();
+  }, []);
+
   return (
     <div className="subject-home">
       <div className="page">
@@ -10,26 +26,18 @@ const SubjectHome = () => {
           <div className="subject-home-container">
             <div className="subject-home-title" />
             <div className="subject-home-content">
-              <div className="subject-home-wrap">
-                <div className="subject-outter-border">
-                  <div className="subject-inner-border">
-                    <img src={math} alt={math} />
+              {data?.map((i, idx) => (
+                <div key={idx} className="subject-home-wrap">
+                  <div className="subject-outter-border">
+                    <div className="subject-inner-border">
+                      <img src={math} alt={math} />
+                    </div>
                   </div>
+                  <Link to={`subject/${i.id}/unit`}>
+                    <div className="math-btn" />
+                  </Link>
                 </div>
-                <Link to="/math/unit">
-                  <div className="math-btn" />
-                </Link>
-              </div>
-              <div className="subject-home-wrap">
-                <div className="subject-outter-border">
-                  <div className="subject-inner-border">
-                    <img src={math} alt={math} />
-                  </div>
-                </div>
-                <Link to="/science/unit">
-                  <div className="science-btn" />
-                </Link>
-              </div>
+              ))}
             </div>
           </div>
         </div>

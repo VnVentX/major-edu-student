@@ -14,7 +14,7 @@ const NoticeDetailComponent = () => {
       setData(response.data);
     }
     getNewsDetail();
-  }, [newsID]);
+  }, []);
 
   return (
     <div className="notice-bg">

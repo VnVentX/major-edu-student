@@ -27,7 +27,7 @@ const SubjectComponent = () => {
             <div className="subject-home-title" />
             <div className="subject-home-content">
               {data?.map((i, idx) => (
-                <div className="subject-home-wrap">
+                <div key={idx} className="subject-home-wrap">
                   <div className="subject-outter-border">
                     <div className="subject-inner-border">
                       <img src={math} alt={math} />

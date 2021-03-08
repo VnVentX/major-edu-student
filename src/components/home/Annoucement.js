@@ -17,7 +17,7 @@ const Annoucement = () => {
     }
     getTop3News();
   }, []);
-  
+
   return (
     <div className="page">
       <div className="page-contain">
