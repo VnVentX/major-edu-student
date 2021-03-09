@@ -12,7 +12,7 @@ const SubjectHome = () => {
     async function getAllSubject() {
       // You can await here
       const response = await axios(
-        `http://mathscience.azurewebsites.net/grade/${gradeID}/subject`
+        `https://mathscience.azurewebsites.net/grade/${gradeID}/subject`
       );
       setData(response.data);
     }

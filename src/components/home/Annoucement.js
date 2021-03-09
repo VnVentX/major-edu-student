@@ -11,7 +11,7 @@ const Annoucement = () => {
     async function getTop3News() {
       // You can await here
       const response = await axios(
-        "http://mathscience.azurewebsites.net/announcement/3newest"
+        "https://mathscience.azurewebsites.net/announcement/3newest"
       );
       setData(response.data);
     }

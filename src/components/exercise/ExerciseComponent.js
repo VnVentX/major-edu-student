@@ -13,7 +13,7 @@ const ExerciseComponent = () => {
     async function getAllExercise() {
       // You can await here
       const response = await axios(
-        `http://mathscience.azurewebsites.net/lesson/${lessonID}/exercise`
+        `https://mathscience.azurewebsites.net/lesson/${lessonID}/exercise`
       );
       setData(response.data);
     }

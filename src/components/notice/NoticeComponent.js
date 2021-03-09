@@ -10,7 +10,7 @@ const NoticeComponent = () => {
     async function getAllNews() {
       // You can await here
       const response = await axios(
-        "http://mathscience.azurewebsites.net/announcement"
+        "https://mathscience.azurewebsites.net/announcement"
       );
       setData(response.data);
     }
