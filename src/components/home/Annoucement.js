@@ -9,11 +9,14 @@ const Annoucement = () => {
 
   useEffect(() => {
     async function getTop3News() {
-      // You can await here
-      const response = await axios(
-        "https://mathscience.azurewebsites.net/announcement/3newest"
-      );
-      setData(response.data);
+      await axios
+        .get("https://mathscience.azurewebsites.net/announcement/3newest")
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }
     getTop3News();
   }, []);

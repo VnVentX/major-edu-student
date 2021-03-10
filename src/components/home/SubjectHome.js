@@ -10,11 +10,14 @@ const SubjectHome = () => {
 
   useEffect(() => {
     async function getAllSubject() {
-      // You can await here
-      const response = await axios(
-        `https://mathscience.azurewebsites.net/grade/${gradeID}/subject`
-      );
-      setData(response.data);
+      await axios
+        .get(`https://mathscience.azurewebsites.net/grade/${gradeID}/subject`)
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }
     getAllSubject();
   }, []);

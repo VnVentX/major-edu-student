@@ -11,11 +11,16 @@ const ExerciseComponent = () => {
   const lessonID = window.location.pathname.split("/")[6];
   useEffect(() => {
     async function getAllExercise() {
-      // You can await here
-      const response = await axios(
-        `https://mathscience.azurewebsites.net/lesson/${lessonID}/exercise`
-      );
-      setData(response.data);
+      await axios
+        .get(
+          `https://mathscience.azurewebsites.net/lesson/${lessonID}/exercise`
+        )
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }
     getAllExercise();
   }, []);

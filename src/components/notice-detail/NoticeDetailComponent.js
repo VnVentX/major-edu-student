@@ -5,13 +5,17 @@ import { Space } from "antd";
 const NoticeDetailComponent = () => {
   const [data, setData] = useState([]);
   const newsID = window.location.pathname.split("/")[2];
+  
   useEffect(() => {
     async function getNewsDetail() {
-      // You can await here
-      const response = await axios(
-        `https://mathscience.azurewebsites.net/announcement/${newsID}`
-      );
-      setData(response.data);
+      await axios
+        .get(`https://mathscience.azurewebsites.net/announcement/${newsID}`)
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }
     getNewsDetail();
   }, []);
