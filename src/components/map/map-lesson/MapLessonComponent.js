@@ -18,7 +18,7 @@ const MapLessonComponent = () => {
       <div className="page">
         <div
           className="arrow-btn left-arrow"
-          onClick={() => history.push(unitPath[2])}
+          onClick={() => history.push(unitPath[3])}
         >
           <h1>Unit 1</h1>
         </div>

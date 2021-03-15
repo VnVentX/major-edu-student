@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import "antd/dist/antd.css";
 
@@ -6,6 +7,24 @@ const color = ["blue", "green", "orange", "pink"];
 let itemColor = "";
 
 const ExerciseComponent = () => {
+  const [data, setData] = useState([]);
+  const lessonID = window.location.pathname.split("/")[6];
+  useEffect(() => {
+    async function getAllExercise() {
+      await axios
+        .get(
+          `https://mathscience.azurewebsites.net/lesson/${lessonID}/exercise`
+        )
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+    getAllExercise();
+  }, []);
+
   const history = useHistory();
   const location = useLocation();
 
@@ -15,41 +34,6 @@ const ExerciseComponent = () => {
     const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
     return url;
   });
-
-  const data = [
-    {
-      id: 0,
-      exerciseName: "Exercise 1",
-    },
-    {
-      id: 1,
-      exerciseName: "Exercise 2",
-    },
-    {
-      id: 2,
-      exerciseName: "Exercise 3",
-    },
-    {
-      id: 3,
-      exerciseName: "Exercise 4",
-    },
-    {
-      id: 4,
-      exerciseName: "Exercise 5",
-    },
-    {
-      id: 5,
-      exerciseName: "Exercise 6",
-    },
-    {
-      id: 6,
-      exerciseName: "Exercise 7",
-    },
-    {
-      id: 7,
-      exerciseName: "Exercise 8",
-    },
-  ];
 
   function randomColor(array) {
     itemColor = array[Math.floor(Math.random() * array.length)];
@@ -61,12 +45,15 @@ const ExerciseComponent = () => {
       <div className="page">
         <div
           className="arrow-btn left-arrow"
-          onClick={() => history.push(lessonPath[4])}
+          onClick={() => history.push(lessonPath[5])}
         >
           <h1>Lesson 1</h1>
         </div>
         <div className="page-contain">
           <div className="exercise-container">
+            <div className="exercise-title">
+              <h1>Exercise</h1>
+            </div>
             <div className="exercise-wrap">
               {data?.map((i, idx) => (
                 <div
@@ -80,7 +67,7 @@ const ExerciseComponent = () => {
                 >
                   <Link to={`${location.pathname}/${i.id}`}>
                     <div className={`exercise-btn ${itemColor}`}>
-                      <h1>{i.exerciseName}</h1>
+                      <h1>Exercise {i.exerciseName}</h1>
                     </div>
                   </Link>
                 </div>

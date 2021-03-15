@@ -10,22 +10,18 @@ export const data = [
       {
         answerText: "Option 1",
         isCorrect: true,
-        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
-        isSelected: false,
       },
     ],
   },
@@ -40,22 +36,18 @@ export const data = [
       {
         answerText: "Option 1",
         isCorrect: true,
-        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
-        isSelected: false,
       },
     ],
   },
@@ -70,22 +62,18 @@ export const data = [
       {
         answerText: "Option 1",
         isCorrect: true,
-        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
-        isSelected: false,
       },
     ],
   },
@@ -100,22 +88,18 @@ export const data = [
       {
         answerText: "Option 1",
         isCorrect: true,
-        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
-        isSelected: false,
       },
     ],
   },
@@ -130,22 +114,18 @@ export const data = [
       {
         answerText: "Option 1",
         isCorrect: true,
-        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
-        isSelected: false,
       },
     ],
   },
@@ -160,22 +140,18 @@ export const data = [
       {
         answerText: "Option 1",
         isCorrect: true,
-        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
-        isSelected: false,
       },
     ],
   },
@@ -190,22 +166,18 @@ export const data = [
       {
         answerText: "Option 1",
         isCorrect: true,
-        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
-        isSelected: false,
       },
     ],
   },
@@ -220,22 +192,18 @@ export const data = [
       {
         answerText: "Option 1",
         isCorrect: true,
-        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
-        isSelected: false,
       },
     ],
   },
@@ -250,22 +218,18 @@ export const data = [
       {
         answerText: "Option 1",
         isCorrect: true,
-        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
-        isSelected: false,
       },
     ],
   },
@@ -280,22 +244,18 @@ export const data = [
       {
         answerText: "Option 1",
         isCorrect: true,
-        isSelected: false,
       },
       {
         answerText: "Option 2",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 3",
         isCorrect: false,
-        isSelected: false,
       },
       {
         answerText: "Option 4",
         isCorrect: false,
-        isSelected: false,
       },
     ],
   },

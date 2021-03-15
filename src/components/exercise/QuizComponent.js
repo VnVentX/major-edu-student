@@ -176,7 +176,7 @@ const QuizComponent = (props) => {
                       index >= minIndex &&
                       index < maxIndex && (
                         <React.Fragment key={index}>
-                          <div className="quiz-left">
+                          <div id="showMe" className="quiz-left">
                             <img
                               src={item.questionImg}
                               alt={item.questionImg}
@@ -184,7 +184,7 @@ const QuizComponent = (props) => {
                               height="100%"
                             />
                           </div>
-                          <div className="quiz-right">
+                          <div id="showMe" className="quiz-right">
                             <div className="question">
                               <div className="question-title">
                                 <h1>Question {index + 1}</h1>
@@ -225,6 +225,7 @@ const QuizComponent = (props) => {
                                   <div
                                     onClick={() => {
                                       handleSelected(item, a, i);
+                                      handelAnswerSubmit(index);
                                     }}
                                   >
                                     <div
@@ -241,12 +242,7 @@ const QuizComponent = (props) => {
                                 </div>
                               ))}
                             </div>
-                            <div
-                              className="quiz-submit-btn"
-                              onClick={() => {
-                                handelAnswerSubmit(index);
-                              }}
-                            />
+                            {/* <div className="quiz-submit-btn" /> */}
                           </div>
                         </React.Fragment>
                       )

@@ -6,6 +6,7 @@ const urlIframe =
 
 const Lecture = () => {
   const [link, setLink] = useState("");
+  const [isFS, setIsFS] = useState(false);
 
   useEffect(() => {
     const data = urlIframe.split(" ")[1].split("src=")[1].split('"')[1];
@@ -16,7 +17,30 @@ const Lecture = () => {
 
   const onClickFullScreen = () => {
     handle.enter();
+    setIsFS(true);
   };
+
+  const onClickExitFullScreen = () => {
+    handle.exit();
+    setIsFS(false);
+  };
+
+  //! Handle exit fullscreen logic
+  document.addEventListener("fullscreenchange", exitHandler);
+  document.addEventListener("webkitfullscreenchange", exitHandler);
+  document.addEventListener("mozfullscreenchange", exitHandler);
+  document.addEventListener("MSFullscreenChange", exitHandler);
+
+  function exitHandler() {
+    if (
+      !document.fullscreenElement &&
+      !document.webkitIsFullScreen &&
+      !document.mozFullScreen &&
+      !document.msFullscreenElement
+    ) {
+      setIsFS(false);
+    }
+  }
 
   return (
     <div className="lesson-wrap">
@@ -36,11 +60,18 @@ const Lecture = () => {
 `,
             }}
           />
+          {isFS && (
+            <div id="showMe" className="tool-bar-fs">
+              <div className="full-btn" onClick={onClickExitFullScreen} />
+            </div>
+          )}
         </FullScreen>
       </div>
-      <div className="tool-bar">
-        <div className="full-btn" onClick={onClickFullScreen} />
-      </div>
+      {!isFS && (
+        <div id="showMe" className="tool-bar">
+          <div className="full-btn" onClick={onClickFullScreen} />
+        </div>
+      )}
     </div>
   );
 };

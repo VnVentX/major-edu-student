@@ -31,7 +31,7 @@ const UnitDetailComponent = () => {
     const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
     return url;
   });
-  const unitPath = pathStack[1];
+  const unitPath = pathStack[2];
 
   return (
     <div className="unit-bg">
@@ -43,22 +43,24 @@ const UnitDetailComponent = () => {
           <h1>Unit</h1>
         </div>
         <div className="page-contain">
-          <div className="unit-container">
+          <div className="unit-detail-container">
             <div className="unit-detail-title">
               <h1>Unit {unit}</h1>
             </div>
-            <Space size={50}>
-              {lesson?.map((i) => (
-                <Link
-                  key={i.lessonID}
-                  to={`${window.location.pathname}/lesson/${i.lessonID}`}
-                >
-                  <div className="unit-detai-btn">
-                    <h1>{i.lessonTitlle}</h1>
-                  </div>
-                </Link>
-              ))}
-            </Space>
+            <div className="unit-detail-wrap">
+              <Space size={50}>
+                {lesson?.map((i) => (
+                  <Link
+                    key={i.lessonID}
+                    to={`${window.location.pathname}/lesson/${i.lessonID}`}
+                  >
+                    <div className="unit-detai-btn">
+                      <h1>{i.lessonTitlle}</h1>
+                    </div>
+                  </Link>
+                ))}
+              </Space>
+            </div>
           </div>
         </div>
       </div>
