@@ -1,25 +1,32 @@
 /* Menu Header */
-
-.header-menu {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+.top-oval {
+  position: absolute;
+  width: 100%;
+  height: 555px;
+  left: 0px;
+  top: 0px;
+  background: #ffc853;
+  border-radius: 0px 0px 416px 416px;
 }
 
 .ant-layout-header {
-  display: grid;
+  place-items: center;
   position: relative;
   height: auto;
   width: 100%;
   min-height: 14vh;
   padding: 0px !important;
-  background: url("../img/home/header-bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: rgba(0, 0, 0, 0);
 }
 
+.logo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: 5vh 0;
+}
 .logo img {
-  height: 10vh;
+  height: 15vh;
 }
 
 .ant-menu.ant-menu-dark,
@@ -34,123 +41,78 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .menu-ham {
   display: none;
 }
 
-@media (max-width: 3000px) {
-  .menu-btn {
-    display: block;
-    width: 160px;
-    height: 110px;
-  }
-  .logout-btn {
-    display: block;
-    width: 117px;
-    height: 54px;
-    background: url("../img/home/logout-btn.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
+.menu-btn {
+  width: auto;
+  display: block;
+  background-color: #1cb9ff;
+  border-radius: 0 0 50px 50px;
 }
 
-@media (max-width: 1500px) {
-  .menu-btn {
-    display: block;
-    width: 130px;
-    height: 80px;
-  }
-  .logout-btn {
-    display: block;
-    width: 100px;
-    height: 44px;
-    background: url("../img/home/logout-btn.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-}
-
-@media (max-width: 1240px) {
-  .menu-btn {
-    display: block;
-    width: 120px;
-    height: 70px;
-  }
-  .logout-btn {
-    display: block;
-    width: 100px;
-    height: 44px;
-    background: url("../img/home/logout-btn.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-}
-
-@media (max-width: 1190px) {
-  .header-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .menu-btn {
-    display: none;
-  }
-  .logout-btn {
-    display: none;
-  }
-  .menu-ham {
-    display: block;
-  }
-}
-
-.home-btn {
-  background: url("../img/home/home-btn.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-.notice-btn {
-  background: url("../img/home/notice-btn.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-.subject-btn {
-  background: url("../img/home/subject-btn.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-.score-btn {
-  background: url("../img/home/score-btn.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-.profile-btn {
-  background: url("../img/home/profile-btn.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+.menu-btn h1 {
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: #ffffff;
+  padding: 20px;
 }
 
 /* Slide Show */
 
 .slide-show {
-  width: 100%;
-  height: 807px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 90%;
+  min-width: 720px;
+  margin: 0 auto;
 }
 
 .slider {
-  height: 100%;
   width: 100%;
   z-index: 0;
 }
 
-.slider > img {
-  position: absolute;
+.awssld__container figure,
+.awssld__content,
+.awssld__box {
+  height: auto !important;
+}
+
+.slider-img {
+  width: 100%;
+}
+
+.awssld__controls button {
+  top: calc(36% - (0.5 * var(--control-button-height))) !important;
+}
+
+.awssld__bullets {
+  z-index: 5;
+  top: calc(60% - (0.5 * var(--control-button-height))) !important;
+}
+.awssld__bullets .awssld__bullets--active {
+  transform: none !important;
+}
+.awssld__bullets button {
+  transition: none !important;
+}
+
+.awssld {
+  --control-button-width: 10%;
+  --control-button-height: 25%;
+  --control-button-background: transparent;
+  --control-bullet-color: #c4d0f6 !important;
+  --control-bullet-active-color: #f1441f !important;
 }
 
 .left-btn {
   background: url("../img/home/left-btn.png");
+  background-size: cover;
   background-repeat: none;
   cursor: pointer;
   width: 85px;
@@ -160,6 +122,7 @@
 }
 .right-btn {
   background: url("../img/home/right-btn.png");
+  background-size: cover;
   background-repeat: none;
   cursor: pointer;
   min-width: 85px;
