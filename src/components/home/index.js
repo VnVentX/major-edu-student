@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Annoucement from "./Annoucement";
 import SlideShow from "./SlideShow";
 import SubjectHome from "./SubjectHome";
+import bg from "../../resources/img/home/home-bg.png";
 
-const index = () => {
+const Index = () => {
+  useEffect(() => {
+    document.body.style.backgroundImage = `url('${bg}')`;
+  }, []);
+
   return (
     <>
       <SlideShow />
@@ -13,4 +18,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

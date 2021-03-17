@@ -2,7 +2,6 @@ import React from "react";
 import { Layout, Space } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import logo_major from "../../resources/img/logo_major.png";
 const { Header } = Layout;
 
 const StyledMenu = styled.nav`
@@ -147,7 +146,6 @@ const HeaderContainer = (props) => {
 
   return (
     <div className="scence">
-      <div className="top-oval" />
       <Header>
         <div className="menu-content">
           <Space size={45}>
@@ -198,9 +196,6 @@ const HeaderContainer = (props) => {
           </div> */}
         </div>
       </Header>
-      <div className="logo">
-        <img src={logo_major} alt={logo_major} />
-      </div>
     </div>
   );
 };

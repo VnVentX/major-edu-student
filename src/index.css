@@ -23,8 +23,8 @@ code {
 .contents {
   position: relative;
   width: 100%;
+  min-width: 1024px;
   min-height: 100%;
-  background: #263b80;
 }
 .scence {
   position: relative;

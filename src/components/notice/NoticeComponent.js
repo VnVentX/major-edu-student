@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Pagination } from "antd";
 import shout from "../../resources/img/home/shout.png";
+import bg from "../../resources/img/notice/notice-bg.png";
 
 const pageSize = 3;
 
@@ -17,9 +18,10 @@ const NoticeComponent = () => {
     setTotalPage(data.length / pageSize);
     setMinIndex(0);
     setMaxIndex(pageSize);
-    async function getAllNews() {
+    document.body.style.backgroundImage = `url('${bg}')`;
+    async function getAllNews(){
       await axios
-        .get("https://mathscience.azurewebsites.net/announcement")
+        .get("https://mathscienceeducation.herokuapp.com/news")
         .then((res) => {
           setData(res.data);
         })

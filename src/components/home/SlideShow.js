@@ -2,10 +2,15 @@ import React from "react";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 import banner_science from "../../resources/img/banner_science.jpg";
+import logo_major from "../../resources/img/logo_major.png";
 
 const SlideShow = () => {
   return (
     <div className="page">
+      <div className="top-oval" />
+      <div className="logo">
+        <img src={logo_major} alt={logo_major} />
+      </div>
       <div className="slide-show">
         <AwesomeSlider
           className="slider"
