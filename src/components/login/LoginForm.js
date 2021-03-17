@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import login_button from "../../resources/img/login-page/login-btn.png";
-import logo from "../../resources/img/logo_major.png";
 import { Button } from "antd";
 
 const LoginForm = (props) => {
@@ -32,9 +31,6 @@ const LoginForm = (props) => {
           </div>
         </div>
       )}
-      <div className="title">
-        <img src={logo} alt={logo} />
-      </div>
       <form className="login-form">
         <div className="input-group">
           <input
@@ -67,38 +63,38 @@ const LoginForm = (props) => {
           <label htmlFor="password">Password</label>
         </div>
         <div className="action-group">
-          <div>
-            <input
-              type="checkbox"
-              id="remember"
-              name="remember"
-              value=""
-              style={{ marginRight: 5 }}
-            />
-            <label htmlFor="remember">Remember me</label>
-          </div>
+          <button
+            type="submit"
+            style={{
+              border: 0,
+              background: "transparent",
+              cursor: "pointer",
+              width: 244,
+              height: 92,
+            }}
+            onClick={handleSubmit}
+          >
+            <img src={login_button} alt={login_button} width="100%" />
+          </button>
           <Button
             className="login-action-btn"
-            type="link"
+            type="text"
             block
             onClick={props.handleChange}
-            style={{ color: "#1a6fc4", textDecoration: "underline" }}
           >
             Forgot password &gt;
           </Button>
         </div>
-        <button
-          type="submit"
-          style={{
-            border: 0,
-            background: "transparent",
-            cursor: "pointer",
-            marginTop: 20,
-          }}
-          onClick={handleSubmit}
-        >
-          <img src={login_button} alt={login_button} width="80%" />
-        </button>
+        {/* <div>
+          <input
+            type="checkbox"
+            id="remember"
+            name="remember"
+            value=""
+            style={{ marginRight: 5 }}
+          />
+          <label htmlFor="remember">Remember me</label>
+        </div> */}
       </form>
     </>
   );

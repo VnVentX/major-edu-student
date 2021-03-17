@@ -13,14 +13,37 @@
 }
 
 .login {
-  background: rgba(246, 249, 217, 0.3);
-  width: 60%;
+  background: #ffc853;
+  border: 0.5rem solid #263b80;
+  width: 50%;
   min-width: 441px;
-  min-height: 64vh;
-  border-radius: 30px;
+  border-radius: 60px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+}
+
+.login-title {
+  position: relative;
+  width: 100%;
+  background-color: #263b80;
+  border: 0.5rem solid #263b80;
+  border-radius: 40px 40px 0 0;
+  display: grid;
+  place-items: center;
+}
+
+.login-title img {
+  padding: 20px;
+  width: 80%;
+}
+
+.title-bubble {
+  position: absolute;
+  width: 239px;
+  height: 59px;
+  background: #5775d7;
+  border-radius: 50px;
 }
 
 .login-container {
@@ -30,16 +53,6 @@
   flex-direction: column;
   width: 80%;
   padding: 5%;
-}
-
-.title {
-  width: 50%;
-}
-
-.title > img {
-  width: 100%;
-  height: 100%;
-  padding-bottom: 50px;
 }
 
 .login-form {
@@ -61,17 +74,19 @@
 
 .input-group {
   display: block;
-  width: 70%;
+  width: 90%;
   max-width: 100%;
   height: 82px;
   border: 0;
   background-color: #ffffff;
-  border-radius: 10px;
+  border: 0.4rem solid #c4d0f6;
+  background-color: #263b80;
+  border-radius: 50px;
   box-shadow: 0 17px 40px 0 rgba(75, 128, 182, 0.07);
   margin-bottom: 22px;
   position: relative;
   font-size: 25px;
-  color: #a7b4c1;
+  color: white;
   transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out,
     box-shadow 0.1s ease-in-out;
 }
@@ -92,10 +107,11 @@
   box-sizing: border-box;
   z-index: 3;
   display: block;
-  color: #1a6fc4;
+  color: white;
   font-size: 25px;
   font-family: "Oxygen", sans-serif;
   transition: top 0.1s ease-in-out;
+  text-align: center;
 }
 
 .input-group input::placeholder {
@@ -109,7 +125,7 @@
 
 .input-group label {
   position: absolute;
-  font-size: 22px;
+  font-size: 1.7rem;
   border: 0;
   top: 0;
   left: 0;
@@ -118,6 +134,7 @@
   z-index: 2;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0 53px;
   box-sizing: border-box;
   transition: all 0.1s ease-in-out;
@@ -136,15 +153,27 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  margin-left: 15px;
 }
 
 .login-action-btn.ant-btn-block {
   width: fit-content;
 }
+.login-action-btn span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: underline;
+  color: white;
+}
 
 .check-action-btn.ant-btn-block {
-  width: 75%;
+  float: left;
+  width: 90%;
+}
+.check-action-btn span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: underline;
+  color: white;
 }
 
 .login-hidden-notice {
