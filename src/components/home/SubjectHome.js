@@ -37,7 +37,9 @@ const SubjectHome = () => {
                     </div>
                   </div>
                   <Link to={`subject/${i.id}/unit`}>
-                    <div className="math-btn" />
+                    <div className="subject-btn">
+                      <h1>{i.subjectName}</h1>
+                    </div>
                   </Link>
                 </div>
               ))}
