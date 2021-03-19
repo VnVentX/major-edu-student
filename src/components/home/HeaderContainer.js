@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Layout, Space } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -141,8 +141,14 @@ const Burger = ({ open, setOpen }) => {
 };
 
 const HeaderContainer = (props) => {
-  const [open, setOpen] = React.useState(false);
-  const node = React.useRef();
+  const [open, setOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState("");
+  const node = useRef();
+
+  useEffect(() => {
+    console.log(props.current);
+    setCurrentPath(props.current);
+  });
 
   return (
     <div className="scence">
@@ -150,9 +156,11 @@ const HeaderContainer = (props) => {
         <div className="menu-content">
           <Space size={45}>
             <Link to="/home">
-              <div className="menu-btn">
-                <h1>Home</h1>
-              </div>
+              {currentPath === "home" ? null : (
+                <div className="menu-btn">
+                  <h1>Home</h1>
+                </div>
+              )}
             </Link>
             <Link to="/notice">
               <div className="menu-btn">

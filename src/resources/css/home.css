@@ -123,18 +123,20 @@
   background-size: cover;
   background-repeat: none;
   cursor: pointer;
-  width: 85px;
-  height: 85px;
-  min-width: 85px;
-  min-height: 85px;
+  width: 126px;
+  height: 126px;
+  min-width: 126px;
+  min-height: 126px;
 }
 .right-btn {
   background: url("../img/home/right-btn.png");
   background-size: cover;
   background-repeat: none;
   cursor: pointer;
-  min-width: 85px;
-  min-height: 85px;
+  width: 126px;
+  height: 126px;
+  min-width: 126px;
+  min-height: 126px;
 }
 
 /* Annoucement */

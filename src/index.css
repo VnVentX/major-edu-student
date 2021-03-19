@@ -65,4 +65,5 @@ code {
   cursor: pointer;
   bottom: 13%;
   left: 5%;
+  z-index: 999;
 }

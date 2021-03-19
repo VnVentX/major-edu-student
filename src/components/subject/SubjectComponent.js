@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import math from "../../resources/img/home/math.png";
+import bg from "../../resources/img/home/subject-bg.png";
 import { Link } from "react-router-dom";
 
 const gradeID = 1;
@@ -9,6 +10,8 @@ const SubjectComponent = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    document.body.style.background = `url('${bg}')`;
+    document.body.style.backgroundSize = "cover";
     async function getAllSubject() {
       await axios
         .get(`https://mathscience.azurewebsites.net/grade/${gradeID}/subject`)
