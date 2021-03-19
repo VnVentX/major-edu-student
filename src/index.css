@@ -54,3 +54,15 @@ code {
 .ant-layout {
   background: rgba(0, 0, 0, 0) !important;
 }
+
+.back-btn {
+  position: absolute;
+  width: 170.56px;
+  height: 130.31px;
+  background: url("./resources/img/back-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  bottom: 13%;
+  left: 5%;
+}
