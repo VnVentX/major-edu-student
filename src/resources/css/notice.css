@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 250px;
 }
 
 .notice-page-wrap {
@@ -114,4 +115,22 @@
   color: white;
   left: 80px;
   font-size: 1.8rem;
+}
+
+.annouce-content img {
+  width: 100%;
+  height: auto;
+}
+
+.news-back-btn {
+  position: absolute;
+  width: 170.56px;
+  height: 130.31px;
+  background: url("../img/back-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  bottom: -10%;
+  left: 5%;
+  z-index: 999;
 }

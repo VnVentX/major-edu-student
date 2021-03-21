@@ -67,3 +67,62 @@ code {
   left: 5%;
   z-index: 999;
 }
+.ant-pagination {
+  z-index: 10;
+}
+
+.general-btn {
+  position: relative;
+  text-align: center;
+  min-width: 244px;
+  min-height: 92px;
+  background-color: #00dc6a;
+  border: 0.5rem solid #009749;
+  border-radius: 50px;
+  -webkit-box-shadow: 0px 8px 0px 1px rgba(30, 113, 0, 1);
+  -moz-box-shadow: 0px 8px 0px 1px rgba(30, 113, 0, 1);
+  box-shadow: 0px 8px 0px 1px rgba(30, 113, 0, 1);
+  cursor: pointer;
+}
+
+.general-btn:hover {
+  -webkit-box-shadow: 0px 0px 0px 0px;
+  -moz-box-shadow: 0px 0px 0px 0px;
+  box-shadow: 0px 0px 0px 0px;
+}
+.general-btn h1 {
+  position: relative;
+  margin: 0;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 800;
+  z-index: 10;
+}
+
+.general-oval {
+  position: absolute;
+  width: 115px;
+  height: 37px;
+  border-radius: 50px;
+  background-color: #52ffa5;
+  top: 10%;
+  right: 8%;
+}
+.general-title {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 244px;
+  min-height: 92px;
+  background-color: #f4c417;
+  border: 0.5rem solid #490d85;
+  border-radius: 50px;
+}
+.general-title h1 {
+  position: relative;
+  margin: 0;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 800;
+  z-index: 10;
+}

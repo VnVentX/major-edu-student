@@ -11,7 +11,9 @@ const SubjectHome = () => {
   useEffect(() => {
     async function getAllSubject() {
       await axios
-        .get(`https://mathscience.azurewebsites.net/grade/${gradeID}/subject`)
+        .get(
+          `https://mathscienceeducation.herokuapp.com/grade/${gradeID}/subjects`
+        )
         .then((res) => {
           setData(res.data);
         })

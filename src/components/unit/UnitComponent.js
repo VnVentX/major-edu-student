@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-import { Space } from "antd";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 import bg from "../../resources/img/unit/unit-bg.png";
 
-const color = ["blue", "green", "orange", "purple", "red", "yellow", "pink"];
+const color = [
+  "#D41FF1",
+  "#881FF1",
+  "#F1441F",
+  "#8EBA13",
+  "#059BA5",
+  "#4C49F3",
+  "#059BA5",
+  "#F19D1F",
+];
 let itemColor = "";
 
 const UnitComponent = () => {
@@ -62,7 +70,6 @@ const UnitComponent = () => {
               <div key={idx} onLoad={randomColor(color)}>
                 <div className="unit-content">
                   <div className="unit-title" />
-
                   {item.unit?.map((unit) => (
                     <Link
                       to={`${window.location.pathname}/${unit.id}`}

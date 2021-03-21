@@ -146,8 +146,7 @@ const HeaderContainer = (props) => {
   const node = useRef();
 
   useEffect(() => {
-    console.log(props.current);
-    setCurrentPath(props.current);
+    console.log(props.history);
   });
 
   return (
@@ -156,11 +155,9 @@ const HeaderContainer = (props) => {
         <div className="menu-content">
           <Space size={45}>
             <Link to="/home">
-              {currentPath === "home" ? null : (
-                <div className="menu-btn">
-                  <h1>Home</h1>
-                </div>
-              )}
+              <div className="menu-btn">
+                <h1>Home</h1>
+              </div>
             </Link>
             <Link to="/notice">
               <div className="menu-btn">

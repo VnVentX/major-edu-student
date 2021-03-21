@@ -14,7 +14,9 @@ const SubjectComponent = () => {
     document.body.style.backgroundSize = "cover";
     async function getAllSubject() {
       await axios
-        .get(`https://mathscience.azurewebsites.net/grade/${gradeID}/subject`)
+        .get(
+          `https://mathscienceeducation.herokuapp.com/grade/${gradeID}/subjects`
+        )
         .then((res) => {
           setData(res.data);
         })
@@ -26,27 +28,25 @@ const SubjectComponent = () => {
   }, []);
 
   return (
-    <div className="subject-bg">
-      <div className="page">
-        <div className="page-contain">
-          <div className="subject-container">
-            <div className="subject-home-title" />
-            <div className="subject-home-content">
-              {data?.map((i, idx) => (
-                <div key={idx} className="subject-home-wrap">
-                  <div className="subject-outter-border">
-                    <div className="subject-inner-border">
-                      <img src={math} alt={math} />
-                    </div>
+    <div className="page">
+      <div className="page-contain">
+        <div className="subject-container">
+          {/* <div className="subject-home-title" /> */}
+          <div className="subject-home-content">
+            {data?.map((i, idx) => (
+              <div key={idx} className="subject-home-wrap">
+                <div className="subject-outter-border">
+                  <div className="subject-inner-border">
+                    <img src={math} alt={math} />
                   </div>
-                  <Link to={`subject/${i.id}/unit`}>
-                    <div className="subject-btn">
-                      <h1>{i.subjectName}</h1>
-                    </div>
-                  </Link>
                 </div>
-              ))}
-            </div>
+                <Link to={`subject/${i.id}/unit`}>
+                  <div className="subject-btn">
+                    <h1>{i.subjectName}</h1>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </div>

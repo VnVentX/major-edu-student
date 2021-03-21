@@ -22,7 +22,7 @@ const NoticeComponent = () => {
     document.body.style.backgroundSize = "cover";
     async function getAllNews() {
       await axios
-        .get("https://mathscienceeducation.herokuapp.com/news")
+        .get("https://mathscienceeducation.herokuapp.com/news?isStudent=true")
         .then((res) => {
           setData(res.data);
         })
