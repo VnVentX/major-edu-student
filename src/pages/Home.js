@@ -30,6 +30,7 @@ import PlayGame from "../components/map/map-game/PlayGame";
 import GameResult from "../components/map/map-game/GameResult";
 import Lecture from "../components/map/map-lesson/Lecture";
 import QuizComponent from "../components/exercise/QuizComponent";
+import ScoreExercise from "../components/score/ScoreExercise";
 import ScoreExerciseDetail from "../components/score/ScoreExerciseDetail";
 
 const { Content } = Layout;
@@ -65,19 +66,23 @@ const Home = (props) => {
                 <Route path="/subject" exact component={Subject} />
                 <Route path="/score" exact component={Score} />
                 <Route
-                  path="/score/:exerciseID"
+                  path="/score/:subjectID"
+                  exact
+                  component={ScoreExercise}
+                />
+                <Route
+                  path="/score/:subjectID/exercise/:exerciseID"
                   exact
                   component={ScoreExerciseDetail}
                 />
                 <Route
-                  path="/score/:exerciseID/overview/:overviewID"
+                  path="/score/:subjectID/exercise/:exerciseID/overview/:overviewID"
                   exact
                   component={OverviewQuiz}
                 />
                 <Route path="/profile" exact component={Profile} />
                 <Route path="/subject/:subjectID/unit" exact component={Unit} />
                 {/* Flow mới bắt đầu từ đây */}
-
                 <Route
                   path="/subject/:subjectID/unit/:unitID"
                   exact
@@ -118,7 +123,6 @@ const Home = (props) => {
                   exact
                   component={GameResult}
                 />
-
                 {/* 
 
 
@@ -135,7 +139,6 @@ const Home = (props) => {
 
 
                  */}
-
                 {/* Flow cũ */}
                 <Route path="/math/unit/:unitID/map" exact component={Map} />
                 <Route

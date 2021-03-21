@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Table } from "antd";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import "antd/dist/antd.css";
+import bg from "../../resources/img/score/score-bg.png";
 
 const data = [
   {
@@ -48,6 +50,8 @@ const ScoreExerciseDetail = () => {
   });
 
   useEffect(() => {
+    document.body.style.background = `url('${bg}')`;
+    document.body.style.backgroundSize = "cover";
     setAttempData(data);
   }, []);
 
@@ -90,18 +94,21 @@ const ScoreExerciseDetail = () => {
 
   return (
     <div className="score-container">
-      <div className="score-title">
-        <h1>Exercise 1</h1>
-      </div>
-      <div className="score-wrap">
-        {attempData && (
-          <Table
-            rowKey={(record) => record.id}
-            columns={columns}
-            dataSource={attempData}
-            pagination={pagination}
-          />
-        )}
+      <div className="score-detail-wrap">
+        <div className="general-title ">
+          <h1>Exercise 1</h1>
+        </div>
+        <div className="record-wrap">
+          {attempData && (
+            <Table
+              rowKey={(record) => record.id}
+              columns={columns}
+              dataSource={attempData}
+              pagination={pagination}
+              className="exercise-table"
+            />
+          )}
+        </div>
       </div>
     </div>
   );

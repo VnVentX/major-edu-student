@@ -94,7 +94,7 @@
 
 .awssld__bullets {
   z-index: 5;
-  top: calc(60% - (0.5 * var(--control-button-height))) !important;
+  top: calc(82% - (0.5 * var(--control-button-height))) !important;
 }
 .awssld__bullets .awssld__bullets--active {
   transform: none !important;

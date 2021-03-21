@@ -1,11 +1,10 @@
 .unit-container {
-  min-height: 100vh;
+  min-height: 90vh;
   width: 90vw;
   height: auto;
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
-  margin-top: -20px;
+  margin-bottom: 80px;
 }
 
 .unit-wrap {
@@ -35,12 +34,13 @@
 
 .unit-content > a {
   flex: 0 1 195px;
-  margin: 20px 20px 50px 20px;
+  margin: 50px 20px 50px 20px;
 }
 
 .unit-title {
   position: absolute;
-  top: -9%;
+  top: 0;
+  margin-top: -5%;
   background: url("../img/unit/unit-title.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -117,13 +117,13 @@
 
 .unit-detail-container {
   position: relative;
-  min-height: 90vh;
+  min-height: 80vh;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   margin-bottom: 50px;
+  margin-top: 15%;
 }
 
 .unit-detail-wrap .general-title {
