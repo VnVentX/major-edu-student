@@ -2,18 +2,31 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import "antd/dist/antd.css";
+import bg from "../../resources/img/unit/unit-bg.png";
 
-const color = ["blue", "green", "orange", "pink"];
+const color = [
+  "#D41FF1",
+  "#881FF1",
+  "#F1441F",
+  "#8EBA13",
+  "#059BA5",
+  "#4C49F3",
+  "#059BA5",
+  "#F19D1F",
+];
 let itemColor = "";
 
 const ExerciseComponent = () => {
   const [data, setData] = useState([]);
   const lessonID = window.location.pathname.split("/")[6];
+
   useEffect(() => {
+    document.body.style.background = `url('${bg}')`;
+    document.body.style.backgroundSize = "cover";
     async function getAllExercise() {
       await axios
         .get(
-          `https://mathscience.azurewebsites.net/lesson/${lessonID}/exercise`
+          `https://mathscienceeducation.herokuapp.com/lesson/${lessonID}/exercises`
         )
         .then((res) => {
           setData(res.data);
@@ -40,39 +53,45 @@ const ExerciseComponent = () => {
     return itemColor;
   }
 
+  const mockData = [
+    { id: 1, exerciseName: 1, lessonId: 1, progressTestId: 0 },
+    { id: 2, exerciseName: 2, lessonId: 1, progressTestId: 0 },
+    { id: 3, exerciseName: 3, lessonId: 1, progressTestId: 0 },
+    { id: 4, exerciseName: 4, lessonId: 1, progressTestId: 0 },
+    { id: 5, exerciseName: 5, lessonId: 1, progressTestId: 0 },
+    { id: 6, exerciseName: 6, lessonId: 1, progressTestId: 0 },
+    { id: 7, exerciseName: 7, lessonId: 1, progressTestId: 0 },
+    { id: 8, exerciseName: 8, lessonId: 1, progressTestId: 0 },
+  ];
+
   return (
-    <div className="exercise-bg">
-      <div className="page">
-        <div
-          className="arrow-btn left-arrow"
-          onClick={() => history.push(lessonPath[5])}
-        >
-          <h1>Lesson 1</h1>
-        </div>
-        <div className="page-contain">
-          <div className="exercise-container">
-            <div className="exercise-title">
-              <h1>Exercise</h1>
-            </div>
-            <div className="exercise-wrap">
-              {data?.map((i, idx) => (
-                <div
-                  key={i.id}
-                  style={{
-                    display: "grid",
-                    placeItems: "center",
-                    margin: "20px 0 0 0",
-                  }}
-                  onLoad={randomColor(color)}
-                >
-                  <Link to={`${location.pathname}/${i.id}`}>
-                    <div className={`exercise-btn ${itemColor}`}>
-                      <h1>Exercise {i.exerciseName}</h1>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
+    <div className="page">
+      <div className="back-btn" onClick={() => history.push(lessonPath[5])} />
+      <div className="page-contain">
+        <div className="exercise-container">
+          <div className="exercise-wrap">
+            {mockData?.map((i) => (
+              <div
+                key={i.id}
+                style={{
+                  display: "grid",
+                  placeItems: "center",
+                }}
+                onLoad={randomColor(color)}
+              >
+                {console.log(i)}
+                <Link to={`${location.pathname}/${i.id}`}>
+                  <div
+                    className="exercise-btn"
+                    style={{ backgroundColor: itemColor }}
+                  >
+                    <div className="check-area" />
+                    <div className="check-mark" />
+                    <h1>Exercise {i.exerciseName}</h1>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </div>
