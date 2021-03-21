@@ -22,7 +22,7 @@ const UnitDetailComponent = () => {
         });
     }
     getAllUnit();
-  }, []);
+  }, [unitID]);
 
   const history = useHistory();
 
@@ -47,7 +47,6 @@ const UnitDetailComponent = () => {
               <div className="general-title ">
                 <h1>Unit {unit}</h1>
               </div>
-
               {lesson.length === 0 && <h1>No Data</h1>}
               {lesson?.map((i) => (
                 <>

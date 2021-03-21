@@ -52,7 +52,7 @@ const UnitComponent = () => {
         });
     }
     getAllUnit();
-  }, []);
+  }, [subjectID]);
 
   return (
     <div className="page" style={{ display: "flex", justifyContent: "center" }}>

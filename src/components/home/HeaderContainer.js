@@ -146,8 +146,8 @@ const HeaderContainer = (props) => {
   const node = useRef();
 
   useEffect(() => {
-    console.log(props.history);
-  });
+    console.log(props.history.location.pathname);
+  }, [props.history.location.pathname]);
 
   return (
     <div className="scence">

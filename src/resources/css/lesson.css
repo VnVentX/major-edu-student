@@ -1,23 +1,7 @@
 .lesson-container {
   min-height: 100vh;
   height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.lesson-title {
-  background: url("../img/title-layer.png");
-  min-width: 272px;
-  min-height: 100px;
-  display: grid;
-  place-items: center;
-  margin: 70px 0 100px 0;
-}
-
-.lesson-title > h1 {
-  font-size: 2.5rem;
-  color: white;
+  margin-bottom: 100px;
 }
 
 .lesson-wrap {
@@ -34,7 +18,7 @@
 
 /* Iframe */
 .non-fs {
-  height: 55vh;
+  height: 65vh;
   overflow: hidden;
   position: relative;
 }
@@ -46,7 +30,7 @@
 }
 
 #nonfs {
-  height: 55vh;
+  height: 65vh;
 }
 
 #fs {
@@ -135,53 +119,76 @@
 /* ! Exercise & Game btn */
 
 @media (max-width: 3000px) {
+  .lesson-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
   .bottom-btn {
     display: none;
   }
-  .side-btn {
-    position: absolute;
-    left: 110%;
-    bottom: 25%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: fit-content;
-  }
-
   .lesson-exercise-btn {
-    margin-bottom: 100px;
+    width: 196px;
+    height: 370px;
+    background: url("../img/lesson/exercise-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .game-btn {
+    width: 196px;
+    height: 370px;
+    background: url("../img/lesson/game-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .lesson-exercise-btn:hover {
+    background: url("../img/lesson/exercise-btn-hover.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .game-btn:hover {
+    background: url("../img/lesson/game-btn-hover.png");
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 }
 
 @media (max-width: 1650px) {
+  .lesson-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   .side-btn {
     display: none;
   }
   .bottom-btn {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    margin-bottom: 50px;
   }
-
   .lesson-exercise-btn {
-    margin-bottom: 0;
-    margin-right: 100px;
+    width: 196px;
+    background: url("../img/lesson/exercise-bottom-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
   }
-}
-
-.lesson-exercise-btn {
-  width: 190px;
-  height: 125px;
-  background: url("../img/lesson/exercise-btn.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.game-btn {
-  width: 200px;
-  height: 125px;
-  background: url("../img/lesson/game-btn.png");
-  background-size: contain;
-  background-repeat: no-repeat;
+  .game-btn {
+    width: 196px;
+    background: url("../img/lesson/game-bottom-btn.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .lesson-exercise-btn:hover {
+    background: url("../img/lesson/exercise-bottom-btn-hover.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .game-btn:hover {
+    background: url("../img/lesson/game-bottom-btn-hover.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 }
