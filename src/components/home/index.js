@@ -8,8 +8,6 @@ import MapComponent from "./MapComponent";
 const Index = () => {
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
-    // let header = document.getElementById("header");
-    // header.style.visibility = "hidden";
   }, []);
 
   return (

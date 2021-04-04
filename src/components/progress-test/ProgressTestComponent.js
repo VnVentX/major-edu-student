@@ -16,36 +16,37 @@ const color = [
 ];
 let itemColor = "";
 
-const ExerciseComponent = () => {
+const ProgressTestComponent = () => {
   const [data, setData] = useState([]);
-  const lessonID = window.location.pathname.split("/")[6];
 
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
     document.body.style.backgroundSize = "cover";
     let header = document.getElementById("header");
     header.style.visibility = "visible  ";
-    async function getAllExercise() {
-      await axios
-        .get(
-          `https://mathscienceeducation.herokuapp.com/lesson/${lessonID}/exercises`
-        )
-        .then((res) => {
-          setData(res.data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    }
-    getAllExercise();
+    getProgressTestBySubjectID();
   }, []);
+
+  const getProgressTestBySubjectID = async () => {
+    let subjectID = window.location.pathname.split("/")[2];
+    await axios
+      .get(
+        `https://mathscienceeducation.herokuapp.com/subject/${subjectID}/progressTest`
+      )
+      .then((res) => {
+        setData(res.data.length === 0 ? [] : res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   const history = useHistory();
   const location = useLocation();
 
   //! Get Lesson path
   const pathSnippets = location.pathname.split("/").filter((i) => i);
-  const lessonPath = pathSnippets.map((_, index) => {
+  const subjectPath = pathSnippets.map((_, index) => {
     const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
     return url;
   });
@@ -57,7 +58,7 @@ const ExerciseComponent = () => {
 
   return (
     <div className="page">
-      <div className="back-btn" onClick={() => history.push(lessonPath[5])} />
+      <div className="back-btn" onClick={() => history.push(subjectPath[1])} />
       <div className="page-contain">
         <div className="exercise-container">
           <div className="exercise-wrap">
@@ -77,7 +78,7 @@ const ExerciseComponent = () => {
                   >
                     <div className="check-area" />
                     <div className="check-mark" />
-                    <h1>{i.exerciseName}</h1>
+                    <h1>{i.progressTestName}</h1>
                   </div>
                 </Link>
               </div>
@@ -89,4 +90,4 @@ const ExerciseComponent = () => {
   );
 };
 
-export default ExerciseComponent;
+export default ProgressTestComponent;

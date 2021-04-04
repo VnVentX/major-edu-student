@@ -5,8 +5,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 130px;
-  margin-top: 50px;
+  margin-bottom: 100px;
+  margin-top: 15%;
 }
 .score-wrap {
   position: relative;

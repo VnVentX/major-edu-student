@@ -39,7 +39,7 @@ const SubjectComponent = () => {
                     <img src={math} alt={math} />
                   </div>
                 </div>
-                <Link to={`subject/${i.id}/unit`}>
+                <Link to={`/subject/${i.id}`}>
                   <div className="subject-btn">
                     <h1>{i.subjectName}</h1>
                   </div>

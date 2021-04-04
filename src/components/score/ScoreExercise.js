@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "antd/dist/antd.css";
 import bg from "../../resources/img/score/score-bg.png";
 
@@ -139,6 +139,7 @@ const mockData = [
 
 const ScoreExercise = () => {
   const [data, setData] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
@@ -161,61 +162,66 @@ const ScoreExercise = () => {
   };
 
   return (
-    <div className="score-container">
-      <div className="score-detail-wrap">
-        <div className="general-title ">
-          <h1>Score</h1>
-        </div>
-        <div className="record-wrap">
-          {data?.map((i, idx) => (
-            <React.Fragment key={idx}>
-              <div className="unit-record">
-                {i.isShown === true ? (
-                  <div
-                    className="unit-arrow arrow-up"
-                    onClick={() => {
-                      showMore(idx);
-                    }}
-                  />
-                ) : (
-                  <div
-                    className="unit-arrow arrow-down"
-                    onClick={() => {
-                      showMore(idx);
-                    }}
-                  />
-                )}
+    <div className="page">
+      <div className="back-btn" onClick={() => history.push("/score")} />
+      <div className="page-contain">
+        <div className="score-container">
+          <div className="score-detail-wrap">
+            <div className="general-title ">
+              <h1>Score</h1>
+            </div>
+            <div className="record-wrap">
+              {data?.map((i, idx) => (
+                <React.Fragment key={idx}>
+                  <div className="unit-record">
+                    {i.isShown === true ? (
+                      <div
+                        className="unit-arrow arrow-up"
+                        onClick={() => {
+                          showMore(idx);
+                        }}
+                      />
+                    ) : (
+                      <div
+                        className="unit-arrow arrow-down"
+                        onClick={() => {
+                          showMore(idx);
+                        }}
+                      />
+                    )}
 
-                <div
-                  className="unit-name"
-                  onClick={() => {
-                    showMore(idx);
-                  }}
-                >
-                  <h1>{i.unitName}</h1>
-                </div>
-                <div className="unit-status" />
-              </div>
-              {i.isShown === true && (
-                <div className="unit-exercise">
-                  <div style={{ marginBottom: 20 }} />
-                  {i.exercise?.map((exercise) => (
-                    <React.Fragment key={exercise.id}>
-                      <div className="unit-exercise-item">
-                        <Link
-                          to={`${window.location.pathname}/exercise/${exercise.id}`}
-                        >
-                          <h1>{exercise.exerciseName}</h1>
-                        </Link>
-                        <h1>{exercise.score}</h1>
-                      </div>
-                      <div className="item-spacer" />
-                    </React.Fragment>
-                  ))}
-                </div>
-              )}
-            </React.Fragment>
-          ))}
+                    <div
+                      className="unit-name"
+                      onClick={() => {
+                        showMore(idx);
+                      }}
+                    >
+                      <h1>{i.unitName}</h1>
+                    </div>
+                    <div className="unit-status" />
+                  </div>
+                  {i.isShown === true && (
+                    <div className="unit-exercise">
+                      <div style={{ marginBottom: 20 }} />
+                      {i.exercise?.map((exercise) => (
+                        <React.Fragment key={exercise.id}>
+                          <div className="unit-exercise-item">
+                            <Link
+                              to={`${window.location.pathname}/exercise/${exercise.id}`}
+                            >
+                              <h1>{exercise.exerciseName}</h1>
+                            </Link>
+                            <h1>{exercise.score}</h1>
+                          </div>
+                          <div className="item-spacer" />
+                        </React.Fragment>
+                      ))}
+                    </div>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

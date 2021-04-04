@@ -50,11 +50,13 @@
   min-width: 232px;
   min-height: 75px;
 }
+.progress-test {
+  position: absolute;
+  bottom: -11%;
+}
 
 .progress-test-btn {
-  position: absolute;
   text-align: center;
-  bottom: -11%;
   min-width: 244px;
   min-height: 92px;
   background-color: #00dc6a;

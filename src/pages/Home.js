@@ -18,6 +18,7 @@ import Profile from "./Profile";
 import Unit from "./unit/Unit";
 import UnitDetail from "./unit/UnitDetail";
 import Map from "./Map";
+import ProgressTest from "./ProgressTest";
 import MapLesson from "./MapLesson";
 import NoticeDetail from "./NoticeDetail";
 import NotFound from "./NotFound";
@@ -81,12 +82,17 @@ const Home = (props) => {
                   component={OverviewQuiz}
                 />
                 <Route path="/profile" exact component={Profile} />
-                <Route path="/subject/:subjectID/unit" exact component={Unit} />
+                <Route path="/subject/:subjectID" exact component={Unit} />
                 {/* Flow mới bắt đầu từ đây */}
                 <Route
                   path="/subject/:subjectID/unit/:unitID"
                   exact
                   component={UnitDetail}
+                />
+                <Route
+                  path="/subject/:subjectID/progress-test/:progressTestID"
+                  exact
+                  component={ProgressTest}
                 />
                 <Route
                   path="/subject/:subjectID/unit/:unitID/lesson/:lessonID"

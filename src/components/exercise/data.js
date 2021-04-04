@@ -82,8 +82,7 @@ export const data = [
     questionText:
       " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
     questionAudio: "",
-    questionImg:
-      "https://image.shutterstock.com/z/stock-vector-illustration-of-a-kid-answering-test-questions-82843036.jpg",
+    questionImg: null,
     answers: [
       {
         answerText: "Option 1",
