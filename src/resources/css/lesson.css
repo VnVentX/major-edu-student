@@ -1,7 +1,6 @@
 .lesson-container {
   min-height: 100vh;
   height: auto;
-  margin-bottom: 100px;
 }
 
 .lesson-wrap {
@@ -13,7 +12,7 @@
 }
 
 .lesson-wrap > div {
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/9.36;
 }
 
 /* Iframe */
@@ -122,7 +121,7 @@
   .lesson-container {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
   }
   .bottom-btn {
     display: none;

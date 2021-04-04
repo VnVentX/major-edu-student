@@ -25,9 +25,6 @@ const Annoucement = () => {
     <div className="page">
       <div className="page-contain">
         <div className="announcement-content">
-          <div className="notice-title">
-            <h1>News</h1>
-          </div>
           <div className="notice-wrap">
             {/* {data?.map((i, idx) => (
               <div key={idx} className="outter-border">

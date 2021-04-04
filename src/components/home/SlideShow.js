@@ -7,10 +7,6 @@ import logo_major from "../../resources/img/logo_major.png";
 const SlideShow = () => {
   return (
     <div className="page">
-      <div className="top-oval" />
-      <div className="logo">
-        <img src={logo_major} alt={logo_major} />
-      </div>
       <div className="slide-show-container">
         <div className="slide-show">
           <AwesomeSlider

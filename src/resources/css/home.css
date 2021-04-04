@@ -1,23 +1,13 @@
 /* Menu Header */
-.top-oval {
-  position: absolute;
-  width: 100%;
-  height: 555px;
-  left: 0px;
-  top: -225px;
-  background: #ffc853;
-  border-radius: 0px 0px 416px 416px;
-}
-
 .ant-layout-header {
   place-items: center;
-  position: relative;
+  position: absolute;
   height: auto;
   width: 100%;
   min-height: 14vh;
   padding: 0px !important;
   background: rgba(0, 0, 0, 0);
-  z-index: 1;
+  z-index: 999;
 }
 
 .logo {
@@ -67,13 +57,10 @@
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: -120px;
 }
 
 .slide-show {
-  width: 90%;
-  min-width: 800px;
-  min-height: 75vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,13 +75,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 650px;
-  width: 80vw;
+  width: 100vw;
+  min-width: 1000px;
 }
-
+.slide-show .awssld__content > div {
+  height: 100%;
+}
+.slide-show .awssld__controls button {
+  top: calc(35% - (0.5 * var(--control-button-height))) !important;
+}
 .awssld__bullets {
   z-index: 5;
-  top: calc(82% - (0.5 * var(--control-button-height))) !important;
+  top: calc(60% - (0.5 * var(--control-button-height))) !important;
 }
 .awssld__bullets .awssld__bullets--active {
   transform: none !important;
@@ -262,11 +254,12 @@
 .subject-home-title {
   position: relative;
   background-repeat: no-repeat;
+  background-size: cover;
   background-image: url("../img/home/getstart-title.png");
-  width: 525px;
-  height: 100px;
+  width: 573px;
+  height: 94px;
   color: white;
-  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .subject-home-content {
@@ -341,11 +334,8 @@
 /* Map Home */
 .map-home {
   position: relative;
-  margin-top: -170px;
   min-height: 932px;
   width: 100%;
-  background: url("../img/home/map-bg.png");
-  background-size: cover;
 }
 
 .map-container {
@@ -372,12 +362,8 @@
 
 .footer-bg {
   position: relative;
-  background: url("../img/home/footer-bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
   width: 100%;
-  min-height: 446px;
-  margin-top: -140px;
+  background-color: #ffc853;
 }
 
 .footer-content {
@@ -385,17 +371,17 @@
   justify-content: space-around;
   align-items: flex-start;
   width: 100%;
-  margin-top: 140px;
+  margin-top: 40px;
 }
 .footer-content .ant-space-item {
-  min-height: 300px;
+  min-height: 200px;
 }
 .contact {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 447px;
+  width: 420px;
 }
 .footer-menu {
   display: flex;

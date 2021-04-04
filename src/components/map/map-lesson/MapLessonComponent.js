@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import bg from "../../../resources/img/lesson/lesson-bg.png";
+import bg from "../../../resources/img/unit/unit-detail-bg.png";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import Lecture from "./Lecture";
 

@@ -70,7 +70,7 @@ const ExerciseComponent = () => {
       <div className="page-contain">
         <div className="exercise-container">
           <div className="exercise-wrap">
-            {mockData?.map((i) => (
+            {data?.map((i) => (
               <div
                 key={i.id}
                 style={{
@@ -79,7 +79,6 @@ const ExerciseComponent = () => {
                 }}
                 onLoad={randomColor(color)}
               >
-                {console.log(i)}
                 <Link to={`${location.pathname}/${i.id}`}>
                   <div
                     className="exercise-btn"
@@ -87,7 +86,7 @@ const ExerciseComponent = () => {
                   >
                     <div className="check-area" />
                     <div className="check-mark" />
-                    <h1>Exercise {i.exerciseName}</h1>
+                    <h1>{i.exerciseName}</h1>
                   </div>
                 </Link>
               </div>

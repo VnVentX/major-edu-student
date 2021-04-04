@@ -150,58 +150,56 @@ const HeaderContainer = (props) => {
   }, [props.history.location.pathname]);
 
   return (
-    <div className="scence">
-      <Header>
-        <div className="menu-content">
-          <Space size={45}>
-            <Link to="/home">
-              <div className="menu-btn">
-                <h1>Home</h1>
-              </div>
-            </Link>
-            <Link to="/notice">
-              <div className="menu-btn">
-                <h1>Notice</h1>
-              </div>
-            </Link>
-            <Link to="/subject">
-              <div className="menu-btn">
-                <h1>Subject</h1>
-              </div>
-            </Link>
-            <Link to="/score">
-              <div className="menu-btn">
-                <h1>Score</h1>
-              </div>
-            </Link>
-            <Link to="/profile">
-              <div className="menu-btn">
-                <h1>Profile</h1>
-              </div>
-            </Link>
-            <Link
-              to=""
-              onClick={() => {
-                localStorage.removeItem("token");
-                localStorage.removeItem("user");
-                props.history.push("/login");
-              }}
-            >
-              <div className="menu-btn">
-                <h1>Logout</h1>
-              </div>
-            </Link>
-          </Space>
-          {/* Menu Hamburger */}
-          {/* <div className="menu-ham">
+    <Header id="header">
+      <div className="menu-content">
+        <Space size={45}>
+          <Link to="/home">
+            <div className="menu-btn">
+              <h1>Home</h1>
+            </div>
+          </Link>
+          <Link to="/notice">
+            <div className="menu-btn">
+              <h1>Notice</h1>
+            </div>
+          </Link>
+          <Link to="/subject">
+            <div className="menu-btn">
+              <h1>Subject</h1>
+            </div>
+          </Link>
+          <Link to="/score">
+            <div className="menu-btn">
+              <h1>Score</h1>
+            </div>
+          </Link>
+          <Link to="/profile">
+            <div className="menu-btn">
+              <h1>Profile</h1>
+            </div>
+          </Link>
+          <Link
+            to=""
+            onClick={() => {
+              localStorage.removeItem("token");
+              localStorage.removeItem("user");
+              props.history.push("/login");
+            }}
+          >
+            <div className="menu-btn">
+              <h1>Logout</h1>
+            </div>
+          </Link>
+        </Space>
+        {/* Menu Hamburger */}
+        {/* <div className="menu-ham">
             <div ref={node}>
               <Burger open={open} setOpen={setOpen} />
               <Menu open={open} setOpen={setOpen} history={props.history} />
             </div>
           </div> */}
-        </div>
-      </Header>
-    </div>
+      </div>
+    </Header>
   );
 };
 

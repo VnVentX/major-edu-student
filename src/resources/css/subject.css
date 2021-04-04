@@ -6,3 +6,17 @@
   justify-content: center;
   align-items: center;
 }
+.subject-container .subject-home-content {
+  margin-top: 150px;
+  margin-bottom: 20px;
+}
+
+.subject-footer {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../img/home/subject-footer.png");
+  width: 845px;
+  height: 94px;
+  color: white;
+}
