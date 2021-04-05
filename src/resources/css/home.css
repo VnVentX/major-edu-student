@@ -1,67 +1,202 @@
 /* Menu Header */
-.top-oval {
-  position: absolute;
+
+    
+.animatedtabs{
+
+  overflow: hidden;
   width: 100%;
-  height: 555px;
-  left: 0px;
-  top: -225px;
-  background: #ffc853;
-  border-radius: 0px 0px 416px 416px;
-}
-
-.ant-layout-header {
-  place-items: center;
+  height: 130px;
+  font-size: 14px; /*font of menu text*/
+  }
+  
+  
+  .animatedtabs ul{
+  list-style-type: none;
+  margin: 0;
+  margin-left:11%; /*offset of first tab relative to page left edge*/
+  padding: 0;
+  }
+  
+  .animatedtabs li{
+  float: left;
+  margin: 0;
+  padding: 0;
+  }
+  
+  .animatedtabs .hover-zone{
+  float: left;
   position: relative;
-  height: auto;
-  width: 100%;
-  min-height: 14vh;
-  padding: 0px !important;
-  background: rgba(0, 0, 0, 0);
-  z-index: 1;
-}
-
-.logo {
+  top: -1px; 
+  margin: 0;
+  text-decoration: none;
+  
+  }
+  
+  .animatedtabs .hover-zone li{
+  float: left;
   position: relative;
-  display: grid;
-  place-items: center;
-  margin: 5vh 0;
-}
-.logo img {
-  height: 15vh;
-}
-
-.ant-menu.ant-menu-dark,
-.ant-menu-dark .ant-menu-sub,
-.ant-menu.ant-menu-dark .ant-menu-sub {
-  color: rgba(255, 255, 255, 0.65);
-}
-
-/* Menu content */
-
-.menu-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu-ham {
-  display: none;
-}
-
-.menu-btn {
-  width: auto;
   display: block;
-  background-color: #1cb9ff;
-  border-radius: 0 0 50px 50px;
-}
-
-.menu-btn h1 {
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: #ffffff;
-  padding: 20px;
-}
-
+  font-weight: bold;
+  color: black;
+  }
+  
+  /* Commented Backslash Hack hides rule from IE5-Mac \*/
+  .animatedtabs .hover-zone span {float:none;}
+  /* End IE5-Mac hack */
+  
+  
+  .animatedtabs .selected .hover-zone{
+   
+  }
+  
+  .animatedtabs .selected .hover-zone span{
+  background-position: 100% -125px;
+  color: black;
+  padding-bottom: 8px; 
+  top: 0;
+  }
+  
+  .animatedtabs .hover-zone:hover{
+  background-position: 0% -125px;
+  top: 0;
+  }
+  
+  
+  .animatedtabs .hover-zone:hover{
+  background-position: 100% -125px;
+  padding-bottom: 8px;
+  top: 17px;
+  
+  }
+  
+  .menu-buttons{
+    position: relative;
+    top: -25px;
+    padding-top: 100px;
+    width: 180px;
+    height: 150px;
+  }
+  
+                                          /* InActive Hover - before hover*/
+  
+  .acHome{
+    background: url("../img/home/inactive-home.png");
+    background-repeat: no-repeat;
+    top: -40px;
+    background-size: 180px;
+    width: 180px;
+    height: 165px;
+   
+    }
+  
+  .acNotice{
+    
+    background: url("../img/home/inactive-notice.png");
+    background-repeat: no-repeat;
+    background-size: 180px;
+    left: -2px;
+    
+  }
+  .acSubject{
+    background: url("../img/home/inactive-subject.png");
+    background-repeat: no-repeat;
+    background-size: 180px;
+    left: -5px;
+  }
+  
+  .acScore{
+    background: url("../img/home/inactive-score.png");
+    background-repeat: no-repeat;
+    background-size: 180px;
+    left: -7.5px;
+  }
+  .acProfile{
+    background: url("../img/home/inactive-profile.png");
+    background-repeat: no-repeat;
+    left: -9px;
+    background-size: 180px;
+  }
+  .acLogout{
+    background: url("../img/home/inactive-logout.png");
+    background-repeat: no-repeat;
+    top: -50px;
+    left: -11px;
+    background-size: 140px;
+  }
+  
+                                                  /* Active Hover */
+  .acHome:hover{
+    background: url("../img/home/active-home.png");
+    background-repeat: no-repeat;
+    top: -40px;
+    background-size: 183px;
+    width: 180px;
+    height: 165px;
+  }
+  .acNotice:hover{
+    
+    background: url("../img/home/active-notice.png");
+    background-repeat: no-repeat;
+    background-size: 180px;
+    left: -2px;
+    
+  }
+  .acSubject:hover{
+    background: url("../img/home/active-subject.png");
+    background-repeat: no-repeat;
+    background-size: 180px;
+    left: -5px;
+  }
+  
+  .acScore:hover{
+    background: url("../img/home/active-score.png");
+    background-repeat: no-repeat;
+    background-size: 180px;
+    left: -7.5px;
+  }
+  .acProfile:hover{
+    background: url("../img/home/active-profile.png");
+    background-repeat: no-repeat;
+    left: -9px;
+    background-size: 180px;
+  }
+  .acLogout:hover{
+    background: url("../img/home/active-logout.png");
+    background-repeat: no-repeat;
+    top: -50px;
+    left: -11px;
+    background-size: 140px;
+  }
+  
+  
+  
+  
+  
+  /* Menu content */
+  
+  .menu-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .menu-ham {
+    display: none;
+  }
+  
+  .menu-btn {
+    width: auto;
+    display: block;
+    background-color: #1cb9ff;
+    border-radius: 0 0 50px 50px;
+  }
+  
+  .menu-btn h1 {
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #ffffff;
+    padding: 20px;
+  }
 /* Slide Show */
 .slide-show-container {
   position: relative;
