@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Spin } from "antd";
 import { Link, useHistory } from "react-router-dom";
-import bg from "../../resources/img/unit/unit-detail-bg.png";
+import bg from "../../resources/img/unit/unit-bg2.png";
+
 
 const UnitDetailComponent = () => {
   const [lesson, setLesson] = useState([]);
@@ -44,20 +45,26 @@ const UnitDetailComponent = () => {
         <div className="back-btn" onClick={() => history.push(unitPath)} />
         <div className="page-contain">
           <div className="unit-detail-container">
+            <div className="this-is-title">
+            <svg>
+              <text class="svgStroke" x="10" y="50">Unit&nbsp;{unit}</text>
+              <text class="svgText" x="10" y="50">Unit&nbsp;{unit}</text>
+            </svg>
+            </div>
+            
             <div className="unit-detail-wrap">
-              <div className="general-title ">
-                <h1>Unit {unit}</h1>
-              </div>
-              {lesson.length === 0 && <Spin size="large" />}
+              {lesson.length === 0 && <h1>No Data</h1>}
               {lesson?.map((i) => (
                 <>
                   <Link
                     key={i.id}
                     to={`${window.location.pathname}/lesson/${i.id}`}
                   >
-                    <div className="general-btn">
-                      <div className="general-oval" />
-                      <h1>{i.lessonName}</h1>
+                    <div className="lesson-frame">
+                      <div className="lesson-content">
+                        <h1> {i.lessonName}</h1>
+                      </div>
+
                     </div>
                   </Link>
                 </>

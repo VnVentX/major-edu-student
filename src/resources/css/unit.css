@@ -118,6 +118,8 @@
   text-align: center;
 }
 
+
+
 /* ! Unit Detail */
 
 .unit-detail-container {
@@ -127,34 +129,115 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  margin-bottom: 50px;
+  margin-top: 10%;
+
 }
 
-.unit-detail-wrap .general-title {
-  position: absolute;
-  top: 0;
+.general-title {
+  /* position: absolute; */
+  margin-bottom: 5%;
   margin-top: -6%;
   z-index: 10;
 }
 
+
+
+.this-is-title{
+position: relative;
+left: 10%;
+margin-bottom: 3%;
+text-align: center;
+}
+svg {
+  font-size: 4em;
+  font-weight: bold;
+  width: 450px;
+  height: 70px;
+  fill: rgb(255,200,83);
+  
+}
+
+.svgStroke {
+  fill: white;
+  stroke: rgb(38,59,128);
+  stroke-width: 20px;
+  stroke-linejoin: round;
+}
+
+
 .unit-detail-wrap {
-  position: relative;
+  /* position: relative; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   min-width: 650px;
-  width: 800px;
+  width: 110%;
   min-height: 460px;
   height: auto;
   background-color: #bbe9fe;
-  border: 0.5rem solid #490d85;
+  /* border: 0.5rem solid #490d85; */
   border-radius: 100px;
 }
 
 .unit-detail-wrap > a {
   flex: 0 1 92px;
-  margin: 50px 20px 20px 20px;
+  margin: 50px 120px 50px 120px;
+}
+
+
+
+.lesson-frame {
+  position: relative;
+  border: 1px solid black;
+  width: 310px;
+  transform: rotate(45deg);
+  background: rgb(246,120,0);
+  border-radius: 25px;
+  border: 18px solid rgb(200,100,5);
+  -webkit-box-shadow: 23px 23px 0px 1px rgb(142,73,6);
+  -moz-box-shadow: 23px 23px 0px 1px rgb(142,73,6);
+  box-shadow: 23px 23px 0px 1px rgb(142,73,6);
+  cursor: pointer;
+  
+}
+
+.lesson-frame:hover{
+  -webkit-box-shadow: 0px 0px 0px 0px;
+  -moz-box-shadow: 0px 0px 0px 0px;
+  box-shadow: 0px 0px 0px 0px;
+ 
+  top: 30px;
+}
+
+.lesson-frame:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+  
+}
+
+.lesson-content {
+  position: absolute;
+  top: 37%;
+  left: 3%;
+  transform: rotate(-45deg);
+  text-align: center;
+ 
+  font-family: cursive;
+
+}
+.lesson-content > h1{
+  text-align: center;
+  
+    color: white;
+    font-size: 3.5rem;
+    text-shadow: 2px 0 #888888;
+    letter-spacing:2px;
+    font-weight:bold;
+    z-index: 10;
+
 }
 
 .arrow-btn {
