@@ -13,9 +13,7 @@ const FooterContainer = () => {
       <div className="footer-content">
         <Space
           direction="horizontal"
-          size={150}
           align="start"
-          style={{ height: "90%" }}
         >
           <div className="contact footer-flex">
             <img src={contact} alt={contact} />

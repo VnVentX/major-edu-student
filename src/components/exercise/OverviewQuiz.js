@@ -229,66 +229,74 @@ const OverviewQuiz = () => {
   return (
     <div className="page">
       <div className="page-contain">
-        <div className="quiz-container">
-          <div className="quiz-title">
-            <h1>Overview</h1>
-          </div>
+        <div className="quiz-overview-container ">
+          <div className="unit-detail-title">Overview</div>
           <div className="quiz-wrap">
             {questions?.map(
               (item, index) =>
                 index >= minIndex &&
                 index < maxIndex && (
                   <React.Fragment key={index}>
-                    <div className="quiz-left">
-                      <img src={item.questionImg} alt={item.questionImg} />
-                    </div>
-                    <div className="quiz-right">
+                    <div id="showMe" className="quiz-left">
+                      {item.questionImg && (
+                        <div className="question-img">
+                          <img
+                            src={item.questionImg}
+                            alt={item.questionImg}
+                            width="100%"
+                            height="100%"
+                          />
+                        </div>
+                      )}
                       <div className="question">
                         <div className="question-title">
-                          <h2>Question {index + 1}</h2>
+                          <h1>Question {index + 1}</h1>
+                          <div className="quiz-sound" />
                         </div>
                         <div className="question-text">
-                          <h3>{item.questionText}</h3>
+                          <h2>{item.questionText}</h2>
                         </div>
                       </div>
+                    </div>
+                    <div id="showMe" className="quiz-right">
                       <div className="answer">
                         {item.answers.map((a, i) => (
                           <div key={i} className="answer-item">
-                            <div className="option">
-                              <h2>
-                                {(i + 1) / 1 === 1
-                                  ? "A"
-                                  : (i + 1) / 2 === 1
-                                  ? "B"
-                                  : (i + 1) / 3 === 1
-                                  ? "C"
-                                  : (i + 1) / 4 === 1
-                                  ? "D"
-                                  : (i + 1) / 5 === 1
-                                  ? "E"
-                                  : (i + 1) / 6 === 1
-                                  ? "F"
-                                  : (i + 1) / 7 === 1
-                                  ? "G"
-                                  : (i + 1) / 8 === 1
-                                  ? "H"
-                                  : (i + 1) / 9 === 1
-                                  ? "I"
-                                  : (i + 1) / 10 === 1
-                                  ? "J"
-                                  : null}
-                              </h2>
-                            </div>
                             <div>
                               <div
                                 id="answer"
                                 className={
-                                  a.isSelected
-                                    ? "option-text selected"
-                                    : "option-text"
+                                  a.isSelected === true && a.isCorrect === true
+                                    ? "option-correct-btn"
+                                    : a.isSelected === true &&
+                                      a.isCorrect === false
+                                    ? "option-wrong-btn"
+                                    : "option-btn"
                                 }
                               >
-                                <span>{a.answerText}</span>
+                                <div
+                                  className={
+                                    a.isSelected === true &&
+                                    a.isCorrect === true
+                                      ? "option-correct-oval"
+                                      : a.isSelected === true &&
+                                        a.isCorrect === false
+                                      ? "option-wrong-oval"
+                                      : "option-oval"
+                                  }
+                                />
+                                <h1>
+                                  {(i + 1) / 1 === 1
+                                    ? "A. "
+                                    : (i + 1) / 2 === 1
+                                    ? "B. "
+                                    : (i + 1) / 3 === 1
+                                    ? "C. "
+                                    : (i + 1) / 4 === 1
+                                    ? "D. "
+                                    : null}
+                                  {a.answerText}
+                                </h1>
                               </div>
                             </div>
                           </div>
@@ -307,7 +315,9 @@ const OverviewQuiz = () => {
                 )
             )}
           </div>
-          <button onClick={showModal}>Finish</button>
+          <button onClick={showModal} style={{ marginBottom: 30 }}>
+            Finish
+          </button>
           <Modal
             centered
             visible={visible}

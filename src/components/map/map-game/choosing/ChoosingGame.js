@@ -11,7 +11,7 @@ const ChoosingGame = (props) => {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    setOptions(props.info.answers);
+    setOptions(props.info.answers.sort(() => Math.random() - 0.5));
   }, [props.info.answers]);
 
   const handleSelectedOption = (option, optionIndex) => {
@@ -46,7 +46,9 @@ const ChoosingGame = (props) => {
             <div
               key={idx}
               className={
-                i.isWrong === true ? "game-choosing-option-item game-choosing-option-hidden" : "game-choosing-option-item"
+                i.isWrong === true
+                  ? "game-choosing-option-item game-choosing-option-hidden"
+                  : "game-choosing-option-item"
               }
               onClick={() => {
                 handleSelectedOption(i, idx);

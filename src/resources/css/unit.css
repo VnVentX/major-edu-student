@@ -56,6 +56,7 @@
 }
 
 .progress-test-btn {
+  position: relative;
   text-align: center;
   min-width: 244px;
   min-height: 92px;
@@ -71,6 +72,7 @@
   -webkit-box-shadow: 0px 0px 0px 0px;
   -moz-box-shadow: 0px 0px 0px 0px;
   box-shadow: 0px 0px 0px 0px;
+  top: 8px;
 }
 .progress-test-btn h1 {
   position: relative;
@@ -108,6 +110,7 @@
   -webkit-box-shadow: 0px 0px 0px 0px;
   -moz-box-shadow: 0px 0px 0px 0px;
   box-shadow: 0px 0px 0px 0px;
+  top: 8px;
 }
 
 .unit-btn h1 {
@@ -118,56 +121,33 @@
   text-align: center;
 }
 
-
-
 /* ! Unit Detail */
 
 .unit-detail-container {
-  position: relative;
   min-height: 100vh;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 50px;
+  justify-content: center;
   margin-top: 10%;
-
-}
-
-.general-title {
-  /* position: absolute; */
   margin-bottom: 5%;
-  margin-top: -6%;
-  z-index: 10;
 }
 
-
-
-.this-is-title{
-position: relative;
-left: 10%;
-margin-bottom: 3%;
-text-align: center;
-}
-svg {
+.unit-detail-title {
+  position: relative;
+  display: grid;
+  place-items: center;
+  font-family: cursive;
   font-size: 4em;
   font-weight: bold;
-  width: 450px;
-  height: 70px;
-  fill: rgb(255,200,83);
-  
+  color: rgb(255, 200, 83);
+  -webkit-text-stroke-width: 5px;
+  -webkit-text-stroke-color: rgb(38, 59, 128);
 }
-
-.svgStroke {
-  fill: white;
-  stroke: rgb(38,59,128);
-  stroke-width: 20px;
-  stroke-linejoin: round;
-}
-
 
 .unit-detail-wrap {
-  /* position: relative; */
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -176,8 +156,6 @@ svg {
   width: 110%;
   min-height: 460px;
   height: auto;
-  background-color: #bbe9fe;
-  /* border: 0.5rem solid #490d85; */
   border-radius: 100px;
 }
 
@@ -186,28 +164,26 @@ svg {
   margin: 50px 120px 50px 120px;
 }
 
-
-
 .lesson-frame {
   position: relative;
+  display: grid;
+  place-items: center;
   border: 1px solid black;
   width: 310px;
   transform: rotate(45deg);
-  background: rgb(246,120,0);
+  background: rgb(246, 120, 0);
   border-radius: 25px;
-  border: 18px solid rgb(200,100,5);
-  -webkit-box-shadow: 23px 23px 0px 1px rgb(142,73,6);
-  -moz-box-shadow: 23px 23px 0px 1px rgb(142,73,6);
-  box-shadow: 23px 23px 0px 1px rgb(142,73,6);
+  border: 18px solid rgb(200, 100, 5);
+  -webkit-box-shadow: 23px 23px 0px 1px rgb(142, 73, 6);
+  -moz-box-shadow: 23px 23px 0px 1px rgb(142, 73, 6);
+  box-shadow: 23px 23px 0px 1px rgb(142, 73, 6);
   cursor: pointer;
-  
 }
 
-.lesson-frame:hover{
+.lesson-frame:hover {
   -webkit-box-shadow: 0px 0px 0px 0px;
   -moz-box-shadow: 0px 0px 0px 0px;
   box-shadow: 0px 0px 0px 0px;
- 
   top: 30px;
 }
 
@@ -215,29 +191,18 @@ svg {
   content: "";
   display: block;
   padding-bottom: 100%;
-  
 }
 
 .lesson-content {
   position: absolute;
-  top: 37%;
-  left: 3%;
   transform: rotate(-45deg);
-  text-align: center;
- 
   font-family: cursive;
-
 }
-.lesson-content > h1{
-  text-align: center;
-  
-    color: white;
-    font-size: 3.5rem;
-    text-shadow: 2px 0 #888888;
-    letter-spacing:2px;
-    font-weight:bold;
-    z-index: 10;
-
+.lesson-content > h1 {
+  color: white;
+  font-size: 3.5rem;
+  text-shadow: 2px 0 #888888;
+  font-weight: bold;
 }
 
 .arrow-btn {

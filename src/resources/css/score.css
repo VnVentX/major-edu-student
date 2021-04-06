@@ -5,8 +5,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 100px;
-  margin-top: 15%;
 }
 .score-wrap {
   position: relative;
@@ -21,6 +19,7 @@
   background-color: #ffefcf;
   border: 0.5rem solid #ffc853;
   border-radius: 100px;
+  margin-top: 15%;
 }
 .score-wrap .general-title {
   position: absolute;
@@ -50,6 +49,8 @@
   background-color: #ffefcf;
   border: 0.5rem solid #ffc853;
   border-radius: 100px;
+  margin-top: 15%;
+  margin-bottom: 10%;
 }
 
 .score-detail-wrap .general-title {

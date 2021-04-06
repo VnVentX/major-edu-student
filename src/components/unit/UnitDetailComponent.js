@@ -4,7 +4,6 @@ import { Spin } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import bg from "../../resources/img/unit/unit-bg2.png";
 
-
 const UnitDetailComponent = () => {
   const [lesson, setLesson] = useState([]);
   const unitID = window.location.pathname.split("/")[4];
@@ -28,16 +27,13 @@ const UnitDetailComponent = () => {
 
   const history = useHistory();
 
-  const path = window.location.pathname.split("/");
-  const unit = path[path.length - 1];
-
   //! Get Unit path
   const pathSnippets = window.location.pathname.split("/").filter((i) => i);
   const pathStack = pathSnippets.map((_, index) => {
     const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
     return url;
   });
-  const unitPath = pathStack[2];
+  const unitPath = pathStack[1];
 
   return (
     <div className="unit-bg">
@@ -45,29 +41,20 @@ const UnitDetailComponent = () => {
         <div className="back-btn" onClick={() => history.push(unitPath)} />
         <div className="page-contain">
           <div className="unit-detail-container">
-            <div className="this-is-title">
-            <svg>
-              <text class="svgStroke" x="10" y="50">Unit&nbsp;{unit}</text>
-              <text class="svgText" x="10" y="50">Unit&nbsp;{unit}</text>
-            </svg>
-            </div>
-            
+            <div className="unit-detail-title">Unit</div>
             <div className="unit-detail-wrap">
               {lesson.length === 0 && <h1>No Data</h1>}
               {lesson?.map((i) => (
-                <>
-                  <Link
-                    key={i.id}
-                    to={`${window.location.pathname}/lesson/${i.id}`}
-                  >
-                    <div className="lesson-frame">
-                      <div className="lesson-content">
-                        <h1> {i.lessonName}</h1>
-                      </div>
-
+                <Link
+                  key={i.id}
+                  to={`${window.location.pathname}/lesson/${i.id}`}
+                >
+                  <div className="lesson-frame">
+                    <div className="lesson-content">
+                      <h1> {i.lessonName}</h1>
                     </div>
-                  </Link>
-                </>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>

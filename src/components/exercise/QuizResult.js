@@ -30,13 +30,14 @@ const QuizResult = (props) => {
       <div className="page-contain">
         <div className="result-container">
           <div className="game-wrap">
-            <h1>
+            <h1 style={{ fontSize: 42 }}>
               Cleared with {count}/{props.answered.length} points
             </h1>
             <Button
               type="link"
               block
               onClick={() => history.push(otherGamePath[6])}
+              style={{ fontSize: 32 }}
             >
               Do other Exercise
             </Button>
