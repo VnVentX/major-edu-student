@@ -2,9 +2,8 @@
   min-height: 100vh;
   height: auto;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 100px;
 }
 
 .exercise-wrap {
@@ -14,13 +13,12 @@
   align-items: center;
   width: 60vw;
   min-width: 600px;
-  min-height: 70vh;
   margin-top: 10%;
 }
 
 .exercise-wrap > div {
-  flex: 0 1 calc(25% - 20px);
-  margin: 10px;
+  flex: 0 1 calc(25% - 50px);
+  margin: 25px;
 }
 
 .exercise-btn {

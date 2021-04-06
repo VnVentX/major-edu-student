@@ -17,48 +17,6 @@ const HeaderContainer = (props) => {
   return (
     <div className="scence">
       <Header>
-        {/* <div className="menu-content">
-          <Space size={45}>
-            <Link to="/home">
-              <div className="menu-btn">
-                <h1>Home</h1>
-              </div>
-            </Link>
-            <Link to="/notice">
-              <div className="menu-btn">
-                <h1>Notice</h1>
-              </div>
-            </Link>
-            <Link to="/subject">
-              <div className="menu-btn">
-                <h1>Subject</h1>
-              </div>
-            </Link>
-            <Link to="/score">
-              <div className="menu-btn">
-                <h1>Score</h1>
-              </div>
-            </Link>
-            <Link to="/profile">
-              <div className="menu-btn">
-                <h1>Profile</h1>
-              </div>
-            </Link>
-            <Link
-              to=""
-              onClick={() => {
-                localStorage.removeItem("token");
-                localStorage.removeItem("user");
-                props.history.push("/login");
-              }}
-            >
-              <div className="menu-btn">
-                <h1>Logout</h1>
-              </div>
-            </Link>
-          </Space>
-        </div> */
-
           <div class="animatedtabs">
             <ul>
               <li className="">
@@ -114,13 +72,6 @@ const HeaderContainer = (props) => {
               </li>
             </ul>
           </div>
-
-
-                
-
-
-        }
-
       </Header>
     </div>
   );

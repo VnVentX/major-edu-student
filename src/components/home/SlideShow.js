@@ -1,16 +1,12 @@
 import React from "react";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
-import banner_science from "../../resources/img/banner_science.jpg";
-import logo_major from "../../resources/img/logo_major.png";
+import banner1 from "../../resources/img/banner1.jpg";
+import banner2 from "../../resources/img/banner2.png";
 
 const SlideShow = () => {
   return (
     <div className="page">
-      <div className="top-oval" />
-      <div className="logo">
-        <img src={logo_major} alt={logo_major} />
-      </div>
       <div className="slide-show-container">
         <div className="slide-show">
           <AwesomeSlider
@@ -21,32 +17,10 @@ const SlideShow = () => {
             buttonContentLeft={<div className="left-btn" />}
           >
             <div>
-              <img
-                className="slider-img"
-                alt={banner_science}
-                src={banner_science}
-              />
+              <img className="slider-img" alt={banner1} src={banner1} />
             </div>
             <div>
-              <img
-                className="slider-img"
-                alt={banner_science}
-                src={banner_science}
-              />
-            </div>
-            <div>
-              <img
-                className="slider-img"
-                alt={banner_science}
-                src={banner_science}
-              />
-            </div>
-            <div>
-              <img
-                className="slider-img"
-                alt={banner_science}
-                src={banner_science}
-              />
+              <img className="slider-img" alt={banner2} src={banner2} />
             </div>
           </AwesomeSlider>
         </div>

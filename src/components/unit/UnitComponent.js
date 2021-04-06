@@ -72,7 +72,7 @@ const UnitComponent = () => {
                   <div className="unit-title" />
                   {item.unit?.map((unit) => (
                     <Link
-                      to={`${window.location.pathname}/${unit.id}`}
+                      to={`${window.location.pathname}/unit/${unit.id}`}
                       key={unit.id}
                     >
                       <div
@@ -84,9 +84,16 @@ const UnitComponent = () => {
                     </Link>
                   ))}
                   {item.progressTest && (
-                    <div className="progress-test-btn">
-                      <div className="oval-button" />
-                      <h1>{item.progressTest.progressTestName}</h1>
+                    <div className="progress-test">
+                      <Link
+                        to={`${window.location.pathname}/progress-test/${item.progressTest.id}`}
+                        key={item.progressTest.id}
+                      >
+                        <div className="progress-test-btn">
+                          <div className="oval-button" />
+                          <h1>{item.progressTest.progressTestName}</h1>
+                        </div>
+                      </Link>
                     </div>
                   )}
                 </div>

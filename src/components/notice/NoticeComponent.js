@@ -40,45 +40,43 @@ const NoticeComponent = () => {
   };
 
   return (
-    <div className="notice-bg">
-      <div className="page">
-        <div className="page-contain">
-          <div className="notice-container">
-            <div className="notice-page-wrap ">
-              {data?.map(
-                (i, idx) =>
-                  idx >= minIndex &&
-                  idx < maxIndex && (
-                    <div key={idx} className="outter-border">
-                      <div className="inner-border">
-                        <div className="notice-page-title">
-                          <img src={shout} alt={shout} />
-                          <div className="title-right">
-                            <Link to={`${window.location.pathname}/${i.id}`}>
-                              <h3>{i.newsTitle}</h3>
-                            </Link>
-                            <h4>{i.createdDate}</h4>
-                          </div>
+    <div className="page">
+      <div className="page-contain">
+        <div className="notice-container">
+          <div className="notice-page-wrap ">
+            {data?.map(
+              (i, idx) =>
+                idx >= minIndex &&
+                idx < maxIndex && (
+                  <div key={idx} className="outter-border">
+                    <div className="inner-border">
+                      <div className="notice-page-title">
+                        <img src={shout} alt={shout} />
+                        <div className="title-right">
+                          <Link to={`${window.location.pathname}/${i.id}`}>
+                            <h3>{i.newsTitle}</h3>
+                          </Link>
+                          <h4>{i.createdDate}</h4>
                         </div>
-                        <div className="notice-content">
-                          <p>{i.shortDescription}</p>
-                        </div>
-                        <Link to={`${window.location.pathname}/${i.id}`}>
-                          See more...
-                        </Link>
                       </div>
+                      <div className="notice-content">
+                        <p>{i.shortDescription}</p>
+                      </div>
+                      <Link to={`${window.location.pathname}/${i.id}`}>
+                        See more...
+                      </Link>
                     </div>
-                  )
-              )}
-            </div>
-            <Pagination
-              pageSize={pageSize}
-              current={current}
-              total={data.length}
-              onChange={handleChange}
-              style={{ marginTop: 60 }}
-            />
+                  </div>
+                )
+            )}
           </div>
+          <Pagination
+            pageSize={pageSize}
+            current={current}
+            total={data.length}
+            onChange={handleChange}
+            style={{ marginTop: 60 }}
+          />
         </div>
       </div>
     </div>

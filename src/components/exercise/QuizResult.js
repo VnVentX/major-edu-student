@@ -36,7 +36,7 @@ const QuizResult = (props) => {
             <Button
               type="link"
               block
-              onClick={() => history.push(otherGamePath[5])}
+              onClick={() => history.push(otherGamePath[6])}
             >
               Do other Exercise
             </Button>

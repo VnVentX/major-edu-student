@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Spin } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import bg from "../../resources/img/unit/unit-bg2.png";
+
 
 const UnitDetailComponent = () => {
   const [lesson, setLesson] = useState([]);
@@ -51,7 +53,6 @@ const UnitDetailComponent = () => {
             </div>
             
             <div className="unit-detail-wrap">
-
               {lesson.length === 0 && <h1>No Data</h1>}
               {lesson?.map((i) => (
                 <>
@@ -63,6 +64,7 @@ const UnitDetailComponent = () => {
                       <div className="lesson-content">
                         <h1> {i.lessonName}</h1>
                       </div>
+
                     </div>
                   </Link>
                 </>

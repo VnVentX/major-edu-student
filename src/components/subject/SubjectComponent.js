@@ -31,7 +31,6 @@ const SubjectComponent = () => {
     <div className="page">
       <div className="page-contain">
         <div className="subject-container">
-          {/* <div className="subject-home-title" /> */}
           <div className="subject-home-content">
             {data?.map((i, idx) => (
               <div key={idx} className="subject-home-wrap">
@@ -40,7 +39,7 @@ const SubjectComponent = () => {
                     <img src={math} alt={math} />
                   </div>
                 </div>
-                <Link to={`subject/${i.id}/unit`}>
+                <Link to={`/subject/${i.id}`}>
                   <div className="subject-btn">
                     <h1>{i.subjectName}</h1>
                   </div>
@@ -48,6 +47,7 @@ const SubjectComponent = () => {
               </div>
             ))}
           </div>
+          <div className="subject-footer" />
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ import MapComponent from "./MapComponent";
 
 const Index = () => {
   useEffect(() => {
-    document.body.style.backgroundImage = `url('${bg}')`;
+    document.body.style.background = `url('${bg}')`;
   }, []);
 
   return (
