@@ -14,6 +14,7 @@ const color = [
   "#059BA5",
   "#F19D1F",
 ];
+
 let itemColor = "";
 
 const ExerciseComponent = () => {
@@ -25,6 +26,7 @@ const ExerciseComponent = () => {
     document.body.style.backgroundSize = "cover";
     let header = document.getElementById("header");
     header.style.visibility = "visible  ";
+    randomColor(color);
     async function getAllExercise() {
       await axios
         .get(
@@ -68,7 +70,6 @@ const ExerciseComponent = () => {
                   display: "grid",
                   placeItems: "center",
                 }}
-                onLoad={randomColor(color)}
               >
                 <Link to={`${location.pathname}/${i.id}`}>
                   <div

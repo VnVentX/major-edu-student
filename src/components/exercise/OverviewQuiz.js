@@ -8,182 +8,130 @@ const pageSize = 1;
 
 const data = [
   {
-    questionID: 1,
-    questionText:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    questionAudio: "",
-    questionImg:
-      "https://image.shutterstock.com/z/stock-vector-illustration-of-a-kid-answering-test-questions-82843036.jpg",
-    answers: [
+    id: 28,
+    questionTitle: "Question for Math",
+    questionImageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/mathscience-e425d.appspot.com/o/images%2F087be7c6-4bc6-4333-8b96-6de6c31a2083png?alt=media&token=6bf14f45-3fbe-472a-bb3a-0f35d9369a91",
+    questionAudioUrl:
+      "https://firebasestorage.googleapis.com/v0/b/mathscience-e425d.appspot.com/o/audios%2F8eb58ca5-9f79-4d0a-b70a-115d0325d404mp3?alt=media&token=f49f3be7-f8e0-4cde-8624-6206f4dd6ffc",
+    score: 1,
+    optionList: [
       {
-        answerText: "Option 1",
-        isCorrect: true,
+        id: 91,
+        optionText: "A",
+        correct: false,
+      },
+      {
+        id: 92,
+        optionText: "B",
+        correct: false,
+      },
+      {
+        id: 93,
+        optionText: "C",
+        correct: false,
+      },
+      {
+        id: 94,
+        optionText: "D",
+        correct: true,
         isSelected: true,
-      },
-      {
-        answerText: "Option 2",
-        isCorrect: false,
-        isSelected: false,
-      },
-      {
-        answerText: "Option 3",
-        isCorrect: false,
-        isSelected: false,
-      },
-      {
-        answerText: "Option 4",
-        isCorrect: false,
-        isSelected: false,
       },
     ],
   },
   {
-    questionID: 2,
-    questionText:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    questionAudio: "",
-    questionImg:
-      "https://image.shutterstock.com/z/stock-vector-illustration-of-a-kid-answering-test-questions-82843036.jpg",
-    answers: [
+    id: 29,
+    questionTitle: "Question for Unit 1",
+    questionImageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/mathscience-e425d.appspot.com/o/images%2F27a18af1-a8aa-4756-b044-89c9c9eb0bf0png?alt=media&token=fed04af3-bf51-41ee-8253-db65c2f3fffe",
+    questionAudioUrl:
+      "https://firebasestorage.googleapis.com/v0/b/mathscience-e425d.appspot.com/o/audios%2F5491d674-c444-4333-9d83-e94d35c6f802mp3?alt=media&token=42317bf8-1b27-4538-b4d0-1731aab6e50e",
+    score: 1,
+    optionList: [
       {
-        answerText: "Option 1",
-        isCorrect: true,
+        id: 95,
+        optionText: "A",
+        correct: false,
         isSelected: true,
       },
       {
-        answerText: "Option 2",
-        isCorrect: false,
-        isSelected: false,
+        id: 96,
+        optionText: "B",
+        correct: false,
       },
       {
-        answerText: "Option 3",
-        isCorrect: false,
-        isSelected: false,
+        id: 97,
+        optionText: "C",
+        correct: true,
       },
       {
-        answerText: "Option 4",
-        isCorrect: false,
-        isSelected: false,
+        id: 98,
+        optionText: "D",
+        correct: false,
       },
     ],
   },
   {
-    questionID: 3,
-    questionText:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    questionAudio: "",
-    questionImg:
-      "https://image.shutterstock.com/z/stock-vector-illustration-of-a-kid-answering-test-questions-82843036.jpg",
-    answers: [
+    id: 30,
+    questionTitle: "Test Question math for unit 1",
+    questionImageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/mathscience-e425d.appspot.com/o/images%2Fcac862e5-b27a-4a45-b917-eec3f5585bb1png?alt=media&token=59cd2d1b-4bf6-43bc-ad4e-066830f311e0",
+    questionAudioUrl:
+      "https://firebasestorage.googleapis.com/v0/b/mathscience-e425d.appspot.com/o/audios%2F046d76c7-b937-412f-9f03-e2c3e11f8710mp3?alt=media&token=967667e8-36a9-4c34-b9f1-f2cac4ec35d5",
+    score: 1,
+    optionList: [
       {
-        answerText: "Option 1",
-        isCorrect: true,
+        id: 99,
+        optionText: "A",
+        correct: false,
+      },
+      {
+        id: 100,
+        optionText: "B",
+        correct: false,
         isSelected: true,
       },
       {
-        answerText: "Option 2",
-        isCorrect: false,
-        isSelected: false,
+        id: 101,
+        optionText: "C",
+        correct: true,
       },
       {
-        answerText: "Option 3",
-        isCorrect: false,
-        isSelected: false,
-      },
-      {
-        answerText: "Option 4",
-        isCorrect: false,
-        isSelected: false,
+        id: 102,
+        optionText: "D",
+        correct: false,
       },
     ],
   },
   {
-    questionID: 4,
-    questionText:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    questionAudio: "",
-    questionImg:
-      "https://image.shutterstock.com/z/stock-vector-illustration-of-a-kid-answering-test-questions-82843036.jpg",
-    answers: [
+    id: 31,
+    questionTitle: "Test Question math for unit 1",
+    questionImageUrl:
+      "https://firebasestorage.googleapis.com/v0/b/mathscience-e425d.appspot.com/o/images%2F92bef257-53b7-493e-8496-dc7e16a3e605png?alt=media&token=caf195ba-62af-4a6b-a287-0f294821ef6d",
+    questionAudioUrl:
+      "https://firebasestorage.googleapis.com/v0/b/mathscience-e425d.appspot.com/o/audios%2Fd8d2a8ca-6c72-4297-9f0d-5c08982a37f1mp3?alt=media&token=491ca7b4-9ab0-4b6d-a52a-e11cd8ac5018",
+    score: 1,
+    optionList: [
       {
-        answerText: "Option 1",
-        isCorrect: true,
+        id: 103,
+        optionText: "Option 1",
+        correct: true,
         isSelected: true,
       },
       {
-        answerText: "Option 2",
-        isCorrect: false,
-        isSelected: false,
+        id: 104,
+        optionText: "Option 2",
+        correct: false,
       },
       {
-        answerText: "Option 3",
-        isCorrect: false,
-        isSelected: false,
+        id: 105,
+        optionText: "Option 3",
+        correct: false,
       },
       {
-        answerText: "Option 4",
-        isCorrect: false,
-        isSelected: false,
-      },
-    ],
-  },
-  {
-    questionID: 5,
-    questionText:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    questionAudio: "",
-    questionImg:
-      "https://thumbs.dreamstime.com/b/frame-template-design-kid-science-lab-illustration-155174789.jpg",
-    answers: [
-      {
-        answerText: "Option 1",
-        isCorrect: true,
-        isSelected: true,
-      },
-      {
-        answerText: "Option 2",
-        isCorrect: false,
-        isSelected: false,
-      },
-      {
-        answerText: "Option 3",
-        isCorrect: false,
-        isSelected: false,
-      },
-      {
-        answerText: "Option 4",
-        isCorrect: false,
-        isSelected: false,
-      },
-    ],
-  },
-  {
-    questionID: 6,
-    questionText:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim ad minim veniam, quis nostrud exercitationulla",
-    questionAudio: "",
-    questionImg:
-      "https://thumbs.dreamstime.com/b/frame-template-design-kid-science-lab-illustration-155174789.jpg",
-    answers: [
-      {
-        answerText: "Option 1",
-        isCorrect: true,
-        isSelected: true,
-      },
-      {
-        answerText: "Option 2",
-        isCorrect: false,
-        isSelected: false,
-      },
-      {
-        answerText: "Option 3",
-        isCorrect: false,
-        isSelected: false,
-      },
-      {
-        answerText: "Option 4",
-        isCorrect: false,
-        isSelected: false,
+        id: 106,
+        optionText: "Option 4",
+        correct: false,
       },
     ],
   },
@@ -238,11 +186,11 @@ const OverviewQuiz = () => {
                 index < maxIndex && (
                   <React.Fragment key={index}>
                     <div id="showMe" className="quiz-left">
-                      {item.questionImg && (
+                      {item.questionImageUrl && (
                         <div className="question-img">
                           <img
-                            src={item.questionImg}
-                            alt={item.questionImg}
+                            src={item.questionImageUrl}
+                            alt={item.questionImageUrl}
                             width="100%"
                             height="100%"
                           />
@@ -254,33 +202,32 @@ const OverviewQuiz = () => {
                           <div className="quiz-sound" />
                         </div>
                         <div className="question-text">
-                          <h2>{item.questionText}</h2>
+                          <h2>{item.questionTitle}</h2>
                         </div>
                       </div>
                     </div>
                     <div id="showMe" className="quiz-right">
                       <div className="answer">
-                        {item.answers.map((a, i) => (
+                        {item.optionList.map((a, i) => (
                           <div key={i} className="answer-item">
                             <div>
                               <div
                                 id="answer"
                                 className={
-                                  a.isSelected === true && a.isCorrect === true
+                                  a.isSelected === true && a.correct === true
                                     ? "option-correct-btn"
                                     : a.isSelected === true &&
-                                      a.isCorrect === false
+                                      a.correct === false
                                     ? "option-wrong-btn"
                                     : "option-btn"
                                 }
                               >
                                 <div
                                   className={
-                                    a.isSelected === true &&
-                                    a.isCorrect === true
+                                    a.isSelected === true && a.correct === true
                                       ? "option-correct-oval"
                                       : a.isSelected === true &&
-                                        a.isCorrect === false
+                                        a.correct === false
                                       ? "option-wrong-oval"
                                       : "option-oval"
                                   }
@@ -295,7 +242,7 @@ const OverviewQuiz = () => {
                                     : (i + 1) / 4 === 1
                                     ? "D. "
                                     : null}
-                                  {a.answerText}
+                                  {a.optionText}
                                 </h1>
                               </div>
                             </div>

@@ -11,6 +11,7 @@
   min-height: 75vh;
   display: grid;
   place-items: center;
+  margin: 5% 0 50px 0;
 }
 
 .unit-wrap .awssld__content {

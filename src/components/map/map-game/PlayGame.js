@@ -173,9 +173,6 @@ const PlayGame = () => {
       <div className="page-contain">
         <div className="play-game-container">
           <div className="game-wrap">
-            {/* <div className="exercise-title">
-              <h1>Play Game</h1>
-            </div> */}
             {!isStart && (
               <div className="play-btn" onClick={handelStartGame}>
                 <h2>Start</h2>
