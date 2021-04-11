@@ -27,13 +27,17 @@ const QuizComponent = (props) => {
   }, []);
 
   const getExerciseQuestion = async () => {
-    let exerciseID = window.location.pathname.split("/")[8];
+    let exerciseID = "";
+    if (window.location.pathname.split("/")[3] === "progress-test") {
+      exerciseID = window.location.pathname.split("/")[6];
+    } else {
+      exerciseID = window.location.pathname.split("/")[8];
+    }
     await axios
       .get(
         `https://mathscienceeducation.herokuapp.com/exersise/${exerciseID}/questions`
       )
       .then((res) => {
-        console.log(res.data);
         setQuestions(res.data.length === 0 ? [] : [...res.data]);
         setTotalPage(res.data.length / pageSize);
         setMinIndex(0);

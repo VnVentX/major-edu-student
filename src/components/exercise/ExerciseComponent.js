@@ -19,18 +19,18 @@ let itemColor = "";
 
 const ExerciseComponent = () => {
   const [data, setData] = useState([]);
-  const lessonID = window.location.pathname.split("/")[6];
 
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
     document.body.style.backgroundSize = "cover";
     let header = document.getElementById("header");
     header.style.visibility = "visible  ";
-    randomColor(color);
     async function getAllExercise() {
+      let lessonID = window.location.pathname.split("/")[6];
+      let accountID = 1;
       await axios
-        .get(
-          `https://mathscienceeducation.herokuapp.com/lesson/${lessonID}/exercises`
+        .post(
+          `https://mathscienceeducation.herokuapp.com/lesson/${lessonID}/exercises?accountId=${accountID}`
         )
         .then((res) => {
           setData(res.data);
@@ -70,6 +70,7 @@ const ExerciseComponent = () => {
                   display: "grid",
                   placeItems: "center",
                 }}
+                onLoad={randomColor(color)}
               >
                 <Link to={`${location.pathname}/${i.id}`}>
                   <div
@@ -77,7 +78,7 @@ const ExerciseComponent = () => {
                     style={{ backgroundColor: itemColor }}
                   >
                     <div className="check-area" />
-                    <div className="check-mark" />
+                    {i.done ? <div className="check-mark" /> : null}
                     <h1>{i.exerciseName}</h1>
                   </div>
                 </Link>

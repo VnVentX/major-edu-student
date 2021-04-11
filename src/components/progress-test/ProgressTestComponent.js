@@ -28,10 +28,11 @@ const ProgressTestComponent = () => {
   }, []);
 
   const getProgressTestBySubjectID = async () => {
-    let subjectID = window.location.pathname.split("/")[2];
+    let progressTestID = window.location.pathname.split("/")[4];
+    let accountID = 1;
     await axios
-      .get(
-        `https://mathscienceeducation.herokuapp.com/subject/${subjectID}/progressTest`
+      .post(
+        `https://mathscienceeducation.herokuapp.com/progressTest/${progressTestID}/exercises?accountId=${accountID}`
       )
       .then((res) => {
         setData(res.data.length === 0 ? [] : res.data);
@@ -71,14 +72,14 @@ const ProgressTestComponent = () => {
                 }}
                 onLoad={randomColor(color)}
               >
-                <Link to={`${location.pathname}/${i.id}`}>
+                <Link to={`${location.pathname}/test/${i.id}`}>
                   <div
                     className="exercise-btn"
                     style={{ backgroundColor: itemColor }}
                   >
                     <div className="check-area" />
-                    <div className="check-mark" />
-                    <h1>{i.progressTestName}</h1>
+                    {i.done ? <div className="check-mark" /> : null}
+                    <h1>{i.exerciseName}</h1>
                   </div>
                 </Link>
               </div>

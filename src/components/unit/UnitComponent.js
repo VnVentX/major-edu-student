@@ -26,8 +26,6 @@ const UnitComponent = () => {
 
   const history = useHistory();
 
-  const subjectID = window.location.pathname.split("/")[2];
-
   //! Get Unit path
   const pathSnippets = window.location.pathname.split("/").filter((i) => i);
   const pathStack = pathSnippets.map((_, index) => {
@@ -40,9 +38,11 @@ const UnitComponent = () => {
     document.body.style.background = `url('${bg}')`;
     document.body.style.backgroundSize = "cover";
     async function getAllUnit() {
+      let subjectID = window.location.pathname.split("/")[2];
+      let accountID = 1;
       await axios
-        .get(
-          `https://mathscienceeducation.herokuapp.com/subject/${subjectID}/unitView`
+        .post(
+          `https://mathscienceeducation.herokuapp.com/subject/${subjectID}/unitView?accountId=${accountID}`
         )
         .then((res) => {
           setData(res.data);
@@ -52,7 +52,7 @@ const UnitComponent = () => {
         });
     }
     getAllUnit();
-  }, [subjectID]);
+  }, []);
 
   return (
     <div className="page" style={{ display: "flex", justifyContent: "center" }}>

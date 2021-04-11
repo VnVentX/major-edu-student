@@ -4,152 +4,39 @@ import { Link, useHistory } from "react-router-dom";
 import "antd/dist/antd.css";
 import bg from "../../resources/img/score/score-bg.png";
 
-const mockData = [
-  {
-    id: 1,
-    unitName: "Unit 1",
-    exercise: [
-      {
-        id: 1,
-        exerciseName: "Exercise 1",
-        score: "10/10",
-      },
-      {
-        id: 2,
-        exerciseName: "Exercise 2",
-        score: "10/10",
-      },
-      {
-        id: 3,
-        exerciseName: "Exercise 3",
-        score: "10/10",
-      },
-      {
-        id: 4,
-        exerciseName: "Exercise 4",
-        score: "8/10",
-      },
-    ],
-  },
-  {
-    id: 2,
-    unitName: "Unit 2",
-    exercise: [
-      {
-        id: 1,
-        exerciseName: "Exercise 1",
-        score: "10/10",
-      },
-      {
-        id: 2,
-        exerciseName: "Exercise 2",
-        score: "10/10",
-      },
-      {
-        id: 3,
-        exerciseName: "Exercise 3",
-        score: "10/10",
-      },
-      {
-        id: 4,
-        exerciseName: "Exercise 4",
-        score: "8/10",
-      },
-    ],
-  },
-  {
-    id: 3,
-    unitName: "Unit 3",
-    exercise: [
-      {
-        id: 1,
-        exerciseName: "Exercise 1",
-        score: "10/10",
-      },
-      {
-        id: 2,
-        exerciseName: "Exercise 2",
-        score: "10/10",
-      },
-      {
-        id: 3,
-        exerciseName: "Exercise 3",
-        score: "10/10",
-      },
-      {
-        id: 4,
-        exerciseName: "Exercise 4",
-        score: "8/10",
-      },
-    ],
-  },
-  {
-    id: 4,
-    unitName: "Unit 4",
-    exercise: [
-      {
-        id: 1,
-        exerciseName: "Exercise 1",
-        score: "10/10",
-      },
-      {
-        id: 2,
-        exerciseName: "Exercise 2",
-        score: "10/10",
-      },
-      {
-        id: 3,
-        exerciseName: "Exercise 3",
-        score: "10/10",
-      },
-      {
-        id: 4,
-        exerciseName: "Exercise 4",
-        score: "8/10",
-      },
-    ],
-  },
-  {
-    id: 5,
-    unitName: "Unit 5",
-    exercise: [
-      {
-        id: 1,
-        exerciseName: "Exercise 1",
-        score: "10/10",
-      },
-      {
-        id: 2,
-        exerciseName: "Exercise 2",
-        score: "10/10",
-      },
-      {
-        id: 3,
-        exerciseName: "Exercise 3",
-        score: "10/10",
-      },
-      {
-        id: 4,
-        exerciseName: "Exercise 4",
-        score: "8/10",
-      },
-    ],
-  },
-];
-
 const ScoreExercise = () => {
-  const [data, setData] = useState([]);
   const history = useHistory();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
     document.body.style.backgroundSize = "cover";
-    setData(mockData);
+    async function getStunderScore() {
+      setLoading(true);
+      let subjectID = window.location.pathname.split("/")[2];
+      let accountID = 1;
+      let formData = new FormData();
+      formData.append("subjectId", subjectID);
+      formData.append("accountId", accountID);
+      await axios
+        .post(
+          `https://mathscienceeducation.herokuapp.com/subject/1/score?accountId=1`
+        )
+        .then((res) => {
+          console.log(res.data);
+          setLoading(false);
+          setData(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+    getStunderScore();
   }, []);
 
   const showMore = (item) => {
     let tempArr = Array.from(data);
-    console.log(tempArr[item].isShown);
     if (
       tempArr[item].isShown === undefined ||
       tempArr[item].isShown === false
@@ -157,6 +44,20 @@ const ScoreExercise = () => {
       tempArr[item].isShown = true;
     } else {
       tempArr[item].isShown = false;
+    }
+    setData(tempArr);
+  };
+
+  const showMoreLesson = (unitIdx, lessonIdx) => {
+    let tempArr = Array.from(data);
+    if (
+      tempArr[unitIdx].lessonScoreViewDTOList[lessonIdx].isShown ===
+        undefined ||
+      tempArr[unitIdx].lessonScoreViewDTOList[lessonIdx].isShown === false
+    ) {
+      tempArr[unitIdx].lessonScoreViewDTOList[lessonIdx].isShown = true;
+    } else {
+      tempArr[unitIdx].lessonScoreViewDTOList[lessonIdx].isShown = false;
     }
     setData(tempArr);
   };
@@ -198,22 +99,68 @@ const ScoreExercise = () => {
                     >
                       <h1>{i.unitName}</h1>
                     </div>
-                    <div className="unit-status" />
+                    {i.process !== "100%" ? (
+                      <div className="status-btn">
+                        <div className="status-btn-oval" />
+                        <h1>{i.process === "N/A" ? "0%" : i.process}</h1>
+                      </div>
+                    ) : (
+                      <div className="status-btn-done">
+                        <div className="status-btn-done-oval" />
+                        <h1>{i.process}</h1>
+                      </div>
+                    )}
                   </div>
                   {i.isShown === true && (
                     <div className="unit-exercise">
                       <div style={{ marginBottom: 20 }} />
-                      {i.exercise?.map((exercise) => (
-                        <React.Fragment key={exercise.id}>
-                          <div className="unit-exercise-item">
-                            <Link
-                              to={`${window.location.pathname}/exercise/${exercise.id}`}
-                            >
-                              <h1>{exercise.exerciseName}</h1>
-                            </Link>
-                            <h1>{exercise.score}</h1>
+                      {i.lessonScoreViewDTOList?.map((lesson, index) => (
+                        <React.Fragment key={index}>
+                          <div className="lesson-exercise-item">
+                            {lesson.isShown === true ? (
+                              <div
+                                className="unit-arrow arrow-up-bl"
+                                style={{ marginRight: 10 }}
+                                onClick={() => {
+                                  showMoreLesson(idx, index);
+                                }}
+                              />
+                            ) : (
+                              <div
+                                className="unit-arrow arrow-down-bl"
+                                style={{ marginRight: 10 }}
+                                onClick={() => {
+                                  showMoreLesson(idx, index);
+                                }}
+                              />
+                            )}
+                            <h1>{lesson.lessonName}</h1>
                           </div>
                           <div className="item-spacer" />
+                          {lesson.isShown === true && (
+                            <div className="lesson-exercise">
+                              <div style={{ marginBottom: 20 }} />
+                              {lesson.exerciseResponseDTOList?.map(
+                                (exercise, index) => (
+                                  <React.Fragment key={index}>
+                                    <div className="unit-exercise-item">
+                                      <Link
+                                        to={`${window.location.pathname}/exercise/${exercise.id}`}
+                                      >
+                                        <h1>{exercise.exerciseName}</h1>
+                                      </Link>
+                                      <h1>
+                                        {exercise.done === true
+                                          ? "DONE"
+                                          : "NOT DONE"}
+                                      </h1>
+                                    </div>
+                                    <div className="item-spacer" />
+                                  </React.Fragment>
+                                )
+                              )}
+                            </div>
+                          )}
                         </React.Fragment>
                       ))}
                     </div>

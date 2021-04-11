@@ -95,6 +95,11 @@ const Home = (props) => {
                   component={ProgressTest}
                 />
                 <Route
+                  path="/subject/:subjectID/progress-test/:progressTestID/test/:testID"
+                  exact
+                  component={QuizComponent}
+                />
+                <Route
                   path="/subject/:subjectID/unit/:unitID/lesson/:lessonID"
                   exact
                   component={MapLesson}

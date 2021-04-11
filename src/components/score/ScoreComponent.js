@@ -1,33 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Spin } from "antd";
 import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
 import bg from "../../resources/img/score/score-bg.png";
 
 const gradeID = 1;
 
-const data = [
-  {
-    id: 1,
-    subjectName: "Math",
-  },  {
-    id: 2,
-    subjectName: "Science",
-  },
-];
-
 const ScoreComponent = () => {
   const [lesson, setLesson] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
     document.body.style.backgroundSize = "cover";
     async function getAllSubject() {
+      setLoading(true);
       await axios
         .get(
           `https://mathscienceeducation.herokuapp.com/grade/${gradeID}/subjects`
         )
         .then((res) => {
+          setLoading(false);
           setLesson(res.data);
         })
         .catch((e) => {
@@ -45,14 +39,18 @@ const ScoreComponent = () => {
             <div className="general-title ">
               <h1>Score</h1>
             </div>
-            {data?.map((i) => (
-              <Link key={i.id} to={`${window.location.pathname}/${i.id}`}>
-                <div className="general-btn">
-                  <div className="general-oval" />
-                  <h1>{i.subjectName}</h1>
-                </div>
-              </Link>
-            ))}
+            {loading ? (
+              <Spin size="large" />
+            ) : (
+              lesson?.map((i) => (
+                <Link key={i.id} to={`${window.location.pathname}/${i.id}`}>
+                  <div className="general-btn">
+                    <div className="general-oval" />
+                    <h1>{i.subjectName}</h1>
+                  </div>
+                </Link>
+              ))
+            )}
           </div>
         </div>
       </div>

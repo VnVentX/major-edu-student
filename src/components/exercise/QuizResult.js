@@ -4,6 +4,7 @@ import { Button } from "antd";
 
 const QuizResult = (props) => {
   const [count, setCount] = useState(0);
+  const [current, setCurrent] = useState("");
   let location = useLocation();
   let history = useHistory();
 
@@ -13,8 +14,9 @@ const QuizResult = (props) => {
     const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
     return url;
   });
-  console.log(otherGamePath);
+
   useEffect(() => {
+    setCurrent(window.location.pathname.split("/")[3]);
     var counter = count;
     props.answered.map((i) => {
       if (i.isCorrect === true) {
@@ -36,10 +38,18 @@ const QuizResult = (props) => {
             <Button
               type="link"
               block
-              onClick={() => history.push(otherGamePath[6])}
+              onClick={() => {
+                if (current === "progress-test") {
+                  history.push(otherGamePath[3]);
+                } else {
+                  history.push(otherGamePath[6]);
+                }
+              }}
               style={{ fontSize: 32 }}
             >
-              Do other Exercise
+              {current === "progress-test"
+                ? "Do other Test"
+                : "Do other Exercise"}
             </Button>
           </div>
         </div>
