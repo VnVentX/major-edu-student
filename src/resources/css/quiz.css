@@ -50,7 +50,7 @@
 }
 
 .quiz-left > div {
-  flex: 1 1 500px;
+  flex: 1 1 300px;
   margin: 50px;
 }
 
@@ -58,7 +58,16 @@
   position: relative;
   border: 0.75rem solid #263b80;
   border-radius: 30px;
-  max-width: 500px;
+}
+@media (max-width: 3000px) {
+  .question-img {
+    max-width: 500px;
+  }
+}
+@media (max-width: 1120px) {
+  .question-img {
+    max-width: 350px;
+  }
 }
 
 .question-img img {
