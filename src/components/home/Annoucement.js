@@ -11,7 +11,6 @@ const Annoucement = () => {
       await axios
         .get("https://mathscienceeducation.herokuapp.com/news/3newest")
         .then((res) => {
-          console.log(res.data);
           setData(res.data.length === 0 ? [] : res.data);
         })
         .catch((e) => {
@@ -25,6 +24,9 @@ const Annoucement = () => {
     <div className="page">
       <div className="page-contain">
         <div className="announcement-content">
+          <div className="unit-detail-title" style={{ marginBottom: 40 }}>
+            News
+          </div>
           <div className="notice-wrap">
             {data?.map((i, idx) => (
               <div key={idx} className="outter-border">

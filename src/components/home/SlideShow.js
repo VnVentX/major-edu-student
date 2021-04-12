@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
-import banner2 from "../../resources/img/banner2.png";
 
 const SlideShow = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function getAllSubject() {
+      await axios
+        .get("https://mathscienceeducation.herokuapp.com/bannerImage/url")
+        .then((res) => {
+          setData(res.data.length === 0 ? [] : res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+    getAllSubject();
+  }, []);
+
   return (
     <div className="page">
       <div className="slide-show-container">
@@ -15,18 +31,11 @@ const SlideShow = () => {
             buttonContentRight={<div className="right-btn" />}
             buttonContentLeft={<div className="left-btn" />}
           >
-            <div>
-              <img className="slider-img" alt={banner2} src={banner2} />
-            </div>
-            <div>
-              <img className="slider-img" alt={banner2} src={banner2} />
-            </div>
-            <div>
-              <img className="slider-img" alt={banner2} src={banner2} />
-            </div>
-            <div>
-              <img className="slider-img" alt={banner2} src={banner2} />
-            </div>
+            {data?.map((i, idx) => (
+              <div key={idx}>
+                <img className="slider-img" alt={i} src={i} />
+              </div>
+            ))}
           </AwesomeSlider>
         </div>
       </div>

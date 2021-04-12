@@ -93,12 +93,13 @@ const QuizComponent = (props) => {
     if (elementsIndex > -1) {
       const result = Array.from(answered);
       result[elementsIndex].correct = answer.correct;
+      result[elementsIndex].score = question.score;
       setAnswered(result);
     }
   };
 
   //! Check answer đúng hay sai
-  const handelAnswerSubmit = (question, idx) => {
+  const handelAnswerSubmit = (idx) => {
     var counter = wrongCount;
     var total = totalPage - 1;
     if (answered[idx].correct === true) {
@@ -189,7 +190,9 @@ const QuizComponent = (props) => {
                           <div className="question">
                             <div className="question-title">
                               <h1>Question {index + 1}</h1>
-                              <div className="quiz-sound" />
+                              {item.questionAudioUrl && (
+                                <div className="quiz-sound" />
+                              )}
                             </div>
                             <div className="question-text">
                               <h2>{item.questionTitle}</h2>
@@ -203,7 +206,7 @@ const QuizComponent = (props) => {
                                 <div
                                   onClick={() => {
                                     handleSelected(item, a, i);
-                                    handelAnswerSubmit(item, index);
+                                    handelAnswerSubmit(index);
                                   }}
                                 >
                                   <div
@@ -246,7 +249,6 @@ const QuizComponent = (props) => {
                               </div>
                             ))}
                           </div>
-                          {/* <div className="quiz-submit-btn" /> */}
                         </div>
                       </React.Fragment>
                     )

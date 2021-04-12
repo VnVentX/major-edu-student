@@ -58,6 +58,7 @@
   position: relative;
   border: 0.75rem solid #263b80;
   border-radius: 30px;
+  max-width: 500px;
 }
 
 .question-img img {
@@ -317,4 +318,14 @@
   -webkit-align-items: center;
   justify-content: center;
   margin-top: 10%;
+}
+
+.check-mark {
+  position: absolute;
+  width: 59px;
+  height: 48px;
+  top: 0;
+  right: 3%;
+  background-image: url("../img/exercise/check-mark.png");
+  z-index: 10;
 }

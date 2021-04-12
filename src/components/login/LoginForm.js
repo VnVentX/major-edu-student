@@ -85,16 +85,6 @@ const LoginForm = (props) => {
             Forgot password &gt;
           </Button>
         </div>
-        {/* <div>
-          <input
-            type="checkbox"
-            id="remember"
-            name="remember"
-            value=""
-            style={{ marginRight: 5 }}
-          />
-          <label htmlFor="remember">Remember me</label>
-        </div> */}
       </form>
     </>
   );

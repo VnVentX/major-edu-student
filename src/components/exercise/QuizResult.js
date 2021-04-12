@@ -5,6 +5,7 @@ import { Button } from "antd";
 
 const QuizResult = (props) => {
   const [count, setCount] = useState(0);
+  const [total, setTotal] = useState(0);
   const [current, setCurrent] = useState("");
   let location = useLocation();
   let history = useHistory();
@@ -18,18 +19,23 @@ const QuizResult = (props) => {
 
   useEffect(() => {
     setCurrent(window.location.pathname.split("/")[3]);
-    var counter = count;
+    let counter = 0;
+    let totalScore = 0;
+    let mark = 0;
     props.answered.map((i) => {
-      if (i.isCorrect === true) {
-        counter++;
+      totalScore = totalScore + i.score;
+      setTotal(totalScore);
+      if (i.correct === true) {
+        counter = counter + i.score;
       }
       return counter;
     });
-    setCount(counter);
-    submitResult();
+    mark = (counter * 10) / totalScore;
+    setCount(mark);
+    submitResult(mark);
   }, []);
 
-  const submitResult = async () => {
+  const submitResult = async (mark) => {
     let exerciseID = "";
     let takenObj = JSON.stringify(props.question);
     if (window.location.pathname.split("/")[3] === "progress-test") {
@@ -41,7 +47,7 @@ const QuizResult = (props) => {
       .post("https://mathscienceeducation.herokuapp.com/exericseTaken", {
         accountId: 1,
         exerciseId: exerciseID,
-        mark: 10,
+        mark: mark,
         takenObject: takenObj,
       })
       .then((res) => {
@@ -57,9 +63,7 @@ const QuizResult = (props) => {
       <div className="page-contain">
         <div className="result-container">
           <div className="game-wrap">
-            <h1 style={{ fontSize: 42 }}>
-              Cleared with {count}/{props.answered.length} points
-            </h1>
+            <h1 style={{ fontSize: 42 }}>Cleared with {count} points</h1>
             <Button
               type="link"
               block

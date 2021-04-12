@@ -47,6 +47,7 @@ const UnitComponent = () => {
           `https://mathscienceeducation.herokuapp.com/subject/${subjectID}/unitView?accountId=${accountID}`
         )
         .then((res) => {
+          console.log(res.data);
           setData(res.data);
           setLoading(false);
         })
@@ -77,7 +78,12 @@ const UnitComponent = () => {
               data?.map((item, idx) => (
                 <div key={idx} onLoad={randomColor(color)}>
                   <div className="unit-content">
-                    <div className="unit-title" />
+                    <div
+                      className="unit-detail-title"
+                      style={{ position: "absolute", zIndex: 10, top: "-11%" }}
+                    >
+                      {item.subjectName}
+                    </div>
                     {item.unit?.map((unit) => (
                       <Link
                         to={`${window.location.pathname}/unit/${unit.id}`}

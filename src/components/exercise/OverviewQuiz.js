@@ -88,7 +88,9 @@ const OverviewQuiz = () => {
                       <div className="question">
                         <div className="question-title">
                           <h1>Question {index + 1}</h1>
-                          <div className="quiz-sound" />
+                          {item.questionAudioUrl && (
+                            <div className="quiz-sound" />
+                          )}
                         </div>
                         <div className="question-text">
                           <h2>{item.questionTitle}</h2>
@@ -111,6 +113,7 @@ const OverviewQuiz = () => {
                                     : "option-btn"
                                 }
                               >
+                                {a.correct && <div className="check-mark" />}
                                 <div
                                   className={
                                     a.isSelected === true && a.correct === true
