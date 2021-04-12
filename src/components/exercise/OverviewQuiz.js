@@ -1,79 +1,12 @@
 import React from "react";
+import axios from "axios";
 import "../../resources/css/quiz.css";
 import { useState, useEffect } from "react";
 import { Pagination, Modal } from "antd";
 import { useHistory } from "react-router-dom";
+import bg from "../../resources/img/unit/unit-bg.png";
 
 const pageSize = 1;
-
-const data = [
-  {
-    id: 2,
-    questionTitle: "choose the correct answer",
-    questionImageUrl: null,
-    questionAudioUrl: null,
-    score: 1,
-    optionList: [
-      {
-        id: 5,
-        optionText: "three",
-        correct: true,
-        isSelected: true,
-      },
-      {
-        id: 6,
-        optionText: "six",
-        correct: false,
-        isSelected: false,
-      },
-      {
-        id: 7,
-        optionText: "three",
-        correct: false,
-        isSelected: false,
-      },
-      {
-        id: 8,
-        optionText: "two",
-        correct: false,
-        isSelected: false,
-      },
-    ],
-  },
-  {
-    id: 6,
-    questionTitle: "choose the correct answer",
-    questionImageUrl: null,
-    questionAudioUrl: null,
-    score: 1,
-    optionList: [
-      {
-        id: 14,
-        optionText: "five",
-        correct: true,
-        isSelected: true,
-      },
-      {
-        id: 15,
-        optionText: "six",
-        correct: false,
-        isSelected: false,
-      },
-      {
-        id: 16,
-        optionText: "seven",
-        correct: false,
-        isSelected: false,
-      },
-      {
-        id: 17,
-        optionText: "ten",
-        correct: false,
-        isSelected: false,
-      },
-    ],
-  },
-];
 
 const OverviewQuiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -86,11 +19,29 @@ const OverviewQuiz = () => {
   let history = useHistory();
 
   useEffect(() => {
-    setQuestions(data);
-    setTotalPage(data.length / pageSize);
-    setMinIndex(0);
-    setMaxIndex(pageSize);
+    document.body.style.background = `url('${bg}')`;
+    document.body.style.backgroundSize = "cover";
+    getExerciseTaken();
   }, []);
+
+  const getExerciseTaken = async () => {
+    let exerciseID = window.location.pathname.split("/")[6];
+    let takenExercise = "";
+    await axios
+      .get(
+        `https://mathscienceeducation.herokuapp.com/exerciseTaken/${exerciseID}`
+      )
+      .then((res) => {
+        takenExercise = JSON.parse(res.data.takenObject);
+        setQuestions(takenExercise);
+        setTotalPage(takenExercise.length / pageSize);
+        setMinIndex(0);
+        setMaxIndex(pageSize);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   const handleChange = (page) => {
     setCurrent(page);

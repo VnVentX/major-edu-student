@@ -507,3 +507,7 @@
   width: 30vw;
   height: auto;
 }
+
+.ant-layout-footer {
+  padding: 24px 0px !important;
+}

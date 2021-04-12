@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Spin } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
@@ -23,6 +24,7 @@ const UnitComponent = () => {
     return itemColor;
   }
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const history = useHistory();
 
@@ -46,6 +48,7 @@ const UnitComponent = () => {
         )
         .then((res) => {
           setData(res.data);
+          setLoading(false);
         })
         .catch((e) => {
           console.log(e);
@@ -66,39 +69,45 @@ const UnitComponent = () => {
             buttonContentRight={<div className="right-btn" />}
             buttonContentLeft={<div className="left-btn" />}
           >
-            {data?.map((item, idx) => (
-              <div key={idx} onLoad={randomColor(color)}>
-                <div className="unit-content">
-                  <div className="unit-title" />
-                  {item.unit?.map((unit) => (
-                    <Link
-                      to={`${window.location.pathname}/unit/${unit.id}`}
-                      key={unit.id}
-                    >
-                      <div
-                        className="unit-btn"
-                        style={{ backgroundColor: itemColor }}
-                      >
-                        <h1>Unit {unit.unitName}</h1>
-                      </div>
-                    </Link>
-                  ))}
-                  {item.progressTest && (
-                    <div className="progress-test">
+            {loading ? (
+              <div className="unit-content">
+                <Spin size="large" />
+              </div>
+            ) : (
+              data?.map((item, idx) => (
+                <div key={idx} onLoad={randomColor(color)}>
+                  <div className="unit-content">
+                    <div className="unit-title" />
+                    {item.unit?.map((unit) => (
                       <Link
-                        to={`${window.location.pathname}/progress-test/${item.progressTest.id}`}
-                        key={item.progressTest.id}
+                        to={`${window.location.pathname}/unit/${unit.id}`}
+                        key={unit.id}
                       >
-                        <div className="progress-test-btn">
-                          <div className="oval-button" />
-                          <h1>{item.progressTest.progressTestName}</h1>
+                        <div
+                          className="unit-btn"
+                          style={{ backgroundColor: itemColor }}
+                        >
+                          <h1>Unit {unit.unitName}</h1>
                         </div>
                       </Link>
-                    </div>
-                  )}
+                    ))}
+                    {item.progressTest && (
+                      <div className="progress-test">
+                        <Link
+                          to={`${window.location.pathname}/progress-test/${item.progressTest.id}`}
+                          key={item.progressTest.id}
+                        >
+                          <div className="progress-test-btn">
+                            <div className="oval-button" />
+                            <h1>{item.progressTest.progressTestName}</h1>
+                          </div>
+                        </Link>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </AwesomeSlider>
         </div>
       </div>

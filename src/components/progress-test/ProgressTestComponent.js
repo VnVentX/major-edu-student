@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Spin } from "antd";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import "antd/dist/antd.css";
 import bg from "../../resources/img/unit/unit-bg.png";
@@ -18,6 +19,7 @@ let itemColor = "";
 
 const ProgressTestComponent = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
@@ -32,10 +34,11 @@ const ProgressTestComponent = () => {
     let accountID = 1;
     await axios
       .post(
-        `https://mathscienceeducation.herokuapp.com/progressTest/${progressTestID}/exercises?accountId=${accountID}`
+        `https://mathscienceeducation.herokuapp.com/progressTest/${progressTestID}/exercises/student?accountId=${accountID}`
       )
       .then((res) => {
         setData(res.data.length === 0 ? [] : res.data);
+        setLoading(false);
       })
       .catch((e) => {
         console.log(e);
@@ -63,27 +66,31 @@ const ProgressTestComponent = () => {
       <div className="page-contain">
         <div className="exercise-container">
           <div className="exercise-wrap">
-            {data?.map((i) => (
-              <div
-                key={i.id}
-                style={{
-                  display: "grid",
-                  placeItems: "center",
-                }}
-                onLoad={randomColor(color)}
-              >
-                <Link to={`${location.pathname}/test/${i.id}`}>
-                  <div
-                    className="exercise-btn"
-                    style={{ backgroundColor: itemColor }}
-                  >
-                    <div className="check-area" />
-                    {i.done ? <div className="check-mark" /> : null}
-                    <h1>{i.exerciseName}</h1>
-                  </div>
-                </Link>
-              </div>
-            ))}
+            {loading ? (
+              <Spin size="large" />
+            ) : (
+              data?.map((i) => (
+                <div
+                  key={i.id}
+                  style={{
+                    display: "grid",
+                    placeItems: "center",
+                  }}
+                  onLoad={randomColor(color)}
+                >
+                  <Link to={`${location.pathname}/test/${i.id}`}>
+                    <div
+                      className="exercise-btn"
+                      style={{ backgroundColor: itemColor }}
+                    >
+                      <div className="check-area" />
+                      {i.done ? <div className="check-mark" /> : null}
+                      <h1>{i.exerciseName}</h1>
+                    </div>
+                  </Link>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

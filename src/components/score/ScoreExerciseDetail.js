@@ -5,44 +5,6 @@ import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
 import bg from "../../resources/img/score/score-bg.png";
 
-const data = [
-  {
-    id: 0,
-    startDate: "15 Jan 2021, 8:35AM",
-    grade: 10,
-  },
-  {
-    id: 1,
-    startDate: "16 Jan 2021, 9:42AM",
-    grade: 10,
-  },
-  {
-    id: 2,
-    startDate: "17 Jan 2021, 10:23AM",
-    grade: 10,
-  },
-  {
-    id: 3,
-    startDate: "16 Jan 2021, 9:42AM",
-    grade: 10,
-  },
-  {
-    id: 4,
-    startDate: "17 Jan 2021, 10:23AM",
-    grade: 10,
-  },
-  {
-    id: 5,
-    startDate: "16 Jan 2021, 9:42AM",
-    grade: 10,
-  },
-  {
-    id: 6,
-    startDate: "17 Jan 2021, 10:23AM",
-    grade: 10,
-  },
-];
-
 const ScoreExerciseDetail = () => {
   const [attempData, setAttempData] = useState([]);
   const [pagination] = useState({
@@ -52,32 +14,39 @@ const ScoreExerciseDetail = () => {
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
     document.body.style.backgroundSize = "cover";
-    setAttempData(data);
+    async function getExerciseTakenByID() {
+      let exerciseID = window.location.pathname.split("/")[4];
+      let accountID = 1;
+      await axios
+        .post(
+          `https://mathscienceeducation.herokuapp.com/exerciseTaken/all?accountId=${accountID}&exerciseId=${exerciseID}`
+        )
+        .then((res) => {
+          setAttempData(res.data.lenght === 0 ? [] : res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+    getExerciseTakenByID();
   }, []);
 
   const columns = [
     {
       title: "No",
-      dataIndex: "id",
-      render: (index) => index + 1,
-      align: "center",
+      dataIndex: "index",
+      render: (text, record, index) => `${index + 1}`,
       width: "10%",
     },
     {
       title: "Submitted Date",
-      dataIndex: "startDate",
+      dataIndex: "createdDate",
       align: "center",
-      render: (record) => (
-        <>
-          <span>{record}</span>
-        </>
-      ),
     },
     {
       title: "Grade",
-      dataIndex: "grade",
+      dataIndex: "totalScore",
       align: "center",
-      render: (grade) => <span>{grade}/10</span>,
     },
     {
       key: "x",

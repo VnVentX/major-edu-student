@@ -11,9 +11,12 @@ const FooterContainer = () => {
   return (
     <Footer className="scence footer-bg">
       <div className="footer-content">
-        <Space
-          direction="horizontal"
-          align="start"
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "flex-start",
+          }}
         >
           <div className="contact footer-flex">
             <img src={contact} alt={contact} />
@@ -56,7 +59,7 @@ const FooterContainer = () => {
           <div className="footer-logo">
             <img src={logo} alt={logo} width={398} height={133} />
           </div>
-        </Space>
+        </div>
       </div>
     </Footer>
   );

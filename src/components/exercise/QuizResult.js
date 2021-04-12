@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useLocation, useHistory } from "react-router-dom";
 import { Button } from "antd";
 
@@ -25,7 +26,31 @@ const QuizResult = (props) => {
       return counter;
     });
     setCount(counter);
+    submitResult();
   }, []);
+
+  const submitResult = async () => {
+    let exerciseID = "";
+    let takenObj = JSON.stringify(props.question);
+    if (window.location.pathname.split("/")[3] === "progress-test") {
+      exerciseID = window.location.pathname.split("/")[6];
+    } else {
+      exerciseID = window.location.pathname.split("/")[8];
+    }
+    await axios
+      .post("https://mathscienceeducation.herokuapp.com/exericseTaken", {
+        accountId: 1,
+        exerciseId: exerciseID,
+        mark: 10,
+        takenObject: takenObj,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   return (
     <div className="page">
