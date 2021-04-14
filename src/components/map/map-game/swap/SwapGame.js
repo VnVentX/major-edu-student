@@ -23,7 +23,7 @@ const getItemStyle = (item, isDragging, style) => ({
   userSelect: "none",
   display: "grid",
   placeItems: "center",
-  width: 200,
+  width: 250,
   height: 80,
   borderBottomLeftRadius: "15px",
   borderBottomRightRadius: "15px",
@@ -46,8 +46,6 @@ const getListStyle = () => ({
   display: "grid",
   placeItems: "center",
   gridTemplateColumns: "repeat(4, 1fr)",
-  minHeight: "60vh",
-  height: "60vh",
 });
 
 export default class SwapGame extends Component {

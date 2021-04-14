@@ -129,11 +129,6 @@ const Home = (props) => {
                   exact
                   component={PlayGame}
                 />
-                <Route
-                  path="/subject/:subjectID/unit/:unitID/lesson/:lessonID/game/:gameID/result"
-                  exact
-                  component={GameResult}
-                />
                 {/* 
 
 

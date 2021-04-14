@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form, Input, Button, Checkbox } from "antd";
 import UIfx from "uifx";
 import correct_sfx from "../../../../resources/sound/correct-sound.mp3";
 
@@ -8,75 +9,65 @@ const correctSound = new UIfx(correct_sfx, {
 });
 
 const FillingGame = (props) => {
-  const [firstValue, setFirstValue] = useState("");
-  const [secondValue, setSecondValue] = useState("");
-  const [thirdValue, setThirdValue] = useState("");
-
+  const [form] = Form.useForm();
   const checkCorrect = (e) => {
-    if (
-      firstValue === props.info.answers[0] &&
-      secondValue === props.info.answers[2] &&
-      thirdValue === props.info.answers[3]
-    ) {
+    let correctArr = [];
+    let answerArr = [];
+    answerArr = Object.values(e);
+    props.info.forEach((item) => {
+      if (item.inputType === "text") {
+        correctArr.push(item.text);
+      }
+    });
+    var is_same =
+      correctArr.length === answerArr.length &&
+      correctArr.every(function (element, index) {
+        return element === answerArr[index];
+      });
+    if (is_same === true) {
       correctSound.play();
       setTimeout(() => {
         props.nextGame();
       }, 1000);
     }
-    e.preventDefault();
   };
 
   return (
-    <div
-      style={{
-        display: "grid",
-        placeItems: "center",
-        minHeight: "60vh",
-        height: "60vh",
-      }}
-    >
-      <div className="game-choosing-wrap">
-        <div className="game-choosing-title">
-          <h1>{props.info.questionImage}</h1>
-        </div>
-        <div className="game-choosing-option">
-          <input
-            type="text"
-            name="firstValue"
-            className="game-fill-input"
-            onChange={(e) => {
-              setFirstValue(e.target.value);
-            }}
-          />
-          <h1>{props.info.answers[1]}</h1>
-          <input
-            type="text"
-            name="secondValue"
-            className="game-fill-input"
-            onChange={(e) => {
-              setSecondValue(e.target.value);
-            }}
-          />
-          <h1>=</h1>
-          <input
-            type="text"
-            name="thirdValue"
-            className="game-fill-input"
-            onChange={(e) => {
-              setThirdValue(e.target.value);
-            }}
-          />
-        </div>
-        <button
-          type="submit"
-          style={{
-            marginTop: 20,
-          }}
-          onClick={checkCorrect}
-        >
-          Submit
-        </button>
+    <div className="game-choosing-wrap">
+      <div className="question-text">
+        <h2>{props.questionImg}</h2>
       </div>
+      <Form form={form} onFinish={checkCorrect}>
+        <div style={{ display: "grid", placeItems: "center" }}>
+          <div className="game-filling-option">
+            {props.info?.map((i, idx) =>
+              i.inputType === "text" ? (
+                <Form.Item name={`text${idx}`}>
+                  <Input autoComplete="off" />
+                </Form.Item>
+              ) : (
+                <h1>{i.text}</h1>
+              )
+            )}
+          </div>
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{
+                border: 0,
+                background: "transparent",
+                marginTop: 100,
+              }}
+            >
+              <div className="progress-test-btn">
+                <div className="oval-button" />
+                <h1>Submit</h1>
+              </div>
+            </Button>
+          </Form.Item>
+        </div>
+      </Form>
     </div>
   );
 };

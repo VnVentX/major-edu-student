@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UIfx from "uifx";
 import correct_sfx from "../../../../resources/sound/correct-sound.mp3";
+import img from "../../../../resources/img/game/game-btn1.png";
 
 const correctSound = new UIfx(correct_sfx, {
   volume: 0.4, // number between 0.0 ~ 1.0
@@ -29,35 +30,29 @@ const ChoosingGame = (props) => {
   };
 
   return (
-    <div
-      style={{
-        display: "grid",
-        placeItems: "center",
-        minHeight: "60vh",
-        height: "60vh",
-      }}
-    >
-      <div className="game-choosing-wrap">
-        <div className="game-choosing-title">
+    <div className="game-choosing-wrap">
+      <div className="game-choosing-title">
+        <div>
           <h1>{props.info.questionText}</h1>
         </div>
-        <div className="game-choosing-option">
-          {options?.map((i, idx) => (
-            <div
-              key={idx}
-              className={
-                i.isWrong === true
-                  ? "game-choosing-option-item game-choosing-option-hidden"
-                  : "game-choosing-option-item"
-              }
-              onClick={() => {
-                handleSelectedOption(i, idx);
-              }}
-            >
-              {i.optionImg}
-            </div>
-          ))}
-        </div>
+      </div>
+      <div className="game-choosing-option">
+        {options?.map((i, idx) => (
+          <div
+            key={idx}
+            className={
+              i.isWrong === true
+                ? "game-choosing-option-item game-choosing-option-hidden"
+                : "game-choosing-option-item"
+            }
+            onClick={() => {
+              handleSelectedOption(i, idx);
+            }}
+          >
+            {/* {i.optionImg} */}
+            <img src={img} />
+          </div>
+        ))}
       </div>
     </div>
   );

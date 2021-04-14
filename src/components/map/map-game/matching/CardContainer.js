@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import img from "../../../../resources/img/game/game-btn1.png";
 
 const CardContainer = (props) => {
   return (
@@ -14,7 +15,8 @@ const CardContainer = (props) => {
                   : "matching-question-img matching-false"
               }
             >
-              <h3>{blurb.question}</h3>
+              {/* <h3>{blurb.question}</h3> */}
+              <img src={img} />
             </div>
             <div
               className={

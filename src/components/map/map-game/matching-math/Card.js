@@ -40,10 +40,11 @@ class Card extends Component {
           onDragStart={this.dragStart}
           onDragOver={(event) => event.preventDefault()}
           onDragEnd={this.dragEnd}
-          style={{
-            display: "grid",
-            placeItems: "center",
-          }}
+          style={
+            this.props.options === this.props.correct
+              ? { backgroundColor: "aquamarine" }
+              : null
+          }
         >
           {this.props.options}
         </div>
@@ -60,7 +61,7 @@ class Card extends Component {
           onDragStart={this.dragStart}
           onDragOver={(event) => event.preventDefault()}
           onDragEnd={this.dragEnd}
-        ></div>
+        />
       );
     }
   }

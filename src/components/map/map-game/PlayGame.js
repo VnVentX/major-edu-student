@@ -5,12 +5,15 @@ import FillingGame from "./fill-blank/FillingGame";
 import MatchingMathGame from "./matching-math/MatchingMathGame";
 import MatchingGame from "./matching/MatchingGame";
 import SwapGame from "./swap/SwapGame";
+import bg from "../../../resources/img/game/game-bg.png";
+import GameResult from "./GameResult";
 
 const data = [
   {
     id: 1,
     type: "SWAP",
-    game: [
+    questionTitle: "Swap the word to the right picture",
+    options: [
       {
         id: 1,
         question: "Question 1",
@@ -40,7 +43,8 @@ const data = [
   {
     id: 2,
     type: "MATCH_MATH",
-    game: [
+    questionTitle: "Swap the word to the right picture",
+    options: [
       { id: 1, question: "Hand", answer: "Hand", falseAnswer: "Leg" },
       { id: 2, question: "Leg", answer: "Leg", falseAnswer: "Shoulder" },
       { id: 3, question: "Shoulder", answer: "Shoulder", falseAnswer: "Ear" },
@@ -50,7 +54,8 @@ const data = [
   {
     id: 3,
     type: "MATCH",
-    game: [
+    questionTitle: "Swap the word to the right picture",
+    options: [
       { id: 1, question: "Hand", answer: "Hand", falseAnswer: "Leg" },
       { id: 2, question: "Leg", answer: "Leg", falseAnswer: "Hand" },
       { id: 3, question: "Shoulder", answer: "Shoulder", falseAnswer: "Nose" },
@@ -62,7 +67,8 @@ const data = [
   {
     id: 4,
     type: "CHOOSE",
-    game: {
+    questionTitle: "Choose the right picture",
+    options: {
       questionID: 1,
       questionText: "Hand",
       answers: [
@@ -98,32 +104,28 @@ const data = [
           questionID: 8,
           optionImg: "Head",
         },
-        {
-          questionID: 9,
-          optionImg: "Shoulder",
-        },
-        {
-          questionID: 10,
-          optionImg: "Knee",
-        },
       ],
     },
   },
   {
     id: 5,
     type: "FILL",
-    game: {
-      questionID: 1,
-      questionImage: "4 + 3 = 7",
-      answers: ["four", "+", "three", "seven"],
-    },
+    questionTitle: "Fill in the blank with the correct answer",
+    questionImg: "1 + 1 = 2",
+    options: [
+      { inputType: "text", text: "one" },
+      { inputType: "operator", text: "+" },
+      { inputType: "text", text: "one" },
+      { inputType: "operator", text: "=" },
+      { inputType: "text", text: "two" },
+    ],
   },
 ];
 
 const pageSize = 1;
 
 const PlayGame = () => {
-  const [isStart, setIsStart] = useState(false);
+  const [isSubmitResult, setIsSubmitResult] = useState(false);
   const [gameData, setGameData] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
   const [current, setCurrent] = useState(1);
@@ -134,6 +136,10 @@ const PlayGame = () => {
   let history = useHistory();
 
   useEffect(() => {
+    document.body.style.background = `url('${bg}')`;
+    document.body.style.backgroundSize = "cover";
+    let header = document.getElementById("header");
+    header.style.visibility = "hidden";
     setGameData(data);
   }, []);
 
@@ -143,12 +149,6 @@ const PlayGame = () => {
     setMaxIndex(pageSize);
   }, [gameData.length]);
 
-  const handelStartGame = () => {
-    setTimeout(() => {
-      setIsStart(!isStart);
-    }, 500);
-  };
-
   //! Move to next game
   const handleChangeGame = (page) => {
     if (page <= totalPage) {
@@ -156,11 +156,7 @@ const PlayGame = () => {
       setMinIndex((page - 1) * pageSize);
       setMaxIndex(page * pageSize);
     } else {
-      console.log("Game Cleared");
-      history.push({
-        pathname: `${location.pathname}/result`,
-        state: { result: 100 },
-      });
+      handelChangeIsSubmitResult();
     }
   };
 
@@ -168,42 +164,47 @@ const PlayGame = () => {
     handleChangeGame(current + 1);
   };
 
+  //! Đi mến màn hình submit result ()
+  const handelChangeIsSubmitResult = () => {
+    setIsSubmitResult(!isSubmitResult);
+    handleChangeGame(1);
+  };
+
   return (
     <div className="page">
-      <div className="page-contain">
-        <div className="play-game-container">
-          <div className="game-wrap">
-            {!isStart && (
-              <div className="play-btn" onClick={handelStartGame}>
-                <h2>Start</h2>
-              </div>
-            )}
-            {isStart && (
-              <>
-                {gameData?.map(
-                  (i, idx) =>
-                    idx >= minIndex &&
-                    idx < maxIndex && (
-                      <div className="game-inner" key={idx}>
-                        <h1>Game {idx + 1}</h1>
-                        {i.type === "SWAP" ? (
-                          <SwapGame info={i.game} nextGame={nextGame} />
-                        ) : i.type === "MATCH" ? (
-                          <MatchingGame info={i.game} nextGame={nextGame} />
-                        ) : i.type === "MATCH_MATH" ? (
-                          <MatchingMathGame info={i.game} nextGame={nextGame} />
-                        ) : i.type === "FILL" ? (
-                          <FillingGame info={i.game} nextGame={nextGame} />
-                        ) : i.type === "CHOOSE" ? (
-                          <ChoosingGame info={i.game} nextGame={nextGame} />
-                        ) : null}
-                      </div>
-                    )
-                )}
-              </>
-            )}
-          </div>
-        </div>
+      <div className="play-game-container">
+        {isSubmitResult ? (
+          <GameResult />
+        ) : (
+          gameData?.map(
+            (i, idx) =>
+              idx >= minIndex &&
+              idx < maxIndex && (
+                <React.Fragment key={idx}>
+                  <div className="question-text">
+                    <h2>{i.questionTitle}</h2>
+                  </div>
+                  <div className="game-inner">
+                    {i.type === "SWAP" ? (
+                      <SwapGame info={i.options} nextGame={nextGame} />
+                    ) : i.type === "MATCH" ? (
+                      <MatchingGame info={i.options} nextGame={nextGame} />
+                    ) : i.type === "MATCH_MATH" ? (
+                      <MatchingMathGame info={i.options} nextGame={nextGame} />
+                    ) : i.type === "FILL" ? (
+                      <FillingGame
+                        questionImg={i.questionImg}
+                        info={i.options}
+                        nextGame={nextGame}
+                      />
+                    ) : i.type === "CHOOSE" ? (
+                      <ChoosingGame info={i.options} nextGame={nextGame} />
+                    ) : null}
+                  </div>
+                </React.Fragment>
+              )
+          )
+        )}
       </div>
     </div>
   );

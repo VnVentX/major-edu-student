@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import { Button } from "antd";
 
 const GameResult = () => {
+  const [count, setCount] = useState(0);
   let location = useLocation();
   let history = useHistory();
 
@@ -16,16 +17,18 @@ const GameResult = () => {
   return (
     <div className="page">
       <div className="page-contain">
-        <div className="game-container">
-          <div className="game-wrap">
-            <h1>Cleared with {location.state.result} points</h1>
-            <Button type="link" block onClick={() => history.goBack()}>
-              Retry
-            </Button>
+        <div className="result-container">
+          <div className="quiz-result">
+            <h1>Congratulation!</h1>
+            <h1>You score</h1>
+            <h1>{count}/10</h1>
             <Button
               type="link"
               block
-              onClick={() => history.push(otherGamePath[5])}
+              onClick={() => {
+                history.push(otherGamePath[6]);
+              }}
+              style={{ fontSize: 32 }}
             >
               Play other Game
             </Button>

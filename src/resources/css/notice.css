@@ -107,6 +107,7 @@
   align-items: baseline;
   margin: 25px;
   padding: 25px;
+  min-width: 900px;
 }
 .notice-inner-border .ant-space-vertical {
   width: 100%;
