@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../resources/css/quiz.css";
 import QuizResult from "./QuizResult";
-import bg from "../../resources/img/unit/unit-bg.png";
+import bg from "../../resources/img/quiz/quiz-bg.png";
 
 const pageSize = 1;
 //Template for Submit Result

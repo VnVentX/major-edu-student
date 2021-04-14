@@ -1,16 +1,19 @@
 .unit-container {
   min-height: 100vh;
+  width: 100%;
   display: grid;
   place-items: center;
 }
 
 .unit-wrap {
-  width: 85vw;
-  min-width: 800px;
-  min-height: 75vh;
+  width: 90%;
   display: grid;
   place-items: center;
   margin: 5% 0 50px 0;
+}
+
+.awssld {
+  height: 90vh;
 }
 
 .unit-wrap .awssld__content {
@@ -129,47 +132,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin-top: 10%;
-  margin-bottom: 5%;
-}
-
-.unit-detail-title {
-  position: relative;
-  display: grid;
-  place-items: center;
-  font-family: cursive;
-  font-size: 4em;
-  font-weight: bold;
-  color: rgb(255, 200, 83);
-  -webkit-text-stroke-width: 5px;
-  -webkit-text-stroke-color: rgb(38, 59, 128);
 }
 
 .unit-detail-wrap {
+  margin-top: 5%;
   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   min-width: 650px;
-  width: 110%;
+  width: 100%;
   min-height: 460px;
   height: auto;
   border-radius: 100px;
 }
 
 .unit-detail-wrap > a {
-  flex: 0 1 92px;
-  margin: 50px 120px 50px 120px;
+  flex: 1 1 300px;
+  margin: 80px 0;
+  display: grid;
+  place-items: center;
 }
 
 .lesson-frame {
   position: relative;
   display: grid;
   place-items: center;
-  border: 1px solid black;
-  width: 310px;
+  width: 300px;
   transform: rotate(45deg);
   background: rgb(246, 120, 0);
   border-radius: 25px;

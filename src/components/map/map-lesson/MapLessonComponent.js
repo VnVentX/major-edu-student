@@ -25,32 +25,30 @@ const MapLessonComponent = () => {
   return (
     <div className="page">
       <div className="back-btn" onClick={() => history.push(lessonPath)} />
-      <div className="page-contain">
-        <div className="lesson-container">
-          <Link
-            className="side-btn"
-            to={location.pathname + "/exercise"}
-            style={{ marginRight: 50 }}
-          >
+      <div className="lesson-container">
+        <Link
+          className="side-btn"
+          to={location.pathname + "/exercise"}
+          style={{ marginRight: 50 }}
+        >
+          <div className="lesson-exercise-btn" />
+        </Link>
+        <Lecture />
+        <Link
+          className="side-btn"
+          to={location.pathname + "/game"}
+          style={{ marginLeft: 50 }}
+        >
+          <div className="game-btn" />
+        </Link>
+
+        <div className="bottom-btn">
+          <Link to={location.pathname + "/exercise"}>
             <div className="lesson-exercise-btn" />
           </Link>
-          <Lecture />
-          <Link
-            className="side-btn"
-            to={location.pathname + "/game"}
-            style={{ marginLeft: 50 }}
-          >
+          <Link to={location.pathname + "/game"}>
             <div className="game-btn" />
           </Link>
-
-          <div className="bottom-btn">
-            <Link to={location.pathname + "/exercise"}>
-              <div className="lesson-exercise-btn" />
-            </Link>
-            <Link to={location.pathname + "/game"}>
-              <div className="game-btn" />
-            </Link>
-          </div>
         </div>
       </div>
     </div>

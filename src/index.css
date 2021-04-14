@@ -1,3 +1,12 @@
+@font-face {
+  font-family: koni-black;
+  src: url(resources/font/KONI-BLACK.TTF);
+}
+@font-face {
+  font-family: iciel-cadena;
+  src: url(resources/font/ICIEL-CADENA.TTF);
+}
+
 html,
 body {
   height: 100%;
@@ -126,4 +135,18 @@ code {
   font-size: 2.5rem;
   font-weight: 800;
   z-index: 10;
+}
+
+/* !Title */
+
+.page-title {
+  position: relative;
+  display: grid;
+  place-items: center;
+  font-family: iciel-cadena;
+  font-size: 9em;
+  font-weight: bold;
+  color: rgb(255, 200, 83);
+  -webkit-text-stroke-width: 9px;
+  -webkit-text-stroke-color: rgb(38, 59, 128);
 }

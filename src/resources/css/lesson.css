@@ -1,14 +1,16 @@
 .lesson-container {
   min-height: 100vh;
   height: auto;
+  width: 100%;
 }
 
 .lesson-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: auto;
-  margin: 15% 0 50px 0;
+  width: 80%;
+  margin: 12% 0 50px 0;
+  max-width: 1083px;
 }
 
 .lesson-wrap > div {
@@ -18,6 +20,7 @@
 /* Iframe */
 .non-fs {
   height: 65vh;
+  width: 100%;
   overflow: hidden;
   position: relative;
 }
@@ -163,19 +166,22 @@
     display: none;
   }
   .bottom-btn {
-    width: 100%;
+    width: 75%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin-bottom: 5%;
   }
   .lesson-exercise-btn {
     width: 196px;
+    height: 104px;
     background: url("../img/lesson/exercise-bottom-btn.png");
     background-size: contain;
     background-repeat: no-repeat;
   }
   .game-btn {
     width: 196px;
+    height: 104px;
     background: url("../img/lesson/game-bottom-btn.png");
     background-size: contain;
     background-repeat: no-repeat;

@@ -41,7 +41,9 @@ const UnitDetailComponent = () => {
         <div className="back-btn" onClick={() => history.push(unitPath)} />
         <div className="page-contain">
           <div className="unit-detail-container">
-            <div className="unit-detail-title">Unit</div>
+            <div className="page-title" style={{ marginTop: "10%" }}>
+              Unit
+            </div>
             <div className="unit-detail-wrap">
               {lesson.length === 0 && <h1>No Data</h1>}
               {lesson?.map((i) => (
@@ -51,7 +53,7 @@ const UnitDetailComponent = () => {
                 >
                   <div className="lesson-frame">
                     <div className="lesson-content">
-                      <h1> {i.lessonName}</h1>
+                      <h1>Lesson {i.lessonName}</h1>
                     </div>
                   </div>
                 </Link>

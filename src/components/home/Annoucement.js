@@ -24,7 +24,7 @@ const Annoucement = () => {
     <div className="page">
       <div className="page-contain">
         <div className="announcement-content">
-          <div className="unit-detail-title" style={{ marginBottom: 40 }}>
+          <div className="page-title" style={{ marginBottom: 40 }}>
             News
           </div>
           <div className="notice-wrap">

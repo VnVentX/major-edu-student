@@ -144,7 +144,7 @@ const ScoreExercise = () => {
                                   showMoreLesson(idx, index);
                                 }}
                               >
-                                {lesson.lessonName}
+                                Lesson {lesson.lessonName}
                               </h1>
                             </div>
                             <div className="item-spacer" />
@@ -158,7 +158,7 @@ const ScoreExercise = () => {
                                         <Link
                                           to={`${window.location.pathname}/exercise/${exercise.id}`}
                                         >
-                                          <h1>{exercise.exerciseName}</h1>
+                                          <h1>Exercise {exercise.exerciseName}</h1>
                                         </Link>
                                         <h1>
                                           {exercise.done === true

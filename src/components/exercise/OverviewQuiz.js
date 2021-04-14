@@ -67,7 +67,7 @@ const OverviewQuiz = () => {
     <div className="page">
       <div className="page-contain">
         <div className="quiz-overview-container ">
-          <div className="unit-detail-title">Overview</div>
+          <div className="page-title">Overview</div>
           <div className="quiz-wrap">
             {questions?.map(
               (item, index) =>

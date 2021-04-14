@@ -79,8 +79,14 @@ const UnitComponent = () => {
                 <div key={idx} onLoad={randomColor(color)}>
                   <div className="unit-content">
                     <div
-                      className="unit-detail-title"
-                      style={{ position: "absolute", zIndex: 10, top: "-11%" }}
+                      className="page-title"
+                      style={{
+                        position: "absolute",
+                        zIndex: 10,
+                        top: "-13%",
+                        fontSize: "5em",
+                        WebkitTextStrokeWidth: "6px",
+                      }}
                     >
                       {item.subjectName}
                     </div>

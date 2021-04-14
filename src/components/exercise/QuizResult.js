@@ -62,8 +62,10 @@ const QuizResult = (props) => {
     <div className="page">
       <div className="page-contain">
         <div className="result-container">
-          <div className="game-wrap">
-            <h1 style={{ fontSize: 42 }}>Cleared with {count} points</h1>
+          <div className="quiz-result">
+            <h1>Congratulation!</h1>
+            <h1>You score</h1>
+            <h1>{count}/10</h1>
             <Button
               type="link"
               block
