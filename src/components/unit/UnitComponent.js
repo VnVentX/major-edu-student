@@ -99,7 +99,10 @@ const UnitComponent = () => {
                           className="unit-btn"
                           style={{ backgroundColor: itemColor }}
                         >
-                          <h1>Unit {unit.unitName}</h1>
+                          <h1>
+                            Unit <br />
+                            {unit.unitName}
+                          </h1>
                         </div>
                       </Link>
                     ))}

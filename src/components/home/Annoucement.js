@@ -34,7 +34,7 @@ const Annoucement = () => {
                   <div className="notice-page-title">
                     <img src={shout} alt={shout} />
                     <div className="title-right">
-                      <Link to={`${window.location.pathname}/${i.id}`}>
+                      <Link to={`notice/${i.id}`}>
                         <h3>{i.newsTitle}</h3>
                       </Link>
                       <h4>{i.createdDate}</h4>
@@ -43,15 +43,16 @@ const Annoucement = () => {
                   <div className="notice-content">
                     <p>{i.shortDescription}</p>
                   </div>
-                  <Link to={`${window.location.pathname}/${i.id}`}>
-                    See more...
-                  </Link>
+                  <Link to={`notice/${i.id}`}>See more...</Link>
                 </div>
               </div>
             ))}
           </div>
           <Link to="/notice">
-            <div className="see-all-btn" />
+            <div className="progress-test-btn">
+              <div className="oval-button" />
+              <h1>See more</h1>
+            </div>
           </Link>
         </div>
       </div>

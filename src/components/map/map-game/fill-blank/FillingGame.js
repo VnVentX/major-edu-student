@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import React from "react";
+import { Form, Input, Button } from "antd";
 import UIfx from "uifx";
 import correct_sfx from "../../../../resources/sound/correct-sound.mp3";
 
@@ -42,11 +42,11 @@ const FillingGame = (props) => {
           <div className="game-filling-option">
             {props.info?.map((i, idx) =>
               i.inputType === "text" ? (
-                <Form.Item name={`text${idx}`}>
+                <Form.Item name={`text${idx}`} key={idx}>
                   <Input autoComplete="off" />
                 </Form.Item>
               ) : (
-                <h1>{i.text}</h1>
+                <h1 key={idx}>{i.text}</h1>
               )
             )}
           </div>

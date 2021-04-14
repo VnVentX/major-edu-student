@@ -16,6 +16,7 @@ const FooterContainer = () => {
             display: "flex",
             justifyContent: "space-around",
             alignItems: "flex-start",
+            width: "100%",
           }}
         >
           <div className="contact footer-flex">
@@ -26,11 +27,7 @@ const FooterContainer = () => {
               tempor mi nisi, non viverra nunc dictum ac. Nunc id dignissim
               purus, sed blandit quam. Duis sit amet condimentum augue, eget
               tempus magna. Nulla euismod mauris sit amet massa convallis
-              blandit. Mauris lectus enim, aliquam at felis id, ultrices rhoncus
-              diam. Quisque quis commodo ex, vitae ullamcorper est. Fusce
-              vehicula tortor dolor, nec blandit arcu aliquam vel. Aenean justo
-              nisi, convallis ut vestibulum eu, aliquam eu diam. Nulla hendrerit
-              sodales commodo.
+              blandit. Mauris lectus enim,
             </span>
           </div>
           <div className="footer-menu">

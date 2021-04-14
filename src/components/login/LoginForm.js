@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import login_button from "../../resources/img/login-page/login-btn.png";
 import { Button } from "antd";
 
 const LoginForm = (props) => {
@@ -12,6 +11,7 @@ const LoginForm = (props) => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (username !== "test" && password !== "12345678") {
       setisWrongPass(true);
     } else if (username === "test" && password === "12345678") {
@@ -19,7 +19,6 @@ const LoginForm = (props) => {
       localStorage.setItem("user", "user");
       window.location.href = "/home";
     }
-    e.preventDefault();
   };
 
   return (
@@ -74,7 +73,10 @@ const LoginForm = (props) => {
             }}
             onClick={handleSubmit}
           >
-            <img src={login_button} alt={login_button} width="100%" />
+            <div className="progress-test-btn">
+              <div className="oval-button" />
+              <h1>Login</h1>
+            </div>
           </button>
           <Button
             className="login-action-btn"

@@ -112,11 +112,13 @@
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   min-width: 768px;
+  justify-content: center;
+  align-items: center;
 }
 
 .answer > div {
-  flex: 1 1 440px;
-  margin: 15px;
+  flex: 0 1 400px;
+  margin: 25px 50px;
 }
 
 .answer-item {
@@ -176,7 +178,7 @@
   display: grid;
   place-items: center;
   min-width: 300px;
-  min-height: 130px;
+  min-height: 150px;
   width: auto;
   background-color: #96d6f8;
   border: 0.5rem solid #ffff;
@@ -216,7 +218,7 @@
   display: grid;
   place-items: center;
   min-width: 300px;
-  min-height: 130px;
+  min-height: 150px;
   width: auto;
   background-color: #b1e322;
   border: 0.5rem solid #ffff;
@@ -256,7 +258,7 @@
   display: grid;
   place-items: center;
   min-width: 300px;
-  min-height: 130px;
+  min-height: 150px;
   width: auto;
   background-color: #f1441f;
   border: 0.5rem solid #ffff;

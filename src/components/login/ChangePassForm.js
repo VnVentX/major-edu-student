@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import submit_button from "../../resources/img/login-page/submit-btn.png";
 
 const ChangePassForm = (props) => {
   const [password, setPassword] = useState("");
@@ -72,7 +71,10 @@ const ChangePassForm = (props) => {
           }}
           onClick={handleSubmit}
         >
-          <img src={submit_button} alt={submit_button} width="80%" />
+          <div className="progress-test-btn">
+            <div className="oval-button" />
+            <h1>Submit</h1>
+          </div>
         </button>
       </form>
     </>

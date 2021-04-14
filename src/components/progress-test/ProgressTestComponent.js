@@ -85,7 +85,7 @@ const ProgressTestComponent = () => {
                     >
                       <div className="check-area" />
                       {i.done ? <div className="check-mark" /> : null}
-                      <h1>{i.exerciseName}</h1>
+                      <h1>Test {i.exerciseName}</h1>
                     </div>
                   </Link>
                 </div>

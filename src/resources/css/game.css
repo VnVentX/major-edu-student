@@ -446,6 +446,11 @@
 .game-filling-option h1 {
   margin: 0;
 }
+.game-filling-option h1 {
+  font-family: iciel-cadena;
+  font-size: 5em;
+  font-weight: bold;
+}
 .game-filling-option input {
   width: 200px;
   height: 200px;
