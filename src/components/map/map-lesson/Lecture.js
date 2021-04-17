@@ -1,17 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
-const urlIframe =
-  '<iframe src="https://onedrive.live.com/embed?resid=1EB9A25728760E08%215189&amp;authkey=%21AFuemMImkjPq4Yk&amp;em=2&amp;wdAr=1.7786561264822134" width="350px" height="221px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>';
-
-const Lecture = () => {
-  const [link, setLink] = useState("");
+const Lecture = (props) => {
   const [isFS, setIsFS] = useState(false);
-
-  useEffect(() => {
-    const data = urlIframe.split(" ")[1].split("src=")[1].split('"')[1];
-    setLink(data);
-  }, []);
 
   const handle = useFullScreenHandle();
 
@@ -53,7 +44,7 @@ const Lecture = () => {
 <iframe
   id=${document.fullscreenElement === null ? "nonfs" : "fs"}
   title="lesson 1"
-  src='${link}'
+  src='${props.url}'
   frameBorder="0"
   width="100%"
 />

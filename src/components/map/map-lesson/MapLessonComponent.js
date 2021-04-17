@@ -7,6 +7,7 @@ import Lecture from "./Lecture";
 const MapLessonComponent = () => {
   const history = useHistory();
   const location = useLocation();
+  const [data, setData] = useState({});
 
   //! Get Unit path
   const pathSnippets = location.pathname.split("/").filter((i) => i);
@@ -20,6 +21,18 @@ const MapLessonComponent = () => {
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
     document.body.style.backgroundSize = "cover";
+    async function getLessonByID() {
+      let lessonID = window.location.pathname.split("/")[2];
+      await axios
+        .get(`https://mathscienceeducation.herokuapp.com/lesson/${lessonID}`)
+        .then((res) => {
+          setData(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+    getLessonByID();
   }, []);
 
   return (
@@ -33,7 +46,7 @@ const MapLessonComponent = () => {
         >
           <div className="lesson-exercise-btn" />
         </Link>
-        <Lecture />
+        <Lecture url={data?.lessonUrl} />
         <Link
           className="side-btn"
           to={location.pathname + "/game"}

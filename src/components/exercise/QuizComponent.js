@@ -3,6 +3,7 @@ import axios from "axios";
 import "../../resources/css/quiz.css";
 import QuizResult from "./QuizResult";
 import bg from "../../resources/img/quiz/quiz-bg.png";
+import { correctSound, wrongSound, wrongSound1 } from "../../helper/sound";
 
 const pageSize = 1;
 //Template for Submit Result
@@ -99,35 +100,42 @@ const QuizComponent = (props) => {
   };
 
   //! Check answer đúng hay sai
-  const handelAnswerSubmit = (idx) => {
+  const handelAnswerSubmit = async (idx) => {
     var counter = wrongCount;
     var total = totalPage - 1;
     if (answered[idx].correct === true) {
+      let correct =
+        correctSound[Math.floor(Math.random() * correctSound.length)];
+      await correct.play();
       setWrongCount(0);
       if (current <= total) {
         setTimeout(() => {
           handleChange(current + 1);
-        }, 500);
+        }, 1000);
       } else if (current === total + 1) {
         setTimeout(() => {
           handelChangeIsSubmitResult();
-        }, 500);
+        }, 1000);
       }
     }
     if (answered[idx].correct === false) {
+      let wrong = wrongSound[Math.floor(Math.random() * wrongSound.length)];
       if (counter === 1) {
         counter = 0;
         setWrongCount(0);
         if (current <= total) {
+          wrong.play();
           setTimeout(() => {
             handleChange(current + 1);
           }, 1000);
         } else if (current === total + 1) {
+          wrong.play();
           setTimeout(() => {
             handelChangeIsSubmitResult();
           }, 1000);
         }
       } else {
+        wrongSound1.play();
         counter++;
         setWrongCount(counter);
         setTimeout(() => {}, 1000);

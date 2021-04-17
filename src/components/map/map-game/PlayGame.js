@@ -132,9 +132,6 @@ const PlayGame = () => {
   const [minIndex, setMinIndex] = useState(0);
   const [maxIndex, setMaxIndex] = useState(0);
 
-  let location = useLocation();
-  let history = useHistory();
-
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
     document.body.style.backgroundSize = "cover";

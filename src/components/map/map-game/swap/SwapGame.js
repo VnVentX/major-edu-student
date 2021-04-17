@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import UIfx from "uifx";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import correct_sfx from "../../../../resources/sound/correct-sound.mp3";
+import img from "../../../../resources/img/game/game-btn1.png";
 
 const correctSound = new UIfx(correct_sfx, {
   volume: 0.4, // number between 0.0 ~ 1.0
@@ -115,7 +116,8 @@ export default class SwapGame extends Component {
                         : "swap-question swap-question-false"
                     }
                   >
-                    {item.question}
+                    {/* {item.question} */}
+                    <img src={img} />
                   </div>
                   <Draggable draggableId={item.id} index={index}>
                     {(provided, snapshot) => (

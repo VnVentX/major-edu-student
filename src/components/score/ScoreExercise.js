@@ -119,61 +119,85 @@ const ScoreExercise = () => {
                     {i.isShown === true && (
                       <div className="unit-exercise">
                         <div style={{ marginBottom: 20 }} />
-                        {i.lessonScoreViewDTOList?.map((lesson, index) => (
-                          <React.Fragment key={index}>
-                            <div className="lesson-exercise-item">
-                              {lesson.isShown === true ? (
-                                <div
-                                  className="unit-arrow arrow-up-bl"
-                                  style={{ marginRight: 10 }}
-                                  onClick={() => {
-                                    showMoreLesson(idx, index);
-                                  }}
-                                />
-                              ) : (
-                                <div
-                                  className="unit-arrow arrow-down-bl"
-                                  style={{ marginRight: 10 }}
-                                  onClick={() => {
-                                    showMoreLesson(idx, index);
-                                  }}
-                                />
-                              )}
-                              <h1
-                                onClick={() => {
-                                  showMoreLesson(idx, index);
-                                }}
-                              >
-                                Lesson {lesson.lessonName}
-                              </h1>
-                            </div>
-                            <div className="item-spacer" />
-                            {lesson.isShown === true && (
-                              <div className="lesson-exercise">
-                                <div style={{ marginBottom: 20 }} />
-                                {lesson.exerciseResponseDTOList?.map(
-                                  (exercise, index) => (
-                                    <React.Fragment key={index}>
-                                      <div className="unit-exercise-item">
-                                        <Link
-                                          to={`${window.location.pathname}/exercise/${exercise.id}`}
-                                        >
-                                          <h1>Exercise {exercise.exerciseName}</h1>
-                                        </Link>
-                                        <h1>
-                                          {exercise.done === true
-                                            ? "DONE"
-                                            : "NOT DONE"}
-                                        </h1>
-                                      </div>
-                                      <div className="item-spacer" />
-                                    </React.Fragment>
-                                  )
+                        {i.lessonScoreViewDTOList?.map((lesson, index) =>
+                          lesson.lessonName === 0 ? (
+                            lesson.exerciseResponseDTOList?.map(
+                              (exercise, index) => (
+                                <React.Fragment key={index}>
+                                  <div className="unit-exercise-item">
+                                    <Link
+                                      to={`${window.location.pathname}/exercise/${exercise.id}`}
+                                    >
+                                      <h1>Test {exercise.exerciseName}</h1>
+                                    </Link>
+                                    <h1>
+                                      {exercise.done === true
+                                        ? "DONE"
+                                        : "NOT DONE"}
+                                    </h1>
+                                  </div>
+                                  <div className="item-spacer" />
+                                </React.Fragment>
+                              )
+                            )
+                          ) : (
+                            <React.Fragment key={index}>
+                              <div className="lesson-exercise-item">
+                                {lesson.isShown === true ? (
+                                  <div
+                                    className="unit-arrow arrow-up-bl"
+                                    style={{ marginRight: 10 }}
+                                    onClick={() => {
+                                      showMoreLesson(idx, index);
+                                    }}
+                                  />
+                                ) : (
+                                  <div
+                                    className="unit-arrow arrow-down-bl"
+                                    style={{ marginRight: 10 }}
+                                    onClick={() => {
+                                      showMoreLesson(idx, index);
+                                    }}
+                                  />
                                 )}
+                                <h1
+                                  onClick={() => {
+                                    showMoreLesson(idx, index);
+                                  }}
+                                >
+                                  Lesson {lesson.lessonName}
+                                </h1>
                               </div>
-                            )}
-                          </React.Fragment>
-                        ))}
+                              <div className="item-spacer" />
+                              {lesson.isShown === true && (
+                                <div className="lesson-exercise">
+                                  <div style={{ marginBottom: 20 }} />
+                                  {lesson.exerciseResponseDTOList?.map(
+                                    (exercise, index) => (
+                                      <React.Fragment key={index}>
+                                        <div className="unit-exercise-item">
+                                          <Link
+                                            to={`${window.location.pathname}/exercise/${exercise.id}`}
+                                          >
+                                            <h1>
+                                              Exercise {exercise.exerciseName}
+                                            </h1>
+                                          </Link>
+                                          <h1>
+                                            {exercise.done === true
+                                              ? "DONE"
+                                              : "NOT DONE"}
+                                          </h1>
+                                        </div>
+                                        <div className="item-spacer" />
+                                      </React.Fragment>
+                                    )
+                                  )}
+                                </div>
+                              )}
+                            </React.Fragment>
+                          )
+                        )}
                       </div>
                     )}
                   </React.Fragment>

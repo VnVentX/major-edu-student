@@ -8,6 +8,16 @@ import MapComponent from "./MapComponent";
 const Index = () => {
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
+    var home = document.getElementById("home");
+    var notice = document.getElementById("notice");
+    var subject = document.getElementById("subject");
+    var score = document.getElementById("score");
+    var profile = document.getElementById("profile");
+    notice.classList.remove("header-active");
+    subject.classList.remove("header-active");
+    profile.classList.remove("header-active");
+    score.classList.remove("header-active");
+    home.classList.add("header-active");
   }, []);
 
   return (

@@ -36,7 +36,7 @@ import ScoreExerciseDetail from "../components/score/ScoreExerciseDetail";
 
 const { Content } = Layout;
 
-const Home = (props) => {
+const Home = () => {
   function _ScrollToTop(props) {
     const { pathname } = useLocation();
     useEffect(() => {
@@ -51,7 +51,7 @@ const Home = (props) => {
     <div className="contents">
       <BrowserRouter>
         {/* header */}
-        <HeaderContainer history={props.history} />
+        <HeaderContainer />
         {/* body */}
         <Layout className="scence">
           <Content className="container">

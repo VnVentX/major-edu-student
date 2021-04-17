@@ -1,38 +1,34 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const HeaderContainer = (props) => {
-  useEffect(() => {
-    console.log(props.history.location.pathname);
-  }, [props.history.location.pathname]);
-
   return (
     <div className="scence">
       <div id="header" class="animatedtabs">
         <ul>
           <li>
-            <Link to="/home" className="hover-zone">
+            <Link id="home" to="/home" className="hover-zone">
               <div className="menu-buttons acHome" />
             </Link>
           </li>
           <li>
-            <Link to="/notice" className="hover-zone">
+            <Link id="notice" to="/notice" className="hover-zone">
               <div className="menu-buttons acNotice" />
             </Link>
           </li>
 
           <li>
-            <Link to="/subject" className="hover-zone">
+            <Link id="subject" to="/subject" className="hover-zone">
               <div className="menu-buttons acSubject" />
             </Link>
           </li>
           <li>
-            <Link to="/score" className="hover-zone">
+            <Link id="score" to="/score" className="hover-zone">
               <div className="menu-buttons acScore" />
             </Link>
           </li>
           <li>
-            <Link to="/profile" className="hover-zone">
+            <Link id="profile" to="/profile" className="hover-zone">
               <div className="menu-buttons acProfile" />
             </Link>
           </li>
