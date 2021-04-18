@@ -353,6 +353,7 @@
 }
 
 .subject-inner-border {
+  position: relative;
   display: grid;
   place-items: center;
   border-radius: 30px 30px 30px 30px;
@@ -362,6 +363,11 @@
   width: 320px;
   height: 370px;
   padding: 25px;
+}
+
+.subject-inner-border img {
+  width: 85%;
+  border-radius: 15px;
 }
 
 .subject-btn {
@@ -456,18 +462,20 @@
 .reset-pass h1 {
   color: white;
 }
-.footer-logo {
+.footer_logo {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 300px;
 }
-.footer-logo img {
-  width: 30vw;
-  height: auto;
+.logo-footer {
+  background-image: url("../img/logo_major.png");
+  background-size: cover;
+  width: 350px; /* image width */
+  height: 133px; /* image height */
+  display: inline-block; /* so that it behaves like the img element */
 }
-
 .ant-layout-footer {
   padding: 24px 0px !important;
 }

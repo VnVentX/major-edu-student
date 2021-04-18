@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import math from "../../resources/img/home/math.png";
 import { Link } from "react-router-dom";
 
 const gradeID = 1;
@@ -15,6 +14,7 @@ const SubjectHome = () => {
           `https://mathscienceeducation.herokuapp.com/grade/${gradeID}/subjects`
         )
         .then((res) => {
+          console.log(res.data);
           setData(res.data);
         })
         .catch((e) => {
@@ -35,7 +35,7 @@ const SubjectHome = () => {
                 <div key={idx} className="subject-home-wrap">
                   <div className="subject-outter-border">
                     <div className="subject-inner-border">
-                      <img src={math} alt={math} />
+                      <img src={i.imageUrl} alt={i.imageUrl} />
                     </div>
                   </div>
                   <Link to={`/subject/${i.id}`}>

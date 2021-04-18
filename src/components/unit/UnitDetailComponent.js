@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Spin } from "antd";
 import { Link, useHistory } from "react-router-dom";
 import bg from "../../resources/img/unit/unit-bg2.png";
 

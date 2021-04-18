@@ -1,13 +1,12 @@
 import React from "react";
-import { Layout, Space } from "antd";
+import { Layout } from "antd";
 import contact from "../../resources/img/home/contact.png";
 import menu from "../../resources/img/home/menu.png";
-import logo from "../../resources/img/logo_major.png";
 import { Link } from "react-router-dom";
 
 const { Footer } = Layout;
 
-const FooterContainer = () => {
+const FooterContainer = (props) => {
   return (
     <Footer className="scence footer-bg">
       <div className="footer-content">
@@ -49,12 +48,20 @@ const FooterContainer = () => {
             <Link to="">
               <h1>Reset password</h1>
             </Link>
-            <Link to="">
+            <Link
+              to=""
+              className="hover-zone"
+              onClick={() => {
+                localStorage.removeItem("token");
+                localStorage.removeItem("user");
+                props.history.push("/login");
+              }}
+            >
               <h1>Logout</h1>
             </Link>
           </div>
-          <div className="footer-logo">
-            <img src={logo} alt={logo} width={398} height={133} />
+          <div className="footer_logo">
+            <div className="logo-footer" />
           </div>
         </div>
       </div>

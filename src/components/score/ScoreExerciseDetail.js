@@ -22,6 +22,7 @@ const ScoreExerciseDetail = () => {
           `https://mathscienceeducation.herokuapp.com/exerciseTaken/all?accountId=${accountID}&exerciseId=${exerciseID}`
         )
         .then((res) => {
+          console.log(res.data);
           setAttempData(res.data.lenght === 0 ? [] : res.data);
         })
         .catch((e) => {

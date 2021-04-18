@@ -4,6 +4,8 @@ import ScoreComponent from "../components/score/ScoreComponent";
 
 const Score = () => {
   useEffect(() => {
+    let header = document.getElementById("header");
+    header.style.visibility = "visible";
     var home = document.getElementById("home");
     var notice = document.getElementById("notice");
     var subject = document.getElementById("subject");

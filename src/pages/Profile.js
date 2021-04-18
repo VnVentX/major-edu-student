@@ -3,6 +3,8 @@ import ProfileComponent from "../components/profile/ProfileComponent";
 
 const Profile = () => {
   useEffect(() => {
+    let header = document.getElementById("header");
+    header.style.visibility = "visible";
     var home = document.getElementById("home");
     var notice = document.getElementById("notice");
     var subject = document.getElementById("subject");

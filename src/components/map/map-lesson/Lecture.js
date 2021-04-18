@@ -44,7 +44,7 @@ const Lecture = (props) => {
 <iframe
   id=${document.fullscreenElement === null ? "nonfs" : "fs"}
   title="lesson 1"
-  src='${props.url}'
+  src="${props.url}"
   frameBorder="0"
   width="100%"
 />

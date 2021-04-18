@@ -26,7 +26,6 @@ const ScoreExercise = () => {
           formData
         )
         .then((res) => {
-          console.log(res.data);
           setLoading(false);
           setData(res.data);
         })
@@ -107,7 +106,7 @@ const ScoreExercise = () => {
                       {i.process !== "100%" ? (
                         <div className="status-btn">
                           <div className="status-btn-oval" />
-                          <h1>{i.process === "N/A" ? "0%" : i.process}</h1>
+                          <h1>{i.process === "0" ? "0%" : i.process}</h1>
                         </div>
                       ) : (
                         <div className="status-btn-done">

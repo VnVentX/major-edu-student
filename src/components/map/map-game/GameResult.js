@@ -3,7 +3,6 @@ import { useLocation, useHistory } from "react-router-dom";
 import { Button } from "antd";
 
 const GameResult = () => {
-  const [count, setCount] = useState(0);
   let location = useLocation();
   let history = useHistory();
 
@@ -20,8 +19,6 @@ const GameResult = () => {
         <div className="result-container">
           <div className="quiz-result">
             <h1>Congratulation!</h1>
-            <h1>You score</h1>
-            <h1>{count}/10</h1>
             <Button
               type="link"
               block

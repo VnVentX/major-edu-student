@@ -4,6 +4,8 @@ import SubjectComponent from "../components/subject/SubjectComponent";
 
 const Subject = () => {
   useEffect(() => {
+    let header = document.getElementById("header");
+    header.style.visibility = "visible";
     var home = document.getElementById("home");
     var notice = document.getElementById("notice");
     var subject = document.getElementById("subject");

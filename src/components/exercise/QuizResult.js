@@ -47,7 +47,7 @@ const QuizResult = (props) => {
       .post("https://mathscienceeducation.herokuapp.com/exericseTaken", {
         accountId: 1,
         exerciseId: exerciseID,
-        mark: mark,
+        totalScore: mark,
         takenObject: takenObj,
       })
       .then((res) => {

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const HeaderContainer = (props) => {
   return (
     <div className="scence">
-      <div id="header" class="animatedtabs">
+      <div id="header" className="animatedtabs">
         <ul>
           <li>
             <Link id="home" to="/home" className="hover-zone">

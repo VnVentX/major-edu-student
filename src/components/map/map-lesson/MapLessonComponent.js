@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import bg from "../../../resources/img/unit/unit-detail-bg.png";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import Lecture from "./Lecture";
 
@@ -19,8 +18,6 @@ const MapLessonComponent = () => {
   const lessonPath = pathStack[3];
 
   useEffect(() => {
-    document.body.style.background = `url('${bg}')`;
-    document.body.style.backgroundSize = "cover";
     async function getLessonByID() {
       let lessonID = window.location.pathname.split("/")[2];
       await axios
