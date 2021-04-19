@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import UIfx from "uifx";
 import correct_sfx from "../../../../resources/sound/correct-sound.mp3";
-import img from "../../../../resources/img/game/game-btn1.png";
 
 const correctSound = new UIfx(correct_sfx, {
   volume: 0.4, // number between 0.0 ~ 1.0
@@ -12,12 +11,12 @@ const ChoosingGame = (props) => {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    setOptions(props.info.answers.sort(() => Math.random() - 0.5));
-  }, [props.info.answers]);
+    setOptions(props.info.sort(() => Math.random() - 0.5));
+  }, [props.info]);
 
   const handleSelectedOption = (option, optionIndex) => {
     var result = options;
-    if (props.info.questionID === option.questionID) {
+    if (props.correct === option.optionText) {
       result[optionIndex].isWrong = false;
       correctSound.play();
       setTimeout(() => {
@@ -33,7 +32,7 @@ const ChoosingGame = (props) => {
     <div className="game-choosing-wrap">
       <div className="game-choosing-title">
         <div>
-          <h1>{props.info.questionText}</h1>
+          <h1>{props.correct}</h1>
         </div>
       </div>
       <div className="game-choosing-option">
@@ -49,8 +48,7 @@ const ChoosingGame = (props) => {
               handleSelectedOption(i, idx);
             }}
           >
-            {/* {i.optionImg} */}
-            <img src={img} />
+            <img src={i.optionImageUrl} alt={i.optionImageUrl} />
           </div>
         ))}
       </div>

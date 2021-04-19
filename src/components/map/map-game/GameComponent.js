@@ -10,32 +10,7 @@ const gameBtn = ["1", "2", "3", "4"];
 let gameBtnColor = "";
 
 const GameComponent = () => {
-  const [data, setData] = useState([
-    {
-      id: 1,
-      gameName: "1",
-    },
-    {
-      id: 2,
-      gameName: "2",
-    },
-    {
-      id: 3,
-      gameName: "3",
-    },
-    {
-      id: 4,
-      gameName: "4",
-    },
-    {
-      id: 5,
-      gameName: "5",
-    },
-    {
-      id: 6,
-      gameName: "6",
-    },
-  ]);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const history = useHistory();
@@ -45,22 +20,21 @@ const GameComponent = () => {
     document.body.style.backgroundSize = "cover";
     let header = document.getElementById("header");
     header.style.visibility = "visible";
-    // async function getAllExercise() {
-    //   let lessonID = window.location.pathname.split("/")[6];
-    //   let accountID = 1;
-    //   await axios
-    //     .post(
-    //       `https://mathscienceeducation.herokuapp.com/lesson/${lessonID}/exercises/student?accountId=${accountID}`
-    //     )
-    //     .then((res) => {
-    //       setData(res.data);
-    //       setLoading(false);
-    //     })
-    //     .catch((e) => {
-    //       console.log(e);
-    //     });
-    // }
-    // getAllExercise();
+    async function getAllGame() {
+      let lessonID = window.location.pathname.split("/")[6];
+      await axios
+        .get(
+          `https://mathscienceeducation.herokuapp.com/lesson/${lessonID}/game/student`
+        )
+        .then((res) => {
+          setData(res.data);
+          setLoading(false);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+    getAllGame();
   }, []);
 
   //! Get Lesson path

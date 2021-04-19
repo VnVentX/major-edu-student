@@ -16,7 +16,7 @@ const ScoreExercise = () => {
     async function getStunderScore() {
       setLoading(true);
       let subjectID = window.location.pathname.split("/")[2];
-      let accountID = 1;
+      let accountID = 5;
       let formData = new FormData();
       formData.append("subjectId", subjectID);
       formData.append("accountId", accountID);
@@ -26,6 +26,7 @@ const ScoreExercise = () => {
           formData
         )
         .then((res) => {
+          console.log(res.data);
           setLoading(false);
           setData(res.data);
         })
@@ -127,7 +128,7 @@ const ScoreExercise = () => {
                                     <Link
                                       to={`${window.location.pathname}/exercise/${exercise.id}`}
                                     >
-                                      <h1>Test {exercise.exerciseName}</h1>
+                                      <h1>Exercise {exercise.exerciseName}</h1>
                                     </Link>
                                     <h1>
                                       {exercise.done === true

@@ -12,10 +12,10 @@ const correctSound = new UIfx(correct_sfx, {
 // a little function to help us with reordering the result
 const swap = (list, startIndex, endIndex) => {
   const result = Array.from(list);
-  const temp = list[endIndex].falseAnswer;
+  const temp = list[endIndex].wrongOptionText;
   //swap items at index
-  result[endIndex].falseAnswer = list[startIndex].falseAnswer;
-  result[startIndex].falseAnswer = temp;
+  result[endIndex].wrongOptionText = list[startIndex].wrongOptionText;
+  result[startIndex].wrongOptionText = temp;
   return result;
 };
 
@@ -32,11 +32,11 @@ const getItemStyle = (item, isDragging, style) => ({
   background: "white",
   // change background colour if dragging
   border:
-    item.answer === item.falseAnswer
+    item.optionText === item.wrongOptionText
       ? "8px solid aquamarine"
       : "8px solid lightcoral",
   borderTop:
-    item.answer === item.falseAnswer
+    item.optionText === item.wrongOptionText
       ? "5px solid aquamarine"
       : "5px solid lightcoral",
   // styles we need to apply on draggables
@@ -61,8 +61,8 @@ export default class SwapGame extends Component {
 
   checkCorrect = () => {
     var count = 0;
-    this.state.items.map((item) => {
-      if (item.answer === item.falseAnswer) {
+    this.state.items?.map((item) => {
+      if (item.optionText === item.wrongOptionText) {
         count++;
         if (count === 4) {
           correctSound.play();
@@ -70,7 +70,6 @@ export default class SwapGame extends Component {
       }
       return count;
     });
-    console.log(count);
     if (count === 4) {
       setTimeout(() => {
         count = 0;
@@ -107,17 +106,17 @@ export default class SwapGame extends Component {
               style={getListStyle()}
               {...provided.droppableProps}
             >
-              {this.state.items.map((item, index) => (
+              {this.state.items?.map((item, index) => (
                 <div key={index}>
                   <div
                     className={
-                      item.answer === item.falseAnswer
+                      item.optionText === item.wrongOptionText
                         ? "swap-question swap-question-true"
                         : "swap-question swap-question-false"
                     }
                   >
                     {/* {item.question} */}
-                    <img src={img} />
+                    <img src={item.optionImageUrl} alt={item.optionImageUrl} />
                   </div>
                   <Draggable draggableId={item.id} index={index}>
                     {(provided, snapshot) => (
@@ -131,7 +130,7 @@ export default class SwapGame extends Component {
                           provided.draggableProps.style
                         )}
                       >
-                        {item.falseAnswer}
+                        {item.wrongOptionText}
                       </div>
                     )}
                   </Draggable>

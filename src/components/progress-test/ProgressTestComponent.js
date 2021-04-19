@@ -31,7 +31,7 @@ const ProgressTestComponent = () => {
 
   const getProgressTestBySubjectID = async () => {
     let progressTestID = window.location.pathname.split("/")[4];
-    let accountID = 1;
+    let accountID = 5;
     await axios
       .post(
         `https://mathscienceeducation.herokuapp.com/progressTest/${progressTestID}/exercises/student?accountId=${accountID}`
@@ -85,7 +85,7 @@ const ProgressTestComponent = () => {
                     >
                       <div className="check-area" />
                       {i.done ? <div className="check-mark" /> : null}
-                      <h1>Test {i.exerciseName}</h1>
+                      <h1>Exercise {i.exerciseName}</h1>
                     </div>
                   </Link>
                 </div>

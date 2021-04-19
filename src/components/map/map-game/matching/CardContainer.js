@@ -7,29 +7,28 @@ const CardContainer = (props) => {
     <div className="wrapper" onDragOver={props.drag}>
       {props.info.map((blurb, index) => {
         return (
-          <div key={blurb.question} className="matching-pair">
+          <div key={blurb.optionImageUrl} className="matching-pair">
             <div
               className={
-                blurb.answer === blurb.falseAnswer
+                blurb.optionText === blurb.wrongOptionText
                   ? "matching-question-img matching-true"
                   : "matching-question-img matching-false"
               }
             >
-              {/* <h3>{blurb.question}</h3> */}
-              <img src={img} />
+              <img src={blurb.optionImageUrl} alt={blurb.optionImageUrl} />
             </div>
             <div
               className={
-                blurb.answer === blurb.falseAnswer
+                blurb.optionText === blurb.wrongOptionText
                   ? "true-bubble"
                   : "false-bubble"
               }
             ></div>
             <Card
-              question={blurb.question}
+              optionImageUrl={blurb.optionImageUrl}
               swap={props.swap}
               index={index + 1}
-              options={blurb.falseAnswer}
+              options={blurb.wrongOptionText}
             />
           </div>
         );

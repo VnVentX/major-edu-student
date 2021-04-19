@@ -29,7 +29,7 @@ const ExerciseComponent = () => {
     header.style.visibility = "visible";
     async function getAllExercise() {
       let lessonID = window.location.pathname.split("/")[6];
-      let accountID = 1;
+      let accountID = 5;
       await axios
         .post(
           `https://mathscienceeducation.herokuapp.com/lesson/${lessonID}/exercises/student?accountId=${accountID}`

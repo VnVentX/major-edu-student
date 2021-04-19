@@ -151,18 +151,8 @@ const QuizComponent = (props) => {
 
   //! Submit Result xong clear dữ liệu
   const handelSubmitResult = () => {
-    //api here
-    console.log(answered);
-    //clearing logic for state
     template = [];
-    questions.map((question) => {
-      return question.optionList.map((i) => {
-        return (i.isSelected = false);
-      });
-    });
     setAnswered([]);
-    setQuestions(questions);
-    props.handelChangeIsDoingQuiz();
   };
 
   return (

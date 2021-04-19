@@ -45,13 +45,14 @@ const QuizResult = (props) => {
     }
     await axios
       .post("https://mathscienceeducation.herokuapp.com/exericseTaken", {
-        accountId: 1,
+        accountId: 3,
         exerciseId: exerciseID,
         totalScore: mark,
         takenObject: takenObj,
       })
       .then((res) => {
         console.log(res);
+        props.handelSubmitResult();
       })
       .catch((e) => {
         console.log(e);

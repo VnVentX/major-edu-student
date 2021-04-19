@@ -35,13 +35,13 @@ const FillingGame = (props) => {
   return (
     <div className="game-choosing-wrap">
       <div className="question-text">
-        <h2>{props.questionImg}</h2>
+        <img src={props.questionImg} alt={props.questionImg} />
       </div>
       <Form form={form} onFinish={checkCorrect}>
         <div style={{ display: "grid", placeItems: "center" }}>
           <div className="game-filling-option">
             {props.info?.map((i, idx) =>
-              i.inputType === "text" ? (
+              i.optionInputType === "text" ? (
                 <Form.Item name={`text${idx}`} key={idx}>
                   <Input autoComplete="off" />
                 </Form.Item>

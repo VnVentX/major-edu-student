@@ -16,7 +16,7 @@ const ScoreExerciseDetail = () => {
     document.body.style.backgroundSize = "cover";
     async function getExerciseTakenByID() {
       let exerciseID = window.location.pathname.split("/")[4];
-      let accountID = 1;
+      let accountID = 5;
       await axios
         .post(
           `https://mathscienceeducation.herokuapp.com/exerciseTaken/all?accountId=${accountID}&exerciseId=${exerciseID}`

@@ -36,7 +36,7 @@ class Card extends Component {
       return (
         <div
           className={this.cssGrid[this.state.index]}
-          id={this.props.question}
+          id={this.props.optionImageUrl}
           draggable="true"
           onDrop={this.drop}
           onDragStart={this.dragStart}
@@ -56,7 +56,7 @@ class Card extends Component {
         <div
           style={style}
           className={this.cssGrid[this.state.index]}
-          id={this.props.question}
+          id={this.props.optionImageUrl}
           draggable="true"
           onDrop={this.drop}
           onDragStart={this.dragStart}
