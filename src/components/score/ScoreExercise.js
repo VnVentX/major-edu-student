@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { getID } from "../../helper/jwt";
 import { Link, useHistory } from "react-router-dom";
 import { Spin } from "antd";
 import "antd/dist/antd.css";
@@ -16,7 +17,7 @@ const ScoreExercise = () => {
     async function getStunderScore() {
       setLoading(true);
       let subjectID = window.location.pathname.split("/")[2];
-      let accountID = 5;
+      let accountID = getID();
       let formData = new FormData();
       formData.append("subjectId", subjectID);
       formData.append("accountId", accountID);
@@ -104,15 +105,19 @@ const ScoreExercise = () => {
                       >
                         <h1>{i.unitName}</h1>
                       </div>
-                      {i.process !== "100%" ? (
+                      {i.process === "0%" ? (
                         <div className="status-btn">
                           <div className="status-btn-oval" />
-                          <h1>{i.process === "0" ? "0%" : i.process}</h1>
+                          <h1>{i.process}</h1>
                         </div>
-                      ) : (
+                      ) : i.process === "100%" ? (
                         <div className="status-btn-done">
                           <div className="status-btn-done-oval" />
                           <h1>{i.process}</h1>
+                        </div>
+                      ) : (
+                        <div className="status-btn">
+                          <div className="status-btn-oval" />
                         </div>
                       )}
                     </div>

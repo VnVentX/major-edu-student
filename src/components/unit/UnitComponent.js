@@ -47,7 +47,6 @@ const UnitComponent = () => {
           `https://mathscienceeducation.herokuapp.com/subject/${subjectID}/unitView?accountId=${accountID}`
         )
         .then((res) => {
-          console.log(res.data);
           setData(res.data);
           setLoading(false);
         })

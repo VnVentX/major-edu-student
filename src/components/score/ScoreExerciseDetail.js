@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { getID } from "../../helper/jwt";
 import { Table } from "antd";
 import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
@@ -16,13 +17,12 @@ const ScoreExerciseDetail = () => {
     document.body.style.backgroundSize = "cover";
     async function getExerciseTakenByID() {
       let exerciseID = window.location.pathname.split("/")[4];
-      let accountID = 5;
+      let accountID = getID();
       await axios
         .post(
           `https://mathscienceeducation.herokuapp.com/exerciseTaken/all?accountId=${accountID}&exerciseId=${exerciseID}`
         )
         .then((res) => {
-          console.log(res.data);
           setAttempData(res.data.lenght === 0 ? [] : res.data);
         })
         .catch((e) => {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { getID } from "../../helper/jwt";
 import { Spin } from "antd";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import "antd/dist/antd.css";
@@ -29,7 +30,7 @@ const ExerciseComponent = () => {
     header.style.visibility = "visible";
     async function getAllExercise() {
       let lessonID = window.location.pathname.split("/")[6];
-      let accountID = 5;
+      let accountID = getID();
       await axios
         .post(
           `https://mathscienceeducation.herokuapp.com/lesson/${lessonID}/exercises/student?accountId=${accountID}`

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Button } from "antd";
 
 const LoginForm = (props) => {
@@ -10,15 +11,29 @@ const LoginForm = (props) => {
     setisWrongPass(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (username !== "test" && password !== "12345678") {
-      setisWrongPass(true);
-    } else if (username === "test" && password === "12345678") {
-      localStorage.setItem("token", "this is token");
-      localStorage.setItem("user", "user");
-      window.location.href = "/home";
-    }
+    let formData = new FormData();
+    formData.append("username", username);
+    formData.append("password", password);
+    await axios
+      .post(
+        "https://mathscienceeducation.herokuapp.com/account/login",
+        formData
+      )
+      .then((res) => {
+        console.log(res.data);
+        if (res.data === 0) {
+          setisWrongPass(true);
+        } else {
+          localStorage.setItem("token", "token");
+          localStorage.setItem("id", res.data);
+          window.location.href = "/home";
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   return (

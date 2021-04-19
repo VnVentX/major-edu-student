@@ -9,7 +9,7 @@ const pageSize = 1;
 //Template for Submit Result
 var template = [];
 
-const QuizComponent = (props) => {
+const QuizComponent = () => {
   const [isSubmitResult, setIsSubmitResult] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
@@ -153,6 +153,7 @@ const QuizComponent = (props) => {
   const handelSubmitResult = () => {
     template = [];
     setAnswered([]);
+    setQuestions([]);
   };
 
   return (

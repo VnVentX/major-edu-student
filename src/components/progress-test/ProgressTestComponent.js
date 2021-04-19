@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Spin } from "antd";
+import { getID } from "../../helper/jwt";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import "antd/dist/antd.css";
 import bg from "../../resources/img/unit/unit-bg.png";
@@ -31,7 +32,7 @@ const ProgressTestComponent = () => {
 
   const getProgressTestBySubjectID = async () => {
     let progressTestID = window.location.pathname.split("/")[4];
-    let accountID = 5;
+    let accountID = getID();
     await axios
       .post(
         `https://mathscienceeducation.herokuapp.com/progressTest/${progressTestID}/exercises/student?accountId=${accountID}`

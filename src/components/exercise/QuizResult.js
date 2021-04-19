@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { getID } from "../../helper/jwt";
 import axios from "axios";
 import { useLocation, useHistory } from "react-router-dom";
 import { Button } from "antd";
 
 const QuizResult = (props) => {
   const [count, setCount] = useState(0);
-  const [total, setTotal] = useState(0);
   const [current, setCurrent] = useState("");
   let location = useLocation();
   let history = useHistory();
@@ -24,13 +24,13 @@ const QuizResult = (props) => {
     let mark = 0;
     props.answered.map((i) => {
       totalScore = totalScore + i.score;
-      setTotal(totalScore);
       if (i.correct === true) {
         counter = counter + i.score;
       }
       return counter;
     });
     mark = (counter * 10) / totalScore;
+    mark = Math.round(mark * 10) / 10;
     setCount(mark);
     submitResult(mark);
   }, []);
@@ -45,7 +45,7 @@ const QuizResult = (props) => {
     }
     await axios
       .post("https://mathscienceeducation.herokuapp.com/exericseTaken", {
-        accountId: 3,
+        accountId: getID(),
         exerciseId: exerciseID,
         totalScore: mark,
         takenObject: takenObj,
