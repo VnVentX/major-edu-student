@@ -366,8 +366,10 @@
 }
 
 .subject-inner-border img {
-  width: 85%;
+  display: block;
   border-radius: 15px;
+  max-width: 100%;
+  max-height: 320px;
 }
 
 .subject-btn {

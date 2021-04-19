@@ -105,10 +105,9 @@ const ScoreExercise = () => {
                       >
                         <h1>{i.unitName}</h1>
                       </div>
-                      {i.process === "0%" ? (
+                      {i.process === "N/A" ? (
                         <div className="status-btn">
                           <div className="status-btn-oval" />
-                          <h1>{i.process}</h1>
                         </div>
                       ) : i.process === "100%" ? (
                         <div className="status-btn-done">
@@ -118,6 +117,7 @@ const ScoreExercise = () => {
                       ) : (
                         <div className="status-btn">
                           <div className="status-btn-oval" />
+                          <h1>{i.process}</h1>
                         </div>
                       )}
                     </div>

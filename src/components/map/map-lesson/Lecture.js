@@ -36,11 +36,12 @@ const Lecture = (props) => {
   return (
     <div className="lesson-wrap">
       <div className="non-fs">
-        <FullScreen handle={handle}>
-          <div
-            className={document.fullscreenElement === null ? "non-fs" : "fs"}
-            dangerouslySetInnerHTML={{
-              __html: `
+        {props.url && (
+          <FullScreen handle={handle}>
+            <div
+              className={document.fullscreenElement === null ? "non-fs" : "fs"}
+              dangerouslySetInnerHTML={{
+                __html: `
 <iframe
   id=${document.fullscreenElement === null ? "nonfs" : "fs"}
   title="lesson 1"
@@ -49,14 +50,15 @@ const Lecture = (props) => {
   width="100%"
 />
 `,
-            }}
-          />
-          {isFS && (
-            <div id="showMe" className="tool-bar-fs">
-              <div className="full-btn" onClick={onClickExitFullScreen} />
-            </div>
-          )}
-        </FullScreen>
+              }}
+            />
+            {isFS && (
+              <div id="showMe" className="tool-bar-fs">
+                <div className="full-btn" onClick={onClickExitFullScreen} />
+              </div>
+            )}
+          </FullScreen>
+        )}
       </div>
       {!isFS && (
         <div id="showMe" className="tool-bar">

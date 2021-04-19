@@ -31,7 +31,7 @@
 }
 
 .score-wrap a {
-  flex: 1 1 calc(50% - 20px);
+  flex: 0 1 calc(50% - 20px);
   margin: 10px;
 }
 

@@ -15,7 +15,7 @@ const FillingGame = (props) => {
     let answerArr = [];
     answerArr = Object.values(e);
     props.info.forEach((item) => {
-      if (item.inputType === "text") {
+      if (item.optionInputType === "text") {
         correctArr.push(item.text);
       }
     });
@@ -62,7 +62,7 @@ const FillingGame = (props) => {
             >
               <div className="progress-test-btn">
                 <div className="oval-button" />
-                <h1>Submit</h1>
+                <h1>Answer</h1>
               </div>
             </Button>
           </Form.Item>
