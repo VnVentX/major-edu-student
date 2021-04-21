@@ -327,7 +327,7 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 80%;
@@ -336,13 +336,13 @@
   background-image: url("../img/quiz/quiz-result.png");
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .quiz-result h1 {
   position: relative;
-  margin-top: -20%;
   font-family: iciel-cadena;
-  font-size: 4em;
+  font-size: 3.5vw;
   font-weight: bold;
   color: #00dc6a;
 }

@@ -27,7 +27,6 @@ const ScoreExercise = () => {
           formData
         )
         .then((res) => {
-          console.log(res.data);
           setLoading(false);
           setData(res.data);
         })

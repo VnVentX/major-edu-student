@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "../resources/css/profile.css";
 import ProfileComponent from "../components/profile/ProfileComponent";
 
 const Profile = () => {

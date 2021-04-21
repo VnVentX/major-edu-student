@@ -66,7 +66,7 @@ const ScoreExerciseDetail = () => {
     <div className="score-container">
       <div className="score-detail-wrap">
         <div className="general-title ">
-          <h1>Exercise 1</h1>
+          <h1>Exercise</h1>
         </div>
         <div className="record-wrap">
           {attempData && (

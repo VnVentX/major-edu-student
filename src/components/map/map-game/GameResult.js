@@ -18,7 +18,7 @@ const GameResult = () => {
       <div className="page-contain">
         <div className="result-container">
           <div className="quiz-result">
-            <h1>Congratulation!</h1>
+            <h1 style={{ marginBottom: 120 }}>Congratulation!</h1>
             <Button
               type="link"
               block

@@ -33,6 +33,9 @@
   width: 180px;
   height: 150px;
 }
+.animatedtabs li:last-child .menu-buttons {
+  width: 140px;
+}
 
 /* InActive Hover - before hover*/
 
