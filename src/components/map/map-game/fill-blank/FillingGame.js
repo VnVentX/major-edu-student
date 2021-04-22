@@ -39,7 +39,7 @@ const FillingGame = (props) => {
 
   return (
     <div className="game-choosing-wrap">
-      <div className="question-text">
+      <div className="question-img">
         <img src={props.questionImg} alt={props.questionImg} />
       </div>
       <Form form={form} onFinish={checkCorrect}>

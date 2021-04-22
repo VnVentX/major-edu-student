@@ -43,7 +43,9 @@ const Annoucement = () => {
                   <div className="notice-content">
                     <p>{i.shortDescription}</p>
                   </div>
-                  <Link to={`notice/${i.id}`}>See more...</Link>
+                  <div className="see-more">
+                    <Link to={`notice/${i.id}`}>See more...</Link>
+                  </div>
                 </div>
               </div>
             ))}

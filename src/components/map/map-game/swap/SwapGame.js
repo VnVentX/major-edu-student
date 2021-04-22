@@ -107,7 +107,7 @@ export default class SwapGame extends Component {
               {...provided.droppableProps}
             >
               {this.state.items?.map((item, index) => (
-                <div key={index}>
+                <div className="swap-game" key={index}>
                   <div
                     className={
                       item.optionText === item.wrongOptionText
@@ -130,7 +130,7 @@ export default class SwapGame extends Component {
                           provided.draggableProps.style
                         )}
                       >
-                        {item.wrongOptionText}
+                        <h1>{item.wrongOptionText}</h1>
                       </div>
                     )}
                   </Draggable>

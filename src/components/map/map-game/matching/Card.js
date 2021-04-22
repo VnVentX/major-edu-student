@@ -45,6 +45,9 @@ class Card extends Component {
           style={{
             display: "grid",
             placeItems: "center",
+            fontFamily: "iciel-cadena",
+            fontSize: "25px",
+            padding: "0 10px 0 40px",
           }}
         >
           {this.props.options}

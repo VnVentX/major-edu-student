@@ -18,17 +18,19 @@ const GameResult = () => {
       <div className="page-contain">
         <div className="result-container">
           <div className="quiz-result">
-            <h1 style={{ marginBottom: 120 }}>Congratulation!</h1>
-            <Button
-              type="link"
-              block
-              onClick={() => {
-                history.push(otherGamePath[6]);
-              }}
-              style={{ fontSize: 32 }}
-            >
-              Play other Game
-            </Button>
+            <div style={{ marginBottom: 125 }}>
+              <h1>Congratulation!</h1>
+              <Button
+                type="link"
+                block
+                onClick={() => {
+                  history.push(otherGamePath[6]);
+                }}
+                style={{ fontSize: 32 }}
+              >
+                Play other Game
+              </Button>
+            </div>
           </div>
         </div>
       </div>

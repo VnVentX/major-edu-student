@@ -342,14 +342,14 @@
 .quiz-result h1 {
   position: relative;
   font-family: iciel-cadena;
-  font-size: 3.5vw;
+  font-size: 6.5vh;
   font-weight: bold;
   color: #00dc6a;
 }
 
 .quiz-result span {
   font-family: iciel-cadena;
-  font-size: 1em;
+  font-size: 3.5vh;
   font-weight: bold;
   text-decoration: underline;
 }

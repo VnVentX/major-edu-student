@@ -75,10 +75,10 @@ const PlayGame = () => {
               idx >= minIndex &&
               idx < maxIndex && (
                 <React.Fragment key={idx}>
-                  <div className="question-text">
-                    <h2>{i.questionTitle}</h2>
-                  </div>
                   <div className="game-inner">
+                    <div className="question-text">
+                      <h2>{i.questionTitle}</h2>
+                    </div>
                     {i.questionType === "SWAP" ? (
                       <SwapGame info={i.optionQuestion} nextGame={nextGame} />
                     ) : i.questionType === "MATCH" ? (

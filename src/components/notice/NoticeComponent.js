@@ -56,17 +56,19 @@ const NoticeComponent = () => {
                         <img src={shout} alt={shout} />
                         <div className="title-right">
                           <Link to={`${window.location.pathname}/${i.id}`}>
-                            <h3>{i.newsTitle}</h3>
+                            <h1>{i.newsTitle}</h1>
                           </Link>
-                          <h4>{i.createdDate}</h4>
+                          <h3>{i.createdDate}</h3>
                         </div>
                       </div>
                       <div className="notice-content">
                         <p>{i.shortDescription}</p>
                       </div>
-                      <Link to={`${window.location.pathname}/${i.id}`}>
-                        See more...
-                      </Link>
+                      <div className="see-more">
+                        <Link to={`${window.location.pathname}/${i.id}`}>
+                          See more...
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 )

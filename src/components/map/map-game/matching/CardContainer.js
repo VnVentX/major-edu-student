@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "./Card";
-import img from "../../../../resources/img/game/game-btn1.png";
 
 const CardContainer = (props) => {
   return (
