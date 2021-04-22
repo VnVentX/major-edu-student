@@ -44,14 +44,13 @@ const QuizResult = (props) => {
       exerciseID = window.location.pathname.split("/")[8];
     }
     await axios
-      .post("https://mathscienceeducation.herokuapp.com/exericseTaken", {
+      .post(`${process.env.REACT_APP_BASE_URL}/exericseTaken`, {
         accountId: getID(),
         exerciseId: exerciseID,
         totalScore: mark,
         takenObject: takenObj,
       })
       .then((res) => {
-        console.log(res);
         props.handelSubmitResult();
       })
       .catch((e) => {

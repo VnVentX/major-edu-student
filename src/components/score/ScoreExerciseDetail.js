@@ -20,7 +20,7 @@ const ScoreExerciseDetail = () => {
       let accountID = getID();
       await axios
         .post(
-          `https://mathscienceeducation.herokuapp.com/exerciseTaken/all?accountId=${accountID}&exerciseId=${exerciseID}`
+          `${process.env.REACT_APP_BASE_URL}/exerciseTaken/all?accountId=${accountID}&exerciseId=${exerciseID}`
         )
         .then((res) => {
           setAttempData(res.data.lenght === 0 ? [] : res.data);

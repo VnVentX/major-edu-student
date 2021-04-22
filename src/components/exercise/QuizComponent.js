@@ -36,7 +36,7 @@ const QuizComponent = () => {
     }
     await axios
       .get(
-        `https://mathscienceeducation.herokuapp.com/exersise/${exerciseID}/questions`
+        `${process.env.REACT_APP_BASE_URL}/exersise/${exerciseID}/questions`
       )
       .then((res) => {
         setQuestions(res.data.length === 0 ? [] : [...res.data]);

@@ -13,9 +13,7 @@ const SubjectComponent = () => {
     document.body.style.backgroundSize = "cover";
     async function getAllSubject() {
       await axios
-        .get(
-          `https://mathscienceeducation.herokuapp.com/grade/${gradeID}/subjects`
-        )
+        .get(`${process.env.REACT_APP_BASE_URL}/grade/${gradeID}/subjects`)
         .then((res) => {
           setData(res.data);
         })

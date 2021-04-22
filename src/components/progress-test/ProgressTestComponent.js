@@ -35,7 +35,7 @@ const ProgressTestComponent = () => {
     let accountID = getID();
     await axios
       .post(
-        `https://mathscienceeducation.herokuapp.com/progressTest/${progressTestID}/exercises/student?accountId=${accountID}`
+        `${process.env.REACT_APP_BASE_URL}/progressTest/${progressTestID}/exercises/student?accountId=${accountID}`
       )
       .then((res) => {
         setData(res.data.length === 0 ? [] : res.data);

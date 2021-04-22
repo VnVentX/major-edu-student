@@ -5,11 +5,12 @@ import shout from "../../resources/img/home/shout.png";
 
 const Annoucement = () => {
   const [data, setData] = useState([]);
+  console.log();
 
   useEffect(() => {
     async function getTop3News() {
       await axios
-        .get("https://mathscienceeducation.herokuapp.com/news/3newest")
+        .get(`${process.env.REACT_APP_BASE_URL}/news/3newest`)
         .then((res) => {
           setData(res.data.length === 0 ? [] : res.data);
         })

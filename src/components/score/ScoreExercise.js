@@ -23,7 +23,7 @@ const ScoreExercise = () => {
       formData.append("accountId", accountID);
       await axios
         .post(
-          `https://mathscienceeducation.herokuapp.com/subject/${subjectID}/score`,
+          `${process.env.REACT_APP_BASE_URL}/subject/${subjectID}/score`,
           formData
         )
         .then((res) => {

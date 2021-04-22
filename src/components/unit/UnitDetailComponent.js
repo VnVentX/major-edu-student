@@ -11,9 +11,7 @@ const UnitDetailComponent = () => {
     document.body.style.backgroundSize = "cover";
     async function getAllUnit() {
       await axios
-        .get(
-          `https://mathscienceeducation.herokuapp.com/unit/${unitID}/lessons`
-        )
+        .get(`${process.env.REACT_APP_BASE_URL}/unit/${unitID}/lessons`)
         .then((res) => {
           setLesson(res.data);
         })

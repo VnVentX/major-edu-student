@@ -11,7 +11,7 @@ const ProfileComponent = () => {
     document.body.style.backgroundSize = "cover";
     async function getStudentDetail() {
       await axios
-        .get(`https://mathscienceeducation.herokuapp.com/student/${getID()}`)
+        .get(`${process.env.REACT_APP_BASE_URL}/student/${getID()}`)
         .then((res) => {
           setData(res.data);
           console.log(res.data);

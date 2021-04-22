@@ -21,7 +21,7 @@ const MapLessonComponent = () => {
     async function getLessonByID() {
       let lessonID = window.location.pathname.split("/")[2];
       await axios
-        .get(`https://mathscienceeducation.herokuapp.com/lesson/${lessonID}`)
+        .get(`${process.env.REACT_APP_BASE_URL}/lesson/${lessonID}`)
         .then((res) => {
           setData(res.data);
         })

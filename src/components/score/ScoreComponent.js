@@ -17,9 +17,7 @@ const ScoreComponent = () => {
     async function getAllSubject() {
       setLoading(true);
       await axios
-        .get(
-          `https://mathscienceeducation.herokuapp.com/grade/${gradeID}/subjects`
-        )
+        .get(`${process.env.REACT_APP_BASE_URL}/grade/${gradeID}/subjects`)
         .then((res) => {
           setLoading(false);
           setLesson(res.data);

@@ -24,7 +24,7 @@ const GameComponent = () => {
       let lessonID = window.location.pathname.split("/")[6];
       await axios
         .get(
-          `https://mathscienceeducation.herokuapp.com/lesson/${lessonID}/game/student`
+          `${process.env.REACT_APP_BASE_URL}/lesson/${lessonID}/game/student`
         )
         .then((res) => {
           setData(res.data);

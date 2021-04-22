@@ -33,7 +33,7 @@ const ExerciseComponent = () => {
       let accountID = getID();
       await axios
         .post(
-          `https://mathscienceeducation.herokuapp.com/lesson/${lessonID}/exercises/student?accountId=${accountID}`
+          `${process.env.REACT_APP_BASE_URL}/lesson/${lessonID}/exercises/student?accountId=${accountID}`
         )
         .then((res) => {
           setData(res.data);

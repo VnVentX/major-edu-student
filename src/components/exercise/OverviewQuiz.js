@@ -29,7 +29,7 @@ const OverviewQuiz = () => {
     let takenExercise = "";
     await axios
       .get(
-        `https://mathscienceeducation.herokuapp.com/exerciseTaken/${exerciseID}`
+        `${process.env.REACT_APP_BASE_URL}/exerciseTaken/${exerciseID}`
       )
       .then((res) => {
         takenExercise = JSON.parse(res.data.takenObject);

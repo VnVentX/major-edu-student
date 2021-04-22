@@ -9,7 +9,7 @@ const SlideShow = () => {
   useEffect(() => {
     async function getAllSubject() {
       await axios
-        .get("https://mathscienceeducation.herokuapp.com/bannerImage/url")
+        .get(`${process.env.REACT_APP_BASE_URL}/bannerImage/url`)
         .then((res) => {
           setData(res.data.length === 0 ? [] : res.data);
         })

@@ -44,7 +44,7 @@ const UnitComponent = () => {
       let accountID = 1;
       await axios
         .post(
-          `https://mathscienceeducation.herokuapp.com/subject/${subjectID}/unitView?accountId=${accountID}`
+          `${process.env.REACT_APP_BASE_URL}/subject/${subjectID}/unitView?accountId=${accountID}`
         )
         .then((res) => {
           setData(res.data);
