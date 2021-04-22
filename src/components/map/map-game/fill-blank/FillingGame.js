@@ -1,12 +1,6 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
-import UIfx from "uifx";
-import correct_sfx from "../../../../resources/sound/correct-sound.mp3";
-
-const correctSound = new UIfx(correct_sfx, {
-  volume: 0.4, // number between 0.0 ~ 1.0
-  throttleMs: 100,
-});
+import { wrongSound1, correctSound } from "../../../../helper/sound";
 
 const FillingGame = (props) => {
   const [form] = Form.useForm();
@@ -25,10 +19,21 @@ const FillingGame = (props) => {
         return element === answerArr[index];
       });
     if (is_same === true) {
-      correctSound.play();
+      let correct =
+        correctSound[Math.floor(Math.random() * correctSound.length)];
+      correct.play();
       setTimeout(() => {
         props.nextGame();
       }, 1000);
+    } else {
+      let input = document.getElementsByName("input");
+      input.forEach((item) => {
+        item.classList.add("shaky_error");
+        setTimeout(() => {
+          item.classList.remove("shaky_error");
+        }, 200);
+      });
+      wrongSound1.play();
     }
   };
 
@@ -43,7 +48,7 @@ const FillingGame = (props) => {
             {props.info?.map((i, idx) =>
               i.optionInputType === "text" ? (
                 <Form.Item name={`text${idx}`} key={idx}>
-                  <Input autoComplete="off" />
+                  <Input name="input" autoComplete="off" />
                 </Form.Item>
               ) : (
                 <h1 key={idx}>{i.text}</h1>
