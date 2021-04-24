@@ -34,9 +34,11 @@ h3,
 h4,
 h5,
 h6,
-span,
-p {
+span {
   font-family: iciel-cadena;
+}
+p {
+  font-family: sans-serif;
 }
 
 /* Wrap All */

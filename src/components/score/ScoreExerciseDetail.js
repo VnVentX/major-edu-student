@@ -8,9 +8,7 @@ import bg from "../../resources/img/score/score-bg.png";
 
 const ScoreExerciseDetail = () => {
   const [attempData, setAttempData] = useState([]);
-  const [pagination] = useState({
-    pageSize: 5,
-  });
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
@@ -36,7 +34,7 @@ const ScoreExerciseDetail = () => {
     {
       title: "No",
       dataIndex: "index",
-      render: (text, record, index) => `${index + 1}`,
+      render: (value, item, index) => (page - 1) * 5 + index + 1,
       width: "10%",
     },
     {
@@ -74,7 +72,12 @@ const ScoreExerciseDetail = () => {
               rowKey={(record) => record.id}
               columns={columns}
               dataSource={attempData}
-              pagination={pagination}
+              pagination={{
+                pageSize: 5,
+                onChange(current) {
+                  setPage(current);
+                },
+              }}
               className="exercise-table"
             />
           )}

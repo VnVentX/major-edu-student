@@ -10,6 +10,10 @@ export const getID = () => {
   return localStorage.getItem("id");
 };
 
+export const getGradeID = () => {
+  return localStorage.getItem("gradeID");
+};
+
 export const getUser = () => {
   return localStorage.getItem("user");
 };
