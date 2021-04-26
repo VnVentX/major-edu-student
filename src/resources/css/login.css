@@ -207,6 +207,16 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+.wrong-pass {
+  background: url("../img/login-page/old-pass-fail.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.length-error {
+  background: url("../img/login-page/length-error.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 .login-ok-btn {
   background: url("../img/primary-btn.png");
