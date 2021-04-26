@@ -19,7 +19,7 @@ const MapLessonComponent = () => {
 
   useEffect(() => {
     async function getLessonByID() {
-      let lessonID = window.location.pathname.split("/")[2];
+      let lessonID = window.location.pathname.split("/")[6];
       await axios
         .get(`${process.env.REACT_APP_BASE_URL}/lesson/${lessonID}`)
         .then((res) => {
