@@ -20,7 +20,7 @@ const ProfileComponent = () => {
     document.body.style.backgroundSize = "cover";
     async function getStudentDetail() {
       await axios
-        .get(`${process.env.REACT_APP_BASE_URL}/student/${getID()}`)
+        .get(`${process.env.REACT_APP_BASE_URL}/student/account/${getID()}`)
         .then((res) => {
           setData(res.data);
         })
@@ -170,7 +170,7 @@ const ProfileComponent = () => {
               <div className="student-logo" />
               <h1>School: {data.schoolName}</h1>
               <h1>Class: {data.className}</h1>
-              <h1>ID: {data.id}</h1>
+              <h1>ID: {data.studentId}</h1>
               <h1>Name: {data.fullName}</h1>
               <div
                 className="progress-test-btn"
