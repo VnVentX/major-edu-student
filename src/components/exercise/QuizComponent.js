@@ -4,6 +4,7 @@ import "../../resources/css/quiz.css";
 import QuizResult from "./QuizResult";
 import bg from "../../resources/img/quiz/quiz-bg.png";
 import { correctSound, wrongSound, wrongSound1 } from "../../helper/sound";
+import AudioPlayer from "../../helper/AudioPlayer";
 
 const pageSize = 1;
 //Template for Submit Result
@@ -35,9 +36,7 @@ const QuizComponent = () => {
       exerciseID = window.location.pathname.split("/")[8];
     }
     await axios
-      .get(
-        `${process.env.REACT_APP_BASE_URL}/exersise/${exerciseID}/questions`
-      )
+      .get(`${process.env.REACT_APP_BASE_URL}/exersise/${exerciseID}/questions`)
       .then((res) => {
         setQuestions(res.data.length === 0 ? [] : [...res.data]);
         setTotalPage(res.data.length / pageSize);
@@ -189,12 +188,14 @@ const QuizComponent = () => {
                           <div className="question">
                             <div className="question-title">
                               <h1>Question {index + 1}</h1>
-                              {item.questionAudioUrl && (
-                                <div className="quiz-sound" />
-                              )}
                             </div>
                             <div className="question-text">
-                              <h2>{item.questionTitle}</h2>
+                              <h2>
+                                {item.questionTitle}
+                                {item.questionAudioUrl && (
+                                  <AudioPlayer url={item.questionAudioUrl} />
+                                )}
+                              </h2>
                             </div>
                           </div>
                         </div>

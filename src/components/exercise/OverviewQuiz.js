@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Pagination, Modal } from "antd";
 import { useHistory } from "react-router-dom";
 import bg from "../../resources/img/unit/unit-bg.png";
+import AudioPlayer from "../../helper/AudioPlayer";
 
 const pageSize = 1;
 
@@ -28,9 +29,7 @@ const OverviewQuiz = () => {
     let exerciseID = window.location.pathname.split("/")[6];
     let takenExercise = "";
     await axios
-      .get(
-        `${process.env.REACT_APP_BASE_URL}/exerciseTaken/${exerciseID}`
-      )
+      .get(`${process.env.REACT_APP_BASE_URL}/exerciseTaken/${exerciseID}`)
       .then((res) => {
         takenExercise = JSON.parse(res.data.takenObject);
         setQuestions(takenExercise);
@@ -88,12 +87,14 @@ const OverviewQuiz = () => {
                       <div className="question">
                         <div className="question-title">
                           <h1>Question {index + 1}</h1>
-                          {item.questionAudioUrl && (
-                            <div className="quiz-sound" />
-                          )}
                         </div>
                         <div className="question-text">
-                          <h2>{item.questionTitle}</h2>
+                          <h2>
+                            {item.questionTitle}
+                            {item.questionAudioUrl && (
+                              <AudioPlayer url={item.questionAudioUrl} />
+                            )}
+                          </h2>
                         </div>
                       </div>
                     </div>
