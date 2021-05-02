@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Spin } from "antd";
-import Carousel from "react-multi-carousel";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import bg from "../../../resources/img/game/game-bg.png";
 
