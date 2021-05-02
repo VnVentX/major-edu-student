@@ -16,7 +16,7 @@ const FillingGame = (props) => {
     var is_same =
       correctArr.length === answerArr.length &&
       correctArr.every(function (element, index) {
-        return element === answerArr[index];
+        return element.toLowerCase() === answerArr[index].toLowerCase();
       });
     if (is_same === true) {
       let correct =

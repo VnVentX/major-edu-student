@@ -13,26 +13,23 @@ const LoginForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let formData = new FormData();
-    formData.append("username", username);
-    formData.append("password", password);
     await axios
-      .post(
-        `${process.env.REACT_APP_BASE_URL}/account/login`,
-        formData
-      )
+      .post(`${process.env.REACT_APP_BASE_URL}/login`, {
+        username,
+        password,
+      })
       .then((res) => {
         console.log(res.data);
-        if (res.data === 0) {
-          setisWrongPass(true);
+        if (res.data === "") {
+          window.location.href = "/login";
         } else {
-          localStorage.setItem("token", "token");
-          localStorage.setItem("id", res.data);
+          localStorage.setItem("token", "Bearer " + res.data);
           window.location.href = "/home";
         }
       })
       .catch((e) => {
         console.log(e);
+        setisWrongPass(true);
       });
   };
 
