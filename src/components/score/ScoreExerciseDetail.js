@@ -74,6 +74,7 @@ const ScoreExerciseDetail = () => {
               dataSource={attempData}
               pagination={{
                 pageSize: 5,
+                position: ["bottomCenter"],
                 onChange(current) {
                   setPage(current);
                 },

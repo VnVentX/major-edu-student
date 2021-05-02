@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import "../../resources/css/quiz.css";
 import { useState, useEffect } from "react";
-import { Pagination, Modal } from "antd";
-import { useHistory } from "react-router-dom";
+import { Pagination } from "antd";
+import { useHistory, useLocation } from "react-router-dom";
 import bg from "../../resources/img/unit/unit-bg.png";
 import AudioPlayer from "../../helper/AudioPlayer";
 
@@ -15,9 +15,9 @@ const OverviewQuiz = () => {
   const [current, setCurrent] = useState(1);
   const [minIndex, setMinIndex] = useState(0);
   const [maxIndex, setMaxIndex] = useState(0);
-  const [visible, setVisible] = useState(false);
 
   let history = useHistory();
+  let location = useLocation();
 
   useEffect(() => {
     document.body.style.background = `url('${bg}')`;
@@ -48,22 +48,16 @@ const OverviewQuiz = () => {
     setMaxIndex(page * pageSize);
   };
 
-  //! Modal finish
-  const showModal = () => {
-    setVisible(true);
-  };
-
-  const handleOk = () => {
-    setVisible(false);
-    history.goBack();
-  };
-
-  const handelCancel = () => {
-    setVisible(false);
-  };
+  //! Get Score path
+  const pathSnippets = location.pathname.split("/").filter((i) => i);
+  const scorePath = pathSnippets.map((_, index) => {
+    const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
+    return url;
+  });
 
   return (
     <div className="page">
+      <div className="back-btn" onClick={() => history.push(scorePath[3])} />
       <div className="page-contain">
         <div className="quiz-overview-container ">
           <div className="page-title">Overview</div>
@@ -155,17 +149,6 @@ const OverviewQuiz = () => {
                 )
             )}
           </div>
-          <button onClick={showModal} style={{ marginBottom: 30 }}>
-            Finish
-          </button>
-          <Modal
-            centered
-            visible={visible}
-            onOk={handleOk}
-            onCancel={handelCancel}
-          >
-            <p>Do you want to finish reviewing now?</p>
-          </Modal>
         </div>
       </div>
     </div>

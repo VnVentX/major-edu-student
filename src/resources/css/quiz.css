@@ -120,7 +120,7 @@
 
 .answer > div {
   flex: 0 1 calc(50% - 100px);
-  margin: 50px;
+  margin: 42px;
 }
 
 .answer-item {

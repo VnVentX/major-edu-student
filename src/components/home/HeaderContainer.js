@@ -38,7 +38,8 @@ const HeaderContainer = (props) => {
               className="hover-zone"
               onClick={() => {
                 localStorage.removeItem("token");
-                localStorage.removeItem("user");
+                localStorage.removeItem("id");
+                localStorage.removeItem("role");
                 props.history.push("/login");
               }}
             >

@@ -103,6 +103,7 @@ const QuizComponent = () => {
     var counter = wrongCount;
     var total = totalPage - 1;
     if (answered[idx].correct === true) {
+      document.getElementById("answer-btn").style.pointerEvents = "none";
       let correct =
         correctSound[Math.floor(Math.random() * correctSound.length)];
       await correct.play();
@@ -110,9 +111,11 @@ const QuizComponent = () => {
       if (current <= total) {
         setTimeout(() => {
           handleChange(current + 1);
+          document.getElementById("answer-btn").style.pointerEvents = "auto";
         }, 1000);
       } else if (current === total + 1) {
         setTimeout(() => {
+          document.getElementById("answer-btn").style.pointerEvents = "auto";
           handelChangeIsSubmitResult();
         }, 1000);
       }
@@ -123,13 +126,17 @@ const QuizComponent = () => {
         counter = 0;
         setWrongCount(0);
         if (current <= total) {
+          document.getElementById("answer-btn").style.pointerEvents = "none";
           wrong.play();
           setTimeout(() => {
             handleChange(current + 1);
+            document.getElementById("answer-btn").style.pointerEvents = "auto";
           }, 1000);
         } else if (current === total + 1) {
+          document.getElementById("answer-btn").style.pointerEvents = "none";
           wrong.play();
           setTimeout(() => {
+            document.getElementById("answer-btn").style.pointerEvents = "auto";
             handelChangeIsSubmitResult();
           }, 1000);
         }
@@ -204,6 +211,7 @@ const QuizComponent = () => {
                             {item.optionList.map((a, i) => (
                               <div key={i} className="answer-item">
                                 <div
+                                  id="answer-btn"
                                   onClick={() => {
                                     handleSelected(item, a, i);
                                     handelAnswerSubmit(index);

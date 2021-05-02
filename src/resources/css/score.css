@@ -269,11 +269,16 @@
   border-radius: 20px;
 }
 .ant-table-thead > tr > th {
+  font-family: iciel-cadena;
+  font-size: 1.5rem;
   background: #ffefcf;
-  border-bottom: none !important;
+  border-bottom: 0.2rem solid black !important;
 }
 .ant-table-tbody > tr > td {
-  border-bottom: none !important;
+  font-family: iciel-cadena;
+  font-size: 1.5rem;
+  color: #263b80;
+  border-bottom: 0.2rem solid black !important;
   background: #ffefcf;
 }
 .ant-table-tbody > tr.ant-table-row-level-0:hover > td {
