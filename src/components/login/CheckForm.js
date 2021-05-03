@@ -1,19 +1,31 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Button } from "antd";
 
 const CheckForm = (props) => {
   const [username, setUsername] = useState("");
-  const [parentPhone, setParentPhone] = useState("");
+  const [contact, setContact] = useState("");
   const [isWrongInfo, setisWrongInfo] = useState(false);
 
   const handleSubmit = (e) => {
-    if (username !== "test" || parentPhone !== "123") {
-      setisWrongInfo(true);
-    } else if (username === "test" && parentPhone === "123") {
-      props.handleIsChangePass();
-    }
     e.preventDefault();
-    console.log(username, parentPhone);
+    checkInfo();
+  };
+
+  const checkInfo = async () => {
+    let formData = new FormData();
+    formData.append("username", username);
+    formData.append("contact", contact);
+    await axios
+      .post(`${process.env.REACT_APP_BASE_URL}/checkContact`, formData)
+      .then((res) => {
+        console.log(res.data);
+        props.handleIsChangePass(username);
+      })
+      .catch((e) => {
+        console.log(e);
+        setisWrongInfo(true);
+      });
   };
 
   return (
@@ -52,13 +64,13 @@ const CheckForm = (props) => {
             name="parentPhone"
             id="parentPhone"
             required="required"
-            placeholder="Parent's Phone Number"
+            placeholder="Contact"
             autoComplete="off"
             onChange={(e) => {
-              setParentPhone(e.target.value);
+              setContact(e.target.value);
             }}
           />
-          <label htmlFor="parentPhone">Parent's Phone</label>
+          <label htmlFor="parentPhone">Contact</label>
         </div>
         <Button
           className="check-action-btn"

@@ -3,8 +3,6 @@ import { getID } from "../../helper/jwt";
 import axios from "axios";
 import bg from "../../resources/img/profile/profile-bg.png";
 
-var checkOldPass = false;
-
 const ProfileComponent = () => {
   const [data, setData] = useState([]);
   const [isChangePass, setIsChangePass] = useState(false);
@@ -35,31 +33,32 @@ const ProfileComponent = () => {
     setIsChangePass(!isChangePass);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (oldPassword === "abc123456") {
-      checkOldPass = true;
-    } else {
-      checkOldPass = false;
-    }
-    if (checkOldPass === true) {
-      console.log("check");
-      if (password.length >= 6 || newPassword.length >= 6) {
-        if (password === newPassword) {
-          //logic api đổi pass ở đây
-          //đổi status thành isForgot = false, chuyển sang login
-          // props.handleChange();
-          console.log(oldPassword, password, newPassword);
-          console.log("change pass success");
-        } else {
-          setIsWrongInfo(true);
-        }
+    if (password.length >= 6 || newPassword.length >= 6) {
+      if (password === newPassword) {
+        let formData = new FormData();
+        formData.append("accountId", getID());
+        formData.append("oldPassword", oldPassword);
+        formData.append("newPassword", password);
+        await axios
+          .post(
+            `${process.env.REACT_APP_BASE_URL}/checkPassword/${getID()}`,
+            formData
+          )
+          .then((res) => {
+            console.log(res.data);
+            handleChangePass();
+          })
+          .catch((e) => {
+            console.log(e);
+            setIsWrongInfo(true);
+          });
       } else {
-        console.log("lenght");
-        setIsLengthError(true);
+        setIsWrongInfo(true);
       }
     } else {
-      setIsWrongPass(true);
+      setIsLengthError(true);
     }
   };
 
