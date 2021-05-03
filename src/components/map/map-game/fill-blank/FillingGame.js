@@ -1,82 +1,78 @@
-import React, { useState } from "react";
-import UIfx from "uifx";
-import correct_sfx from "../../../../resources/sound/correct-sound.mp3";
-
-const correctSound = new UIfx(correct_sfx, {
-  volume: 0.4, // number between 0.0 ~ 1.0
-  throttleMs: 100,
-});
+import React from "react";
+import { Form, Input, Button } from "antd";
+import { wrongSound1, correctSound } from "../../../../helper/sound";
 
 const FillingGame = (props) => {
-  const [firstValue, setFirstValue] = useState("");
-  const [secondValue, setSecondValue] = useState("");
-  const [thirdValue, setThirdValue] = useState("");
-
+  const [form] = Form.useForm();
   const checkCorrect = (e) => {
-    if (
-      firstValue === props.info.answers[0] &&
-      secondValue === props.info.answers[2] &&
-      thirdValue === props.info.answers[3]
-    ) {
-      correctSound.play();
+    let correctArr = [];
+    let answerArr = [];
+    answerArr = Object.values(e);
+    props.info.forEach((item) => {
+      if (item.optionInputType === "text") {
+        correctArr.push(item.text);
+      }
+    });
+    var is_same =
+      correctArr.length === answerArr.length &&
+      correctArr.every(function (element, index) {
+        return element.toLowerCase() === answerArr[index].toLowerCase();
+      });
+    if (is_same === true) {
+      let correct =
+        correctSound[Math.floor(Math.random() * correctSound.length)];
+      correct.play();
       setTimeout(() => {
         props.nextGame();
       }, 1000);
+    } else {
+      let input = document.getElementsByName("input");
+      input.forEach((item) => {
+        item.classList.add("shaky_error");
+        setTimeout(() => {
+          item.classList.remove("shaky_error");
+        }, 200);
+      });
+      wrongSound1.play();
     }
-    e.preventDefault();
   };
 
   return (
-    <div
-      style={{
-        display: "grid",
-        placeItems: "center",
-        minHeight: "60vh",
-        height: "60vh",
-      }}
-    >
-      <div className="game-choosing-wrap">
-        <div className="game-choosing-title">
-          <h1>{props.info.questionImage}</h1>
-        </div>
-        <div className="game-choosing-option">
-          <input
-            type="text"
-            name="firstValue"
-            className="game-fill-input"
-            onChange={(e) => {
-              setFirstValue(e.target.value);
-            }}
-          />
-          <h1>{props.info.answers[1]}</h1>
-          <input
-            type="text"
-            name="secondValue"
-            className="game-fill-input"
-            onChange={(e) => {
-              setSecondValue(e.target.value);
-            }}
-          />
-          <h1>=</h1>
-          <input
-            type="text"
-            name="thirdValue"
-            className="game-fill-input"
-            onChange={(e) => {
-              setThirdValue(e.target.value);
-            }}
-          />
-        </div>
-        <button
-          type="submit"
-          style={{
-            marginTop: 20,
-          }}
-          onClick={checkCorrect}
-        >
-          Submit
-        </button>
+    <div className="game-choosing-wrap">
+      <div className="question-img">
+        <img src={props.questionImg} alt={props.questionImg} />
       </div>
+      <Form form={form} onFinish={checkCorrect}>
+        <div style={{ display: "grid", placeItems: "center" }}>
+          <div className="game-filling-option">
+            {props.info?.map((i, idx) =>
+              i.optionInputType === "text" ? (
+                <Form.Item name={`text${idx}`} key={idx}>
+                  <Input name="input" autoComplete="off" />
+                </Form.Item>
+              ) : (
+                <h1 key={idx}>{i.text}</h1>
+              )
+            )}
+          </div>
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{
+                border: 0,
+                background: "transparent",
+                marginTop: 100,
+              }}
+            >
+              <div className="progress-test-btn">
+                <div className="oval-button" />
+                <h1>Answer</h1>
+              </div>
+            </Button>
+          </Form.Item>
+        </div>
+      </Form>
     </div>
   );
 };

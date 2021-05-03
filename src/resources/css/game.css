@@ -6,92 +6,153 @@
   align-items: center;
 }
 
-.game-title {
-  background: url("../img/title-layer.png");
-  min-width: 272px;
-  min-height: 100px;
-  display: grid;
-  place-items: center;
-  margin: 70px 0 100px 0;
-}
-
-.game-title > h1 {
-  font-size: 2.5rem;
-  color: white;
-}
-
-/* !Game Slider */
-
-.game-slider-wrap {
-  width: 60vw;
-  margin: 0 20px 10vh 20px;
-}
-
-.game-slider-btn {
-  display: grid;
-  place-items: center;
-  min-width: 204px;
-  min-height: 95px;
-  width: 204px;
-  height: 95px;
-  background: url("../img/big-layer-btn.png");
-  background-size: cover;
-}
-
-.game-slider-btn h1 {
-  margin: 0px !important;
-  font-size: 2.5rem;
-  color: white;
-  width: auto;
-}
-
-li.react-multi-carousel-item.react-multi-carousel-item--active {
-  display: grid;
-  place-items: center;
-}
-
-/* ! Play game */
-
 .game-wrap {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
-  width: 80vw;
-  min-width: 1230px;
-  min-height: 76vh;
-  height: 76vh;
-  margin: 20px 20px 20px 20px;
-  background: lightgoldenrodyellow;
-  border-radius: 30px;
+  width: 60vw;
+  min-width: 600px;
+}
+.game-wrap > div {
+  flex: 0 1 calc(33% - 50px);
+  margin: 25px;
 }
 
-.play-btn {
-  display: grid;
-  place-items: center;
-  width: 174.95px;
-  height: 79.13px;
-  background: url("../img/layer-btn.png");
-  cursor: pointer;
-}
-
-.play-btn h2 {
-  color: white;
-  font-size: 25px;
-}
-
-.game-inner {
+.game-btn1 {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  position: relative;
+  text-align: center;
+  width: 220px;
+  height: 220px;
+  background-image: url("../img/game/game-btn1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.game-btn2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  width: 220px;
+  height: 220px;
+  background-image: url("../img/game/game-btn2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.game-btn3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  width: 220px;
+  height: 220px;
+  background-image: url("../img/game/game-btn3.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.game-btn4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  width: 220px;
+  height: 220px;
+  background-image: url("../img/game/game-btn4.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.game-btn1 h1,
+.game-btn2 h1,
+.game-btn3 h1,
+.game-btn4 h1 {
+  margin: 0;
+  padding: 0;
+  font-family: iciel-cadena;
+  font-size: 3em;
+  font-weight: bold;
+  color: white;
+}
+.game-btn1:hover,
+.game-btn2:hover,
+.game-btn3:hover,
+.game-btn4:hover {
+  -webkit-animation-name: wiggle;
+  -ms-animation-name: wiggle;
+  -ms-animation-duration: 1000ms;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-iteration-count: 1;
+  -ms-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  -ms-animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes wiggle {
+  0% {
+    -webkit-transform: rotate(10deg);
+  }
+  25% {
+    -webkit-transform: rotate(-10deg);
+  }
+  50% {
+    -webkit-transform: rotate(20deg);
+  }
+  75% {
+    -webkit-transform: rotate(-5deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+@-ms-keyframes wiggle {
+  0% {
+    -ms-transform: rotate(1deg);
+  }
+  25% {
+    -ms-transform: rotate(-1deg);
+  }
+  50% {
+    -ms-transform: rotate(1.5deg);
+  }
+  75% {
+    -ms-transform: rotate(-5deg);
+  }
+  100% {
+    -ms-transform: rotate(0deg);
+  }
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(10deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 /* ! Play game */
 
 .play-game-container {
+  position: relative;
   min-height: 100vh;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -99,6 +160,29 @@ li.react-multi-carousel-item.react-multi-carousel-item--active {
   justify-content: center;
 }
 
+.game-inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 85vh;
+}
+
+.game-inner > .question-text {
+  position: absolute;
+  top: 0;
+}
+.game-inner .question-img {
+  margin: 70px 0 50px 0;
+}
+.game-inner .question-img img {
+  max-height: 300px;
+  max-width: 100%;
+}
 /* ! Game Result  */
 
 .result-container {
@@ -129,10 +213,20 @@ li.react-multi-carousel-item.react-multi-carousel-item--active {
   transition: 0.5s;
   float: left;
   width: 150px;
-  height: 80px;
+  min-height: 80px;
+  height: auto;
   background-color: #f0f8ff;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+
+.one h1,
+.two h1,
+.three h1,
+.four h1,
+.five h1,
+.six h1 {
+  padding-left: 20px;
 }
 
 .matching-pair {
@@ -140,7 +234,10 @@ li.react-multi-carousel-item.react-multi-carousel-item--active {
   justify-content: center;
   align-items: center;
 }
-
+.matching-pair h1 {
+  font-size: 25px;
+  margin: 0 10px 0 20px;
+}
 .matching-question-img {
   width: 150px;
   height: 150px;
@@ -153,14 +250,17 @@ li.react-multi-carousel-item.react-multi-carousel-item--active {
   background-color: white;
 }
 
+.matching-question-img img {
+  display: block;
+  max-width: 100%;
+  max-height: 130px;
+}
 .matching-true {
   border: 8px solid aquamarine;
 }
-
 .matching-false {
   border: 8px solid lightcoral;
 }
-
 .true-bubble {
   position: absolute;
   width: 80px;
@@ -192,14 +292,23 @@ li.react-multi-carousel-item.react-multi-carousel-item--active {
 }
 
 .swap-question {
-  width: 200px;
-  height: 180px;
+  width: 250px;
+  height: 250px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   display: grid;
   place-items: center;
   margin: 0px 50px 0px 50px;
   background-color: white;
+}
+.swap-question img {
+  display: block;
+  max-width: 100%;
+  max-height: 220px;
+}
+.swap-game h1 {
+  font-size: 30px;
+  margin: 0;
 }
 .swap-question-true {
   border: 8px solid aquamarine;
@@ -222,17 +331,23 @@ li.react-multi-carousel-item.react-multi-carousel-item--active {
 
 .game-match-math-item {
   position: relative;
-  border: 2px solid black;
+  border: 0.5rem solid #ffc853;
   border-bottom-width: 1px;
   display: grid;
   place-items: center;
   width: 80%;
   height: 100%;
-  background: lightcyan;
   grid-template-columns: repeat(2, 1fr);
 }
 .game-match-math-item:last-child {
-  border-bottom-width: 2px;
+  border-bottom-width: 0.5rem;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.game-match-math-item:first-child {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 
 .question-border {
@@ -240,11 +355,29 @@ li.react-multi-carousel-item.react-multi-carousel-item--active {
   display: grid;
   place-items: center;
   width: 100%;
-  height: 100%;
-  border: 2px solid black;
+  height: 200px;
+  border: 0.5rem solid #ffc853;
   border-left-width: 0;
   border-top-width: 0;
   border-bottom-width: 0;
+}
+
+.question-border img {
+  width: 100%;
+  height: 200px;
+}
+.question-border img:first-child {
+  border-bottom-left-radius: 20px;
+}
+.question-border img:last-child {
+  border-top-left-radius: 20px;
+}
+
+.game-match-math-item .math-one {
+  border-top-right-radius: 30px;
+}
+.game-match-math-item .math-four {
+  border-bottom-right-radius: 30px;
 }
 
 .math-one,
@@ -253,6 +386,9 @@ li.react-multi-carousel-item.react-multi-carousel-item--active {
 .math-four,
 .math-five,
 .math-six {
+  display: grid;
+  place-items: center;
+  position: relative;
   transition: 0.5s;
   width: 100%;
   height: 100%;
@@ -269,22 +405,44 @@ li.react-multi-carousel-item.react-multi-carousel-item--active {
   height: 100%;
   width: 80vw;
 }
-
+.game-choosing-title {
+  display: grid;
+  place-items: center;
+  min-width: 200px;
+  min-height: 200px;
+  background-color: #f1441f;
+  border: 0.5rem solid #a92c11;
+  border-radius: 30px;
+  margin-bottom: 50px;
+}
+.game-choosing-title h1 {
+  margin: 0;
+  padding: 0 20px;
+  font-family: iciel-cadena;
+  font-size: 5em;
+  font-weight: bold;
+  color: white;
+}
 .game-choosing-option {
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
 }
-
 .game-choosing-option-item {
   display: grid;
   place-items: center;
-  min-width: 150px;
-  min-height: 150px;
+  width: 200px;
+  height: 200px;
   background-color: aquamarine;
   border-radius: 30px;
   cursor: pointer;
+}
+
+.game-choosing-option-item img {
+  display: block;
+  max-width: 100%;
+  max-height: 180px;
 }
 
 .game-choosing-option-item.game-choosing-option-hidden {
@@ -294,8 +452,137 @@ li.react-multi-carousel-item.react-multi-carousel-item--active {
 }
 
 /* ! Filling Game CSS */
-.game-fill-input {
-  width: 100px;
-  height: 100px;
+.game-filling-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-filling-option .ant-form-item,
+.game-filling-option h1 {
+  margin: 0;
+}
+.game-filling-option h1 {
+  font-family: iciel-cadena;
+  font-size: 5em;
+  font-weight: bold;
+}
+.game-filling-option input {
+  width: 200px;
+  height: 200px;
+  border-radius: 30px;
+  margin: 0 50px;
+  border: 0.5rem solid #7a990c;
+  background-color: #97bf06;
   text-align: center;
+  font-family: iciel-cadena;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+.game-filling-option .ant-input:hover {
+  border-color: #7a990c;
+  border-right-width: 0.5rem !important;
+}
+.game-filling-option .ant-input:focus {
+  border-color: #7a990c;
+  border-right-width: 0.5rem !important;
+}
+.game-filling-option input {
+  caret-color: white;
+}
+.game-filling-option .ant-btn-primary {
+  text-shadow: rgba(0, 0, 0, 0);
+}
+
+[ant-click-animating-without-extra-node="true"]::after,
+.ant-click-animating-node {
+  animation-duration: 0s !important;
+}
+
+.shaky_error {
+  -webkit-animation: kf_shake 0.4s 1 linear;
+  -moz-animation: kf_shake 0.4s 1 linear;
+  -o-animation: kf_shake 0.4s 1 linear;
+  animation: kf_shake 0.4s 1 linear;
+}
+@-webkit-keyframes kf_shake {
+  0% {
+    -webkit-transform: translate(30px);
+  }
+  20% {
+    -webkit-transform: translate(-30px);
+  }
+  40% {
+    -webkit-transform: translate(15px);
+  }
+  60% {
+    -webkit-transform: translate(-15px);
+  }
+  80% {
+    -webkit-transform: translate(8px);
+  }
+  100% {
+    -webkit-transform: translate(0px);
+  }
+}
+@-moz-keyframes kf_shake {
+  0% {
+    -moz-transform: translate(30px);
+  }
+  20% {
+    -moz-transform: translate(-30px);
+  }
+  40% {
+    -moz-transform: translate(15px);
+  }
+  60% {
+    -moz-transform: translate(-15px);
+  }
+  80% {
+    -moz-transform: translate(8px);
+  }
+  100% {
+    -moz-transform: translate(0px);
+  }
+}
+@-o-keyframes kf_shake {
+  0% {
+    -o-transform: translate(30px);
+  }
+  20% {
+    -o-transform: translate(-30px);
+  }
+  40% {
+    -o-transform: translate(15px);
+  }
+  60% {
+    -o-transform: translate(-15px);
+  }
+  80% {
+    -o-transform: translate(8px);
+  }
+  100% {
+    -o-origin-transform: translate(0px);
+  }
+}
+
+@keyframes kf_shake {
+  0% {
+    transform: translate(30px);
+  }
+  20% {
+    transform: translate(-30px);
+  }
+  40% {
+    transform: translate(15px);
+  }
+  60% {
+    transform: translate(-15px);
+  }
+  80% {
+    transform: translate(8px);
+  }
+  100% {
+    transform: translate(0px);
+  }
 }

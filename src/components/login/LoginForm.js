@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import login_button from "../../resources/img/login-page/login-btn.png";
-import logo from "../../resources/img/logo_major.png";
+import axios from "axios";
 import { Button } from "antd";
 
 const LoginForm = (props) => {
@@ -12,15 +11,26 @@ const LoginForm = (props) => {
     setisWrongPass(false);
   };
 
-  const handleSubmit = (e) => {
-    if (username !== "test" && password !== "12345678") {
-      setisWrongPass(true);
-    } else if (username === "test" && password === "12345678") {
-      localStorage.setItem("token", "this is token");
-      localStorage.setItem("user", "user");
-      window.location.href = "/home";
-    }
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    let formData = new FormData();
+    formData.append("username", username);
+    formData.append("password", password);
+    await axios
+      .post(`${process.env.REACT_APP_BASE_URL}/login`, formData)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data === "") {
+          window.location.href = "/login";
+        } else {
+          localStorage.setItem("token", "Bearer " + res.data);
+          window.location.href = "/home";
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        setisWrongPass(true);
+      });
   };
 
   return (
@@ -32,9 +42,6 @@ const LoginForm = (props) => {
           </div>
         </div>
       )}
-      <div className="title">
-        <img src={logo} alt={logo} />
-      </div>
       <form className="login-form">
         <div className="input-group">
           <input
@@ -67,38 +74,31 @@ const LoginForm = (props) => {
           <label htmlFor="password">Password</label>
         </div>
         <div className="action-group">
-          <div>
-            <input
-              type="checkbox"
-              id="remember"
-              name="remember"
-              value=""
-              style={{ marginRight: 5 }}
-            />
-            <label htmlFor="remember">Remember me</label>
-          </div>
+          <button
+            type="submit"
+            style={{
+              border: 0,
+              background: "transparent",
+              cursor: "pointer",
+              width: 244,
+              height: 92,
+            }}
+            onClick={handleSubmit}
+          >
+            <div className="progress-test-btn">
+              <div className="oval-button" />
+              <h1>Login</h1>
+            </div>
+          </button>
           <Button
             className="login-action-btn"
-            type="link"
+            type="text"
             block
             onClick={props.handleChange}
-            style={{ color: "#1a6fc4", textDecoration: "underline" }}
           >
             Forgot password &gt;
           </Button>
         </div>
-        <button
-          type="submit"
-          style={{
-            border: 0,
-            background: "transparent",
-            cursor: "pointer",
-            marginTop: 20,
-          }}
-          onClick={handleSubmit}
-        >
-          <img src={login_button} alt={login_button} width="80%" />
-        </button>
       </form>
     </>
   );

@@ -20,15 +20,15 @@ class MatchingGame extends Component {
 
   swap = (title1, title2) => {
     let pos2 = this.state.info.findIndex((object) => {
-      return object.question === title2;
+      return object.optionImageUrl === title2;
     });
     let pos1 = this.state.info.findIndex((object) => {
-      return object.question === title1;
+      return object.optionImageUrl === title1;
     });
     let data = this.state.info;
-    let temp = this.state.info[pos1].falseAnswer;
-    data[pos1].falseAnswer = this.state.info[pos2].falseAnswer;
-    data[pos2].falseAnswer = temp;
+    let temp = this.state.info[pos1].wrongOptionText;
+    data[pos1].wrongOptionText = this.state.info[pos2].wrongOptionText;
+    data[pos2].wrongOptionText = temp;
     this.setState({ info: data });
     this.checkCorrect();
   };
@@ -36,7 +36,7 @@ class MatchingGame extends Component {
   checkCorrect = () => {
     var count = 0;
     this.state.info.map((item) => {
-      if (item.answer === item.falseAnswer) {
+      if (item.optionText === item.wrongOptionText) {
         count++;
         if (count === 6) {
           correctSound.play();
@@ -57,8 +57,6 @@ class MatchingGame extends Component {
     return (
       <div
         style={{
-          minHeight: "60vh",
-          height: "60vh",
           display: "grid",
           placeItems: "center",
         }}

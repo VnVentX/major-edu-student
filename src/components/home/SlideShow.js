@@ -1,31 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
-import banner_science from "../../resources/img/banner_science.jpg";
 
 const SlideShow = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function getAllSubject() {
+      await axios
+        .get(`${process.env.REACT_APP_BASE_URL}/bannerImage/url`)
+        .then((res) => {
+          setData(res.data.length === 0 ? [] : res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+    getAllSubject();
+  }, []);
+
   return (
-    <div className="slide-show">
-      <AwesomeSlider
-        className="slider"
-        bullets={false}
-        organicArrows={false}
-        buttonContentRight={<div className="right-btn" />}
-        buttonContentLeft={<div className="left-btn" />}
-      >
-        <div>
-          <img alt={banner_science} src={banner_science} />
+    <div className="page">
+      <div className="slide-show-container">
+        <div className="slide-show">
+          <AwesomeSlider
+            className="slider"
+            bullets={true}
+            organicArrows={false}
+            buttonContentRight={<div className="right-btn" />}
+            buttonContentLeft={<div className="left-btn" />}
+          >
+            {data?.map((i, idx) => (
+              <div key={idx}>
+                <img className="slider-img" alt={i} src={i} />
+              </div>
+            ))}
+          </AwesomeSlider>
         </div>
-        <div>
-          <img alt={banner_science} src={banner_science} />
-        </div>
-        <div>
-          <img alt={banner_science} src={banner_science} />
-        </div>
-        <div>
-          <img alt={banner_science} src={banner_science} />
-        </div>
-      </AwesomeSlider>
+      </div>
     </div>
   );
 };

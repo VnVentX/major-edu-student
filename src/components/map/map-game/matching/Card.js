@@ -36,7 +36,7 @@ class Card extends Component {
       return (
         <div
           className={this.cssGrid[this.state.index]}
-          id={this.props.question}
+          id={this.props.optionImageUrl}
           draggable="true"
           onDrop={this.drop}
           onDragStart={this.dragStart}
@@ -45,6 +45,9 @@ class Card extends Component {
           style={{
             display: "grid",
             placeItems: "center",
+            fontFamily: "iciel-cadena",
+            fontSize: "25px",
+            padding: "0 10px 0 40px",
           }}
         >
           {this.props.options}
@@ -56,7 +59,7 @@ class Card extends Component {
         <div
           style={style}
           className={this.cssGrid[this.state.index]}
-          id={this.props.question}
+          id={this.props.optionImageUrl}
           draggable="true"
           onDrop={this.drop}
           onDragStart={this.dragStart}

@@ -1,38 +1,96 @@
-.notice-bg {
-  height: 100%;
-  width: 100%;
-  background: url("../img/notice/notice-bg.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .notice-container {
   min-height: 100vh;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
-.notice-page-title {
-  background: url("../img/notice/notice-title.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 272px;
-  height: 100px;
-  margin: 70px 0 100px 0;
+.notice-page-wrap {
+  position: relative;
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 15%;
+  margin-bottom: 5%;
 }
 
+.outter-border {
+  display: block;
+  border-radius: 30px 30px 30px 30px;
+  -moz-border-radius: 30px 30px 30px 30px;
+  -webkit-border-radius: 30px 30px 30px 30px;
+  border: 0px solid;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
+  min-width: 400px;
+  height: 345px;
+  background-color: white;
+  display: grid;
+  place-items: center;
+  margin: 20px;
+}
+
+.inner-border {
+  position: relative;
+  display: block;
+  border-radius: 30px 30px 30px 30px;
+  -moz-border-radius: 30px 30px 30px 30px;
+  -webkit-border-radius: 30px 30px 30px 30px;
+  border: 0.83px dashed #838383;
+  width: 354px;
+  height: 304px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.see-more {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+.inner-border .notice-page-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 10px;
+}
+
+.inner-border .notice-content {
+  margin-top: 15px;
+}
+
+.inner-border .notice-content p {
+  font-size: 18px;
+}
 /* Notice Detail */
-.notice-detail-title {
-  background: url("../img/notice/notice-title.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 272px;
-  height: 100px;
-  margin: 50px 0;
+
+.notice-detail-wrap {
+  position: relative;
+  width: 65%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10%;
+  margin-bottom: 5%;
 }
+
 .notice-outter-border {
   border-radius: 30px 30px 30px 30px;
   -moz-border-radius: 30px 30px 30px 30px;
@@ -41,7 +99,6 @@
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2);
-  width: 1200px;
   min-height: 732.64px;
   background-color: white;
   display: flex;
@@ -54,7 +111,6 @@
   -moz-border-radius: 30px 30px 30px 30px;
   -webkit-border-radius: 30px 30px 30px 30px;
   border: 0.83px dashed #838383;
-  width: 1130px;
   min-height: 649.94px;
   display: flex;
   flex-direction: column;
@@ -62,8 +118,11 @@
   align-items: baseline;
   margin: 25px;
   padding: 25px;
+  min-width: 950px;
 }
-
+.notice-inner-border .ant-space-vertical {
+  width: 100%;
+}
 .announce-title {
   display: flex;
   justify-content: flex-start;
@@ -71,13 +130,48 @@
   background: url("../img/notice/announce-title.png");
   background-repeat: no-repeat;
   background-size: contain;
-  width: 1000px;
-  height: 82px;
+  width: 100%;
+  height: 95px;
 }
 
 .announce-title > h1 {
+  font-family: iciel-cadena;
   position: relative;
   color: white;
   left: 80px;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
+  width: 95%;
+}
+
+.annouce-content {
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+.annouce-content figure {
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+.annouce-content img {
+  text-align: center;
+  max-width: 80%;
+  max-height: 500px;
+}
+
+.announce-date span{
+  font-size: 18px;
+}
+
+.news-back-btn {
+  position: absolute;
+  width: 170.56px;
+  height: 130.31px;
+  background: url("../img/back-btn.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  bottom: 0;
+  left: 5%;
+  z-index: 999;
 }

@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../../resources/css/quiz.css";
-import { useState, useEffect } from "react";
-import { Modal } from "antd";
-import { data } from "./data";
 import QuizResult from "./QuizResult";
+import bg from "../../resources/img/quiz/quiz-bg.png";
+import { correctSound, wrongSound, wrongSound1 } from "../../helper/sound";
+import AudioPlayer from "../../helper/AudioPlayer";
 
 const pageSize = 1;
 //Template for Submit Result
 var template = [];
 
-const QuizComponent = (props) => {
+const QuizComponent = () => {
   const [isSubmitResult, setIsSubmitResult] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
@@ -18,21 +19,43 @@ const QuizComponent = (props) => {
   const [maxIndex, setMaxIndex] = useState(0);
   const [answered, setAnswered] = useState([]);
   const [wrongCount, setWrongCount] = useState(0);
+  const [flag, setFlag] = useState(false);
 
   useEffect(() => {
-    setQuestions(data);
-    setTotalPage(data.length / pageSize);
-    setMinIndex(0);
-    setMaxIndex(pageSize);
+    document.body.style.background = `url('${bg}')`;
+    document.body.style.backgroundSize = "cover";
+    let header = document.getElementById("header");
+    header.style.visibility = "hidden";
+    getExerciseQuestion();
   }, []);
+
+  const getExerciseQuestion = async () => {
+    let exerciseID = "";
+    if (window.location.pathname.split("/")[3] === "progress-test") {
+      exerciseID = window.location.pathname.split("/")[6];
+    } else {
+      exerciseID = window.location.pathname.split("/")[8];
+    }
+    await axios
+      .get(`${process.env.REACT_APP_BASE_URL}/exersise/${exerciseID}/questions`)
+      .then((res) => {
+        setQuestions(res.data.length === 0 ? [] : [...res.data]);
+        setTotalPage(res.data.length / pageSize);
+        setMinIndex(0);
+        setMaxIndex(pageSize);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   //Template for Submit Result
   useEffect(() => {
-    questions.map((i) => {
-      if (template.length < data.length) {
+    questions?.map((i) => {
+      if (template.length < questions?.length) {
         template.push({
-          questionID: i.questionID,
-          isCorrect: undefined,
+          id: i.id,
+          correct: undefined,
         });
       }
       return template;
@@ -49,84 +72,77 @@ const QuizComponent = (props) => {
   const handleSelected = (question, answer, answerIndex) => {
     //Update isSelected for question list to change it's css
     const questionEle = questions.findIndex(
-      (element) => element.questionID === question.questionID
+      (element) => element.id === question.id
     );
     //Map hết cái answer của question trả về và update isSelected thành false hết
-    question.answers.map((i) => {
+    question.optionList.map((i) => {
       return (i.isSelected = false);
     });
     //Sau đó update option đã chọn thành true
-    question.answers[answerIndex].isSelected = true;
+    question.optionList[answerIndex].isSelected = true;
     //Tạo một mảng phụ copy questions (question list)
     const newQuestionList = Array.from(questions);
     //Update question của mảng phụ theo cái index đã match
     newQuestionList[questionEle] = question;
     //Set lại question list
-    setQuestions(newQuestionList);
+    setQuestions([...newQuestionList]);
 
     //! Update template => Answered question
     const elementsIndex = answered.findIndex(
-      (element) => element.questionID === question.questionID
+      (element) => element.id === question.id
     );
     if (elementsIndex > -1) {
       const result = Array.from(answered);
-      result[elementsIndex].isCorrect = answer.isCorrect;
+      result[elementsIndex].correct = answer.correct;
+      result[elementsIndex].score = question.score;
       setAnswered(result);
     }
   };
 
   //! Check answer đúng hay sai
-  const handelAnswerSubmit = (idx) => {
+  const handelAnswerSubmit = async (idx) => {
     var counter = wrongCount;
     var total = totalPage - 1;
-    if (answered[idx].isCorrect === true) {
-      const modal = Modal.success({
-        content: "Correct answer",
-        centered: true,
-      });
+    if (answered[idx].correct === true) {
+      setFlag(true);
+      let correct =
+        correctSound[Math.floor(Math.random() * correctSound.length)];
+      await correct.play();
       setWrongCount(0);
       if (current <= total) {
         setTimeout(() => {
-          modal.destroy();
           handleChange(current + 1);
+          setFlag(false);
         }, 1000);
       } else if (current === total + 1) {
         setTimeout(() => {
-          modal.destroy();
           handelChangeIsSubmitResult();
         }, 1000);
       }
     }
-    if (answered[idx].isCorrect === false) {
+    if (answered[idx].correct === false) {
+      let wrong = wrongSound[Math.floor(Math.random() * wrongSound.length)];
       if (counter === 1) {
-        console.log(counter);
-        const modal = Modal.error({
-          content: "Incorrect answer",
-          centered: true,
-        });
         counter = 0;
         setWrongCount(0);
         if (current <= total) {
+          setFlag(true);
+          wrong.play();
           setTimeout(() => {
-            modal.destroy();
             handleChange(current + 1);
+            setFlag(false);
           }, 1000);
         } else if (current === total + 1) {
+          wrong.play();
           setTimeout(() => {
-            modal.destroy();
             handelChangeIsSubmitResult();
           }, 1000);
         }
       } else {
-        const modal = Modal.error({
-          content: "Incorrect answer",
-          centered: true,
-        });
+        wrongSound1.play();
         counter++;
         setWrongCount(counter);
-        setTimeout(() => {
-          modal.destroy();
-        }, 1000);
+        setTimeout(() => {}, 1000);
       }
     }
   };
@@ -139,119 +155,115 @@ const QuizComponent = (props) => {
 
   //! Submit Result xong clear dữ liệu
   const handelSubmitResult = () => {
-    //api here
-    console.log(answered);
-    //clearing logic for state
     template = [];
-    questions.map((question) => {
-      return question.answers.map((i) => {
-        return (i.isSelected = false);
-      });
-    });
     setAnswered([]);
-    setQuestions(questions);
-    props.handelChangeIsDoingQuiz();
+    setQuestions([]);
   };
 
   return (
-    <div className="quiz-bg">
-      <div className="page">
-        <div className="page-contain">
-          {isSubmitResult ? (
-            <QuizResult
-              answered={answered}
-              question={questions}
-              handelChangeIsSubmitResult={handelChangeIsSubmitResult}
-              handelSubmitResult={handelSubmitResult}
-            />
-          ) : (
-            <>
-              <div className="quiz-container">
-                {/* <div className="quiz-title">
-                  <h1>Exercise</h1>
-                </div> */}
-                <div className="quiz-wrap">
-                  {questions?.map(
-                    (item, index) =>
-                      index >= minIndex &&
-                      index < maxIndex && (
-                        <React.Fragment key={index}>
-                          <div id="showMe" className="quiz-left">
-                            <img
-                              src={item.questionImg}
-                              alt={item.questionImg}
-                              width="100%"
-                              height="100%"
-                            />
-                          </div>
-                          <div id="showMe" className="quiz-right">
-                            <div className="question">
-                              <div className="question-title">
-                                <h1>Question {index + 1}</h1>
-                                <div className="quiz-sound" />
-                              </div>
-                              <div className="question-text">
-                                <h2>{item.questionText}</h2>
-                              </div>
+    <div className="page">
+      <div className="page-contain">
+        {isSubmitResult ? (
+          <QuizResult
+            answered={answered}
+            question={questions}
+            handelChangeIsSubmitResult={handelChangeIsSubmitResult}
+            handelSubmitResult={handelSubmitResult}
+          />
+        ) : (
+          <>
+            <div className="quiz-container">
+              <div className="quiz-wrap">
+                {questions?.map(
+                  (item, index) =>
+                    index >= minIndex &&
+                    index < maxIndex && (
+                      <React.Fragment key={index}>
+                        <div id="showMe" className="quiz-left">
+                          {item.questionImageUrl && (
+                            <div className="question-img">
+                              <img
+                                src={item.questionImageUrl}
+                                alt={item.questionImageUrl}
+                                width="100%"
+                                height="100%"
+                              />
                             </div>
-                            <div className="answer">
-                              {item.answers.map((a, i) => (
-                                <div key={i} className="answer-item">
-                                  <div className="option">
-                                    <h2>
-                                      {(i + 1) / 1 === 1
-                                        ? "A"
-                                        : (i + 1) / 2 === 1
-                                        ? "B"
-                                        : (i + 1) / 3 === 1
-                                        ? "C"
-                                        : (i + 1) / 4 === 1
-                                        ? "D"
-                                        : (i + 1) / 5 === 1
-                                        ? "E"
-                                        : (i + 1) / 6 === 1
-                                        ? "F"
-                                        : (i + 1) / 7 === 1
-                                        ? "G"
-                                        : (i + 1) / 8 === 1
-                                        ? "H"
-                                        : (i + 1) / 9 === 1
-                                        ? "I"
-                                        : (i + 1) / 10 === 1
-                                        ? "J"
-                                        : null}
-                                    </h2>
-                                  </div>
-                                  <div
-                                    onClick={() => {
+                          )}
+                          <div className="question">
+                            <div className="question-title">
+                              <h1>Question {index + 1}</h1>
+                            </div>
+                            <div className="question-text">
+                              <h2>
+                                {item.questionTitle}
+                                {item.questionAudioUrl && (
+                                  <AudioPlayer url={item.questionAudioUrl} />
+                                )}
+                              </h2>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="showMe" className="quiz-right">
+                          <div className="answer">
+                            {item.optionList.map((a, i) => (
+                              <div key={i} className="answer-item">
+                                <div
+                                  onClick={() => {
+                                    if (!flag) {
                                       handleSelected(item, a, i);
                                       handelAnswerSubmit(index);
-                                    }}
+                                    }
+                                  }}
+                                >
+                                  <div
+                                    id="answer"
+                                    className={
+                                      a.isSelected === true &&
+                                      a.correct === true
+                                        ? "option-correct-btn"
+                                        : a.isSelected === true &&
+                                          a.correct === false
+                                        ? "option-wrong-btn"
+                                        : "option-btn"
+                                    }
                                   >
                                     <div
-                                      id="answer"
                                       className={
-                                        a.isSelected
-                                          ? "option-text selected"
-                                          : "option-text"
+                                        a.isSelected === true &&
+                                        a.correct === true
+                                          ? "option-correct-oval"
+                                          : a.isSelected === true &&
+                                            a.correct === false
+                                          ? "option-wrong-oval"
+                                          : "option-oval"
                                       }
-                                    >
-                                      <span>{a.answerText}</span>
-                                    </div>
+                                    />
+                                    <h1>
+                                      {(i + 1) / 1 === 1
+                                        ? "A. "
+                                        : (i + 1) / 2 === 1
+                                        ? "B. "
+                                        : (i + 1) / 3 === 1
+                                        ? "C. "
+                                        : (i + 1) / 4 === 1
+                                        ? "D. "
+                                        : null}
+                                      {a.optionText}
+                                    </h1>
                                   </div>
                                 </div>
-                              ))}
-                            </div>
-                            {/* <div className="quiz-submit-btn" /> */}
+                              </div>
+                            ))}
                           </div>
-                        </React.Fragment>
-                      )
-                  )}
-                </div>
+                        </div>
+                      </React.Fragment>
+                    )
+                )}
               </div>
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

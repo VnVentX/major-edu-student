@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import math from "../../resources/img/home/math.png";
 import { Link } from "react-router-dom";
 
 const gradeID = 1;
@@ -11,7 +10,7 @@ const SubjectHome = () => {
   useEffect(() => {
     async function getAllSubject() {
       await axios
-        .get(`https://mathscience.azurewebsites.net/grade/${gradeID}/subject`)
+        .get(`${process.env.REACT_APP_BASE_URL}/grade/${gradeID}/subjects`)
         .then((res) => {
           setData(res.data);
         })
@@ -33,11 +32,13 @@ const SubjectHome = () => {
                 <div key={idx} className="subject-home-wrap">
                   <div className="subject-outter-border">
                     <div className="subject-inner-border">
-                      <img src={math} alt={math} />
+                      <img src={i.imageUrl} alt={i.imageUrl} />
                     </div>
                   </div>
-                  <Link to={`subject/${i.id}/unit`}>
-                    <div className="math-btn" />
+                  <Link to={`/subject/${i.id}`}>
+                    <div className="subject-btn">
+                      <h1>{i.subjectName}</h1>
+                    </div>
                   </Link>
                 </div>
               ))}

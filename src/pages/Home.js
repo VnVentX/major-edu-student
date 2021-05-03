@@ -18,6 +18,7 @@ import Profile from "./Profile";
 import Unit from "./unit/Unit";
 import UnitDetail from "./unit/UnitDetail";
 import Map from "./Map";
+import ProgressTest from "./ProgressTest";
 import MapLesson from "./MapLesson";
 import NoticeDetail from "./NoticeDetail";
 import NotFound from "./NotFound";
@@ -30,6 +31,7 @@ import PlayGame from "../components/map/map-game/PlayGame";
 import GameResult from "../components/map/map-game/GameResult";
 import Lecture from "../components/map/map-lesson/Lecture";
 import QuizComponent from "../components/exercise/QuizComponent";
+import ScoreExercise from "../components/score/ScoreExercise";
 import ScoreExerciseDetail from "../components/score/ScoreExerciseDetail";
 
 const { Content } = Layout;
@@ -38,11 +40,7 @@ const Home = (props) => {
   function _ScrollToTop(props) {
     const { pathname } = useLocation();
     useEffect(() => {
-      if (pathname === "/home" || pathname === "/") {
-        window.scrollTo(0, 0);
-      } else {
-        window.scrollTo(0, 140);
-      }
+      window.scrollTo(0, 0);
     }, [pathname]);
     return props.children;
   }
@@ -69,23 +67,37 @@ const Home = (props) => {
                 <Route path="/subject" exact component={Subject} />
                 <Route path="/score" exact component={Score} />
                 <Route
-                  path="/score/:exerciseID"
+                  path="/score/:subjectID"
+                  exact
+                  component={ScoreExercise}
+                />
+                <Route
+                  path="/score/:subjectID/exercise/:exerciseID"
                   exact
                   component={ScoreExerciseDetail}
                 />
                 <Route
-                  path="/score/:exerciseID/overview/:overviewID"
+                  path="/score/:subjectID/exercise/:exerciseID/overview/:overviewID"
                   exact
                   component={OverviewQuiz}
                 />
                 <Route path="/profile" exact component={Profile} />
-                <Route path="/subject/:subjectID/unit" exact component={Unit} />
+                <Route path="/subject/:subjectID" exact component={Unit} />
                 {/* Flow mới bắt đầu từ đây */}
-
                 <Route
                   path="/subject/:subjectID/unit/:unitID"
                   exact
                   component={UnitDetail}
+                />
+                <Route
+                  path="/subject/:subjectID/progress-test/:progressTestID"
+                  exact
+                  component={ProgressTest}
+                />
+                <Route
+                  path="/subject/:subjectID/progress-test/:progressTestID/test/:testID"
+                  exact
+                  component={QuizComponent}
                 />
                 <Route
                   path="/subject/:subjectID/unit/:unitID/lesson/:lessonID"
@@ -117,12 +129,6 @@ const Home = (props) => {
                   exact
                   component={PlayGame}
                 />
-                <Route
-                  path="/subject/:subjectID/unit/:unitID/lesson/:lessonID/game/:gameID/result"
-                  exact
-                  component={GameResult}
-                />
-
                 {/* 
 
 
@@ -139,7 +145,6 @@ const Home = (props) => {
 
 
                  */}
-
                 {/* Flow cũ */}
                 <Route path="/math/unit/:unitID/map" exact component={Map} />
                 <Route
@@ -192,7 +197,7 @@ const Home = (props) => {
             </ScrollToTop>
           </Content>
         </Layout>
-        <FooterContainer />
+        <FooterContainer history={props.history} />
       </BrowserRouter>
     </div>
   );

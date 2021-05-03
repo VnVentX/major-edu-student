@@ -1,29 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { Space } from "antd";
+import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-
-const data = [
-  {
-    lessonID: 1,
-    lessonTitlle: "Lesson 1",
-  },
-  {
-    lessonID: 2,
-    lessonTitlle: "Lesson 2",
-  },
-];
+import bg from "../../resources/img/unit/unit-bg2.png";
 
 const UnitDetailComponent = () => {
   const [lesson, setLesson] = useState([]);
-
+  const unitID = window.location.pathname.split("/")[4];
   useEffect(() => {
-    setLesson(data);
-  }, []);
+    document.body.style.background = `url('${bg}')`;
+    document.body.style.backgroundSize = "cover";
+    async function getAllUnit() {
+      await axios
+        .get(`${process.env.REACT_APP_BASE_URL}/unit/${unitID}/lessons`)
+        .then((res) => {
+          setLesson(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+    getAllUnit();
+  }, [unitID]);
 
   const history = useHistory();
-
-  const path = window.location.pathname.split("/");
-  const unit = path[path.length - 1];
 
   //! Get Unit path
   const pathSnippets = window.location.pathname.split("/").filter((i) => i);
@@ -31,35 +30,31 @@ const UnitDetailComponent = () => {
     const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
     return url;
   });
-  const unitPath = pathStack[2];
+  const unitPath = pathStack[1];
 
   return (
     <div className="unit-bg">
       <div className="page">
-        <div
-          className="arrow-btn left-arrow"
-          onClick={() => history.push(unitPath)}
-        >
-          <h1>Unit</h1>
-        </div>
+        <div className="back-btn" onClick={() => history.push(unitPath)} />
         <div className="page-contain">
           <div className="unit-detail-container">
-            <div className="unit-detail-title">
-              <h1>Unit {unit}</h1>
+            <div className="page-title" style={{ marginTop: "10%" }}>
+              Unit
             </div>
             <div className="unit-detail-wrap">
-              <Space size={50}>
-                {lesson?.map((i) => (
-                  <Link
-                    key={i.lessonID}
-                    to={`${window.location.pathname}/lesson/${i.lessonID}`}
-                  >
-                    <div className="unit-detai-btn">
-                      <h1>{i.lessonTitlle}</h1>
+              {lesson.length === 0 && <h1>No Data</h1>}
+              {lesson?.map((i) => (
+                <Link
+                  key={i.id}
+                  to={`${window.location.pathname}/lesson/${i.id}`}
+                >
+                  <div className="lesson-frame">
+                    <div className="lesson-content">
+                      <h1>Lesson {i.lessonName}</h1>
                     </div>
-                  </Link>
-                ))}
-              </Space>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

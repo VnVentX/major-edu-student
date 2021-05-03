@@ -1,150 +1,54 @@
-import React from "react";
-import { Table } from "antd";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Spin } from "antd";
 import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
+import bg from "../../resources/img/score/score-bg.png";
+
+const gradeID = 1;
 
 const ScoreComponent = () => {
-  const expandedRowRender = () => {
-    const columns = [
-      {
-        title: "Exercises",
-        align: "center",
-        render: (record) => (
-          <Link to={`${window.location.pathname}/${record.id}`}>
-            {record.exerciseName}
-          </Link>
-        ),
-      },
-      {
-        title: "Grade",
-        dataIndex: "grade",
-        align: "center",
-      },
-      {
-        title: "Status",
-        dataIndex: "status",
-        align: "center",
-      },
-    ];
+  const [lesson, setLesson] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-    const data = [
-      {
-        id: 0,
-        exerciseName: "Exercise 1",
-        grade: 10,
-        status: "Done",
-      },
-      {
-        id: 1,
-        exerciseName: "Exercise 2",
-        grade: 10,
-        status: "Done",
-      },
-      {
-        id: 2,
-        exerciseName: "Exercise 3",
-        grade: 10,
-        status: "Done",
-      },
-      {
-        id: 3,
-        exerciseName: "Exercise 4",
-        grade: 10,
-        status: "Done",
-      },
-      {
-        id: 4,
-        exerciseName: "Exercise 5",
-        grade: 0,
-        status: "Not Done",
-      },
-    ];
-
-    return (
-      <Table
-        rowKey={(record) => record.id}
-        columns={columns}
-        dataSource={data}
-        pagination={false}
-      />
-    );
-  };
-
-  const unitCol = [
-    {
-      title: "Unit",
-      dataIndex: "unitName",
-      align: "center",
-    },
-    {
-      title: "Grade",
-      dataIndex: "grade",
-      align: "center",
-    },
-    {
-      title: "Status",
-      dataIndex: "status",
-      align: "center",
-    },
-  ];
-  const unitData = [
-    {
-      id: 0,
-      unitName: "Unit 1",
-      grade: 10,
-      status: "Done",
-    },
-    {
-      id: 1,
-      unitName: "Unit 2",
-      grade: 10,
-      status: "Done",
-    },
-    {
-      id: 2,
-      unitName: "Unit 3",
-      grade: 10,
-      status: "Done",
-    },
-    {
-      id: 3,
-      unitName: "Unit 4",
-      grade: 10,
-      status: "Done",
-    },
-    {
-      id: 4,
-      unitName: "Unit 5",
-      grade: 8,
-      status: "Not Done",
-    },
-  ];
+  useEffect(() => {
+    document.body.style.background = `url('${bg}')`;
+    document.body.style.backgroundSize = "cover";
+    async function getAllSubject() {
+      setLoading(true);
+      await axios
+        .get(`${process.env.REACT_APP_BASE_URL}/grade/${gradeID}/subjects`)
+        .then((res) => {
+          setLoading(false);
+          setLesson(res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+    getAllSubject();
+  }, []);
 
   return (
     <div className="page">
       <div className="page-contain">
         <div className="score-container">
-          <div className="score-title">
-            <h1>Math</h1>
-          </div>
           <div className="score-wrap">
-            <Table
-              rowKey={(record) => record.id}
-              columns={unitCol}
-              dataSource={unitData}
-              expandable={{ expandedRowRender }}
-            />
-          </div>
-          <div className="score-title">
-            <h1>Science</h1>
-          </div>
-          <div className="score-wrap">
-            <Table
-              rowKey={(record) => record.id}
-              columns={unitCol}
-              dataSource={unitData}
-              expandable={{ expandedRowRender }}
-            />
+            <div className="general-title ">
+              <h1>Score</h1>
+            </div>
+            {loading ? (
+              <Spin size="large" />
+            ) : (
+              lesson?.map((i) => (
+                <Link key={i.id} to={`${window.location.pathname}/${i.id}`}>
+                  <div className="general-btn">
+                    <div className="general-oval" />
+                    <h1>{i.subjectName}</h1>
+                  </div>
+                </Link>
+              ))
+            )}
           </div>
         </div>
       </div>

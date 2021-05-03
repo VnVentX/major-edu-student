@@ -4,41 +4,286 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+.score-wrap {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-width: 650px;
+  width: 800px;
+  height: auto;
+  min-height: 500px;
+  background-color: #ffefcf;
+  border: 0.5rem solid #ffc853;
+  border-radius: 100px;
+  margin-top: 15%;
+}
+.score-wrap .general-title {
+  position: absolute;
+  border: 0.5rem solid #cda61a;
+  background-color: #f4c417;
+  top: 0;
+  margin-top: -6%;
+  z-index: 10;
 }
 
-.score-title {
-  background: url("../img/home/header-bg.png");
-  min-width: 281.58px;
-  min-height: 126.16px;
+.score-wrap a {
+  flex: 0 1 calc(50% - 20px);
+  margin: 10px;
+}
+
+/* !Score Detail */
+.score-detail-wrap {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-width: 650px;
+  width: 70vw;
+  height: auto;
+  min-height: 500px;
+  background-color: #ffefcf;
+  border: 0.5rem solid #ffc853;
+  border-radius: 100px;
+  margin-top: 17%;
+  margin-bottom: 10%;
+}
+
+.score-detail-wrap .general-title {
+  position: absolute;
+  border: 0.5rem solid #cda61a;
+  background-color: #f4c417;
+  top: 0;
+  margin-top: -4%;
+  z-index: 10;
+}
+
+.record-wrap {
+  position: relative;
+  width: 100%;
   display: grid;
   place-items: center;
-  margin: 50px 0;
+  padding: 50px 0;
 }
 
-.score-title > h1 {
-  margin: 0px !important;
-  font-size: 3rem;
-  color: white;
+.unit-arrow {
+  margin-left: 20px;
+  cursor: pointer;
 }
 
-.ant-table-wrapper {
-  width: 100%;
+.arrow-down {
+  width: 25px;
+  height: 15px;
+  background-image: url("../img/score/down-arrow.png");
+  background-size: cover;
+}
+.arrow-up {
+  width: 25px;
+  height: 15px;
+  background-image: url("../img/score/up-arrow.png");
+  background-size: cover;
 }
 
-.ant-table-thead > tr > th {
-  color: white;
-  background: #3071b9 !important;
+.arrow-down-bl {
+  width: 31px;
+  height: 21px;
+  background-image: url("../img/score/down-arrow-bl.png");
+  background-size: cover;
+}
+.arrow-up-bl {
+  width: 31px;
+  height: 21px;
+  background-image: url("../img/score/up-arrow-bl.png");
+  background-size: cover;
 }
 
-.ant-table-tbody > tr > th {
-  color: white;
-  background: #3071b9 !important;
-}
-
-.score-wrap {
+.unit-record {
+  position: relative;
+  width: 80%;
+  height: 61px;
+  background-color: #263b80;
+  border: 0.5rem solid #c4d0f6;
+  border-radius: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 80vw;
-  margin: 0 20px 10vh 20px;
+  margin: 20px;
+  z-index: 1;
+}
+
+.unit-name h1 {
+  color: white;
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  margin-left: 10px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.unit-status {
+  position: absolute;
+  right: -2%;
+  background-image: url("../img/score/status-done.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 180px;
+  height: 80px;
+  z-index: 1;
+}
+
+.lesson-exercise-item {
+  position: relative;
+  width: 80%;
+  height: 61px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px;
+}
+
+.lesson-exercise-item h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  cursor: pointer;
+}
+.lesson-exercise {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  width: 80%;
+  background-color: white;
+  border-radius: 0 0 20px 20px;
+}
+
+.unit-exercise {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  width: 75%;
+  background-color: white;
+  margin-top: -20px;
+  border-radius: 0 0 20px 20px;
+}
+
+.unit-exercise-item {
+  position: relative;
+  width: 80%;
+  height: 61px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.unit-exercise-item h1 {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.item-spacer {
+  margin-top: -15px;
+  width: 80%;
+  border-top: 0.25rem solid #dfdfdf;
+}
+
+.item-spacer:last-child {
+  margin-bottom: 30px;
+}
+
+.status-btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  right: -2%;
+  z-index: 1;
+  text-align: center;
+  min-width: 154px;
+  min-height: 60px;
+  background-color: #fdb836;
+  border: 0.5rem solid #c4d0f6;
+  border-radius: 50px;
+}
+
+.status-btn h1 {
+  position: relative;
+  margin: 0;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 800;
+  z-index: 10;
+}
+
+.status-btn-oval {
+  position: absolute;
+  width: 75px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: #ffe2aa;
+  top: 10%;
+  right: 8%;
+}
+
+.status-btn-done {
+  position: absolute;
+  right: -2%;
+  z-index: 1;
+  text-align: center;
+  min-width: 154px;
+  min-height: 60px;
+  background-color: #00dc6a;
+  border: 0.5rem solid #c4d0f6;
+  border-radius: 50px;
+}
+
+.status-btn-done h1 {
+  position: relative;
+  margin: 0;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 800;
+  z-index: 10;
+}
+
+.status-btn-done-oval {
+  position: absolute;
+  width: 75px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: #52ffa5;
+  top: 10%;
+  right: 8%;
+}
+
+/*! Score Exercise Detail */
+.exercise-table {
+  width: 95%;
+  border-radius: 20px;
+}
+.ant-table-thead > tr > th {
+  font-family: iciel-cadena;
+  font-size: 1.5rem;
+  background: #ffefcf;
+  border-bottom: 0.2rem solid black !important;
+}
+.ant-table-tbody > tr > td {
+  font-family: iciel-cadena;
+  font-size: 1.5rem;
+  color: #263b80;
+  border-bottom: 0.2rem solid black !important;
+  background: #ffefcf;
+}
+.ant-table-tbody > tr.ant-table-row-level-0:hover > td {
+  background: unset !important;
+}
+.ant-table {
+  background: unset !important;
 }

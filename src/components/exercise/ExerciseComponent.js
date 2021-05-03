@@ -1,22 +1,43 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { getID } from "../../helper/jwt";
+import { Spin } from "antd";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import "antd/dist/antd.css";
+import bg from "../../resources/img/unit/unit-bg.png";
 
-const color = ["blue", "green", "orange", "pink"];
+const color = [
+  "#D41FF1",
+  "#881FF1",
+  "#F1441F",
+  "#8EBA13",
+  "#059BA5",
+  "#4C49F3",
+  "#059BA5",
+  "#F19D1F",
+];
+
 let itemColor = "";
 
 const ExerciseComponent = () => {
   const [data, setData] = useState([]);
-  const lessonID = window.location.pathname.split("/")[6];
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    document.body.style.background = `url('${bg}')`;
+    document.body.style.backgroundSize = "cover";
+    let header = document.getElementById("header");
+    header.style.visibility = "visible";
     async function getAllExercise() {
+      let lessonID = window.location.pathname.split("/")[6];
+      let accountID = getID();
       await axios
-        .get(
-          `https://mathscience.azurewebsites.net/lesson/${lessonID}/exercise`
+        .post(
+          `${process.env.REACT_APP_BASE_URL}/lesson/${lessonID}/exercises/student?accountId=${accountID}`
         )
         .then((res) => {
           setData(res.data);
+          setLoading(false);
         })
         .catch((e) => {
           console.log(e);
@@ -41,38 +62,39 @@ const ExerciseComponent = () => {
   }
 
   return (
-    <div className="exercise-bg">
-      <div className="page">
-        <div
-          className="arrow-btn left-arrow"
-          onClick={() => history.push(lessonPath[5])}
-        >
-          <h1>Lesson 1</h1>
-        </div>
-        <div className="page-contain">
-          <div className="exercise-container">
-            <div className="exercise-title">
-              <h1>Exercise</h1>
-            </div>
-            <div className="exercise-wrap">
-              {data?.map((i, idx) => (
+    <div className="page">
+      <div className="back-btn" onClick={() => history.push(lessonPath[5])} />
+      <div className="page-contain">
+        <div className="exercise-container">
+          <div className="exercise-wrap">
+            {loading ? (
+              <Spin size="large" />
+            ) : (
+              data?.map((i) => (
                 <div
                   key={i.id}
                   style={{
                     display: "grid",
                     placeItems: "center",
-                    margin: "20px 0 0 0",
                   }}
                   onLoad={randomColor(color)}
                 >
                   <Link to={`${location.pathname}/${i.id}`}>
-                    <div className={`exercise-btn ${itemColor}`}>
-                      <h1>Exercise {i.exerciseName}</h1>
+                    <div
+                      className="exercise-btn"
+                      style={{ backgroundColor: itemColor }}
+                    >
+                      <div className="check-area" />
+                      {i.done ? <div className="check-mark" /> : null}
+                      <h1>
+                        Exercise <br />
+                        {i.exerciseName}
+                      </h1>
                     </div>
                   </Link>
                 </div>
-              ))}
-            </div>
+              ))
+            )}
           </div>
         </div>
       </div>

@@ -1,21 +1,38 @@
 import React, { useState } from "react";
-import submit_button from "../../resources/img/login-page/submit-btn.png";
+import axios from "axios";
 
 const ChangePassForm = (props) => {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [isWrongInfo, setisWrongInfo] = useState(false);
+  const [isLengthError, setIsLengthError] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password === newPassword) {
-      //logic api đổi pass ở đây
-      //đổi status thành isForgot = false, chuyển sang login
-      props.handleChange();
+    if (password.length < 6) {
+      setIsLengthError(true);
     } else {
-      setisWrongInfo(true);
+      if (password === newPassword) {
+        let formData = new FormData();
+        formData.append("newPassword", password);
+        formData.append("username", props.username);
+        await axios
+          .post(
+            `${process.env.REACT_APP_BASE_URL}/checkPassword/username`,
+            formData
+          )
+          .then((res) => {
+            console.log(res.data);
+            props.handleChange();
+          })
+          .catch((e) => {
+            console.log(e);
+            setisWrongInfo(true);
+          });
+      } else {
+        setisWrongInfo(true);
+      }
     }
-    console.log(password, newPassword);
   };
 
   return (
@@ -23,6 +40,13 @@ const ChangePassForm = (props) => {
       {isWrongInfo && (
         <div className="wrong-notice change">
           <div className="login-ok-btn" onClick={() => setisWrongInfo(false)}>
+            <h2>OK</h2>
+          </div>
+        </div>
+      )}
+      {isLengthError && (
+        <div className="wrong-notice length-error">
+          <div className="login-ok-btn" onClick={() => setIsLengthError(false)}>
             <h2>OK</h2>
           </div>
         </div>
@@ -72,7 +96,10 @@ const ChangePassForm = (props) => {
           }}
           onClick={handleSubmit}
         >
-          <img src={submit_button} alt={submit_button} width="80%" />
+          <div className="progress-test-btn">
+            <div className="oval-button" />
+            <h1>Submit</h1>
+          </div>
         </button>
       </form>
     </>

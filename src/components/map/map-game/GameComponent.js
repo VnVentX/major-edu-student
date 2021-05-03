@@ -1,11 +1,40 @@
-import React from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Spin } from "antd";
 import { Link, useLocation, useHistory } from "react-router-dom";
+import bg from "../../../resources/img/game/game-bg.png";
+
+const gameBtn = ["1", "2", "3", "4"];
+
+let gameBtnColor = "";
 
 const GameComponent = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   const history = useHistory();
+
+  useEffect(() => {
+    document.body.style.background = `url('${bg}')`;
+    document.body.style.backgroundSize = "cover";
+    let header = document.getElementById("header");
+    header.style.visibility = "visible";
+    async function getAllGame() {
+      let lessonID = window.location.pathname.split("/")[6];
+      await axios
+        .get(
+          `${process.env.REACT_APP_BASE_URL}/lesson/${lessonID}/game/student`
+        )
+        .then((res) => {
+          setData(res.data);
+          setLoading(false);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+    getAllGame();
+  }, []);
 
   //! Get Lesson path
   const pathSnippets = location.pathname.split("/").filter((i) => i);
@@ -14,104 +43,43 @@ const GameComponent = () => {
     return url;
   });
 
-  const data = [
-    {
-      id: 1,
-      gameName: "Game 1",
-    },
-    {
-      id: 2,
-      gameName: "Game 2",
-    },
-    {
-      id: 3,
-      gameName: "Game 3",
-    },
-    {
-      id: 4,
-      gameName: "Game 4",
-    },
-    {
-      id: 5,
-      gameName: "Game 5",
-    },
-    {
-      id: 6,
-      gameName: "Game 6",
-    },
-    {
-      id: 7,
-      gameName: "Game 7",
-    },
-  ];
+  function randomColor(array) {
+    gameBtnColor = array[Math.floor(Math.random() * array.length)];
+    return gameBtnColor;
+  }
 
   return (
     <div className="page">
-      <div
-        className="arrow-btn left-arrow"
-        onClick={() => history.push(lessonPath[5])}
-      >
-        <h1>Lesson 1</h1>
-      </div>
+      <div className="back-btn" onClick={() => history.push(lessonPath[5])} />
       <div className="page-contain">
         <div className="game-container">
-          <div className="game-title">
-            <h1>Game</h1>
+          <div className="page-title" style={{ marginTop: "10%" }}>
+            1 2 3 GAME!
           </div>
-          <div className="game-slider-wrap">
-            <Carousel
-              additionalTransfrom={0}
-              arrows
-              centerMode={false}
-              className=""
-              dotListClass=""
-              draggable
-              focusOnSelect={false}
-              infinite
-              itemClass=""
-              keyBoardControl
-              minimumTouchDrag={80}
-              renderButtonGroupOutside={false}
-              renderDotsOutside={false}
-              responsive={{
-                desktop: {
-                  breakpoint: {
-                    max: 3000,
-                    min: 1300,
-                  },
-                  items: 3,
-                  partialVisibilityGutter: 40,
-                },
-                mobile: {
-                  breakpoint: {
-                    max: 464,
-                    min: 0,
-                  },
-                  items: 1,
-                  partialVisibilityGutter: 30,
-                },
-                tablet: {
-                  breakpoint: {
-                    max: 1024,
-                    min: 464,
-                  },
-                  items: 2,
-                  partialVisibilityGutter: 30,
-                },
-              }}
-              showDots={false}
-              sliderClass=""
-              slidesToSlide={1}
-              swipeable
-            >
-              {data?.map((i) => (
-                <Link key={i.id} to={`${location.pathname}/${i.id}`}>
-                  <div className="game-slider-btn">
-                    <h1>{i.gameName}</h1>
-                  </div>
-                </Link>
-              ))}
-            </Carousel>
+          <div className="game-wrap">
+            {loading ? (
+              <Spin size="large" />
+            ) : (
+              data?.map((i) => (
+                <div
+                  key={i.id}
+                  style={{
+                    display: "grid",
+                    placeItems: "center",
+                  }}
+                  onLoad={randomColor(gameBtn)}
+                >
+                  <Link to={`${location.pathname}/${i.id}`}>
+                    <div className={`game-btn${gameBtnColor}`}>
+                      <h1>
+                        Game <br />
+                        {i.gameName}
+                      </h1>
+                    </div>
+                  </Link>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

@@ -1,79 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { getID } from "../../helper/jwt";
 import { Table } from "antd";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-
-const data = [
-  {
-    id: 0,
-    startDate: "15 Jan 2021, 8:35AM",
-    grade: 10,
-  },
-  {
-    id: 1,
-    startDate: "16 Jan 2021, 9:42AM",
-    grade: 10,
-  },
-  {
-    id: 2,
-    startDate: "17 Jan 2021, 10:23AM",
-    grade: 10,
-  },
-  {
-    id: 3,
-    startDate: "16 Jan 2021, 9:42AM",
-    grade: 10,
-  },
-  {
-    id: 4,
-    startDate: "17 Jan 2021, 10:23AM",
-    grade: 10,
-  },
-  {
-    id: 5,
-    startDate: "16 Jan 2021, 9:42AM",
-    grade: 10,
-  },
-  {
-    id: 6,
-    startDate: "17 Jan 2021, 10:23AM",
-    grade: 10,
-  },
-];
+import "antd/dist/antd.css";
+import bg from "../../resources/img/score/score-bg.png";
 
 const ScoreExerciseDetail = () => {
   const [attempData, setAttempData] = useState([]);
-  const [pagination] = useState({
-    pageSize: 5,
-  });
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    setAttempData(data);
+    document.body.style.background = `url('${bg}')`;
+    document.body.style.backgroundSize = "cover";
+    async function getExerciseTakenByID() {
+      let exerciseID = window.location.pathname.split("/")[4];
+      let accountID = getID();
+      await axios
+        .post(
+          `${process.env.REACT_APP_BASE_URL}/exerciseTaken/all?accountId=${accountID}&exerciseId=${exerciseID}`
+        )
+        .then((res) => {
+          setAttempData(res.data.lenght === 0 ? [] : res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+    getExerciseTakenByID();
   }, []);
 
   const columns = [
     {
       title: "No",
-      dataIndex: "id",
-      render: (index) => index + 1,
-      align: "center",
+      dataIndex: "index",
+      render: (value, item, index) => (page - 1) * 5 + index + 1,
       width: "10%",
     },
     {
       title: "Submitted Date",
-      dataIndex: "startDate",
+      dataIndex: "createdDate",
       align: "center",
-      render: (record) => (
-        <>
-          <span>{record}</span>
-        </>
-      ),
     },
     {
       title: "Grade",
-      dataIndex: "grade",
+      dataIndex: "totalScore",
       align: "center",
-      render: (grade) => <span>{grade}/10</span>,
     },
     {
       key: "x",
@@ -90,18 +62,27 @@ const ScoreExerciseDetail = () => {
 
   return (
     <div className="score-container">
-      <div className="score-title">
-        <h1>Exercise 1</h1>
-      </div>
-      <div className="score-wrap">
-        {attempData && (
-          <Table
-            rowKey={(record) => record.id}
-            columns={columns}
-            dataSource={attempData}
-            pagination={pagination}
-          />
-        )}
+      <div className="score-detail-wrap">
+        <div className="general-title ">
+          <h1>Exercise</h1>
+        </div>
+        <div className="record-wrap">
+          {attempData && (
+            <Table
+              rowKey={(record) => record.id}
+              columns={columns}
+              dataSource={attempData}
+              pagination={{
+                pageSize: 5,
+                position: ["bottomCenter"],
+                onChange(current) {
+                  setPage(current);
+                },
+              }}
+              className="exercise-table"
+            />
+          )}
+        </div>
       </div>
     </div>
   );

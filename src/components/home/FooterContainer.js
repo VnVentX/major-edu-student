@@ -1,29 +1,70 @@
 import React from "react";
-import { Layout, Space } from "antd";
-import footer from "../../resources/img/home/footer-demo.png";
+import { Layout } from "antd";
+import contact from "../../resources/img/home/contact.png";
+import menu from "../../resources/img/home/menu.png";
+import { Link } from "react-router-dom";
+
 const { Footer } = Layout;
 
-const FooterContainer = () => {
+const FooterContainer = (props) => {
   return (
     <Footer className="scence footer-bg">
       <div className="footer-content">
-        {/* <Space size="large">
-          <div className="left-content">
-            <h1>Liên hệ tư vấn về chương trình</h1>
-            <h3>
-              Bạn quan tâm tới chương trình Toán Khoa? Đội ngũ chuyên viên giáo
-              dục tại Major Education luôn sẵn sàng hỗ trợ
-            </h3>
-            <li>
-              269A Nguyen Trong Tuyen Street, Ward 10, District Phu Nhuan,HCM
-              City, Viet Nam
-            </li>
-            <li>hungtien@truongvietanh.com</li>
-            <li> Tel: (028) 3997 2266</li>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "flex-start",
+            width: "100%",
+          }}
+        >
+          <div className="contact footer-flex">
+            <img src={contact} alt={contact} />
+            <span style={{ marginTop: 20, color: "white", fontWeight: 500 }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+              ullamcorper mi tellus, eu lacinia elit fermentum quis. Curabitur
+              tempor mi nisi, non viverra nunc dictum ac. Nunc id dignissim
+              purus, sed blandit quam. Duis sit amet condimentum augue, eget
+              tempus magna. Nulla euismod mauris sit amet massa convallis
+              blandit. Mauris lectus enim,
+            </span>
           </div>
-          <div className="right-content">Map</div>
-        </Space> */}
-        {/* <img src={footer} alt={footer} height="100%" /> */}
+          <div className="footer-menu">
+            <img src={menu} alt={menu} />
+            <Link to="/notice">
+              <h1>Notice</h1>
+            </Link>
+            <Link to="/subject">
+              <h1>Subject</h1>
+            </Link>
+            <Link to="/score">
+              <h1>Score</h1>
+            </Link>
+            <Link to="/profile">
+              <h1>Profile</h1>
+            </Link>
+          </div>
+          <div className="reset-pass">
+            <Link to="">
+              <h1>Reset password</h1>
+            </Link>
+            <Link
+              to=""
+              className="hover-zone"
+              onClick={() => {
+                localStorage.removeItem("token");
+                localStorage.removeItem("id");
+                localStorage.removeItem("role");
+                props.history.push("/login");
+              }}
+            >
+              <h1>Logout</h1>
+            </Link>
+          </div>
+          <div className="footer_logo">
+            <div className="logo-footer" />
+          </div>
+        </div>
       </div>
     </Footer>
   );

@@ -11,12 +11,12 @@ const ChoosingGame = (props) => {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    setOptions(props.info.answers);
-  }, [props.info.answers]);
+    setOptions(props.info.sort(() => Math.random() - 0.5));
+  }, [props.info]);
 
   const handleSelectedOption = (option, optionIndex) => {
     var result = options;
-    if (props.info.questionID === option.questionID) {
+    if (props.correct === option.optionText) {
       result[optionIndex].isWrong = false;
       correctSound.play();
       setTimeout(() => {
@@ -29,33 +29,28 @@ const ChoosingGame = (props) => {
   };
 
   return (
-    <div
-      style={{
-        display: "grid",
-        placeItems: "center",
-        minHeight: "60vh",
-        height: "60vh",
-      }}
-    >
-      <div className="game-choosing-wrap">
-        <div className="game-choosing-title">
-          <h1>{props.info.questionText}</h1>
+    <div className="game-choosing-wrap">
+      <div className="game-choosing-title">
+        <div>
+          <h1>{props.correct}</h1>
         </div>
-        <div className="game-choosing-option">
-          {options?.map((i, idx) => (
-            <div
-              key={idx}
-              className={
-                i.isWrong === true ? "game-choosing-option-item game-choosing-option-hidden" : "game-choosing-option-item"
-              }
-              onClick={() => {
-                handleSelectedOption(i, idx);
-              }}
-            >
-              {i.optionImg}
-            </div>
-          ))}
-        </div>
+      </div>
+      <div className="game-choosing-option">
+        {options?.map((i, idx) => (
+          <div
+            key={idx}
+            className={
+              i.isWrong === true
+                ? "game-choosing-option-item game-choosing-option-hidden"
+                : "game-choosing-option-item"
+            }
+            onClick={() => {
+              handleSelectedOption(i, idx);
+            }}
+          >
+            <img src={i.optionImageUrl} alt={i.optionImageUrl} />
+          </div>
+        ))}
       </div>
     </div>
   );

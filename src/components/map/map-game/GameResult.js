@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import { Button } from "antd";
 
@@ -16,19 +16,21 @@ const GameResult = () => {
   return (
     <div className="page">
       <div className="page-contain">
-        <div className="game-container">
-          <div className="game-wrap">
-            <h1>Cleared with {location.state.result} points</h1>
-            <Button type="link" block onClick={() => history.goBack()}>
-              Retry
-            </Button>
-            <Button
-              type="link"
-              block
-              onClick={() => history.push(otherGamePath[5])}
-            >
-              Play other Game
-            </Button>
+        <div className="result-container">
+          <div className="quiz-result">
+            <div style={{ marginBottom: 125 }}>
+              <h1>Congratulation!</h1>
+              <Button
+                type="link"
+                block
+                onClick={() => {
+                  history.push(otherGamePath[6]);
+                }}
+                style={{ fontSize: 32 }}
+              >
+                Play other Game
+              </Button>
+            </div>
           </div>
         </div>
       </div>

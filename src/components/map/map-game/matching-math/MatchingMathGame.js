@@ -55,7 +55,6 @@ class MatchingMathGame extends Component {
       <div
         style={{
           minHeight: "60vh",
-          height: "60vh",
           display: "grid",
           placeItems: "center",
         }}
