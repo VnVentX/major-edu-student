@@ -13,11 +13,11 @@ const LoginForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let formData = new FormData();
+    formData.append("username", username);
+    formData.append("password", password);
     await axios
-      .post(`${process.env.REACT_APP_BASE_URL}/login`, {
-        username,
-        password,
-      })
+      .post(`${process.env.REACT_APP_BASE_URL}/login`, formData)
       .then((res) => {
         console.log(res.data);
         if (res.data === "") {
