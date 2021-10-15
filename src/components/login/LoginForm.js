@@ -3,8 +3,8 @@ import axios from "axios";
 import { Button } from "antd";
 
 const LoginForm = (props) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("va1010004");
+  const [password, setPassword] = useState("123456");
   const [isWrongPass, setisWrongPass] = useState(false);
 
   const handleNotice = () => {
