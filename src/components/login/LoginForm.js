@@ -3,8 +3,8 @@ import axios from "axios";
 import { Button } from "antd";
 
 const LoginForm = (props) => {
-  const [username, setUsername] = useState("va1010004");
-  const [password, setPassword] = useState("123456");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [isWrongPass, setisWrongPass] = useState(false);
 
   const handleNotice = () => {
@@ -14,8 +14,8 @@ const LoginForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let formData = new FormData();
-    formData.append("username", username);
-    formData.append("password", password);
+    formData.append("username", "va1010004");
+    formData.append("password", "123456");
     await axios
       .post(`${process.env.REACT_APP_BASE_URL}/login`, formData)
       .then((res) => {
@@ -52,6 +52,7 @@ const LoginForm = (props) => {
             required="required"
             placeholder="Username"
             autoComplete="off"
+            value="va1010004"
             onChange={(e) => {
               setUsername(e.target.value);
             }}
@@ -67,6 +68,7 @@ const LoginForm = (props) => {
             required="required"
             placeholder="password"
             autoComplete="off"
+            value="123456"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
